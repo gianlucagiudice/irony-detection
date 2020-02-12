@@ -1,1 +1,1 @@
-# irony-detection
+# Irony Detection
