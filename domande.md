@@ -1,0 +1,7 @@
+- Devo togliere i Retweet --> "RT @ ..."?
+- Devo tenere i link?
+- Won't --> come lo tratto?
+- RT @DjBlack_Pearl: wat muhfuckaz wearin 4 the lingerie party?????
+  - wearing 4. Come tratto questo caso?
+- RT @eye_ee_duh_Esq: LMBO! This man filed an EMERGENCY Motion for Continuance on account of the Rangers game tonight! « Wow lmao
+  - Come tratto "«" ?
