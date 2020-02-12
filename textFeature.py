@@ -1,3 +1,12 @@
-linkRe = "https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
+from Tokenizer import Tokenizer
 
-# Read tweets
+# Set tweets path
+tweetsPath = "examples/example_tweets.txt"
+
+# Create tokenizer object
+toknz = Tokenizer(tweetsPath)
+
+# Compute all tweets
+toknz.computeTweets()
+# Print results
+toknz.printComparison()

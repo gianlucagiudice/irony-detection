@@ -1,7 +1,16 @@
 - Devo togliere i Retweet --> "RT @ ..."?
+- Devo togliere i tag?
 - Devo tenere i link?
-- Won't --> come lo tratto?
+- Come tratto le forme contratte?
+    - ES. Won't
 - RT @DjBlack_Pearl: wat muhfuckaz wearin 4 the lingerie party?????
   - wearing 4. Come tratto questo caso?
 - RT @eye_ee_duh_Esq: LMBO! This man filed an EMERGENCY Motion for Continuance on account of the Rangers game tonight! « Wow lmao
   - Come tratto "«" ?
+- Deve essere case sensitive?
+- Cosa viene considerato come termine?
+    - La punteggiatura è considerato termine?
+    - Attualmente considero validi i termini del tipo:
+        - [a-zA-Z']+
+        - In questo modo tengo le forme contratte
+- E' un problema se ad ogni esecuzione dello script, ho una permutazione su T = {t_1, t_2, ...t_n}, dove T è la colonna della matrice
