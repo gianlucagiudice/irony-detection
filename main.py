@@ -15,7 +15,7 @@ def main():
     # Print results
     print(toknz if debug else "", end='')
     # Get list of words
-    words_list = toknz.getAllWords()
+    words_list = toknz.words
 
     # Crete text feature object
     txtf = TextFeature(words_list)

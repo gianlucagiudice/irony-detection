@@ -12,8 +12,6 @@ class Tokenizer:
         self.tokens = None
         # List of words in each tweet
         self.words = None
-        # Set of words
-        self.wordsSet = set()
 
     def computeTweets(self):
         self.readTweets()
@@ -61,21 +59,6 @@ class Tokenizer:
         # Consider word only letters and ' character
         valid_word_re = "[a-zA-Z']+"
         return re.fullmatch(valid_word_re, word)
-
-    # ---- getters ----
-    def getElement(self, index):
-        # Return a tuple containig all tweet information
-        return self.tweets[index], self.tokens[index], self.words[index]
-
-    def getAllElements(self):
-        # Return list of tuples (tweetIndex, zip(tweetsInformation))
-        return [(self.getElement(index)) for index, _ in enumerate(self.tweets)]
-
-    def getWord(self, index):
-        return self.words[index]
-
-    def getAllWords(self):
-        return self.words
 
     def __str__(self, limit=-1):
         str_obj = "%%%% TOKENIZER %%%%\n"
