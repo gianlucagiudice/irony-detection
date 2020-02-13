@@ -34,9 +34,9 @@ class Tokenizer:
 
     def tokenizeTweets(self):
         # Construct tokenizer object
-        preserveCase = False  # Convert each work to lowercase
-        reduceLen = True  # mooooooonkey -> mooonkey
-        tokenizer = TweetTokenizer(preserve_case=preserveCase, reduce_len=reduceLen)
+        preserve_case = False  # Convert each work to lowercase
+        reduce_len = True  # mooooooonkey -> mooonkey
+        tokenizer = TweetTokenizer(preserve_case=preserve_case, reduce_len=reduce_len)
         # Tokenize all tweets
         self.tokens = [tokenizer.tokenize(self.tweetFilter(tweet)) for tweet in self.tweets]
 
@@ -47,20 +47,20 @@ class Tokenizer:
 
     def tweetFilter(self, tweet):
         # Regex for valid twitter name
-        twitterNameRe = "@(\w){1,15}"
+        twitter_name_re = "@(\w){1,15}"
         # Regex for retweet pattern
-        retweetRe = "RT\s" + twitterNameRe + ":"
+        retweet_re = "RT\s" + twitter_name_re + ":"
         # Remove retweet tokens
-        noRetweet = re.sub(retweetRe, '', tweet)
+        no_retweet = re.sub(retweet_re, '', tweet)
         # Remove tagged users
-        filtered = re.sub(twitterNameRe, '', noRetweet)
+        filtered = re.sub(twitter_name_re, '', no_retweet)
         # Return tweet filtered
         return filtered
 
     def isValidWord(self, word):
         # Consider word only letters and ' character
-        validWordRe = "[a-zA-Z']+"
-        return re.fullmatch(validWordRe, word)
+        valid_word_re = "[a-zA-Z']+"
+        return re.fullmatch(valid_word_re, word)
 
     # ---- getters ----
     def getElement(self, index):
@@ -78,13 +78,13 @@ class Tokenizer:
         return self.words
 
     def __str__(self, limit=-1):
-        strObj = ""
+        str_obj = ""
         for index, (tweet, tokens, words) in enumerate(zip(self.tweets, self.tokens, self.words)):
             # If limit is reached, stop print tweets
             if index == limit:
                 break
             # Print all tokenization steps
-            outString = "----- Tweet N. {} -----\n" \
+            out_string = "----- Tweet N. {} -----\n" \
                         "Original\t>>> {}\nTokenized\t>>> {}\nValid words\t>>> {}"
-            strObj = strObj + outString.format(index, tweet.strip(), tokens, words) + "\n"
-        return strObj
+            str_obj = str_obj + out_string.format(index, tweet.strip(), tokens, words) + "\n"
+        return str_obj
