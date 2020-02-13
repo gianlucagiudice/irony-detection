@@ -17,7 +17,6 @@ class Tokenizer:
 
     def computeTweets(self):
         self.readTweets()
-        self.readTweets()
         self.tokenizeTweets()
         self.extractWords()
 
@@ -45,9 +44,6 @@ class Tokenizer:
         # Filter tokens based on valid words
         self.words = [list(filter(self.isValidWord, tokens)) for tokens in self.tokens]
         # Create words set from words list flatten
-
-        # Move this line in a differetn class
-        # self.wordsSet = set([word for wordsList in self.words for word in wordsList])
 
     def tweetFilter(self, tweet):
         # Regex for valid twitter name
