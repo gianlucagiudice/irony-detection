@@ -66,6 +66,22 @@ class Tokenizer:
         validWordRe = "[a-zA-Z']+"
         return re.fullmatch(validWordRe, word)
 
+    # ---- getters ----
+    def getElement(self, index):
+        # Return a tuple containig all tweet information
+        return self.tweets[index], self.tokens[index], self.words[index]
+
+    def getAllElements(self):
+        # Return list of tuples (tweetIndex, zip(tweetsInformation))
+        return [(self.getElement(index)) for index, _ in enumerate(self.tweets)]
+
+    def getWord(self, index):
+        return self.words[index]
+
+    def getAllWords(self):
+        return self.words
+
+    # ---- toString ----
     def printComparison(self, limit=-1):
         for index, (tweet, tokens, words) in enumerate(zip(self.tweets, self.tokens, self.words)):
             # If limit is reached, stop print tweets
@@ -75,10 +91,7 @@ class Tokenizer:
             outString = "Tweet N. {}:\nOriginal\t>>> {}\nTokenized\t>>> {}\nValid words\t>>> {}\n"
             print(outString.format(index, tweet.strip(), tokens, words))
 
-    def getTweet(self, index):
-        # Return a tuple containig all tweet information
-        return (self.tweets[index], self.tokens[index], self.words[index])
 
-    def getAllTweets(self):
-        # Return list of tuples (tweetIndex, zip(tweetsInformation))
-        return [(index, self.getTweet(index)) for index, _ in enumerate(self.tweets)]
+
+
+
