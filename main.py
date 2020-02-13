@@ -3,7 +3,8 @@ from TextFeature import TextFeature
 
 # Set tweets path
 tweetsPath = "examples/example_tweets_small.txt"
-
+# Parameters
+debug = True
 
 def main():
     # Create tokenizer object
@@ -11,7 +12,7 @@ def main():
     # Compute all tweets
     toknz.computeTweets()
     # Print results
-    toknz.printComparison()
+    print(toknz if debug else "")
     # Get list of words
     wordsList = toknz.getAllWords()
 

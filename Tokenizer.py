@@ -77,17 +77,14 @@ class Tokenizer:
     def getAllWords(self):
         return self.words
 
-    # ---- toString ----
-    def printComparison(self, limit=-1):
+    def __str__(self, limit=-1):
+        strObj = ""
         for index, (tweet, tokens, words) in enumerate(zip(self.tweets, self.tokens, self.words)):
             # If limit is reached, stop print tweets
             if index == limit:
                 break
             # Print all tokenization steps
-            outString = "Tweet N. {}:\nOriginal\t>>> {}\nTokenized\t>>> {}\nValid words\t>>> {}\n"
-            print(outString.format(index, tweet.strip(), tokens, words))
-
-
-
-
-
+            outString = "----- Tweet N. {} -----\n" \
+                        "Original\t>>> {}\nTokenized\t>>> {}\nValid words\t>>> {}"
+            strObj = strObj + outString.format(index, tweet.strip(), tokens, words) + "\n"
+        return strObj
