@@ -78,13 +78,15 @@ class Tokenizer:
         return self.words
 
     def __str__(self, limit=-1):
-        str_obj = ""
+        str_obj = "%%%% TOKENIZER %%%%\n"
         for index, (tweet, tokens, words) in enumerate(zip(self.tweets, self.tokens, self.words)):
             # If limit is reached, stop print tweets
             if index == limit:
                 break
             # Print all tokenization steps
-            out_string = "----- Tweet N. {} -----\n" \
-                        "Original\t>>> {}\nTokenized\t>>> {}\nValid words\t>>> {}"
-            str_obj = str_obj + out_string.format(index, tweet.strip(), tokens, words) + "\n"
-        return str_obj
+            out_string = "---- Tweet N. {} ----\n" \
+                         "Original\t>>> {}\n" \
+                         "Tokenized\t>>> {}\n" \
+                         "Valid words\t>>> {}"
+            str_obj += out_string.format(index, tweet.strip(), tokens, words) + "\n"
+        return str_obj + "\n"
