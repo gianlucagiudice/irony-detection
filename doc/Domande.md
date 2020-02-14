@@ -18,3 +18,4 @@
         - [a-zA-Z']+
         - In questo modo tengo le forme contratte
 - E' un problema se ad ogni esecuzione dello script, ho una permutazione su T = {t_1, t_2, ...t_n}, dove T è la colonna della matrice
+- Ho fatto il tokenizer ma ho visto che è già implementato nello script. Quale devo usare?
