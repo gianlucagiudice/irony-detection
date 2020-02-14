@@ -3,11 +3,15 @@
 - Devo tenere i link?
 - Come tratto le forme contratte?
     - ES. Won't
+        - Ora le tengo così come sono
 - RT @DjBlack_Pearl: wat muhfuckaz wearin 4 the lingerie party?????
   - wearing 4. Come tratto questo caso?
 - RT @eye_ee_duh_Esq: LMBO! This man filed an EMERGENCY Motion for Continuance on account of the Rangers game tonight! « Wow lmao
   - Come tratto "«" ?
 - Deve essere case sensitive?
+- Va bene applicare riduzioni delle frasi?
+    - mooooooonkey >>> mooonkey
+    - ???????? >>> ??? 
 - Cosa viene considerato come termine?
     - La punteggiatura è considerato termine?
     - Attualmente considero validi i termini del tipo:
