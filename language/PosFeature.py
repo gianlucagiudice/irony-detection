@@ -1,7 +1,3 @@
-'''
-        LIST OF POS FEATURE
-"N":"common noun", "O":"pronoun (personal; not possessive)", "ˆ":"proper noun", "S":"nominal + possessive", "Z":"proper noun + possessive", "V":"verb", "A":"adjective", "R":"adverb", "!":"interjection", "D":"determiner", "P":"pre- or postposition, or subordinating conjunction", "&":"coordinating conjunction", "T":"verb particle", "X":"existential there", "L":"nominal + verbal (e. g., i’m)", "M":"proper noun + verbal", "Y":"X + verbal"
-'''
 import subprocess
 import re
 
@@ -48,7 +44,7 @@ class PosFeature:
 
     def executePosTagger(self, command):
         # Set stdin equal to tweets separated by newline
-        input_tweets = ''.join(self.tweets)
+        input_tweets = '\n'.join(self.tweets)
         # Execute script
         return subprocess.run(command, capture_output=True, text=True, check=True, input=input_tweets)
 
@@ -67,7 +63,7 @@ class PosFeature:
     def extractTags(self):
         # Consider the pair dictionary - words associated to each tweet
         tweets = zip(self.words, self.dictsList)
-        # Return list og tags for each tweet
+        # Return list of tags for each tweet
         return [[tokens_dict[word].upper() for word in words] for words, tokens_dict in tweets]
 
     def tagFilter(self, tags_list):

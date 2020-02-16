@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class TextFeature:
 
     def __init__(self, words_list):
@@ -37,8 +38,8 @@ class TextFeature:
         str_obj = "%%%% TEXT FEATURE %%%%\n"
         for r, words in enumerate(self.wordsList):
             out_string = "---- Matrix row N. {} ----\n" \
-                         "Tweet words\t>>> {}\n" \
                          "Uniq. words >>> {}\n" \
+                         "Tweet words\t>>> {}\n" \
                          "Row\t\t\t>>> {}"
-            str_obj += out_string.format(r, words, self.uniqueWordsList, str(self.matrix[r])) + "\n"
+            str_obj += out_string.format(r, self.uniqueWordsList, words, str(self.matrix[r])) + "\n"
         return str_obj + "\n"

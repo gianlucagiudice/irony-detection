@@ -3,32 +3,17 @@ from nltk.tokenize import TweetTokenizer
 
 
 class Tokenizer:
-    def __init__(self, path):
-        # Tweets file path
-        self.path = path
+    def __init__(self, tweets):
         # List of tweets
-        self.tweets = None
+        self.tweets = tweets
         # List of tweets tokenized
         self.tokens = None
         # List of words in each tweet
         self.words = None
 
     def computeTweets(self):
-        self.readTweets()
         self.tokenizeTweets()
         self.extractWords()
-
-    def readTweets(self):
-        tweets = []
-        with open(self.path) as file:
-            line = file.readline()
-            while line:
-                # Append line in file to list of tweets
-                tweets.append(line)
-                # Read next line
-                line = file.readline()
-        # Save read result
-        self.tweets = tweets
 
     def tokenizeTweets(self):
         # Construct tokenizer object
@@ -71,5 +56,5 @@ class Tokenizer:
                          "Original\t>>> {}\n" \
                          "Tokenized\t>>> {}\n" \
                          "Valid words\t>>> {}"
-            str_obj += out_string.format(index, tweet.strip(), tokens, words) + "\n"
+            str_obj += out_string.format(index, tweet, tokens, words) + "\n"
         return str_obj + "\n"
