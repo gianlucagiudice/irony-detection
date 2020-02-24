@@ -14,45 +14,36 @@ def main():
     print("Reading file . . .")
     tweets = readFile(tweetsPath)
 
-    # Parse initialism
-    print("Parsing initialism . . .")
-    # Create parser object
-    init = ParseInitialism(tweets)
-    # Parse initialism
-    init.parseTweets()
-    # Print results
-    print(init if debug else "", end='')
-    # Get tweets parsed
-    tweets_parsed = init.tweetsParsed
-
     # Tokenizer
     print("Tokenizer . . .")
     # Create tokenizer object
-    toknz = Tokenizer(tweets_parsed)
+    tokenizer = Tokenizer(tweets)
     # Compute all tweets
-    toknz.computeTweets()
+    tokenizer.evaluateTweets()
     # Print results
-    print(toknz if debug else "", end='')
-    # Get list of words
-    words_list = toknz.words
+    print(tokenizer if debug else "", end='')
 
     # Compute text feature
     print("Text feature . . .")
     # Crete text feature object
-    txtf = TextFeature(words_list)
+    text_features = TextFeature(tokenizer.words)
     # Extract matrix from words list
-    txtf.extractMatrix()
+    text_features.extractTermsMatrix()
+    # Get terms matrix
+    terms_matrix = text_features.matrix
     # Print results
-    print(txtf if debug else "", end='')
+    print(text_features if debug else "", end='')
 
     # Words tagging
     print("Pos tagging . . .")
     # Tag tweets
-    pos = PosFeature(toknz.words, tweets)
+    part_of_speech = PosFeature(tweets)
     # Tag part of speech
-    pos.computePosTag()
+    part_of_speech.computePosTags()
+    # Get part of speech matrix
+    part_of_speech_matrix = part_of_speech.matrix
     # Print results
-    print(pos if debug else "", end='')
+    print(part_of_speech if debug else "", end='')
 
 
 def readFile(path):

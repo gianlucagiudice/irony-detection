@@ -9,11 +9,9 @@ class TextFeature:
         self.wordsSet = None
         self.uniqueWordsList = None
 
-    def extractMatrix(self):
+    def extractTermsMatrix(self):
         # Create set of words
         self.createWordsSet()
-        # Words sorting?
-        pass
         # Build matrix
         self.buildMatrix()
         # Fill matrix

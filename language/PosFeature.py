@@ -1,5 +1,5 @@
 import subprocess
-import re
+import numpy as np
 
 # Script Parameters
 scriptPath = "lib/"
@@ -9,12 +9,15 @@ threadNumber = "4"
 ramSize = "1G"
 
 # Target tags
-targetTags = {"N": "common noun", "O": "pronoun (personal; not possessive)", "^": "proper noun",
-              "S": "nominal + possessive", "Z": "proper noun + possessive", "V": "verb", "A":"adjective",
-              "R": "adverb", "!": "interjection", "D": "determiner",
-              "P": "pre- or postposition, or subordinating conjunction", "&": "coordinating conjunction",
-              "T": "verb particle", "X": "existential there", "L": "nominal + verbal (e. g., i’m)",
-              "M": "proper noun + verbal", "Y": "X + verbal"}
+targetTags = ['N', 'O', '^', 'S', 'Z', 'V', 'A', 'R', '!', 'D', 'P', '&', 'T', 'X', 'L', 'M', 'Y']
+# Target Description
+targetTagsDescription = \
+    {"N": "common noun", "O": "pronoun (personal; not possessive)", "^": "proper noun",
+     "S": "nominal + possessive", "Z": "proper noun + possessive", "V": "verb", "A": "adjective",
+     "R": "adverb", "!": "interjection", "D": "determiner",
+     "P": "pre- or postposition, or subordinating conjunction", "&": "coordinating conjunction",
+     "T": "verb particle", "X": "existential there", "L": "nominal + verbal (e. g., i’m)",
+     "M": "proper noun + verbal", "Y": "X + verbal"}
 
 
 def buildCommand():
@@ -23,24 +26,26 @@ def buildCommand():
 
 class PosFeature:
 
-    def __init__(self, words, tweets):
+    def __init__(self, tweets):
+        self.matrix = None
         self.targetTags = targetTags
-        self.words = words
         self.tweets = tweets
-        self.dictsList = []
-        self.tags = []
+        self.tagsList = []
+        self.occurrenceDictList = []
 
-    def computePosTag(self):
+    def computePosTags(self):
         # Build command for execute POS tag script
         command = buildCommand()
         # Get output of script
         pos_out = self.executePosTagger(command).stdout
         # Parse script output
-        self.parsePosTag(pos_out)
-        # Extract all tags from each tweet
-        all_tags = self.extractTags()
-        # Filter tags based on set of target tags
-        self.tagFilter(all_tags)
+        self.parsePosTags(pos_out)
+        # Counts tags per tweet
+        self.countTagsOccurence()
+        # Build matrix
+        self.buildMatrix()
+        # Fill matrix
+        self.fillMatrix()
 
     def executePosTagger(self, command):
         # Set stdin equal to tweets separated by newline
@@ -48,42 +53,34 @@ class PosFeature:
         # Execute script
         return subprocess.run(command, capture_output=True, text=True, check=True, input=input_tweets)
 
-    def parsePosTag(self, pos_out):
+    def parsePosTags(self, pos_out):
         # Evaluate each tweet
         for row in pos_out.split('\n')[:-1]:
-            # Unpack tokens and tags converted to lowercase
-            tokens, tags, *_ = row.lower().split('\t')
-            # Create per row dictionary token : tag
-            tweet_dict = dict()
-            for token, tag in zip(tokens.split(' '), tags.split(' ')):
-                # Finds all words in script-token. Must be coherent with custom tokenizer
-                tweet_dict.update([(partial_token, tag) for partial_token in re.findall("\w+", token)])
-            self.dictsList.append(tweet_dict)
+            # Unpack tags and create a list
+            self.tagsList.append(row.upper().split('\t')[1].split())
 
-    def extractTags(self):
-        # Consider the pair dictionary - words associated to each tweet
-        tweets = zip(self.words, self.dictsList)
-        # Return list of tags for each tweet
-        return [[tokens_dict[word].upper() for word in words] for words, tokens_dict in tweets]
+    def countTagsOccurence(self):
+        for tags in self.tagsList:
+            occ_dict = {tag: tags.count(tag) for tag in targetTags}
+            self.occurrenceDictList.append(occ_dict)
 
-    def tagFilter(self, tags_list):
-        # Get set of valid tags
-        valid_tags = set(self.targetTags.keys())
-        # Filter tags based on valid tags
-        for tags in tags_list:
-            self.tags.append([tag for tag in tags if tag in valid_tags])
+    def buildMatrix(self):
+        self.matrix = np.zeros(((len(self.tweets)), len(self.targetTags)))
+
+    def fillMatrix(self):
+        for r, _ in enumerate(self.tweets):
+            self.matrix[r, :] = list(self.occurrenceDictList[r].values())
 
     def __str__(self, limit=-1):
         str_obj = "%%%% POS TAGGER %%%%\n"
-        for index, (tweet, words, tags) in enumerate(zip(self.tweets, self.words, self.tags)):
+        for index, (tweet, tags, occurence_dict) in enumerate(zip(self.tweets, self.tagsList, self.occurrenceDictList)):
             # If limit is reached, stop print tweets
             if index == limit:
                 break
             # Print all tokenization steps
             out_string = "---- Tweet N. {} ----\n" \
                          "Original\t>>> {}\n" \
-                         "Words\t\t>>> {}\n" \
-                         "Tags\t\t>>> {}"
-            tags_description = [self.targetTags[tag] for tag in tags]
-            str_obj += out_string.format(index, tweet.strip(), words, tags_description) + "\n"
+                         "Tags\t\t>>> {}\n" \
+                         "Occ.\t\t>>> {}"
+            str_obj += out_string.format(index, tweet.strip(), tags, occurence_dict) + "\n"
         return str_obj + "\n"

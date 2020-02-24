@@ -11,7 +11,7 @@ class Tokenizer:
         # List of words in each tweet
         self.words = None
 
-    def computeTweets(self):
+    def evaluateTweets(self):
         self.tokenizeTweets()
         self.extractWords()
 
