@@ -1,32 +1,38 @@
+from language.Feature import Feature
+from language.Config import *
 import subprocess
-import numpy as np
 
-# Script Parameters
-scriptPath = "lib/"
-scriptName = "ark-tweet-nlp-0.3.2.jar"
-fullPath = scriptPath + scriptName
-threadNumber = "4"
-ramSize = "1G"
 
-# Target tags
-targetTags = ['N', 'O', '^', 'S', 'Z', 'V', 'A', 'R', '!', 'D', 'P', '&', 'T', 'X', 'L', 'M', 'Y']
-# Target Description
+# Target Tags
 targetTagsDescription = \
-    {"N": "common noun", "O": "pronoun (personal; not possessive)", "^": "proper noun",
-     "S": "nominal + possessive", "Z": "proper noun + possessive", "V": "verb", "A": "adjective",
-     "R": "adverb", "!": "interjection", "D": "determiner",
-     "P": "pre- or postposition, or subordinating conjunction", "&": "coordinating conjunction",
-     "T": "verb particle", "X": "existential there", "L": "nominal + verbal (e. g., i’m)",
-     "M": "proper noun + verbal", "Y": "X + verbal"}
+    {"N": "common noun",
+     "O": "pronoun (personal; not possessive)",
+     "^": "proper noun",
+     "S": "nominal + possessive",
+     "Z": "proper noun + possessive",
+     "V": "verb",
+     "A": "adjective",
+     "R": "adverb",
+     "!": "interjection",
+     "D": "determiner",
+     "P": "pre- or postposition, or subordinating conjunction",
+     "&": "coordinating conjunction",
+     "T": "verb particle",
+     "X": "existential there",
+     "L": "nominal + verbal (e. g., i’m)",
+     "M": "proper noun + verbal",
+     "Y": "X + verbal"}
+targetTags = targetTagsDescription.keys()
 
 
 def buildCommand():
     return ['java', '-XX:ParallelGCThreads=' + threadNumber, '-Xmx' + ramSize, '-jar', fullPath]
 
 
-class PosFeature:
+class PosFeature(Feature):
 
     def __init__(self, tweets):
+        super().__init__()
         self.matrix = None
         self.targetTags = targetTags
         self.tweets = tweets
@@ -43,7 +49,7 @@ class PosFeature:
         # Counts tags per tweet
         self.countTagsOccurence()
         # Build matrix
-        self.buildMatrix()
+        self.buildMatrix(len(self.tweets), len(self.targetTags))
         # Fill matrix
         self.fillMatrix()
 
@@ -63,9 +69,6 @@ class PosFeature:
         for tags in self.tagsList:
             occ_dict = {tag: tags.count(tag) for tag in targetTags}
             self.occurrenceDictList.append(occ_dict)
-
-    def buildMatrix(self):
-        self.matrix = np.zeros(((len(self.tweets)), len(self.targetTags)))
 
     def fillMatrix(self):
         for r, _ in enumerate(self.tweets):

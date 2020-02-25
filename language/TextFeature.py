@@ -1,10 +1,10 @@
-import numpy as np
+from language.Feature import Feature
 
 
-class TextFeature:
+class TextFeature(Feature):
 
     def __init__(self, words_list):
-        self.matrix = None
+        super().__init__()
         self.wordsList = words_list
         self.wordsSet = None
         self.uniqueWordsList = None
@@ -13,7 +13,7 @@ class TextFeature:
         # Create set of words
         self.createWordsSet()
         # Build matrix
-        self.buildMatrix()
+        self.buildMatrix((len(self.wordsList)), len(self.wordsSet))
         # Fill matrix
         self.fillMatrix()
 
@@ -22,9 +22,6 @@ class TextFeature:
         self.wordsSet = set([word for words in self.wordsList for word in words])
         # Build list of unique words
         self.uniqueWordsList = list(self.wordsSet)
-
-    def buildMatrix(self):
-        self.matrix = np.zeros(((len(self.wordsList)), len(self.wordsSet)))
 
     def fillMatrix(self):
         for r, words in enumerate(self.wordsList):
