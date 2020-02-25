@@ -1,48 +1,48 @@
-lul	Laugh out loud
-lol	Laugh out loud
-lolz	Laugh out loud
-lawl	Laugh out loud
-lawlz	Laugh out loud
-lal	Laugh out loud
-lel	Laugh out loud
-LMAO	Laughing my ass off
-LMFAO	Laughing my fucking ass off
-ROFL	Rolling on the floor laughing
-ROFLMAO	Rolling on the floor laughing my ass off
-ROTFLMFAO	Rolling on the floor laughing my fucking ass off
-lqtm	Laughing quietly to myself
-OMG	Oh my god
-SMH	Shaking my head
-FFS	For fuck's sake
-FML	Fuck my life
-STFU	Shut the fuck up
-GTFO	Get the fuck out
-DGAF	Don't give a fuck
-DTF	Down to fuck
-SMFH	Shaking my fucking head
-PTFO	Passed the fuck out
-BL	Belly laughing
-BAS	Big ass smile
-BFD	Big fucking deal
-BMGWL	Busting my gut with laughter
-BWL	Bursting with laughter
-CRBT	Crying real big tears
-ESAD	Eat shit and die
-FOMCL	Falling off my chair laughing
-FUBAR	Fucked up beyond all repair or recognition
-GMAB	Give me a break
-LHO	Laughing head off
-LMSO	Laughing my socks off
-LOL	Laughing out loud
-LSHMBH	Laughing so hard my belly hurts
-LTM	Laugh to myself
-NFG	No fucking good
-NFW	No feasible way or no fucking way
-OTF	Off the floor
-PITA	Pain in the ass
-ROTFLMAOWPIMP	Rolling on the floor laughing my ass off while peeing in my pants
-ROTFLMBO	Rolling on the floor laughing my butt off
-STFU	Shut the fuck up
-SWL	Screaming with laughter
-UAPITA	You're a pain in the ass
-WTFO	What the Fuck! Over!
+lul	Laugh out loud	1
+lol	Laugh out loud	1
+lolz	Laugh out loud	1
+lawl	Laugh out loud	1
+lawlz	Laugh out loud	1
+lal	Laugh out loud	1
+lel	Laugh out loud	1
+LMAO	Laughing my ass off	1
+LMFAO	Laughing my fucking ass off	1
+ROFL	Rolling on the floor laughing	1
+ROFLMAO	Rolling on the floor laughing my ass off	1
+ROTFLMFAO	Rolling on the floor laughing my fucking ass off	1
+lqtm	Laughing quietly to myself	1
+OMG	Oh my god	1
+SMH	Shaking my head	0
+FFS	For fuck's sake	0
+FML	Fuck my life	0
+STFU	Shut the fuck up	0
+GTFO	Get the fuck out	0
+DGAF	Don't give a fuck	0
+DTF	Down to fuck	1
+SMFH	Shaking my fucking head	0
+PTFO	Passed the fuck out	0
+BL	Belly laughing	1
+BAS	Big ass smile	1
+BFD	Big fucking deal	1
+BMGWL	Busting my gut with laughter	1
+BWL	Bursting with laughter	1
+CRBT	Crying real big tears	0
+ESAD	Eat shit and die	0
+FOMCL	Falling off my chair laughing	1
+FUBAR	Fucked up beyond all repair or recognition	0
+GMAB	Give me a break	0
+LHO	Laughing head off	1
+LMSO	Laughing my socks off	1
+LOL	Laughing out loud	1
+LSHMBH	Laughing so hard my belly hurts	1
+LTM	Laugh to myself	1
+NFG	No fucking good	0
+NFW	No feasible way or no fucking way	0
+OTF	Off the floor	1
+PITA	Pain in the ass	0
+ROTFLMAOWPIMP	Rolling on the floor laughing my ass off while peeing in my pants	1
+ROTFLMBO	Rolling on the floor laughing my butt off	1
+STFU	Shut the fuck up	0
+SWL	Screaming with laughter	1
+UAPITA	You're a pain in the ass	0
+WTFO	What the Fuck! Over!	0
