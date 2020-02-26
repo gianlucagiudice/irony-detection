@@ -1,5 +1,5 @@
 from language.Feature import Feature
-from language.Config import *
+from language.Config import SCRIPT_PATH, RAM_SIZE, THREAD_NUMBER
 import subprocess
 
 
@@ -26,7 +26,7 @@ targetTags = targetTagsDescription.keys()
 
 
 def buildCommand():
-    return ['java', '-XX:ParallelGCThreads=' + threadNumber, '-Xmx' + ramSize, '-jar', fullPath]
+    return ['java', '-XX:ParallelGCThreads=' + THREAD_NUMBER, '-Xmx' + RAM_SIZE, '-jar', SCRIPT_PATH]
 
 
 class PosFeature(Feature):
@@ -34,7 +34,6 @@ class PosFeature(Feature):
     def __init__(self, tweets):
         super().__init__()
         self.matrix = None
-        self.targetTags = targetTags
         self.tweets = tweets
         self.tagsList = []
         self.occurrenceDictList = []
@@ -49,7 +48,7 @@ class PosFeature(Feature):
         # Counts tags per tweet
         self.countTagsOccurence()
         # Build matrix
-        self.buildMatrix(len(self.tweets), len(self.targetTags))
+        self.buildMatrix(len(self.tweets), len(targetTags))
         # Fill matrix
         self.fillMatrix()
 
@@ -76,7 +75,7 @@ class PosFeature(Feature):
 
     def __str__(self, limit=-1):
         str_obj = "%%%% POS TAGGER %%%%\n"
-        for index, (tweet, tags, occurence_dict) in enumerate(zip(self.tweets, self.tagsList, self.occurrenceDictList)):
+        for index, (tweet, tags, occurrence_dict) in enumerate(zip(self.tweets, self.tagsList, self.occurrenceDictList)):
             # If limit is reached, stop print tweets
             if index == limit:
                 break
@@ -85,5 +84,5 @@ class PosFeature(Feature):
                          "Original\t>>> {}\n" \
                          "Tags\t\t>>> {}\n" \
                          "Occ.\t\t>>> {}"
-            str_obj += out_string.format(index, tweet.strip(), tags, occurence_dict) + "\n"
+            str_obj += out_string.format(index, tweet.strip(), tags, occurrence_dict) + "\n"
         return str_obj + "\n"

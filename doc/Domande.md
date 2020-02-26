@@ -17,3 +17,20 @@
 
 ## Pragmatic particles
 - OMG = Positive/Negtive ?
+- Emoji
+http://kt.ijs.si/data/Emoji_sentiment_ranking/
+- Considero emoticon solo se "isolata"?
+- Più onomatopee attaccate tra loro?
+    - ahah = 1
+    - ahahahah = 2
+
+## Lessici
+- Dato che alcune sfere emotive sono presenti in più lessici "JOY" e mi aspetto che
+i lessici siano coerenti tra loro, è necessario normalizzare i valori in base al 
+numero di lessici in cui è presente una sfer emotiva per non far prevalere soltanto
+quelli che sono presenti in tutti i lessici?
+    - Se si, come normalizzo?
+        
+        frequenzaTot/numeroLessici?
+        
+        Non rischio di penalizzare troppo e avvantaggiare troppo i le sfere "uniche"?
