@@ -1,7 +1,7 @@
 from language.Feature import Feature
+from language.Debugger import Debugger
 
-
-class TextFeature(Feature):
+class TextFeature(Feature, Debugger):
 
     def __init__(self, words_list):
         super().__init__()
@@ -29,12 +29,11 @@ class TextFeature(Feature):
             for c, word in enumerate(self.uniqueWordsList):
                 self.matrix[r, c] += word in tweet_words_set
 
-    def __str__(self):
-        str_obj = "%%%% TEXT FEATURE %%%%\n"
-        for r, words in enumerate(self.wordsList):
-            out_string = "---- Matrix row N. {} ----\n" \
-                         "Uniq. words >>> {}\n" \
-                         "Tweet words\t>>> {}\n" \
-                         "Row\t\t\t>>> {}"
-            str_obj += out_string.format(r, self.uniqueWordsList, words, str(self.matrix[r])) + "\n"
-        return str_obj + "\n"
+    def __str__(self, **kwargs):
+        title = "text feature"
+        header = "Matrix row"
+        template = "Uniq. words >>> {}\n" \
+                   "Tweet words\t>>> {}\n" \
+                   "Row\t\t\t>>> {}"
+        return super().__str__(self, [self.uniqueWordsList] * len(self.matrix), self.wordsList, self.matrix,
+                               title=title, header=header, template=template)

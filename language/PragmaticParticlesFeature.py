@@ -1,6 +1,7 @@
 import numpy as np
 import re
 from language.Feature import Feature
+from language.Debugger import Debugger
 from language.Config import EMOTICONS_PATH, INITIALISM_PATH, ONOMATOPOEIC_PATH
 
 targetPunctuation = [',', '!', '?']
@@ -11,7 +12,7 @@ def readFile(path):
         return [line.strip().split('\t') for line in file.readlines()]
 
 
-class PragmaticParticlesFeature(Feature):
+class PragmaticParticlesFeature(Feature, Debugger):
 
     def __init__(self, tweets):
         super().__init__()
@@ -91,3 +92,16 @@ class PragmaticParticlesFeature(Feature):
         matrix = np.array(self.featuresList).transpose()
         # Flatten matrix
         self.matrix = np.array([np.concatenate(row) for row in matrix])
+
+    def __str__(self, **kwargs):
+        title = "pragmatic particles"
+        header = "Tweet"
+        template = "Original\t>>> \"{}\"\n"\
+                   "Emot (-, +)\t>>> {}\n" \
+                   "Init (-, +)\t>>> {}\n" \
+                   "Onom (#)\t>>> {}\n" \
+                   "Punct\t\t>>> {}"
+        return super().__str__(self, self.tweets,
+                               self.emoticonFeatureList, self.initialismFeatureList,
+                               self.onomatopoeicFeatureList, self.punctuationFeatureList,
+                               title=title, header=header, template=template)

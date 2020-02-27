@@ -1,8 +1,9 @@
 import re
+from language.Debugger import Debugger
 from nltk.tokenize import TweetTokenizer
 
 
-class Tokenizer:
+class Tokenizer(Debugger):
     def __init__(self, tweets):
         # List of tweets
         self.tweets = tweets
@@ -45,16 +46,11 @@ class Tokenizer:
         valid_word_re = "[a-zA-Z']+"
         return re.fullmatch(valid_word_re, word)
 
-    def __str__(self, limit=-1):
-        str_obj = "%%%% TOKENIZER %%%%\n"
-        for index, (tweet, tokens, words) in enumerate(zip(self.tweets, self.tokens, self.words)):
-            # If limit is reached, stop print tweets
-            if index == limit:
-                break
-            # Print all tokenization steps
-            out_string = "---- Tweet N. {} ----\n" \
-                         "Original\t>>> {}\n" \
-                         "Tokenized\t>>> {}\n" \
-                         "Valid words\t>>> {}"
-            str_obj += out_string.format(index, tweet, tokens, words) + "\n"
-        return str_obj + "\n"
+    def __str__(self, **kwargs):
+        title = "tokenizer"
+        header = "Tweet"
+        template = "Original\t>>> \"{}\"\n"\
+                   "Tokenized\t>>> {}\n" \
+                   "Valid words\t>>> {}"
+        return super().__str__(self, self.tweets, self.tokens, self.words,
+                               title=title, header=header, template=template)

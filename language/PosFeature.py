@@ -1,4 +1,5 @@
 from language.Feature import Feature
+from language.Debugger import Debugger
 from language.Config import SCRIPT_PATH, RAM_SIZE, THREAD_NUMBER
 import subprocess
 
@@ -29,7 +30,7 @@ def buildCommand():
     return ['java', '-XX:ParallelGCThreads=' + THREAD_NUMBER, '-Xmx' + RAM_SIZE, '-jar', SCRIPT_PATH]
 
 
-class PosFeature(Feature):
+class PosFeature(Feature, Debugger):
 
     def __init__(self, tweets):
         super().__init__()
@@ -73,16 +74,11 @@ class PosFeature(Feature):
         for r, _ in enumerate(self.tweets):
             self.matrix[r, :] = list(self.occurrenceDictList[r].values())
 
-    def __str__(self, limit=-1):
-        str_obj = "%%%% POS TAGGER %%%%\n"
-        for index, (tweet, tags, occurrence_dict) in enumerate(zip(self.tweets, self.tagsList, self.occurrenceDictList)):
-            # If limit is reached, stop print tweets
-            if index == limit:
-                break
-            # Print all tokenization steps
-            out_string = "---- Tweet N. {} ----\n" \
-                         "Original\t>>> {}\n" \
-                         "Tags\t\t>>> {}\n" \
-                         "Occ.\t\t>>> {}"
-            str_obj += out_string.format(index, tweet.strip(), tags, occurrence_dict) + "\n"
-        return str_obj + "\n"
+    def __str__(self, **kwargs):
+        title = "pos tagger"
+        header = "Tweet"
+        template = "Original\t>>> \"{}\"\n"\
+                   "Tags\t\t>>> {}\n" \
+                   "Occ.\t\t>>> {}"
+        return super().__str__(self, self.tweets, self.tagsList, self.occurrenceDictList,
+                               title=title, header=header, template=template)

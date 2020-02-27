@@ -8,6 +8,7 @@ tweetsPath = "tests/example_tweets_small.txt"
 # Parameters
 debug = True
 
+
 def main():
     # List of matrices
     matrices_list = []
