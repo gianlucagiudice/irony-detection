@@ -34,6 +34,11 @@ quelli che sono presenti in tutti i lessici?
         frequenzaTot/numeroLessici?
         
         Non rischio di penalizzare troppo e avvantaggiare troppo i le sfere "uniche"?
-- Non ho considerato la licenza per usare ogni lessico
+- Non ho considerato termini d'uso e condizioni per usare ogni lessico
 - EmoSenticNet alcuni lessici non sono unigrammi
 - Escludo o tengo i campi "Positve" e "Negative" in EmoLex?
+
+## Altro
+- Devo normalizzare le features?
+- Devo rimuovere outliers? Come rimuovo outliers quando ho una feature a più dimensione?
+- Come funziona POS tagger? E' stata definita una grammatica context free?
