@@ -7,8 +7,8 @@ from language.lexicons.parser.EmoSenticNetParser import EmoSenticNetParser
 from language.Config import EMOLEX_PATH, EMOSENTICNET_PATH
 
 # Lexicons list
-lexiconList = [Lexicon('EmoLex', EmoLexParser(EMOLEX_PATH)),
-               Lexicon('EmoSenticNet', EmoSenticNetParser(EMOSENTICNET_PATH))]
+lexiconList = [Lexicon(EmoLexParser(EMOLEX_PATH)),
+               Lexicon(EmoSenticNetParser(EMOSENTICNET_PATH))]
 
 
 class EmotionalFeature(Feature, Debugger):
