@@ -1,5 +1,5 @@
 import re
-from language.Debugger import Debugger
+from language.features.Debugger import Debugger
 from nltk.tokenize import TweetTokenizer
 
 

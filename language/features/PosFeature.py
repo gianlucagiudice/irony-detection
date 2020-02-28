@@ -1,5 +1,5 @@
-from language.Feature import Feature
-from language.Debugger import Debugger
+from language.features.Feature import Feature
+from language.features.Debugger import Debugger
 from language.Config import SCRIPT_PATH, RAM_SIZE, THREAD_NUMBER
 import subprocess
 
@@ -34,7 +34,6 @@ class PosFeature(Feature, Debugger):
 
     def __init__(self, tweets):
         super().__init__()
-        self.matrix = None
         self.tweets = tweets
         self.tagsList = []
         self.occurrenceDictList = []
@@ -52,6 +51,8 @@ class PosFeature(Feature, Debugger):
         self.buildMatrix(len(self.tweets), len(targetTags))
         # Fill matrix
         self.fillMatrix()
+        # Return matrix
+        return self.matrix
 
     def executePosTagger(self, command):
         # Set stdin equal to tweets separated by newline

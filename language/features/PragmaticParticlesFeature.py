@@ -1,7 +1,7 @@
 import numpy as np
 import re
-from language.Feature import Feature
-from language.Debugger import Debugger
+from language.features.Feature import Feature
+from language.features.Debugger import Debugger
 from language.Config import EMOTICONS_PATH, INITIALISM_PATH, ONOMATOPOEIC_PATH
 
 targetPunctuation = [',', '!', '?']
@@ -44,6 +44,8 @@ class PragmaticParticlesFeature(Feature, Debugger):
         self.buildMatrix(len(self.tweets), sum([len(l[0]) for l in self.featuresList]))
         # Fill matrix
         self.fillMatrix()
+        # Return matrix
+        return self.matrix
 
     def readDataset(self):
         self.emoticonsDict = {line[0].lower(): line[-1] for line in readFile(EMOTICONS_PATH)}
@@ -52,13 +54,13 @@ class PragmaticParticlesFeature(Feature, Debugger):
 
     def evaluateEmoticons(self):
         regex = '(({}))'
-        # Evaluate feature
+        # Evaluate features
         self.emoticonFeatureList = self.evaluateFeature(self.emoticonsDict, regex)
         self.featuresList.append(self.emoticonFeatureList)
 
     def evaluateInitialism(self):
         regex = '(?=[^\w](({})+)([^\w]|$))'
-        # Evaluate feature
+        # Evaluate features
         self.initialismFeatureList = self.evaluateFeature(self.initialismDict, regex)
         self.featuresList.append(self.initialismFeatureList)
 
@@ -66,7 +68,7 @@ class PragmaticParticlesFeature(Feature, Debugger):
         regex = '(?=[^\w](({})+)([^\w]|$))'
         # Create auxiliary dict
         aux_dict = {key: "0" for key in self.onomatopoeicList}
-        # Evaluate feature
+        # Evaluate features
         self.onomatopoeicFeatureList = [[x[0]] for x in self.evaluateFeature(aux_dict, regex)]
         self.featuresList.append(self.onomatopoeicFeatureList)
 

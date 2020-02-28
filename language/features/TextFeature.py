@@ -1,5 +1,5 @@
-from language.Feature import Feature
-from language.Debugger import Debugger
+from language.features.Feature import Feature
+from language.features.Debugger import Debugger
 
 class TextFeature(Feature, Debugger):
 
@@ -16,6 +16,8 @@ class TextFeature(Feature, Debugger):
         self.buildMatrix((len(self.wordsList)), len(self.wordsSet))
         # Fill matrix
         self.fillMatrix()
+        # Return matrix
+        return self.matrix
 
     def createWordsSet(self):
         # Create set of words
@@ -30,7 +32,7 @@ class TextFeature(Feature, Debugger):
                 self.matrix[r, c] += word in tweet_words_set
 
     def __str__(self, **kwargs):
-        title = "text feature"
+        title = "text features"
         header = "Matrix row"
         template = "Uniq. words >>> {}\n" \
                    "Tweet words\t>>> {}\n" \

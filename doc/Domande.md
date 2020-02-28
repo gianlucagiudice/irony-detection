@@ -30,7 +30,10 @@ i lessici siano coerenti tra loro, è necessario normalizzare i valori in base a
 numero di lessici in cui è presente una sfer emotiva per non far prevalere soltanto
 quelli che sono presenti in tutti i lessici?
     - Se si, come normalizzo?
-        
+    
         frequenzaTot/numeroLessici?
         
         Non rischio di penalizzare troppo e avvantaggiare troppo i le sfere "uniche"?
+- Non ho considerato la licenza per usare ogni lessico
+- EmoSenticNet alcuni lessici non sono unigrammi
+- Escludo o tengo i campi "Positve" e "Negative" in EmoLex?
