@@ -57,19 +57,19 @@ class PragmaticParticlesFeature(Feature, Debugger):
         self.onomatopoeicList = [word[0].lower() for word in readFile(ONOMATOPOEIC_PATH)]
 
     def evaluateEmoticons(self):
-        regex = '(({}))'
+        regexp = '(({}))'
         # Evaluate features
         self.emoticonFeatureList = self.evaluateFeature(self.emoticonsDict, regex)
         self.featuresList.append(self.emoticonFeatureList)
 
     def evaluateInitialism(self):
-        regex = '(?=[^\w](({})+)([^\w]|$))'
+        regexp = '(?=[^\w](({})+)([^\w]|$))'
         # Evaluate features
         self.initialismFeatureList = self.evaluateFeature(self.initialismDict, regex)
         self.featuresList.append(self.initialismFeatureList)
 
     def evaluateOnomatopoeic(self):
-        regex = '(?=[^\w](({})+)([^\w]|$))'
+        regexp = '(?=[^\w](({})+)([^\w]|$))'
         # Create auxiliary dict
         aux_dict = {key: "0" for key in self.onomatopoeicList}
         # Evaluate features

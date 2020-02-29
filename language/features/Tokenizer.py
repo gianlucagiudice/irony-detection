@@ -38,9 +38,9 @@ class Tokenizer(Debugger):
         # Create words set from words list flatten
 
     def tweetFilter(self, tweet):
-        # Regex for valid twitter name
+        # Regexp for valid twitter name
         twitter_name_re = "@(\w){1,15}"
-        # Regex for retweet pattern
+        # Regexp for retweet pattern
         retweet_re = "RT\s" + twitter_name_re + ":"
         # Remove retweet tokens
         no_retweet = re.sub(retweet_re, '', tweet)
