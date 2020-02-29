@@ -1,8 +1,10 @@
-import numpy as np
 import re
-from language.features.Feature import Feature
-from language.features.Debugger import Debugger
+
+import numpy as np
+
 from language.Config import EMOTICONS_PATH, INITIALISM_PATH, ONOMATOPOEIC_PATH
+from language.features.Debugger import Debugger
+from language.features.Feature import Feature
 
 targetPunctuation = [',', '!', '?']
 
