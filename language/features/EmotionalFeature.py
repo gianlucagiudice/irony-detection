@@ -23,7 +23,7 @@ class EmotionalFeature(Feature, Debugger):
         # List of emotional feature combined foreach lexicon
         self.emotionalFeatureList = []
 
-    def evaluateEmotions(self):
+    def evaluateEmotions(self, debug=False):
         # Evaluate tweets using all lexicons
         self.evaluateLexicons()
         # Combine lexicons
@@ -32,6 +32,8 @@ class EmotionalFeature(Feature, Debugger):
         self.buildMatrix(len(self.wordsList), len(self.emotionalFeatureList[0]))
         # Fill matrix with lexicons value
         self.fillMatrix()
+        # Debug info
+        self.printDebugInfo(debug)
         # Return matrix
         return self.matrix
 

@@ -12,9 +12,15 @@ class Tokenizer(Debugger):
         # List of words in each tweet
         self.words = None
 
-    def evaluateTweets(self):
+    def parseTweets(self, debug=False):
+        # Tokenize tweets
         self.tokenizeTweets()
+        # Extract valid words
         self.extractWords()
+        # Debug info
+        self.printDebugInfo(debug)
+        # Return list of words
+        return self.words
 
     def tokenizeTweets(self):
         # Construct tokenizer object

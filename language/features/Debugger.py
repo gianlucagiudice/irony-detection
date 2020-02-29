@@ -1,5 +1,8 @@
 class Debugger:
 
+    def printDebugInfo(self, debug):
+        print(self if debug else "", end='')
+
     def __str__(self, limit=-1, *args, **kwargs):
         # Title separator chars
         title_char = "%" * 5

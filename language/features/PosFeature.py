@@ -38,7 +38,7 @@ class PosFeature(Feature, Debugger):
         self.tagsList = []
         self.occurrenceDictList = []
 
-    def computePosTags(self):
+    def computePosTags(self, debug=False):
         # Build command for execute POS tag script
         command = buildCommand()
         # Get output of script
@@ -51,6 +51,8 @@ class PosFeature(Feature, Debugger):
         self.buildMatrix(len(self.tweets), len(targetTags))
         # Fill matrix
         self.fillMatrix()
+        # Debug info
+        self.printDebugInfo(debug)
         # Return matrix
         return self.matrix
 

@@ -9,13 +9,15 @@ class TextFeature(Feature, Debugger):
         self.wordsSet = None
         self.uniqueWordsList = None
 
-    def extractTermsMatrix(self):
+    def extractTermsMatrix(self, debug=False):
         # Create set of words
         self.createWordsSet()
         # Build matrix
         self.buildMatrix((len(self.wordsList)), len(self.wordsSet))
         # Fill matrix
         self.fillMatrix()
+        # Debug info
+        self.printDebugInfo(debug)
         # Return matrix
         return self.matrix
 

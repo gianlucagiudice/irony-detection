@@ -29,7 +29,7 @@ class PragmaticParticlesFeature(Feature, Debugger):
         self.initialismDict = {}
         self.onomatopoeicList = []
 
-    def evaluatePragmaticParticles(self):
+    def evaluatePragmaticParticles(self, debug=False):
         # Read dataset
         self.readDataset()
         # Evaluate emoticons
@@ -44,6 +44,8 @@ class PragmaticParticlesFeature(Feature, Debugger):
         self.buildMatrix(len(self.tweets), sum([len(l[0]) for l in self.featuresList]))
         # Fill matrix
         self.fillMatrix()
+        # Debug info
+        self.printDebugInfo(debug)
         # Return matrix
         return self.matrix
 
