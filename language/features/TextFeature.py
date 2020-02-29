@@ -1,5 +1,6 @@
-from language.features.Feature import Feature
 from language.features.Debugger import Debugger
+from language.features.Feature import Feature
+
 
 class TextFeature(Feature, Debugger):
 
