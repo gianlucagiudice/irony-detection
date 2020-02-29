@@ -1,6 +1,8 @@
 import re
-from language.features.Debugger import Debugger
+
 from nltk.tokenize import TweetTokenizer
+
+from language.features.Debugger import Debugger
 
 
 class Tokenizer(Debugger):

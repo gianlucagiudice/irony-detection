@@ -1,10 +1,11 @@
 import numpy as np
-from language.features.Feature import Feature
+
+from language.Config import EMOLEX_PATH, EMOSENTICNET_PATH
 from language.features.Debugger import Debugger
+from language.features.Feature import Feature
 from language.lexicons.Lexicon import Lexicon
 from language.lexicons.parser.EmoLexParser import EmoLexParser
 from language.lexicons.parser.EmoSenticNetParser import EmoSenticNetParser
-from language.Config import EMOLEX_PATH, EMOSENTICNET_PATH
 
 # Lexicons list
 lexiconList = [Lexicon(EmoLexParser(EMOLEX_PATH)),
@@ -80,7 +81,7 @@ class EmotionalFeature(Feature, Debugger):
                    "{:<13}>>> {}\n" * len(self.lexicons) + \
                    "Combined\t >>> {}"
         # Build auxiliary list in order to print per-lexicon debug info
-        aux_debug = []
+        aux_debug: [list] = []
         for lexicon in self.lexicons:
             aux_debug += [[str(lexicon)] * len(self.wordsList)] + \
                          [[tweet[lexicon] for tweet in self.emotionalList]]

@@ -1,8 +1,8 @@
-from language.features.Feature import Feature
-from language.features.Debugger import Debugger
-from language.Config import SCRIPT_PATH, RAM_SIZE, THREAD_NUMBER
 import subprocess
 
+from language.Config import SCRIPT_PATH, RAM_SIZE, THREAD_NUMBER
+from language.features.Debugger import Debugger
+from language.features.Feature import Feature
 
 # Target Tags
 targetTagsDescription = \
