@@ -59,13 +59,13 @@ class PragmaticParticlesFeature(Feature, Debugger):
     def evaluateEmoticons(self):
         regexp = '(({}))'
         # Evaluate features
-        self.emoticonFeatureList = self.evaluateFeature(self.emoticonsDict, regex)
+        self.emoticonFeatureList = self.evaluateFeature(self.emoticonsDict, regexp)
         self.featuresList.append(self.emoticonFeatureList)
 
     def evaluateInitialism(self):
         regexp = '(?=[^\w](({})+)([^\w]|$))'
         # Evaluate features
-        self.initialismFeatureList = self.evaluateFeature(self.initialismDict, regex)
+        self.initialismFeatureList = self.evaluateFeature(self.initialismDict, regexp)
         self.featuresList.append(self.initialismFeatureList)
 
     def evaluateOnomatopoeic(self):
@@ -73,7 +73,7 @@ class PragmaticParticlesFeature(Feature, Debugger):
         # Create auxiliary dict
         aux_dict = {key: "0" for key in self.onomatopoeicList}
         # Evaluate features
-        self.onomatopoeicFeatureList = [[x[0]] for x in self.evaluateFeature(aux_dict, regex)]
+        self.onomatopoeicFeatureList = [[x[0]] for x in self.evaluateFeature(aux_dict, regexp)]
         self.featuresList.append(self.onomatopoeicFeatureList)
 
     def evaluateFeature(self, dictionary, regex):
