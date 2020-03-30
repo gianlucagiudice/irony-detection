@@ -77,7 +77,7 @@ class EmotionalFeature(Feature, Debugger):
     def __str__(self, **kwargs):
         title = "emotional feature"
         header = "Tweet"
-        template = "Words\t\t >>> \"{}\"\n" + \
+        template = "Words\t\t >>> {}\n" + \
                    "{:<13}>>> {}\n" * len(self.lexicons) + \
                    "Combined\t >>> {}"
         # Build auxiliary list in order to print per-lexicon debug info
