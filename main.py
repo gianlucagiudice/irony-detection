@@ -1,27 +1,31 @@
-from language.features.FeatureManager import FeatureManager
+from src.features.FeatureManager import FeatureManager
+from src.dataset.Dataset import Dataset
+from src.dataset.DataFrame import DataFrame
 
 
-# Set tweets path
-tweetsPath = "tests/example_tweets_small.txt"
 # Parameters
-DEBUG = True
+DEBUG = False
+# Dataset
+TARGET_DATASET = 'TwReyes2013'
 
 
 def main():
-    # ------ Read file ------
-    print("Reading file . . .")
-    tweets = readFile(tweetsPath)
+    # ------ Read dataset ------
+    print(">> Reading dataset . . .")
+    dataset = Dataset(TARGET_DATASET)
+    tweets, labels = dataset.extract()
+
+    #tweets = tweets[:5]
 
     # ------ Build features matrix ------
-    print("Extracting features . . .")
+    print(">> Extracting features . . .")
     feature_extractor = FeatureManager(tweets, debug=DEBUG)
-    matrix = feature_extractor.extractFeatures()
-    print(matrix if DEBUG else "", end='')
+    text_feature, matrix = feature_extractor.extractFeatures()
 
-
-def readFile(path):
-    with open(path) as file:
-        return [tweet.strip() for tweet in file.readlines()]
+    # ------ Export data frame to file ------
+    print(">> Saving features . . .")
+    df = DataFrame(dataset, text_feature, matrix)
+    df.exportDataFrame()
 
 
 if __name__ == '__main__':

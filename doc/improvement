@@ -1,0 +1,7 @@
+eleiminare stopword
+	the, and
+https://www.geeksforgeeks.org/removing-stop-words-nltk-python/
+
+lemmatizzazione
+	going gone -> go
+https://www.geeksforgeeks.org/python-lemmatization-with-nltk/
