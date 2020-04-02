@@ -15,8 +15,6 @@ def main():
     dataset = Dataset(TARGET_DATASET)
     tweets, labels = dataset.extract()
 
-    #tweets = tweets[:5]
-
     # ------ Build features matrix ------
     print(">> Extracting features . . .")
     feature_extractor = FeatureManager(tweets, debug=DEBUG)
