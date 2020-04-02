@@ -24,7 +24,7 @@ class DataFrame:
         with open('{}{}'.format(path, 'labeled_tweets.csv'), 'w') as csvfile:
             writer = csv.writer(csvfile)
             # Add header
-            writer.writerow(["tweet", "label"])
+            # writer.writerow(["tweet", "label"])
             # Write data
             for i, (tweet, label) in enumerate(zip(dataset.tweets, dataset.labels)):
                 if i % 50 == 0:
@@ -45,7 +45,7 @@ class DataFrame:
             header = [word for word in unique_words] + \
                      ['feature_{}'.format(i+1) for i, _ in enumerate(matrix[0])] + \
                      ['label']
-            writer.writerow(header)
+            # writer.writerow(header)
             # Write data
             with open(text_feature_file.name) as text_feature:
                 for i, (matrix_row, label) in enumerate(zip(matrix, dataset.labels)):
