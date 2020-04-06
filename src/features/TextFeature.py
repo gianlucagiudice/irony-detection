@@ -6,7 +6,7 @@ from src.Config import THREAD_NUMBER
 from src.features.Debugger import Debugger
 from src.features.Feature import Feature
 
-CHUNK_SIZE = 5000
+CHUNK_SIZE = 2000
 
 class TextFeature(Feature, Debugger):
 
@@ -21,6 +21,14 @@ class TextFeature(Feature, Debugger):
         self.createWordsSet()
         # Fill matrix
         self.fillMatrix()
+
+        # TODO: Rremove
+        print(len(self.uniqueWordsList))
+        with open('words.list', 'w') as out:
+            for x in self.uniqueWordsList:
+                out.write(x + '\n')
+        #quit()
+
         # Return matrix
         return self.matrix, self.uniqueWordsList
 
