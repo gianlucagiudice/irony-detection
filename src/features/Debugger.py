@@ -1,6 +1,6 @@
 class Debugger:
 
-    def printDebugInfo(self, debug):
+    def print_debug_info(self, debug):
         print(self if debug else "", end='')
 
     def __str__(self, limit=-1, *args, **kwargs):

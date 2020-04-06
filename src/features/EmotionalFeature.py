@@ -20,31 +20,31 @@ class EmotionalFeature(Feature, Debugger):
         # Set list of lexicons for emotional features
         self.lexicons = LEXICONS_LIST
         # List of emoticons
-        self.emotionalList = []
+        self.emotional_list = []
         # List of emotional feature combined foreach lexicon
-        self.emotionalFeatureList = []
+        self.emotional_feature_list = []
 
-    def evaluateEmotions(self, debug=False):
+    def evaluate_emotions(self, debug=False):
         # Evaluate tweets using all lexicons
-        self.evaluateLexicons()
+        self.evaluate_lexicons()
         # Combine lexicons
-        self.combineLexicons()
+        self.combine_lexicons()
         # Build matrix
-        self.buildMatrix(len(self.wordsList), len(self.emotionalFeatureList[0]))
+        self.build_matrix(len(self.wordsList), len(self.emotional_feature_list[0]))
         # Fill matrix with lexicons value
-        self.fillMatrix()
+        self.fill_matrix()
         # Debug info
-        self.printDebugInfo(debug)
+        self.print_debug_info(debug)
         # Return matrix
         return self.matrix
 
-    def evaluateLexicons(self):
+    def evaluate_lexicons(self):
         i = 1
         for words in self.wordsList:
             row = dict()
             for lexicon in self.lexicons:
                 # List of values relative to all words
-                values = [list(lexicon.evaluateWord(word).values()) for word in words]
+                values = [list(lexicon.evaluate_word(word).values()) for word in words]
                 # Sum all values to obtain per-lexicon values
                 total = np.array(values).sum(axis=0)
                 # Reconstruct dictionary form matrix
@@ -53,9 +53,9 @@ class EmotionalFeature(Feature, Debugger):
                 else:
                     row[lexicon] = {e: 0 for e in lexicon.emotions()}
             # Add target lexicon to specific list of words
-            self.emotionalList.append(row)
+            self.emotional_list.append(row)
 
-    def combineLexicons(self):
+    def combine_lexicons(self):
         # Set of emotions to exclude
         exclude_emotions = {"positive", "negative"}
         all_emotions = set([e for lexicon in self.lexicons for e in lexicon.emotions()])
@@ -63,7 +63,7 @@ class EmotionalFeature(Feature, Debugger):
         target_emotions = all_emotions - exclude_emotions
         keys = list(target_emotions)
         # Iterate over each tweet in order to combine each lexicon
-        for lexicons in self.emotionalList:
+        for lexicons in self.emotional_list:
             # Initialize combined dictionary to 0s
             combined = {k: 0 for k in keys}
             # Iterate and combine each lexicon
@@ -72,10 +72,10 @@ class EmotionalFeature(Feature, Debugger):
                     if k in target_emotions:
                         combined[k] = combined[k] + v
             # Append the new combined lexicon
-            self.emotionalFeatureList.append(combined)
+            self.emotional_feature_list.append(combined)
 
-    def fillMatrix(self):
-        for r, lexicon in enumerate(self.emotionalFeatureList):
+    def fill_matrix(self):
+        for r, lexicon in enumerate(self.emotional_feature_list):
             self.matrix[r:] = list(lexicon.values())
 
     def __str__(self, **kwargs):
@@ -88,7 +88,7 @@ class EmotionalFeature(Feature, Debugger):
         aux_debug: [list] = []
         for lexicon in self.lexicons:
             aux_debug += [[str(lexicon)] * len(self.wordsList)] + \
-                         [[tweet[lexicon] for tweet in self.emotionalList]]
+                         [[tweet[lexicon] for tweet in self.emotional_list]]
         # Return debug info
-        return super().__str__(self, self.wordsList, *aux_debug, self.emotionalFeatureList,
+        return super().__str__(self, self.wordsList, *aux_debug, self.emotional_feature_list,
                                title=title, header=header, template=template)

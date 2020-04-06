@@ -18,12 +18,12 @@ def main():
     # ------ Build features matrix ------
     print(">> Extracting features . . .")
     feature_extractor = FeatureManager(tweets, debug=DEBUG)
-    text_feature, matrix = feature_extractor.extractFeatures()
+    text_feature, matrix = feature_extractor.extract_features()
 
     # ------ Export data frame to file ------
     print(">> Saving features . . .")
     df = DataFrame(dataset, text_feature, matrix)
-    df.exportDataFrame()
+    df.export_data_frame()
 
 
 if __name__ == '__main__':

@@ -27,7 +27,7 @@ targetTagsDescription = \
 targetTags = targetTagsDescription.keys()
 
 
-def buildCommand():
+def build_command():
     return ['java', '-XX:ParallelGCThreads=' + str(THREAD_NUMBER), '-Xmx' + RAM_SIZE, '-jar', SCRIPT_PATH]
 
 
@@ -39,25 +39,25 @@ class PosFeature(Feature, Debugger):
         self.tagsList = []
         self.occurrenceDictList = []
 
-    def computePosTags(self, debug=False):
+    def compute_pos_tags(self, debug=False):
         # Build command for execute POS tag script
-        command = buildCommand()
+        command = build_command()
         # Get output of script
-        pos_out = self.executePosTagger(command).stdout
+        pos_out = self.execute_pos_tagger(command).stdout
         # Parse script output
-        self.parsePosTags(pos_out)
+        self.parse_pos_tags(pos_out)
         # Counts tags per tweet
-        self.countTagsOccurence()
+        self.count_tags_occurence()
         # Build matrix
-        self.buildMatrix(len(self.tweets), len(targetTags))
+        self.build_matrix(len(self.tweets), len(targetTags))
         # Fill matrix
-        self.fillMatrix()
+        self.fill_matrix()
         # Debug info
-        self.printDebugInfo(debug)
+        self.print_debug_info(debug)
         # Return matrix
         return self.matrix
 
-    def executePosTagger(self, command):
+    def execute_pos_tagger(self, command):
         # Create temp file
         with tempfile.NamedTemporaryFile() as temp_file:
             a = '\n'.join(self.tweets)
@@ -67,18 +67,18 @@ class PosFeature(Feature, Debugger):
             return subprocess.run(command + [temp_file.name], capture_output=True, text=True, check=True)
 
 
-    def parsePosTags(self, pos_out):
+    def parse_pos_tags(self, pos_out):
         # Evaluate each tweet
         for row in pos_out.split('\n')[:-1]:
             # Unpack tags and create a list
             self.tagsList.append(row.upper().split('\t')[1].split())
 
-    def countTagsOccurence(self):
+    def count_tags_occurence(self):
         for tags in self.tagsList:
             occ_dict = {tag: tags.count(tag) for tag in targetTags}
             self.occurrenceDictList.append(occ_dict)
 
-    def fillMatrix(self):
+    def fill_matrix(self):
         for r, _ in enumerate(self.tweets):
             self.matrix[r, :] = list(self.occurrenceDictList[r].values())
 

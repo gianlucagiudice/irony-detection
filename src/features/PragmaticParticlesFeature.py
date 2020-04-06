@@ -21,60 +21,60 @@ class PragmaticParticlesFeature(Feature, Debugger):
         # Tweets
         self.tweets = tweets
         # Features
-        self.emoticonFeatureList = []
-        self.initialismFeatureList = []
-        self.onomatopoeicFeatureList = []
-        self.punctuationFeatureList = []
-        self.featuresList = []
+        self.emoticon_feature_list = []
+        self.initialism_feature_list = []
+        self.onomatopoeic_feature_list = []
+        self.punctuation_feature_list = []
+        self.features_list = []
         # Dataset
-        self.emoticonsDict = {}
-        self.initialismDict = {}
-        self.onomatopoeicList = []
+        self.emoticons_dict = {}
+        self.initialism_dict = {}
+        self.onomatopoeic_list = []
 
-    def evaluatePragmaticParticles(self, debug=False):
+    def evaluate_pragmatic_particles(self, debug=False):
         # Read dataset
-        self.readDataset()
+        self.read_dataset()
         # Evaluate emoticons
-        self.evaluateEmoticons()
+        self.evaluate_emoticons()
         # Evaluate initialism
-        self.evaluateInitialism()
+        self.evaluate_initialism()
         # Count onomatopoeic
-        self.evaluateOnomatopoeic()
+        self.evaluate_onomatopoeic()
         # Count punctuation
-        self.evaluatePunctuation()
+        self.evaluate_punctuation()
         # Build matrix
-        self.buildMatrix(len(self.tweets), sum([len(l[0]) for l in self.featuresList]))
+        self.build_matrix(len(self.tweets), sum([len(l[0]) for l in self.features_list]))
         # Fill matrix
-        self.fillMatrix()
+        self.fill_matrix()
         # Debug info
-        self.printDebugInfo(debug)
+        self.print_debug_info(debug)
         # Return matrix
         return self.matrix
 
-    def readDataset(self):
-        self.emoticonsDict = {line[0].lower(): line[-1] for line in readFile(EMOTICONS_PATH)}
-        self.initialismDict = {line[0].lower(): line[-1] for line in readFile(INITIALISM_PATH)}
-        self.onomatopoeicList = [word[0].lower() for word in readFile(ONOMATOPOEIC_PATH)]
+    def read_dataset(self):
+        self.emoticons_dict = {line[0].lower(): line[-1] for line in readFile(EMOTICONS_PATH)}
+        self.initialism_dict = {line[0].lower(): line[-1] for line in readFile(INITIALISM_PATH)}
+        self.onomatopoeic_list = [word[0].lower() for word in readFile(ONOMATOPOEIC_PATH)]
 
-    def evaluateEmoticons(self):
+    def evaluate_emoticons(self):
         regexp = '(({}))'
         # Evaluate features
-        self.emoticonFeatureList = self.evaluateFeature(self.emoticonsDict, regexp)
-        self.featuresList.append(self.emoticonFeatureList)
+        self.emoticon_feature_list = self.evaluateFeature(self.emoticons_dict, regexp)
+        self.features_list.append(self.emoticon_feature_list)
 
-    def evaluateInitialism(self):
+    def evaluate_initialism(self):
         regexp = '(?=[^\w](({})+)([^\w]|$))'
         # Evaluate features
-        self.initialismFeatureList = self.evaluateFeature(self.initialismDict, regexp)
-        self.featuresList.append(self.initialismFeatureList)
+        self.initialism_feature_list = self.evaluateFeature(self.initialism_dict, regexp)
+        self.features_list.append(self.initialism_feature_list)
 
-    def evaluateOnomatopoeic(self):
+    def evaluate_onomatopoeic(self):
         regexp = '(?=[^\w](({})+)([^\w]|$))'
         # Create auxiliary dict
-        aux_dict = {key: "0" for key in self.onomatopoeicList}
+        aux_dict = {key: "0" for key in self.onomatopoeic_list}
         # Evaluate features
-        self.onomatopoeicFeatureList = [[x[0]] for x in self.evaluateFeature(aux_dict, regexp)]
-        self.featuresList.append(self.onomatopoeicFeatureList)
+        self.onomatopoeic_feature_list = [[x[0]] for x in self.evaluateFeature(aux_dict, regexp)]
+        self.features_list.append(self.onomatopoeic_feature_list)
 
     def evaluateFeature(self, dictionary, regex):
         feature_list = []
@@ -88,14 +88,14 @@ class PragmaticParticlesFeature(Feature, Debugger):
             feature_list.append([feature.count("0"), feature.count("1")])
         return feature_list
 
-    def evaluatePunctuation(self):
+    def evaluate_punctuation(self):
         for tweet in self.tweets:
-            self.punctuationFeatureList.append({p: tweet.count(p) for p in targetPunctuation})
-        self.featuresList.append([list(d.values()) for d in self.punctuationFeatureList])
+            self.punctuation_feature_list.append({p: tweet.count(p) for p in targetPunctuation})
+        self.features_list.append([list(d.values()) for d in self.punctuation_feature_list])
 
-    def fillMatrix(self):
+    def fill_matrix(self):
         # Create matrix
-        matrix = np.array(self.featuresList).transpose()
+        matrix = np.array(self.features_list).transpose()
         # Flatten matrix
         self.matrix = np.array([np.concatenate(row) for row in matrix])
 
@@ -108,6 +108,6 @@ class PragmaticParticlesFeature(Feature, Debugger):
                    "Onom (#)\t>>> {}\n" \
                    "Punct\t\t>>> {}"
         return super().__str__(self, self.tweets,
-                               self.emoticonFeatureList, self.initialismFeatureList,
-                               self.onomatopoeicFeatureList, self.punctuationFeatureList,
+                               self.emoticon_feature_list, self.initialism_feature_list,
+                               self.onomatopoeic_feature_list, self.punctuation_feature_list,
                                title=title, header=header, template=template)

@@ -8,9 +8,9 @@ class Feature:
     def __init__(self):
         self.matrix = None
 
-    def buildMatrix(self, r, c):
+    def build_matrix(self, r, c):
         self.matrix = np.zeros((r, c), dtype=int)
 
     @abstractmethod
-    def fillMatrix(self):
+    def fill_matrix(self):
         return

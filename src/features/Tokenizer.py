@@ -30,7 +30,7 @@ class Tokenizer(Debugger):
         self.occurence_threshold = occurence_threshold
 
 
-    def parseTweets(self, debug=False):
+    def parse_tweets(self, debug=False):
         # Tokenize tweets
         # self.tokenizeTweets()
         # Extract valid words

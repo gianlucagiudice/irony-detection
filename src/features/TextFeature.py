@@ -12,59 +12,59 @@ class TextFeature(Feature, Debugger):
 
     def __init__(self, words_list):
         super().__init__()
-        self.wordsList = words_list
-        self.wordsSet = None
-        self.uniqueWordsList = None
+        self.words_list = words_list
+        self.words_set = None
+        self.unique_words_list = None
 
-    def extractTermsMatrix(self, debug=False):
+    def extract_terms_matrix(self, debug=False):
         # Create set of words
-        self.createWordsSet()
+        self.create_words_set()
         # Fill matrix
-        self.fillMatrix()
+        self.fill_matrix()
 
-        # TODO: Rremove
-        print(len(self.uniqueWordsList))
+        # TODO: Remove
+        print(len(self.unique_words_list))
         with open('words.list', 'w') as out:
-            for x in self.uniqueWordsList:
+            for x in self.unique_words_list:
                 out.write(x + '\n')
         #quit()
 
         # Return matrix
-        return self.matrix, self.uniqueWordsList
+        return self.matrix, self.unique_words_list
 
-    def createWordsSet(self):
+    def create_words_set(self):
         # Create set of words
-        self.wordsSet = set([word for words in self.wordsList for word in words])
+        self.words_set = set([word for words in self.words_list for word in words])
         # Build list of unique words
-        self.uniqueWordsList = sorted(list(self.wordsSet))
+        self.unique_words_list = sorted(list(self.words_set))
 
-    def fillMatrix(self):
+    def fill_matrix(self):
         # Create matrix file
         matrix_file = tempfile.NamedTemporaryFile(mode='w+')
         # Compute all chunks
         print('\t{}% completed'.format(0), end='')
-        for index, chunk in enumerate(self.chunkWords()):
+        for index, chunk in enumerate(self.chunk_words()):
             with Pool(THREAD_NUMBER) as pool:
-                computed = pool.map(self.computeRow, chunk)
-            self.writeChunk(matrix_file, computed)
-            print('\r\t{}% completed'.format(round((index+1)*CHUNK_SIZE/len(self.wordsList)*100, 3)), end='')
+                computed = pool.map(self.compute_row, chunk)
+            self.write_chunk(matrix_file, computed)
+            print('\r\t{}% completed'.format(round((index+1) * CHUNK_SIZE / len(self.words_list) * 100, 3)), end='')
         print('\r\t100% processed')
         # Save matrix file
         self.matrix = matrix_file
 
-    def computeRow(self, words):
+    def compute_row(self, words):
         tweet_words_set = set(words)
-        return [int(unique_word in tweet_words_set) for unique_word in self.uniqueWordsList]
+        return [int(unique_word in tweet_words_set) for unique_word in self.unique_words_list]
 
-    def writeChunk(self, file, chunk):
+    def write_chunk(self, file, chunk):
         with open(file.name, mode='a+') as csvfile:
             writer = csv.writer(csvfile)
             for row in chunk:
                 writer.writerow(row)
 
-    def chunkWords(self):
-        for i in range(0, len(self.wordsList), CHUNK_SIZE):
-            yield self.wordsList[i:i + CHUNK_SIZE]
+    def chunk_words(self):
+        for i in range(0, len(self.words_list), CHUNK_SIZE):
+            yield self.words_list[i:i + CHUNK_SIZE]
 
     def __str__(self):
         return ''

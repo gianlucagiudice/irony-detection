@@ -1,24 +1,24 @@
 class Lexicon:
-    def __init__(self, parseStrategy):
+    def __init__(self, parse_strategy):
         # Parse strategy
-        self.parseStrategy = parseStrategy
+        self.parse_strategy = parse_strategy
         # Lexicon name
-        self.name = self.computeName()
+        self.name = self.compute_name()
         # Parse lexicon
-        self.dictList = self.parse()
+        self.dict_list = self.parse()
 
-    def computeName(self):
-        lexicon_name = self.parseStrategy.path.split('/')[-1].split('.')[0].split('-')[:-1]
+    def compute_name(self):
+        lexicon_name = self.parse_strategy.path.split('/')[-1].split('.')[0].split('-')[:-1]
         return ''.join(map(lambda x: x[0].upper() + x[1:], lexicon_name))
 
     def parse(self):
-        return self.parseStrategy.parse()
+        return self.parse_strategy.parse()
 
-    def evaluateWord(self, word):
-        return self.dictList.get(word, {e: 0 for e in self.emotions()})
+    def evaluate_word(self, word):
+        return self.dict_list.get(word, {e: 0 for e in self.emotions()})
 
     def emotions(self):
-        return list(self.dictList[next(iter(self.dictList))].keys())
+        return list(self.dict_list[next(iter(self.dict_list))].keys())
 
     def __str__(self):
         return self.name

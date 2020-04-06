@@ -5,25 +5,25 @@ from src.Config import DATASET_PATH
 
 class Dataset:
     def __init__(self, dataset_name):
-        self.datasetName = dataset_name
-        self.ironicDict = None
+        self.dataset_name = dataset_name
+        self.ironic_dict = None
         self.tweets = []
         self.labels = []
 
     def extract(self):
         # Extract dict containing ironic tweets files
-        self.extractDict(self.datasetName)
+        self.extract_dict(self.dataset_name)
         # Read tweets
-        self.readTweets(self.datasetName, self.ironicDict)
+        self.read_tweets(self.dataset_name, self.ironic_dict)
         # Return data
         return self.tweets, self.labels
 
-    def extractDict(self, dataset_name):
+    def extract_dict(self, dataset_name):
         path = '{}{}/files.json'.format(DATASET_PATH, dataset_name)
         with open(path) as json_dict:
-            self.ironicDict = json.load(json_dict)
+            self.ironic_dict = json.load(json_dict)
 
-    def readTweets(self, dataset_name, file_dict):
+    def read_tweets(self, dataset_name, file_dict):
         for file_name, label in file_dict.items():
             # Read all tweets in file
             path = '{}{}/files/{}'.format(DATASET_PATH, dataset_name, file_name)

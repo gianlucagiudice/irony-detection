@@ -13,7 +13,7 @@ class FeatureManager:
         # List of tweets
         self.tweets = tweets
         # Text feature file
-        self.textFeature = None
+        self.text_feature = None
         # List of matrices
         self.matrices = []
         # Final matrix
@@ -21,50 +21,50 @@ class FeatureManager:
         # Debug mode
         self.debug = debug
 
-    def extractFeatures(self):
+    def extract_features(self):
         # Evaluate all features
-        self.evaluateFeatures(self.tweets)
+        self.evaluate_features(self.tweets)
         # Build matrix
-        self.buildMatrix(self.matrices)
+        self.build_matrix(self.matrices)
         # Return final matrix
-        return self.textFeature, self.matrix
+        return self.text_feature, self.matrix
 
-    def evaluateFeatures(self, tweets):
+    def evaluate_features(self, tweets):
         # ------ Tokenizer ------
         print("> Tokenizer . . .")
         # Create tokenizer object
         tokenizer = Tokenizer(tweets)
         # Compute all tweets
-        tokenizer.parseTweets(debug=self.debug)
+        tokenizer.parse_tweets(debug=self.debug)
 
         # ------ Compute text features ------
         print("> Text features . . .")
         # Crete text features object
         text_features = TextFeature(tokenizer.wordsList)
         # Get terms matrix
-        self.textFeature = text_features.extractTermsMatrix(debug=self.debug)
+        self.text_feature = text_features.extract_terms_matrix(debug=self.debug)
 
         # ------ Pragmatic particles ------
         print("> Pragmatic particles features . . .")
         # Crete pragmatic particles object
         pragmatic_particles = PragmaticParticlesFeature(tweets)
         # Evaluate pragmatic particles for tweets
-        self.matrices.append(pragmatic_particles.evaluatePragmaticParticles(debug=self.debug))
+        self.matrices.append(pragmatic_particles.evaluate_pragmatic_particles(debug=self.debug))
 
         # ------ Part of speech features ------
         print("> Pos tagging . . .")
         # Create pos tagger object
         part_of_speech = PosFeature(tweets)
         # Tag part of speech
-        self.matrices.append(part_of_speech.computePosTags(debug=self.debug))
+        self.matrices.append(part_of_speech.compute_pos_tags(debug=self.debug))
 
         #  ------ Emotional features ------
         print("> Emotional feature . . .")
         # Create emotional feature object
         emotional = EmotionalFeature(tokenizer.wordsList)
         # Evaluate emotional feature
-        self.matrices.append(emotional.evaluateEmotions(debug=self.debug))
+        self.matrices.append(emotional.evaluate_emotions(debug=self.debug))
 
-    def buildMatrix(self, matrices):
+    def build_matrix(self, matrices):
         print("> Building matrix . . .")
         self.matrix = np.concatenate(matrices, axis=1)
