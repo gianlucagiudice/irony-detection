@@ -11,12 +11,15 @@ from src.lexicons.parser.EmoSenticNetParser import EmoSenticNetParser
 LEXICONS_LIST = [Lexicon(EmoLexParser(EMOLEX_PATH)),
                  Lexicon(EmoSenticNetParser(EMOSENTICNET_PATH))]
 
+# Set of emotions to exclude
+EXCLUDE_EMOTIONS_SET = {"positive", "negative"}
+
 
 class EmotionalFeature(Feature, Debugger):
 
     def __init__(self, words_list):
         super().__init__()
-        self.wordsList = words_list
+        self.words_list = words_list
         # Set list of lexicons for emotional features
         self.lexicons = LEXICONS_LIST
         # List of emoticons
@@ -30,7 +33,7 @@ class EmotionalFeature(Feature, Debugger):
         # Combine lexicons
         self.combine_lexicons()
         # Build matrix
-        self.build_matrix(len(self.wordsList), len(self.emotional_feature_list[0]))
+        self.build_matrix(len(self.words_list), len(self.emotional_feature_list[0]))
         # Fill matrix with lexicons value
         self.fill_matrix()
         # Debug info
@@ -39,8 +42,7 @@ class EmotionalFeature(Feature, Debugger):
         return self.matrix
 
     def evaluate_lexicons(self):
-        i = 1
-        for words in self.wordsList:
+        for words in self.words_list:
             row = dict()
             for lexicon in self.lexicons:
                 # List of values relative to all words
@@ -56,11 +58,9 @@ class EmotionalFeature(Feature, Debugger):
             self.emotional_list.append(row)
 
     def combine_lexicons(self):
-        # Set of emotions to exclude
-        exclude_emotions = {"positive", "negative"}
         all_emotions = set([e for lexicon in self.lexicons for e in lexicon.emotions()])
         # Compute emotions to combine
-        target_emotions = all_emotions - exclude_emotions
+        target_emotions = all_emotions - EXCLUDE_EMOTIONS_SET
         keys = list(target_emotions)
         # Iterate over each tweet in order to combine each lexicon
         for lexicons in self.emotional_list:
@@ -87,8 +87,8 @@ class EmotionalFeature(Feature, Debugger):
         # Build auxiliary list in order to print per-lexicon debug info
         aux_debug: [list] = []
         for lexicon in self.lexicons:
-            aux_debug += [[str(lexicon)] * len(self.wordsList)] + \
+            aux_debug += [[str(lexicon)] * len(self.words_list)] + \
                          [[tweet[lexicon] for tweet in self.emotional_list]]
         # Return debug info
-        return super().__str__(self, self.wordsList, *aux_debug, self.emotional_feature_list,
+        return super().__str__(self, self.words_list, *aux_debug, self.emotional_feature_list,
                                title=title, header=header, template=template)

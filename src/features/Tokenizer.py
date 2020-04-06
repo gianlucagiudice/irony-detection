@@ -13,11 +13,11 @@ from src.features.Debugger import Debugger
 class Tokenizer(Debugger):
     def __init__(self, tweets, occurence_threshold=5):
         # List of tweets
-        self.tweetsList = tweets
+        self.tweets_list = tweets
         # List of tweets tokenized
-        self.tokensList = []
+        self.tokens_list = []
         # List of words in each tweet
-        self.wordsList = []
+        self.words_list = []
         # Set of stopwords
         self.stopwords = set(stopwords.words('english'))
         # Lemmatizer
@@ -31,36 +31,25 @@ class Tokenizer(Debugger):
 
 
     def parse_tweets(self, debug=False):
-        # Tokenize tweets
-        # self.tokenizeTweets()
         # Extract valid words
-        self.extractWords()
+        self.extract_words()
         # Remove words below threashold
-        self.wordsList = self.filt_below_threshold(self.wordsList)
+        self.words_list = self.filt_below_threshold(self.words_list)
         # Save words occurences
         self.save_occurrences()
         # Return list of words
-        return self.wordsList
+        return self.words_list
 
-    def tokenizeTweets(self):
-        # Construct tokenizer object
-        tokenizer = TweetTokenizer(preserve_case=False, reduce_len=True)
-        # nltk.pos_tag(tokenizer.tokenize(self.tweetsList[37].lower()))
-        # Tokenize all tweets
-        self.tokensList = [tokenizer.tokenize(self.tweetFilter(tweet)) for tweet in self.tweetsList]
-
-    def extractWords(self):
+    def extract_words(self):
         # Construct tokenizer object
         tokenizer = TweetTokenizer(preserve_case=False, reduce_len=True)
         # TODO: Eliminare indice
-        for i, tweet in enumerate(self.tweetsList):
+        for i, tweet in enumerate(self.tweets_list):
             tokens = nltk.pos_tag(tokenizer.tokenize(tweet))
             words = [token for token in tokens if self.isValidWord(token)]
             words_lemmatized = self.lemmatize(words)
             self.update_occurrences(words_lemmatized)
-            self.wordsList.append(words_lemmatized)
-
-        # Filt below threshold
+            self.words_list.append(words_lemmatized)
 
     def wordFilter(self, tweet):
         # Regexp for valid twitter name
@@ -127,5 +116,5 @@ class Tokenizer(Debugger):
         template = "Original\t>>> \"{}\"\n"\
                    "Tokenized\t>>> {}\n" \
                    "Valid words\t>>> {}"
-        return super().__str__(self, self.tweetsList, self.tokensList, self.wordsList,
+        return super().__str__(self, self.tweets_list, self.tokens_list, self.words_list,
                                title=title, header=header, template=template)
