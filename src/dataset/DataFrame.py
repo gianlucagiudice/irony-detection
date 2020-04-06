@@ -4,10 +4,11 @@ from src.Config import DATASET_PATH
 
 
 class DataFrame:
-    def __init__(self, dataset, text_feature, matrix):
+    def __init__(self, dataset, text_feature, matrix, target_feature):
         self.dataset = dataset
         self.text_feature = text_feature
         self.matrix = matrix
+        self.target_feature = target_feature
 
     def export_data_frame(self):
         # Export labeled tweets
@@ -17,7 +18,7 @@ class DataFrame:
 
     def export_labeled_tweets(self, dataset):
         # Export path
-        path = '{}{}/'.format(DATASET_PATH, dataset.datasetName)
+        path = '{}{}/'.format(DATASET_PATH, dataset.dataset_name)
         # Print progress
         print('\tSaving labeled tweets . . .')
         # Read all tweets in file
@@ -33,19 +34,20 @@ class DataFrame:
 
     def export_labeled_matrix(self, matrix, dataset):
         # Export path
-        path = '{}{}/'.format(DATASET_PATH, dataset.datasetName)
+        path = '{}{}/'.format(DATASET_PATH, dataset.dataset_name)
         # Print progress
         print('\n\tSaving labeled matrix . . .')
         # Get text feature
         text_feature_file, unique_words = self.text_feature
         # Read all tweets in file
-        with open('{}{}'.format(path, 'labeled_matrix.csv'), 'w', newline='') as csvfile:
+        file_name = 'labeled_matrix-{}.csv'.format('-'.join(self.target_feature.keys()))
+        with open('{}{}'.format(path, file_name), 'w', newline='') as csvfile:
             writer = csv.writer(csvfile)
             # Add header
-            header = [word for word in unique_words] + \
+            header = ['t_{}'.format(word) for word in unique_words] + \
                      ['feature_{}'.format(i+1) for i, _ in enumerate(matrix[0])] + \
                      ['label']
-            # writer.writerow(header)
+            writer.writerow(header)
             # Write data
             with open(text_feature_file.name) as text_feature:
                 for i, (matrix_row, label) in enumerate(zip(matrix, dataset.labels)):
