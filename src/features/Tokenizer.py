@@ -25,8 +25,6 @@ class Tokenizer(Debugger):
         # Words occurences
         self.occurence_number = dict()
         # Occurences threshold
-        # 10 ---> 3967
-        # 5 ---> 6316
         self.occurence_threshold = occurence_threshold
 
 
@@ -35,18 +33,15 @@ class Tokenizer(Debugger):
         self.extract_words()
         # Remove words below threashold
         self.words_list = self.filt_below_threshold(self.words_list)
-        # Save words occurences
-        self.save_occurrences()
         # Return list of words
         return self.words_list
 
     def extract_words(self):
         # Construct tokenizer object
         tokenizer = TweetTokenizer(preserve_case=False, reduce_len=True)
-        # TODO: Eliminare indice
-        for i, tweet in enumerate(self.tweets_list):
+        for tweet in self.tweets_list:
             tokens = nltk.pos_tag(tokenizer.tokenize(tweet))
-            words = [token for token in tokens if self.isValidWord(token)]
+            words = [token for token in tokens if self.is_valid_word(token)]
             words_lemmatized = self.lemmatize(words)
             self.update_occurrences(words_lemmatized)
             self.words_list.append(words_lemmatized)
@@ -63,9 +58,9 @@ class Tokenizer(Debugger):
         # Return tweet filtered
         return filtered
 
-    def filt_below_threshold(self, wordsList):
+    def filt_below_threshold(self, words_list):
         filtered = []
-        for words in wordsList:
+        for words in words_list:
             filtered.append([word for word in words if self.occurence_number[word] > self.occurence_threshold])
         return filtered
 
@@ -73,7 +68,7 @@ class Tokenizer(Debugger):
         for word in words:
             self.occurence_number[word] = self.occurence_number.get(word, 0) + 1
 
-    def isValidWord(self, token):
+    def is_valid_word(self, token):
         word, _ = token
         # Consider word only letters and ' character
         valid_word_re = "[a-zA-Z]+"

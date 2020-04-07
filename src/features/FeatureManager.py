@@ -27,7 +27,7 @@ class FeatureManager:
         # Evaluate all features
         self.evaluate_features(self.tweets)
         # Build matrix
-        self.build_matrix(self.matrices)
+        self.build_matrix()
         # Return final matrix
         return self.text_feature, self.matrix
 
@@ -79,6 +79,9 @@ class FeatureManager:
         # Evaluate pragmatic particles for tweets
         return pragmatic_particles.evaluate_pragmatic_particles(debug=self.debug)
 
-    def build_matrix(self, matrices):
+    def build_matrix(self):
         print("> Building matrix . . .")
-        self.matrix = np.concatenate(matrices, axis=1)
+        if not self.matrices:
+            self.matrix = [[] for _ in range(len(self.tweets))]
+        else:
+            self.matrix = np.concatenate(self.matrices, axis=1)

@@ -21,14 +21,6 @@ class TextFeature(Feature, Debugger):
         self.create_words_set()
         # Fill matrix
         self.fill_matrix()
-
-        # TODO: Remove
-        print(len(self.unique_words_list))
-        with open('words.list', 'w') as out:
-            for x in self.unique_words_list:
-                out.write(x + '\n')
-        #quit()
-
         # Return matrix
         return self.matrix, self.unique_words_list
 
@@ -37,6 +29,13 @@ class TextFeature(Feature, Debugger):
         self.words_set = set([word for words in self.words_list for word in words])
         # Build list of unique words
         self.unique_words_list = sorted(list(self.words_set))
+        # Print number of words added to dictionary
+        print('\t{} words in dictionary'.format(len(self.unique_words_list)))
+
+    def save_words_list(self):
+        with open('words.list', 'w') as out:
+            for x in self.unique_words_list:
+                out.write(x + '\n')
 
     def fill_matrix(self):
         # Create matrix file

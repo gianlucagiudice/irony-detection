@@ -25,4 +25,6 @@ EMOLEX_PATH = lexicons_rel_path + 'emo-lex-v0.92.txt'
 EMOSENTICNET_PATH = lexicons_rel_path + 'emo-sentic-net-v1.csv'
 
 # ----- Dataset -----
-DATASET_PATH = 'data/dataset/'
+DATASET_LABEL_NAME = '_labels'
+DATASET_PATH_IN = 'data/in/'
+DATASET_PATH_OUT = 'data/out/'

@@ -1,7 +1,7 @@
 import csv
 
-from src.Config import DATASET_PATH
-
+from src.Config import DATASET_PATH_OUT
+from pathlib import Path
 
 class DataFrame:
     def __init__(self, dataset, text_feature, matrix, target_feature):
@@ -11,21 +11,27 @@ class DataFrame:
         self.target_feature = target_feature
 
     def export_data_frame(self):
+        # Create dataset folder
+        self.create_folder()
         # Export labeled tweets
         self.export_labeled_tweets(self.dataset)
         # Export labeled matrix
         self.export_labeled_matrix(self.matrix, self.dataset)
 
+    def create_folder(self):
+        path = '{}{}/'.format(DATASET_PATH_OUT, self.dataset.dataset_name)
+        Path(path).mkdir(parents=True, exist_ok=True)
+
     def export_labeled_tweets(self, dataset):
         # Export path
-        path = '{}{}/'.format(DATASET_PATH, dataset.dataset_name)
+        path = '{}{}/'.format(DATASET_PATH_OUT, dataset.dataset_name)
         # Print progress
         print('\tSaving labeled tweets . . .')
         # Read all tweets in file
         with open('{}{}'.format(path, 'labeled_tweets.csv'), 'w') as csvfile:
             writer = csv.writer(csvfile)
             # Add header
-            # writer.writerow(["tweet", "label"])
+            writer.writerow(["tweet", "label"])
             # Write data
             for i, (tweet, label) in enumerate(zip(dataset.tweets, dataset.labels)):
                 if i % 50 == 0:
@@ -34,7 +40,7 @@ class DataFrame:
 
     def export_labeled_matrix(self, matrix, dataset):
         # Export path
-        path = '{}{}/'.format(DATASET_PATH, dataset.dataset_name)
+        path = '{}{}/'.format(DATASET_PATH_OUT, dataset.dataset_name)
         # Print progress
         print('\n\tSaving labeled matrix . . .')
         # Get text feature
@@ -42,7 +48,7 @@ class DataFrame:
         # Generate filename
         keys = [x for x in self.target_feature.keys() if self.target_feature[x] is True]
         sep_char = '-' if len(keys) > 0 else ''
-        file_name = 'labeled_matrix{}{}.csv'.format(sep_char, '-'.join(keys))
+        file_name = 'labeled_matrix-bow{}{}.csv'.format(sep_char, '-'.join(keys))
         # Create file
         with open('{}{}'.format(path, file_name), 'w', newline='') as csvfile:
             writer = csv.writer(csvfile)

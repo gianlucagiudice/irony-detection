@@ -1,6 +1,7 @@
 import json
 
-from src.Config import DATASET_PATH
+from src.Config import DATASET_PATH_IN
+from src.Config import DATASET_LABEL_NAME
 
 
 class Dataset:
@@ -19,14 +20,14 @@ class Dataset:
         return self.tweets, self.labels
 
     def extract_dict(self, dataset_name):
-        path = '{}{}/files.json'.format(DATASET_PATH, dataset_name)
+        path = '{}{}/{}.json'.format(DATASET_PATH_IN, dataset_name, DATASET_LABEL_NAME)
         with open(path) as json_dict:
             self.ironic_dict = json.load(json_dict)
 
     def read_tweets(self, dataset_name, file_dict):
         for file_name, label in file_dict.items():
             # Read all tweets in file
-            path = '{}{}/files/{}'.format(DATASET_PATH, dataset_name, file_name)
+            path = '{}{}/{}'.format(DATASET_PATH_IN, dataset_name, file_name)
             with open(path) as file:
                 content = [tweet.strip() for tweet in file.readlines()]
                 self.tweets += content
