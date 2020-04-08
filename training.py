@@ -14,6 +14,7 @@ from sklearn.model_selection import KFold
 
 # Parameters
 TARGET_DATASET = 'TwReyes2013'
+TARGET_DATASET = 'Test'
 N_FOLDS = 10
 
 
@@ -28,7 +29,7 @@ def fit_classifier(X_train, y_train, X_test, y_test, classifier, fold, shared_di
     y_pred = clf.predict(X_test)
     # Save report
     report_dict = dict()
-    report_dict['report'] = classification_report(y_true=y_test, y_pred=y_pred,output_dict=True)
+    report_dict['report'] = classification_report(y_true=y_test, y_pred=y_pred, output_dict=True)
     report_dict['confusion_matrix'] = confusion_matrix(y_true=y_test, y_pred=y_pred).tolist()
     shared_dict[fold] = report_dict
     # Save model

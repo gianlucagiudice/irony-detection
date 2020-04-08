@@ -1,0 +1,7 @@
+{
+  "irony.data": "ironic",
+
+  "education.data": "non_ironic",
+  "humor.data": "non_ironic",
+  "politics.data": "non_ironic"
+}

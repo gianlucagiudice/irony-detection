@@ -79,6 +79,7 @@ class DataFrame:
                         print('\r\t\t\t{}% saved'.format(round(i / len(self.dataset.labels) * 100), 0), end='')
                     text_row = [int(x) for x in text_feature.readline().strip().split(',')]
                     writer.writerow(text_row + list(matrix_row) + [label])
+        print('\r\t\t\t{}% saved'.format(100), end='')
 
     def export_labeled_tweets(self):
         print('\t> Saving labeled tweets . . .')
@@ -94,6 +95,7 @@ class DataFrame:
                 if i % 50 == 0:
                     print('\r\t\t{}% saved'.format(round(i / len(self.dataset.labels) * 100), 0), end='')
                 writer.writerow([tweet] + [label])
+        print('\r\t\t{}% saved'.format(100), end='')
 
     def build_matrix(self, target_feature):
         matrix = [[] for _ in range(len(self.dataset.tweets))]
