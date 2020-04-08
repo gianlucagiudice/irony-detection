@@ -1,7 +1,7 @@
 import json
 
-from src.Config import DATASET_PATH_IN
 from src.Config import DATASET_LABEL_NAME
+from src.Config import DATASET_PATH_IN
 
 
 class Dataset:

@@ -1,5 +1,3 @@
-import sys
-
 from src.features.FeatureManager import FeatureManager
 from src.dataset.Dataset import Dataset
 from src.dataset.DataFrame import DataFrame

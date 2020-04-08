@@ -1,9 +1,10 @@
 import csv
-
-from src.features.FeatureManager import FEATURES
-from src.Config import DATASET_PATH_OUT
 from pathlib import Path
+
 import numpy as np
+
+from src.Config import DATASET_PATH_OUT
+from src.features.FeatureManager import FEATURES
 
 
 def powerset(iterable):
@@ -30,19 +31,16 @@ class DataFrame:
     def export_data_frame(self):
         # Create dataset folder
         self.create_folder()
-        # Export labeled matrix
-        self.export_labeled_matrix()
         # Export labeled tweets
         self.export_labeled_tweets()
+        # Export labeled matrix
+        self.export_labeled_matrix()
 
     def create_folder(self):
         path = '{}{}/'.format(DATASET_PATH_OUT, self.dataset.dataset_name)
         Path(path).mkdir(parents=True, exist_ok=True)
 
     def export_labeled_matrix(self):
-        # Save labeled tweets
-        print('\t> Saving labeled tweets . . .')
-        self.export_labeled_tweets()
         # Save all dataframes
         print('\n\t> Saving labeled dataframe . . .', end='')
         text_feature_file, _ = self.text_feature
@@ -51,12 +49,11 @@ class DataFrame:
             print('\n', end='')
             target_feature = extract_target_features(set_features)
             matrix = self.build_matrix(target_feature)
-            print('\t\t- Saving dataframe N. {}/{} - {}'.format(idx, len(powerset_features), target_feature))
+            print('\t\t- Saving dataframe N. {}/{}: {}'.format(idx, len(powerset_features), target_feature))
             self.save_matrix(text_feature_file, matrix, target_feature)
-        print('')
         # Close file
         text_feature_file.close()
-
+        print(end='\n')
 
     def save_matrix(self, text_feature_file, matrix, target_feature):
         # Export path
@@ -71,7 +68,7 @@ class DataFrame:
             # Add header
             _, unique_words = self.text_feature
             header = ['t_{}'.format(word) for word in unique_words] + \
-                     ['feature_{}'.format(i + 1) for i, _ in enumerate(matrix)] + \
+                     ['feature_{}'.format(i + 1) for i, _ in enumerate(matrix[0])] + \
                      ['label']
             writer.writerow(header)
             # Write data
@@ -83,6 +80,7 @@ class DataFrame:
                     writer.writerow(text_row + list(matrix_row) + [label])
 
     def export_labeled_tweets(self):
+        print('\t> Saving labeled tweets . . .')
         # Export path
         path = '{}{}/'.format(DATASET_PATH_OUT, self.dataset.dataset_name)
         # Read all tweets in file
@@ -101,5 +99,5 @@ class DataFrame:
         # Concatenate features
         for feature, to_use in target_feature.items():
             if to_use:
-                np.concatenate([matrix, self.matrix_dict[feature]], axis=1)
+                matrix = np.concatenate([matrix, self.matrix_dict[feature]], axis=1)
         return matrix

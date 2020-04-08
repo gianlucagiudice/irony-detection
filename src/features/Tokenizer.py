@@ -1,15 +1,16 @@
 import re
+from operator import itemgetter
 
 import nltk
 from nltk.corpus import stopwords
 from nltk.corpus import wordnet
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import TweetTokenizer
-from operator import itemgetter
 
 from src.features.Debugger import Debugger
 
-OCCURENCE_THRESHOLD = 10
+OCCURRENCE_THRESHOLD = 10
+
 
 class Tokenizer(Debugger):
     def __init__(self, tweets):
@@ -60,7 +61,7 @@ class Tokenizer(Debugger):
     def filt_below_threshold(self, words_list):
         filtered = []
         for words in words_list:
-            filtered.append([word for word in words if self.occurence_number[word] > OCCURENCE_THRESHOLD])
+            filtered.append([word for word in words if self.occurence_number[word] > OCCURRENCE_THRESHOLD])
         return filtered
 
     def update_occurrences(self, words):
