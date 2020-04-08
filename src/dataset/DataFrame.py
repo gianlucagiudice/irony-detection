@@ -2,24 +2,27 @@ import csv
 from pathlib import Path
 
 import numpy as np
+import pandas as pd
+import gc
 
 from src.Config import DATASET_PATH_OUT
 from src.features.FeatureManager import FEATURES
 
 
-def powerset(iterable):
-    out = []
-    x = len(iterable)
-    for i in range(1 << x):
-        out += [[iterable[j] for j in range(x) if (i & (1 << j))]]
-    return out
+def create_filename(name, target_feature, ext):
+    keys = [x for x in target_feature.keys() if target_feature[x] is True]
+    sep_char = '-' if len(keys) > 0 else ''
+    file_name = '{}-bow{}{}.{}'.format(name, sep_char, '-'.join(keys), ext)
+    return file_name
 
 
-def extract_target_features(feature_list):
-    target_feature = {'pp': False, 'pos': False, 'emot': False}
-    for feature in feature_list:
-        target_feature[feature] = True
-    return target_feature
+def read_data_frame(filename):
+    df = pd.read_csv(filename)
+    X = np.array(df.values[:, :-1], dtype=np.uint8)
+    y = df.values[:, -1]
+    del df
+    gc.collect()
+    return X, y
 
 
 class DataFrame:
@@ -28,7 +31,7 @@ class DataFrame:
         self.text_feature = text_feature
         self.matrix_dict = matrix_dict
 
-    def export_data_frame(self):
+    def save_data_frame(self):
         # Create dataset folder
         self.create_folder()
         # Export labeled tweets
@@ -44,10 +47,10 @@ class DataFrame:
         # Save all dataframes
         print('\n\t> Saving labeled dataframe . . .', end='')
         text_feature_file, _ = self.text_feature
-        powerset_features = powerset(FEATURES)
+        powerset_features = self.powerset(FEATURES)
         for idx, set_features in enumerate(powerset_features, 1):
             print('\n', end='')
-            target_feature = extract_target_features(set_features)
+            target_feature = self.extract_target_features(set_features)
             matrix = self.build_matrix(target_feature)
             print('\t\t- Saving dataframe N. {}/{}: {}'.format(idx, len(powerset_features), target_feature))
             self.save_matrix(text_feature_file, matrix, target_feature)
@@ -59,9 +62,7 @@ class DataFrame:
         # Export path
         path = '{}{}/'.format(DATASET_PATH_OUT, self.dataset.dataset_name)
         # Generate filename
-        keys = [x for x in target_feature.keys() if target_feature[x] is True]
-        sep_char = '-' if len(keys) > 0 else ''
-        file_name = 'labeled_matrix-bow{}{}.csv'.format(sep_char, '-'.join(keys))
+        file_name = create_filename('labeled_matrix', target_feature, 'csv')
         # Create file
         with open('{}{}'.format(path, file_name), 'w', newline='') as csvfile:
             writer = csv.writer(csvfile)
@@ -101,3 +102,18 @@ class DataFrame:
             if to_use:
                 matrix = np.concatenate([matrix, self.matrix_dict[feature]], axis=1)
         return matrix
+
+    @staticmethod
+    def powerset(iterable):
+        out = []
+        x = len(iterable)
+        for i in range(1 << x):
+            out += [[iterable[j] for j in range(x) if (i & (1 << j))]]
+        return out
+
+    @staticmethod
+    def extract_target_features(feature_list):
+        target_feature = {'pp': False, 'pos': False, 'emot': False}
+        for feature in feature_list:
+            target_feature[feature] = True
+        return target_feature

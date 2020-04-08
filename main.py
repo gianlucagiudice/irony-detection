@@ -23,7 +23,7 @@ def main():
     # ----- Export data frame to file -----
     print(">> Saving features . . .")
     df = DataFrame(dataset, text_feature, matrix)
-    df.export_data_frame()
+    df.save_data_frame()
     # ----- Process completed -----
     print('>> Completed.')
 
@@ -36,7 +36,7 @@ def compute_matrix(dataset, target_features):
     # Export data frame to file
     print(">> Saving features . . .")
     df = DataFrame(dataset, text_feature, matrix, target_features)
-    df.export_data_frame()
+    df.save_data_frame()
     # Process completed
     print('>> Completed.')
 

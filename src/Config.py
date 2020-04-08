@@ -28,3 +28,9 @@ EMOSENTICNET_PATH = lexicons_rel_path + 'emo-sentic-net-v1.csv'
 DATASET_LABEL_NAME = '_labels'
 DATASET_PATH_IN = 'data/raw/'
 DATASET_PATH_OUT = 'data/processed/'
+
+# ----- Models -----
+MODELS_PATH = 'models/'
+
+# ----- Report -----
+REPORTS_PATH = 'reports/'
