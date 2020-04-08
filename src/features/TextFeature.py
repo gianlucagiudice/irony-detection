@@ -8,6 +8,7 @@ from src.features.Feature import Feature
 
 CHUNK_SIZE = 2000
 
+
 class TextFeature(Feature, Debugger):
 
     def __init__(self, words_list):

@@ -9,9 +9,10 @@ from operator import itemgetter
 
 from src.features.Debugger import Debugger
 
+OCCURENCE_THRESHOLD = 10
 
 class Tokenizer(Debugger):
-    def __init__(self, tweets, occurence_threshold=5):
+    def __init__(self, tweets):
         # List of tweets
         self.tweets_list = tweets
         # List of tweets tokenized
@@ -24,8 +25,6 @@ class Tokenizer(Debugger):
         self.lemmatizer = WordNetLemmatizer()
         # Words occurences
         self.occurence_number = dict()
-        # Occurences threshold
-        self.occurence_threshold = occurence_threshold
 
 
     def parse_tweets(self, debug=False):
@@ -61,7 +60,7 @@ class Tokenizer(Debugger):
     def filt_below_threshold(self, words_list):
         filtered = []
         for words in words_list:
-            filtered.append([word for word in words if self.occurence_number[word] > self.occurence_threshold])
+            filtered.append([word for word in words if self.occurence_number[word] > OCCURENCE_THRESHOLD])
         return filtered
 
     def update_occurrences(self, words):

@@ -17,7 +17,7 @@ class Dataset:
         # Read tweets
         self.read_tweets(self.dataset_name, self.ironic_dict)
         # Return data
-        return self.tweets, self.labels
+        return self.tweets
 
     def extract_dict(self, dataset_name):
         path = '{}{}/{}.json'.format(DATASET_PATH_IN, dataset_name, DATASET_LABEL_NAME)
