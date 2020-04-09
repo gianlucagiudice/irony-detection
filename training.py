@@ -20,8 +20,8 @@ from src.Config import MODELS_PATH, REPORTS_PATH
 from sklearn.model_selection import KFold
 
 # Parameters
-TARGET_DATASET = 'TwReyes2013'
 TARGET_DATASET = 'Test'
+TARGET_DATASET = 'TwReyes2013'
 N_FOLDS = 10
 
 
