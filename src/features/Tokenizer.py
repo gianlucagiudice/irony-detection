@@ -64,12 +64,6 @@ class Tokenizer(Debugger):
     def stem_words(self, words):
         return [self.stemmer.stem(word) for word, tag in words]
 
-    def save_occurrences(self):
-        # Write dict
-        with open('words_occurence.list', 'w') as file:
-            for key, value in sorted(self.word_occurrence.items(), key=itemgetter(1), reverse=True):
-                file.write("{},{}\n".format(key, value))
-
     def __str__(self, **kwargs):
         title = "tokenizer"
         header = "Tweet"
