@@ -19,7 +19,7 @@ def create_filename(name, target_feature, ext):
 def read_data_frame(filename):
     df = pd.read_csv(filename)
     X = np.array(df.values[:, :-1], dtype=np.uint8)
-    y = df.values[:, -1]
+    y = np.array([True if value == 'ironic' else False for value in df.values[:, -1]], dtype=np.bool)
     del df
     gc.collect()
     return X, y

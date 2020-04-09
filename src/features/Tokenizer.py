@@ -4,7 +4,7 @@ from operator import itemgetter
 import nltk
 from nltk.corpus import stopwords
 from nltk.corpus import wordnet
-from nltk.stem import WordNetLemmatizer
+from nltk.stem import PorterStemmer
 from nltk.tokenize import TweetTokenizer
 
 from src.features.Debugger import Debugger
@@ -22,17 +22,16 @@ class Tokenizer(Debugger):
         self.words_list = []
         # Set of stopwords
         self.stopwords = set(stopwords.words('english'))
-        # Lemmatizer
-        self.lemmatizer = WordNetLemmatizer()
-        # Words occurences
-        self.occurence_number = dict()
-
+        # Stemmer
+        self.stemmer = PorterStemmer()
+        # Words occurrences
+        self.word_occurrence = dict()
 
     def parse_tweets(self, debug=False):
         # Extract valid words
         self.extract_words()
         # Remove words below threashold
-        self.words_list = self.filt_below_threshold(self.words_list)
+        self.words_list = self.filter_below_threshold(self.words_list)
         # Return list of words
         return self.words_list
 
@@ -42,31 +41,19 @@ class Tokenizer(Debugger):
         for tweet in self.tweets_list:
             tokens = nltk.pos_tag(tokenizer.tokenize(tweet))
             words = [token for token in tokens if self.is_valid_word(token)]
-            words_lemmatized = self.lemmatize(words)
-            self.update_occurrences(words_lemmatized)
-            self.words_list.append(words_lemmatized)
+            words_stemmed = self.stem_words(words)
+            self.update_occurrences(words_stemmed)
+            self.words_list.append(words_stemmed)
 
-    def wordFilter(self, tweet):
-        # Regexp for valid twitter name
-        twitter_name_re = "@(\w){1,15}"
-        # Regexp for retweet pattern
-        retweet_re = "RT\s" + twitter_name_re + ":"
-        # Remove retweet tokens
-        no_retweet = re.sub(retweet_re, '', tweet)
-        # Remove tagged users
-        filtered = re.sub(twitter_name_re, '', no_retweet)
-        # Return tweet filtered
-        return filtered
-
-    def filt_below_threshold(self, words_list):
+    def filter_below_threshold(self, words_list):
         filtered = []
         for words in words_list:
-            filtered.append([word for word in words if self.occurence_number[word] > OCCURRENCE_THRESHOLD])
+            filtered.append([word for word in words if self.word_occurrence[word] > OCCURRENCE_THRESHOLD])
         return filtered
 
     def update_occurrences(self, words):
         for word in words:
-            self.occurence_number[word] = self.occurence_number.get(word, 0) + 1
+            self.word_occurrence[word] = self.word_occurrence.get(word, 0) + 1
 
     def is_valid_word(self, token):
         word, _ = token
@@ -74,36 +61,14 @@ class Tokenizer(Debugger):
         valid_word_re = "[a-zA-Z]+"
         return re.fullmatch(valid_word_re, word) and word not in self.stopwords and word != 'rt'
 
-    def lemmatize(self, words):
-        # ret = []
-        # list = [wordnet.ADJ, wordnet.VERB, wordnet.NOUN, wordnet.ADV]
-        # for word, tag in words:
-        #     s = set()
-        #     for t in list:
-        #         s.add(self.lemmatizer.lemmatize(word, t))
-        #     if len(s) > 1:
-        #         print(word)
-        #     ret.append(s.pop())
-        # return ret
-        return [self.lemmatizer.lemmatize(word) for word, tag in words]
+    def stem_words(self, words):
+        return [self.stemmer.stem(word) for word, tag in words]
 
     def save_occurrences(self):
         # Write dict
         with open('words_occurence.list', 'w') as file:
-            for key, value in sorted(self.occurence_number.items(), key=itemgetter(1), reverse=True):
+            for key, value in sorted(self.word_occurrence.items(), key=itemgetter(1), reverse=True):
                 file.write("{},{}\n".format(key, value))
-
-    def get_wordnet_pos(self, treebank_tag):
-        if treebank_tag.startswith('J'):
-            return wordnet.ADJ
-        elif treebank_tag.startswith('V'):
-            return wordnet.VERB
-        elif treebank_tag.startswith('N'):
-            return wordnet.NOUN
-        elif treebank_tag.startswith('R'):
-            return wordnet.ADV
-        else:
-            return wordnet.NOUN
 
     def __str__(self, **kwargs):
         title = "tokenizer"

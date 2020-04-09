@@ -7,7 +7,7 @@ from src.dataset.DataFrame import DataFrame
 DEBUG = False
 # Dataset
 TARGET_DATASET = 'TwReyes2013'
-TARGET_DATASET = 'Test'
+#TARGET_DATASET = 'Test'
 # List of features
 FEATURES = ['pp', 'pos', 'emot']
 

@@ -17,7 +17,7 @@ class TextFeature(Feature, Debugger):
         self.words_set = None
         self.unique_words_list = None
 
-    def extract_terms_matrix(self, debug=False):
+    def extract_terms_matrix(self):
         # Create set of words
         self.create_words_set()
         # Fill matrix
@@ -65,14 +65,3 @@ class TextFeature(Feature, Debugger):
     def chunk_words(self):
         for i in range(0, len(self.words_list), CHUNK_SIZE):
             yield self.words_list[i:i + CHUNK_SIZE]
-
-    def __str__(self):
-        return ''
-    # def __str__(self, **kwargs):
-    #     title = "text features"
-    #     header = "Matrix row"
-    #     template = "Uniq. words >>> {}\n" \
-    #                "Tweet words\t>>> {}\n" \
-    #                "Row\t\t\t>>> {}"
-    #     return super().__str__(self, [self.uniqueWordsList] * len(self.matrix), self.wordsList, self.matrix,
-    #                            title=title, header=header, template=template)

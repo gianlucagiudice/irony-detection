@@ -38,7 +38,7 @@ class FeatureManager:
         # Crete text features object
         text_features = TextFeature(tokenizer.words_list)
         # Get terms matrix
-        self.text_feature = text_features.extract_terms_matrix(debug=self.debug)
+        self.text_feature = text_features.extract_terms_matrix()
 
         # ------ Features ------
         # Pragmatic particles
