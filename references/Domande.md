@@ -27,3 +27,5 @@ Ho il repo pubblico. E' un problema tenere anche il dataset nel repo?
 - Ho solo fatto uno shuffle del dataset ma non faccio il training bilanciato
 
 - Ho considerato 10 fold e ho parallelizzato sul numero di fold. Esiste un modo per fare il training su una porzione di dataset e parallelizazare su ogni porzione per poi "unire" la conoscenza di ogni modello trainato? Dato che su AWS macchine a 96 core
+
+- Se il dataset è molto grande e si usa (ad esempio) 10-fold cross validation, come si fa a sapere se si sta andando in overfitting? perchè praticamente si sta usando tutto il dataset
