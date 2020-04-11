@@ -1,6 +1,6 @@
 import os
 #  ----- Script Parameters -----
-TARGET_DATASET = 'Test'
+TARGET_DATASET = 'TwReyes2013'
 
 # ----- Script Parameters -----
 script_rel_path = "lib/"

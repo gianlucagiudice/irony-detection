@@ -9,9 +9,6 @@ import shutil
 
 from src.dataset.DataFrame import *
 
-# Create Logger
-logger = Logger().getLogger()
-
 
 def create_report_folder():
     report_path = REPORTS_PATH + TARGET_DATASET
@@ -32,6 +29,8 @@ def read_matrix_filename():
 def main():
     # Create report folder
     create_report_folder()
+    # Create Logger
+    logger = Logger().getLogger()
     # Read all matrix features
     matrix_file_list = read_matrix_filename()
     # Iterate over each features
@@ -48,7 +47,7 @@ def main():
                                  type(target_classifier).__name__, idx_classifier, len(CLASSIFIER_LIST)))
             # Read dataset for target features
             logger.print('Reading dataset . . .')
-            path = DATASET_PATH_OUT + TARGET_DATASET + '/' + target_file
+            path = '{}{}/{}'.format(DATASET_PATH_OUT, TARGET_DATASET, target_file)
             X, y = shuffle(*read_data_frame(path), random_state=22)
             logger.print('Read completed.')
             # Create training manager

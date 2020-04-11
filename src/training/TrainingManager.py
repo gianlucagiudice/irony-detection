@@ -1,6 +1,7 @@
 import time
+import psutil
 
-from multiprocessing import Process, Manager
+from multiprocessing import Process, Manager, Lock
 from sklearn.model_selection import KFold
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn import tree, svm, naive_bayes
@@ -33,6 +34,7 @@ class TrainingManager:
         self.folds = None
         # Process pool
         self.process_pool = []
+        self.lock = Lock()
         # Logger
         self.logger = Logger.getLogger()
 
@@ -75,10 +77,26 @@ class TrainingManager:
         output = '{}\n{}'.format(
             'Training on fold {} completed! ({})'.format(fold, h_readable_elapsed),
             classification_report(y_true=y_test, y_pred=y_pred))
-        self.logger.print(output)
+        with self.lock:
+            self.logger.print(output)
 
     def start_all_processes(self):
-        [process.start() for process in self.process_pool]
+        for process in self.process_pool:
+            # Start new process
+            process.start()
+            self.logger.print(str(process))
+            # Memory usage
+            process_info = psutil.Process(process.pid)
+            process_mem = process_info.memory_info()[0]
+            # Wait for memory
+            while True:
+                time.sleep(5)
+                available_mem = psutil.virtual_memory()[1]
+                if available_mem - 1.5 * process_mem > 0:
+                    break
+                else:
+                    time.sleep(10)
+        self.logger.print('All process started.')
 
     def join_all_processes(self):
         [process.join() for process in self.process_pool]

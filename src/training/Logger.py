@@ -25,8 +25,11 @@ class Logger:
         else:
             Logger.__instance = self
             # Create logger
-            logging.basicConfig(filename=LOG_FILE_PATH, filemode='w', level=logging.INFO,
-                                format='%(asctime)s:\n%(message)s')
+            format = '{} %(asctime)s <%(processName)s> {}\n\t%(message)s\n'\
+                .format('=' * 4, '=' * 4)
+            logging.basicConfig(filename=LOG_FILE_PATH, filemode='w+', level=logging.INFO,
+                                format=format,
+                                datefmt='%d-%m-%Y %H:%M:%S',)
             self.logger = logging.getLogger()
             # Start time
             self.start_time = time.time()
