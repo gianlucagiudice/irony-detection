@@ -2,7 +2,7 @@
 
 #### Input
 ```
-data/row/DATASET_NAME/
+data/raw/DATASET_NAME/
 ```
 Then put dataset files `f_n.data` with their relative `_lables.json`
 
