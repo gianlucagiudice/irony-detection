@@ -28,7 +28,7 @@ def main():
     # ----- Process completed -----
     print('>> Completed.')
 
-
+# TODO: Mi sa che non serve
 def compute_matrix(dataset, target_features):
     # Compute matrix
     print(">> Extracting features . . .")
