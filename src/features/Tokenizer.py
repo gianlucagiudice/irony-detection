@@ -39,6 +39,7 @@ class Tokenizer(Debugger):
         # Construct tokenizer object
         tokenizer = TweetTokenizer(preserve_case=False, reduce_len=True)
         for tweet in self.tweets_list:
+            # TODO: Non serve usare anche il POS tag
             tokens = nltk.pos_tag(tokenizer.tokenize(tweet))
             words = [token for token in tokens if self.is_valid_word(token)]
             words_stemmed = self.stem_words(words)
