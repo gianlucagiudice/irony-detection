@@ -40,5 +40,5 @@ class Logger:
 
     def completed(self):
         elapsed_time = time.time() - self.start_time
-        h_readable_elapsed = time.strftime("%Hh%Mm%Ss", time.gmtime(elapsed_time))
+        h_readable_elapsed = time.strftime("%dd%Hh%Mm%Ss", time.gmtime(elapsed_time))
         self.print('Execution time: {}'.format(h_readable_elapsed))
