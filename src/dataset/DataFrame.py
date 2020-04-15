@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 import gc
 
-from src.Config import DATASET_PATH_OUT
+from src.config import DATASET_PATH_OUT
 from src.features.FeatureManager import FEATURES
 
 
@@ -70,7 +70,7 @@ class DataFrame:
             # Add header
             _, unique_words = self.text_feature
             header = ['t_{}'.format(word) for word in unique_words] + \
-                     ['feature_{}'.format(i + 1) for i, _ in enumerate(matrix[0])] + \
+                     ['f_{}'.format(i + 1) for i, _ in enumerate(matrix[0])] + \
                      ['label']
             writer.writerow(header)
             # Write data

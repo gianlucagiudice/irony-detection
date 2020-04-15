@@ -2,7 +2,7 @@ import re
 
 import numpy as np
 
-from src.Config import EMOTICONS_PATH, INITIALISM_PATH, ONOMATOPOEIC_PATH
+from src.config import EMOTICONS_PATH, INITIALISM_PATH, ONOMATOPOEIC_PATH
 from src.features.Debugger import Debugger
 from src.features.Feature import Feature
 

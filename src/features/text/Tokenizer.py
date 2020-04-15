@@ -22,15 +22,14 @@ class Tokenizer(Debugger):
         self.words_list = []
         # Set of stopwords
         self.stopwords = set(stopwords.words('english'))
-        # Stemmer
-        self.stemmer = PorterStemmer()
         # Words occurrences
         self.word_occurrence = dict()
 
-    def parse_tweets(self, debug=False):
+    def tokenize(self):
+        print("> Tokenizer . . .")
         # Extract valid words
         self.extract_words()
-        # Remove words below threashold
+        # Remove words below threshold
         self.words_list = self.filter_below_threshold(self.words_list)
         # Return list of words
         return self.words_list
@@ -38,13 +37,20 @@ class Tokenizer(Debugger):
     def extract_words(self):
         # Construct tokenizer object
         tokenizer = TweetTokenizer(preserve_case=False, reduce_len=True)
-        for tweet in self.tweets_list:
-            # TODO: Non serve usare anche il POS tag
-            tokens = nltk.pos_tag(tokenizer.tokenize(tweet))
+        # Stemmer
+        stemmer = PorterStemmer()
+        # Start tokenizing
+        print('\t{}% completed'.format(0), end='')
+        # Tokenize all tweets
+        for index, tweet in enumerate(self.tweets_list, 1):
+            tokens = tokenizer.tokenize(tweet)
             words = [token for token in tokens if self.is_valid_word(token)]
-            words_stemmed = self.stem_words(words)
+            words_stemmed = self.stem_words(words, stemmer)
             self.update_occurrences(words_stemmed)
             self.words_list.append(words_stemmed)
+            # Progress
+            print('\r\t{}% completed'.format(round(index / len(self.tweets_list) * 100, 3)), end='')
+        print('\r\t{}% tokenized'.format(100))
 
     def filter_below_threshold(self, words_list):
         filtered = []
@@ -57,13 +63,11 @@ class Tokenizer(Debugger):
             self.word_occurrence[word] = self.word_occurrence.get(word, 0) + 1
 
     def is_valid_word(self, token):
-        word, _ = token
-        # Consider word only letters and ' character
         valid_word_re = "[a-zA-Z]+"
-        return re.fullmatch(valid_word_re, word) and word not in self.stopwords and word != 'rt'
+        return re.fullmatch(valid_word_re, token) and token not in self.stopwords and token != 'rt'
 
-    def stem_words(self, words):
-        return [self.stemmer.stem(word) for word, tag in words]
+    def stem_words(self, words, stemmer):
+        return [stemmer.stem(word) for word in words]
 
     def __str__(self, **kwargs):
         title = "tokenizer"

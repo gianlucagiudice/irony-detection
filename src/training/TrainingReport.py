@@ -2,7 +2,7 @@ import json
 import numpy as np
 from pathlib import Path
 
-from src.Config import REPORTS_PATH, TARGET_DATASET
+from src.config import REPORTS_PATH, TARGET_DATASET
 
 
 class TrainingReport:

@@ -2,26 +2,27 @@ import csv
 import tempfile
 from multiprocessing import Pool
 
-from src.Config import THREAD_NUMBER
 from src.features.Debugger import Debugger
 from src.features.Feature import Feature
+from src.config import THREAD_NUMBER
 
 CHUNK_SIZE = 2000
 
 
 class TextFeature(Feature, Debugger):
 
-    def __init__(self, words_list):
+    def __init__(self, tweets):
         super().__init__()
-        self.words_list = words_list
+        self.words_list = tweets.tokens
         self.words_set = None
         self.unique_words_list = None
 
-    def extract_terms_matrix(self):
+    def extract_text_matrix(self):
+        print("> BOW features . . .")
         # Create set of words
         self.create_words_set()
         # Fill matrix
-        self.fill_matrix()
+        self.fill_matrix(self.compute_row)
         # Return matrix
         return self.matrix, self.unique_words_list
 
@@ -33,21 +34,16 @@ class TextFeature(Feature, Debugger):
         # Print number of words added to dictionary
         print('\t{} words in dictionary'.format(len(self.unique_words_list)))
 
-    def save_words_list(self):
-        with open('words.list', 'w') as out:
-            for x in self.unique_words_list:
-                out.write(x + '\n')
-
-    def fill_matrix(self):
+    def fill_matrix(self, map_function):
         # Create matrix file
         matrix_file = tempfile.NamedTemporaryFile(mode='w+')
         # Compute all chunks
         print('\t{}% completed'.format(0), end='')
-        for index, chunk in enumerate(self.chunk_words()):
+        for index, chunk in enumerate(self.chunk_words(), 1):
             with Pool(THREAD_NUMBER) as pool:
-                computed = pool.map(self.compute_row, chunk)
+                computed = pool.map(map_function, chunk)
             self.write_chunk(matrix_file, computed)
-            print('\r\t{}% completed'.format(round((index+1) * CHUNK_SIZE / len(self.words_list) * 100, 3)), end='')
+            print('\r\t{}% completed'.format(round(index * CHUNK_SIZE / len(self.words_list) * 100, 3)), end='')
         print('\r\t100% processed')
         # Save matrix file
         self.matrix = matrix_file

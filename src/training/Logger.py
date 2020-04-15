@@ -1,6 +1,6 @@
 import time
 
-from src.Config import TARGET_DATASET, REPORTS_PATH
+from src.config import TARGET_DATASET, REPORTS_PATH
 
 import logging
 

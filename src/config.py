@@ -1,6 +1,4 @@
 import os
-#  ----- Script Parameters -----
-TARGET_DATASET = 'TwReyes2013'
 
 # ----- Script Parameters -----
 script_rel_path = "lib/"
@@ -12,19 +10,19 @@ RAM_SIZE = "2G"
 # ----- Features files names -----
 FILES_REL_PATH = 'data/external/features/'
 # Emoticons
-emoticons_file_name = 'emoticons.list'
-EMOTICONS_PATH = FILES_REL_PATH + emoticons_file_name
+EMOTICONS_FILE_NAME = 'emoticons.list'
+EMOTICONS_PATH = FILES_REL_PATH + EMOTICONS_FILE_NAME
 # Initialism
-initialism_file_name = 'initialism.list'
-INITIALISM_PATH = FILES_REL_PATH + initialism_file_name
+INITIALISM_FILE_NAME = 'initialism.list'
+INITIALISM_PATH = FILES_REL_PATH + INITIALISM_FILE_NAME
 # Onomatopoeic
-onomatopoeicFileName = 'onomatopoeic.list'
-ONOMATOPOEIC_PATH = FILES_REL_PATH + onomatopoeicFileName
+ONOMATOPOEIC_FILE_NAME = 'onomatopoeic.list'
+ONOMATOPOEIC_PATH = FILES_REL_PATH + ONOMATOPOEIC_FILE_NAME
 
 # ----- Lexicons file -----
-lexicons_rel_path = 'data/external/lexicons/'
-EMOLEX_PATH = lexicons_rel_path + 'emo-lex-v0.92.txt'
-EMOSENTICNET_PATH = lexicons_rel_path + 'emo-sentic-net-v1.csv'
+LEXICONS_REL_PATH = 'data/external/lexicons/'
+EMOLEX_PATH = LEXICONS_REL_PATH + 'emo-lex-v0.92.txt'
+EMOSENTICNET_PATH = LEXICONS_REL_PATH + 'emo-sentic-net-v1.csv'
 
 # ----- Dataset -----
 DATASET_LABEL_NAME = '_labels'

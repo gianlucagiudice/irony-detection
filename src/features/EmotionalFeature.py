@@ -1,6 +1,6 @@
 import numpy as np
 
-from src.Config import EMOLEX_PATH, EMOSENTICNET_PATH
+from src.config import EMOLEX_PATH, EMOSENTICNET_PATH
 from src.features.Debugger import Debugger
 from src.features.Feature import Feature
 from src.lexicons.Lexicon import Lexicon

@@ -1,4 +1,4 @@
-from src.Config import TARGET_DATASET, REPORTS_PATH
+from src.config import TARGET_DATASET, REPORTS_PATH
 from src.training.TrainingManager import TrainingManager, CLASSIFIER_LIST
 from src.training.TrainingReport import TrainingReport
 from src.training.Logger import Logger
