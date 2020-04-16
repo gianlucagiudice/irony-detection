@@ -52,6 +52,7 @@ def main():
             logger.print('Reading dataset . . .')
             path = '{}{}/{}'.format(DATASET_PATH_OUT, TARGET_DATASET, target_file)
             X, y = shuffle(*read_data_frame(path), random_state=22)
+            quit()
             logger.print('Read completed.')
             # Create training manager
             logger.print('> Start training on folds . . .')

@@ -25,6 +25,7 @@ class Bert(TextFeature):
         self.tokens_list = []
         self.indices_list = []
         self.segments_ids_list = []
+        self.feature_length = 0
 
     def extract_text_matrix(self):
         super().extract_text_matrix()
@@ -33,9 +34,9 @@ class Bert(TextFeature):
         # Build model
         self.build_model()
         # Fill matrix
-        self.fill_matrix(self.compute_row, self.tweet_list, self.pool, self.chunk_size)
+        self.feature_length = self.fill_matrix(self.compute_row, self.tweet_list, self.pool, self.chunk_size)
         # Return matrix
-        return self.matrix, list(range(1, len(self.tweet_list) + 1)), self.name
+        return self.matrix, list(range(1, self.feature_length + 1)), self.name
 
     def build_tokenizer(self):
         self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')

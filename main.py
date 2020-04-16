@@ -5,6 +5,8 @@ from src.parameters import TARGET_DATASET, TEXT_FEATURE_STRATEGY, DEBUG
 
 
 def main():
+    # ----- Title -----
+    print("\t\t\t\t{} COMPUTE FEATURES ON DATASET {} {}".format('='*5, TARGET_DATASET, '='*5), end='\n\n')
     # ----- Read dataset -----
     print(">> Reading dataset . . .")
     dataset = Dataset(TARGET_DATASET)

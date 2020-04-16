@@ -36,6 +36,8 @@ class TextFeature(Feature, Debugger, metaclass=ABCMeta):
         print('\r\t100% processed')
         # Save matrix file
         self.matrix = matrix_file
+        # Return features dimensions
+        return len(computed[0])
 
     @staticmethod
     def write_chunk(file, chunk):
