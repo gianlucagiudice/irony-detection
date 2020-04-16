@@ -46,7 +46,8 @@ class Tokenizer(Debugger):
             self.update_occurrences(words_stemmed)
             self.words_list.append(words_stemmed)
             # Progress
-            print('\r\t{}% completed'.format(round(index / len(self.tweets_list) * 100, 3)), end='')
+            if index % 1000 == 0:
+                print('\r\t{}% completed'.format(round(index / len(self.tweets_list) * 100, 3)), end='')
         print('\r\t{}% tokenized'.format(100))
 
     def filter_below_threshold(self, words_list):

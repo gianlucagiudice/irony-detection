@@ -59,8 +59,9 @@ def main():
             # Start training
             folds_report = training_manager.train_classifier()
             # Create report relative to classifier
-            report = TrainingReport(feature_list, target_classifier, folds_report)
-            report.create_report()
+            if folds_report:
+                report = TrainingReport(feature_list, target_classifier, folds_report)
+                report.create_report()
             # Print status
             logger.print('Training completed on each folds.\n\n')
     logger.print('>>> Models training completed using all features.')

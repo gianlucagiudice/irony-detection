@@ -2,6 +2,7 @@ from .features.text import Bow, Bert
 
 # ---- Target dataset ----
 TARGET_DATASET = 'TwReyes2013'
+TARGET_DATASET = 'Test'
 
 # ---- Text feature strategy ----
 TARGET_TEXT_FEATURE = 'bert'

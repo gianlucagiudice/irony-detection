@@ -62,7 +62,10 @@ class TrainingManager:
     def fit_classifier(self, X_train, y_train, X_test, y_test, fold):
         start_time = time.time()
         # Start training
-        clf = self.classifier.fit(X_train, y_train)
+        try:
+            clf = self.classifier.fit(X_train, y_train)
+        except ValueError:
+            return
         # Test classifier
         y_pred = clf.predict(X_test)
         # Save fold report
