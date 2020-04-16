@@ -40,6 +40,11 @@ def main():
     for idx_file, target_file in enumerate(matrix_file_list, 1):
         logger.print("\t\t%%%%% Target file {} - N. {}/{} %%%%%\n"
                      .format(target_file, idx_file, len(matrix_file_list)))
+        # Read dataset for target features
+        logger.print('Reading dataset . . .')
+        path = '{}{}/{}'.format(DATASET_PATH_OUT, TARGET_DATASET, target_file)
+        X, y = shuffle(*read_data_frame(path), random_state=22)
+        logger.print('Read completed.')
         # Iterate over each classifier
         for idx_classifier, target_classifier in enumerate(CLASSIFIER_LIST, 1):
             # List of feature relative to file
@@ -48,12 +53,6 @@ def main():
             logger.print('>> Create model using features "{}": {}/{} - {} {}/{}'
                          .format('-'.join(feature_list), idx_file, len(matrix_file_list),
                                  type(target_classifier).__name__, idx_classifier, len(CLASSIFIER_LIST)))
-            # Read dataset for target features
-            logger.print('Reading dataset . . .')
-            path = '{}{}/{}'.format(DATASET_PATH_OUT, TARGET_DATASET, target_file)
-            X, y = shuffle(*read_data_frame(path), random_state=22)
-            quit()
-            logger.print('Read completed.')
             # Create training manager
             logger.print('> Start training on folds . . .')
             training_manager = TrainingManager(X, y, target_classifier)

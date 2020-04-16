@@ -10,11 +10,21 @@ from src.features.FeatureManager import FEATURES
 
 
 def read_data_frame(filename):
-    df = pd.read_csv(filename)
-    X = np.array(df.values[:, :-1], dtype=np.single)
-    y = np.array([True if value == 'ironic' else False for value in df.values[:, -1]], dtype=np.bool)
-    del df
-    gc.collect()
+    n_cols = pd.read_csv(filename, nrows=1).values.size - 1
+    n_rows = sum(1 for _ in open(filename)) - 1
+    # Create matrix
+    X = np.zeros((n_rows, n_cols), dtype=np.float)
+    y = np.zeros(n_rows, dtype=np.bool)
+    # Read csv
+    chuncksize = 2500
+    print('\t{}% completed . . .'.format(0), end='')
+    for idx, chunk in enumerate(pd.read_csv(filename, chunksize=chuncksize)):
+        for idx_chunk, (X_row, y_row) in enumerate(zip(chunk.values[:, :-1], chunk.values[:, -1])):
+            X[idx * chuncksize + idx_chunk] = np.array(X_row, dtype=np.float)
+            label = True if y_row == 'ironic' else False
+            y[idx * chuncksize + idx_chunk] = np.array(label, dtype=np.bool)
+        print('\r\t{}% completed . . .'. format(round((idx+1) * chuncksize / n_rows * 100), 3), end='')
+    print('\r\t{}% completed.'.format(100))
     return X, y
 
 
