@@ -12,5 +12,5 @@ class Feature:
         self.matrix = np.zeros((r, c), dtype=int)
 
     @abstractmethod
-    def fill_matrix(self):
+    def fill_matrix(self, *args):
         return

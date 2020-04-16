@@ -1,13 +1,12 @@
 import time
-import psutil
-
 from multiprocessing import Process, Manager, Lock
-from sklearn.model_selection import KFold
-from sklearn.metrics import classification_report, confusion_matrix
+
+import psutil
 from sklearn import tree, svm, naive_bayes
+from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.model_selection import KFold
 
 from src.training.Logger import Logger
-
 
 # Number of folds used for training
 N_FOLDS = 10

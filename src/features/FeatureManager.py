@@ -1,8 +1,8 @@
+from src.dataset.Tweets import Tweets
 from src.features.EmotionalFeature import EmotionalFeature
 from src.features.PosFeature import PosFeature
 from src.features.PragmaticParticlesFeature import PragmaticParticlesFeature
 from src.features.text.Tokenizer import Tokenizer
-from src.dataset.Tweets import Tweets
 
 FEATURES = ['pp', 'pos', 'emot']
 

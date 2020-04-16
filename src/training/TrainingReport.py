@@ -1,8 +1,10 @@
 import json
-import numpy as np
 from pathlib import Path
 
-from src.config import REPORTS_PATH, TARGET_DATASET
+import numpy as np
+
+from src.config import REPORTS_PATH
+from src.parameters import TARGET_DATASET
 
 
 class TrainingReport:

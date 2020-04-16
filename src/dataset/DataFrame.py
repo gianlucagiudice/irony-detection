@@ -1,25 +1,17 @@
 import csv
-import time
+import gc
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
-import gc
 
 from src.config import DATASET_PATH_OUT
 from src.features.FeatureManager import FEATURES
 
 
-def create_filename(name, target_feature, ext):
-    keys = [x for x in target_feature.keys() if target_feature[x] is True]
-    sep_char = '-' if len(keys) > 0 else ''
-    file_name = '{}-bow{}{}.{}'.format(name, sep_char, '-'.join(keys), ext)
-    return file_name
-
-
 def read_data_frame(filename):
     df = pd.read_csv(filename)
-    X = np.array(df.values[:, :-1], dtype=np.uint8)
+    X = np.array(df.values[:, :-1], dtype=np.single)
     y = np.array([True if value == 'ironic' else False for value in df.values[:, -1]], dtype=np.bool)
     del df
     gc.collect()
@@ -29,7 +21,9 @@ def read_data_frame(filename):
 class DataFrame:
     def __init__(self, dataset, text_feature, matrix_dict):
         self.dataset = dataset
-        self.text_feature = text_feature
+        # Unpack text feature
+        self.file, self.header, self.name = text_feature
+        # Features matrix
         self.matrix_dict = matrix_dict
 
     def save_data_frame(self):
@@ -44,32 +38,36 @@ class DataFrame:
         path = '{}{}/'.format(DATASET_PATH_OUT, self.dataset.dataset_name)
         Path(path).mkdir(parents=True, exist_ok=True)
 
+    def create_filename(self, name, target_feature, ext):
+        keys = [x for x in target_feature.keys() if target_feature[x] is True]
+        sep_char = '-' if len(keys) > 0 else ''
+        file_name = '{}-{}{}{}.{}'.format(name, self.name, sep_char, '-'.join(keys), ext)
+        return file_name
+
     def export_labeled_matrix(self):
         # Save all dataframes
         print('\n\t> Saving labeled dataframe . . .', end='')
-        text_feature_file, _ = self.text_feature
         powerset_features = self.powerset(FEATURES)
         for idx, set_features in enumerate(powerset_features, 1):
             print('\n', end='')
             target_feature = self.extract_target_features(set_features)
             matrix = self.build_matrix(target_feature)
             print('\t\t- Saving dataframe N. {}/{}: {}'.format(idx, len(powerset_features), target_feature))
-            self.save_matrix(text_feature_file, matrix, target_feature)
+            self.save_matrix(self.file, matrix, target_feature)
         # Close file
-        text_feature_file.close()
+        self.file.close()
         print(end='\n')
 
     def save_matrix(self, text_feature_file, matrix, target_feature):
         # Export path
         path = '{}{}/'.format(DATASET_PATH_OUT, self.dataset.dataset_name)
         # Generate filename
-        file_name = create_filename('labeled_matrix', target_feature, 'csv')
+        file_name = self.create_filename('labeled_matrix', target_feature, 'csv')
         # Create file
         with open('{}{}'.format(path, file_name), 'w', newline='') as csvfile:
             writer = csv.writer(csvfile)
             # Add header
-            _, unique_words = self.text_feature
-            header = ['t_{}'.format(word) for word in unique_words] + \
+            header = ['t_{}'.format(word) for word in self.header] + \
                      ['f_{}'.format(i + 1) for i, _ in enumerate(matrix[0])] + \
                      ['label']
             writer.writerow(header)
@@ -78,7 +76,7 @@ class DataFrame:
                 for i, (matrix_row, label) in enumerate(zip(matrix, self.dataset.labels)):
                     if i % 50 == 0:
                         print('\r\t\t\t{}% saved'.format(round(i / len(self.dataset.labels) * 100), 0), end='')
-                    text_row = [int(x) for x in text_feature.readline().strip().split(',')]
+                    text_row = [float(x) for x in text_feature.readline().strip().split(',')]
                     writer.writerow(text_row + list(matrix_row) + [label])
         print('\r\t\t\t{}% saved'.format(100), end='')
 

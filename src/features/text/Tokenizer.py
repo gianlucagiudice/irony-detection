@@ -1,9 +1,6 @@
 import re
-from operator import itemgetter
 
-import nltk
 from nltk.corpus import stopwords
-from nltk.corpus import wordnet
 from nltk.stem import PorterStemmer
 from nltk.tokenize import TweetTokenizer
 
