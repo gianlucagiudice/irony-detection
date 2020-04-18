@@ -1,0 +1,31 @@
+{
+  "features": "bow",
+  "classifier": "BayesianNetworks",
+  "overall": {
+    "report": {
+      "False": {
+        "precision": 0.889,
+        "recall": 0.941,
+        "f1-score": 0.914,
+        "support": 30000.0
+      },
+      "True": {
+        "precision": 0.785,
+        "recall": 0.647,
+        "f1-score": 0.709,
+        "support": 10000.0
+      },
+      "weighted avg": {
+        "precision": 0.863,
+        "recall": 0.867,
+        "f1-score": 0.863,
+        "support": 40000.0
+      },
+      "accuracy": 0.867425
+    },
+    "confusion-matrix": [
+      [28225.0, 1775.0],
+      [3528.0, 6472.0]
+    ]
+  }
+}
