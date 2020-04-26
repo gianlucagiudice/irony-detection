@@ -4,18 +4,14 @@ from src.features.PosFeature import PosFeature
 from src.features.PragmaticParticlesFeature import PragmaticParticlesFeature
 from src.features.text.Tokenizer import Tokenizer
 
-FEATURES = ['pp', 'pos', 'emot']
-
 
 class FeatureManager:
 
     def __init__(self, tweets, text_feature_strategy, debug=False):
         # List of tweets
         self.tweets = Tweets(tweets)
-        # Text feature file
-        self.text_feature = None
         # Final matrix
-        self.feature_matrix = dict()
+        self.feature_matrix = {'text': None, 'pp': None, 'pos': None, 'emot': None}
         # Text feature strategy
         self.text_feature_strategy = text_feature_strategy
         # Debug mode
@@ -25,7 +21,7 @@ class FeatureManager:
         # Evaluate all features
         self.evaluate_features()
         # Return final matrix
-        return self.text_feature, self.feature_matrix
+        return self.feature_matrix
 
     def evaluate_features(self):
         # ------ Tokenizer ------
@@ -33,12 +29,10 @@ class FeatureManager:
         # Compute all tweets
         self.tweets.tokens = tokenizer.tokenize()
 
-        # ------ Compute text features ------
-        text_features = self.text_feature_strategy(self.tweets)
-        # Get terms matrix
-        self.text_feature = text_features.extract_text_matrix()
-
         # ------ Features ------
+        # Text feature
+        text_features = self.text_feature_strategy(self.tweets)
+        self.feature_matrix['text'] = text_features.extract_text_matrix()
         # Pragmatic particles
         self.feature_matrix['pp'] = self.compute_pragmatic_particles(self.tweets.values)
         # Part of speech features

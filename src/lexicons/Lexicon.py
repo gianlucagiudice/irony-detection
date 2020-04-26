@@ -2,7 +2,7 @@ class Lexicon:
     def __init__(self, parse_strategy):
         # Parse strategy
         self.parse_strategy = parse_strategy
-        # Lexicon name
+        # Lexicon text_feature_name
         self.name = self.compute_name()
         # Parse lexicon
         self.dict_list = self.parse()

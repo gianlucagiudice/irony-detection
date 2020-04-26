@@ -16,7 +16,6 @@ CLASSIFIER_LIST = [
     naive_bayes.MultinomialNB(),    # Multinomial Naive Bayes
     svm.SVC(kernel='linear'),       # Support Vector Machines
     tree.DecisionTreeClassifier()   # Decision Trees
-    # TODO: Bayesian Networks
 ]
 
 

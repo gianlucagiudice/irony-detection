@@ -5,7 +5,6 @@ import numpy as np
 import pandas as pd
 
 from src.config import DATASET_PATH_OUT
-from src.features.FeatureManager import FEATURES
 
 
 def read_data_frame(filename):
@@ -28,11 +27,10 @@ def read_data_frame(filename):
 
 
 class DataFrame:
-    def __init__(self, dataset, text_feature, matrix_dict):
+    def __init__(self, dataset, matrix_dict):
         self.dataset = dataset
         # Unpack text feature
-        self.file, self.header, self.name = text_feature
-        # Features matrix
+        self.file, self.header, self.text_feature_name = matrix_dict['text']
         self.matrix_dict = matrix_dict
 
     def save_data_frame(self):
@@ -44,19 +42,14 @@ class DataFrame:
         self.export_labeled_matrix()
 
     def create_folder(self):
+        # Dataset folder
         path = '{}{}/'.format(DATASET_PATH_OUT, self.dataset.dataset_name)
         Path(path).mkdir(parents=True, exist_ok=True)
-
-    def create_filename(self, name, target_feature, ext):
-        keys = [x for x in target_feature.keys() if target_feature[x] is True]
-        sep_char = '-' if len(keys) > 0 else ''
-        file_name = '{}-{}{}{}.{}'.format(name, self.name, sep_char, '-'.join(keys), ext)
-        return file_name
 
     def export_labeled_matrix(self):
         # Save all dataframes
         print('\n\t> Saving labeled dataframe . . .', end='')
-        powerset_features = self.powerset(FEATURES)
+        powerset_features = self.powerset(list(self.matrix_dict.keys()))
         for idx, set_features in enumerate(powerset_features, 1):
             print('\n', end='')
             target_feature = self.extract_target_features(set_features)
@@ -71,23 +64,29 @@ class DataFrame:
         # Export path
         path = '{}{}/'.format(DATASET_PATH_OUT, self.dataset.dataset_name)
         # Generate filename
-        file_name = self.create_filename('labeled_matrix', target_feature, 'csv')
+        file_name = self.create_filename(target_feature)
         # Create file
         with open('{}{}'.format(path, file_name), 'w', newline='') as csvfile:
             writer = csv.writer(csvfile)
             # Add header
-            header = ['t_{}'.format(word) for word in self.header] + \
-                     ['f_{}'.format(i + 1) for i, _ in enumerate(matrix[0])] + \
-                     ['label']
+            header = ['t_{}'.format(word) for word in self.header] if target_feature['text'] else []
+            header = header + ['f_{}'.format(i + 1) for i, _ in enumerate(matrix[0])]
+            header = header + ['label']
             writer.writerow(header)
             # Write data
-            with open(text_feature_file.name) as text_feature:
-                for i, (matrix_row, label) in enumerate(zip(matrix, self.dataset.labels)):
-                    if i % 50 == 0:
-                        print('\r\t\t\t{}% saved'.format(round(i / len(self.dataset.labels) * 100), 0), end='')
-                    text_row = [float(x) for x in text_feature.readline().strip().split(',')]
-                    writer.writerow(text_row + list(matrix_row) + [label])
+            if target_feature['text']:
+                with open(text_feature_file.name) as text_feature:
+                    self.write_matrix_rows(writer, matrix, text_feature=text_feature)
+            else:
+                self.write_matrix_rows(writer, matrix)
         print('\r\t\t\t{}% saved'.format(100), end='')
+
+    def write_matrix_rows(self, writer, matrix, text_feature=None):
+        for i, (matrix_row, label) in enumerate(zip(matrix, self.dataset.labels)):
+            if i % 50 == 0:
+                print('\r\t\t\t{}% saved'.format(round(i / len(self.dataset.labels) * 100), 0), end='')
+            text_row = [float(x) for x in text_feature.readline().strip().split(',')] if text_feature else []
+            writer.writerow(text_row + list(matrix_row) + [label])
 
     def export_labeled_tweets(self):
         print('\t> Saving labeled tweets . . .')
@@ -108,8 +107,10 @@ class DataFrame:
     def build_matrix(self, target_feature):
         matrix = [[] for _ in range(len(self.dataset.tweets))]
         # Concatenate features
-        for feature, to_use in target_feature.items():
-            if to_use:
+        temp_dict = target_feature.copy()
+        temp_dict.pop('text')
+        for feature, use in temp_dict.items():
+            if use:
                 matrix = np.concatenate([matrix, self.matrix_dict[feature]], axis=1)
         return matrix
 
@@ -119,11 +120,19 @@ class DataFrame:
         x = len(iterable)
         for i in range(1 << x):
             out += [[iterable[j] for j in range(x) if (i & (1 << j))]]
+        # Remove empty set
+        out.remove([])
+        # Return powerset
         return out
 
-    @staticmethod
-    def extract_target_features(feature_list):
-        target_feature = {'pp': False, 'pos': False, 'emot': False}
+    def extract_target_features(self, feature_list):
+        target_feature = {feature: False for feature in self.matrix_dict.keys()}
         for feature in feature_list:
             target_feature[feature] = True
         return target_feature
+
+    def create_filename(self, target_feature):
+        keys = [key for key, value in target_feature.items() if value]
+        if 'text' in keys:
+            keys[keys.index('text')] = self.text_feature_name
+        return '-'.join(['labeled_matrix'] + keys) + '.csv'

@@ -14,10 +14,10 @@ def main():
     # ----- Compute matrix -----
     print(">> Extracting features . . .")
     feature_extractor = FeatureManager(dataset.tweets, TEXT_FEATURE_STRATEGY, debug=DEBUG)
-    text_feature, matrix = feature_extractor.extract_features()
+    feature_matrix = feature_extractor.extract_features()
     # ----- Export data frame to file -----
     print(">> Saving features . . .")
-    df = DataFrame(dataset, text_feature, matrix)
+    df = DataFrame(dataset, feature_matrix)
     df.save_data_frame()
     # ----- Process completed -----
     print('>> Completed.')
