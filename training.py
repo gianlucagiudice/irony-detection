@@ -24,7 +24,7 @@ def extract_features_from_name(filename):
 
 def read_matrix_filename():
     return [file for file in os.listdir(DATASET_PATH_OUT + TARGET_DATASET)
-            if 'labeled_matrix-' in file]
+            if 'labeled_matrix-' in file and 'labeled_matrix-bow' not in file]
 
 
 def main():
