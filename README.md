@@ -1,17 +1,27 @@
 # Irony Detection
 
 #### Input
+Insert dataset file with the associated `_lables.json` into
 ```
 data/raw/DATASET_NAME/
 ```
-Then put dataset files `f_n.data` with their relative `_lables.json`
 
 #### Output
 ```
 data/processed/DATASET_NAME/
 ```
 
-#### Entry point 
-```
-/main.py 
-```
+#### Entry point
+- Preprocessing
+    ```
+    /main.py 
+    ```
+- Training
+    ```
+    /training.py 
+    ```
+- Report analysis
+    ```
+    /notebooks/report_analysis.ipynb
+    ```
+ 
