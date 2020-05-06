@@ -17,7 +17,6 @@ class TextFeature(Feature, Debugger, metaclass=ABCMeta):
     @ abstractmethod
     def extract_text_matrix(self):
         print("> {} features . . .".format(self.name.upper()))
-        pass
 
     @ abstractmethod
     def compute_row(self, words):

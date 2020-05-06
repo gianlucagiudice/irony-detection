@@ -18,7 +18,7 @@ class Bert(TextFeature):
         # Tweets
         self.tweet_list = tweets.values
         # Tokenizer
-        self.tokenizer = None
+        self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
         # Model
         self.model = None
         # Bert
@@ -29,17 +29,12 @@ class Bert(TextFeature):
 
     def extract_text_matrix(self):
         super().extract_text_matrix()
-        # Create tokenizer
-        self.build_tokenizer()
         # Build model
         self.build_model()
         # Fill matrix
         self.feature_length = self.fill_matrix(self.compute_row, self.tweet_list, self.pool, self.chunk_size)
         # Return matrix
         return self.matrix, list(range(1, self.feature_length + 1)), self.name
-
-    def build_tokenizer(self):
-        self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
     def build_model(self):
         self.model = BertModel.from_pretrained('bert-base-uncased')

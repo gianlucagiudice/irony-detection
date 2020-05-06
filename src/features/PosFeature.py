@@ -66,7 +66,6 @@ class PosFeature(Feature, Debugger):
             # Execute script
             return subprocess.run(command + [temp_file.name], capture_output=True, text=True, check=True)
 
-
     def parse_pos_tags(self, pos_out):
         # Evaluate each tweet
         for row in pos_out.split('\n')[:-1]:

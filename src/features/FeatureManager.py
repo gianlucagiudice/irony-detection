@@ -27,7 +27,7 @@ class FeatureManager:
         # ------ Tokenizer ------
         tokenizer = Tokenizer(self.tweets.values)
         # Compute all tweets
-        self.tweets.tokens = tokenizer.tokenize()
+        self.tweets.tokens, self.tweets.unique_words_list = tokenizer.tokenize()
 
         # ------ Features ------
         # Text feature
