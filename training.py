@@ -1,14 +1,14 @@
-from src.config import REPORTS_PATH
-from src.training.TrainingManager import TrainingManager, CLASSIFIER_LIST
-from src.training.TrainingReport import TrainingReport
-from src.training.Logger import Logger
-from src.parameters import TARGET_DATASET
-
-from sklearn.utils import shuffle
 import os
 import shutil
 
+from sklearn.utils import shuffle
+
+from src.config import REPORTS_PATH
 from src.dataset.DataFrame import *
+from src.parameters import TARGET_DATASET
+from src.training.Logger import Logger
+from src.training.TrainingManager import TrainingManager, CLASSIFIER_LIST
+from src.training.TrainingReport import TrainingReport
 
 
 def create_report_folder():
@@ -24,7 +24,7 @@ def extract_features_from_name(filename):
 
 def read_matrix_filename():
     return [file for file in os.listdir(DATASET_PATH_OUT + TARGET_DATASET)
-            if 'labeled_matrix-' in file]
+            if 'labeled_matrix' in file]
 
 
 def main():

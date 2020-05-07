@@ -41,8 +41,6 @@ class TrainingManager:
         self.generate_folds()
         # Create process pool
         self.create_process_pool()
-        # Start all process
-        self.start_all_processes()
         # Join all process
         self.join_all_processes()
         # Return shared dict
@@ -53,10 +51,13 @@ class TrainingManager:
 
     def create_process_pool(self):
         for fold_number, (train_fold, test_fold) in enumerate(self.folds, start=1):
+            # Split data
             X_train, X_test = self.X[train_fold], self.X[test_fold]
             y_train, y_test = self.y[train_fold], self.y[test_fold]
-            self.process_pool += [Process(target=self.fit_classifier,
-                                          args=(X_train, y_train, X_test, y_test, fold_number))]
+            # Start new process
+            self.start_new_process(X_train, y_train, X_test, y_test, fold_number)
+        # Print info
+        self.logger.print('All process started.')
 
     def fit_classifier(self, X_train, y_train, X_test, y_test, fold):
         start_time = time.time()
@@ -81,23 +82,28 @@ class TrainingManager:
         with self.lock:
             self.logger.print(output)
 
-    def start_all_processes(self):
-        for process in self.process_pool:
-            # Start new process
-            process.start()
-            self.logger.print(str(process))
-            # Memory usage
-            process_info = psutil.Process(process.pid)
-            process_mem = process_info.memory_info()[0]
-            # Wait for memory
-            while True:
-                time.sleep(5)
-                available_mem = psutil.virtual_memory()[1]
-                if available_mem - 1.5 * process_mem > 0:
-                    break
-                else:
-                    time.sleep(10)
-        self.logger.print('All process started.')
+    def start_new_process(self, X_train, y_train, X_test, y_test, fold_number):
+        # Create new process
+        process = Process(target=self.fit_classifier,
+                          args=(X_train, y_train, X_test, y_test, fold_number))
+        # Start new process
+        process.start()
+        # Add process to process pool
+        self.process_pool.append(process)
+        # Print info
+        self.logger.print(str(process))
+        # Memory usage
+        process_info = psutil.Process(process.pid)
+        process_mem = process_info.memory_info()[0]
+        # Wait for memory
+        while True:
+            #time.sleep(5)
+            available_mem = psutil.virtual_memory()[1]
+            if available_mem - 1.5 * process_mem > 0:
+                break
+            else:
+                #time.sleep(10)
+                pass
 
     def join_all_processes(self):
         [process.join() for process in self.process_pool]

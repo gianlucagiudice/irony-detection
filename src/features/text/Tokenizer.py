@@ -13,8 +13,7 @@ OCCURRENCE_THRESHOLD = 10
 
 class Tokenizer(Debugger):
 
-    valid_word_regexp = "[a-zA-Z]+"
-
+    valid_token_regexp = "[a-zA-Z]+"
     stopwords_set = set(stopwords.words('english'))
     exclude_words_set = {'irony', 'ironic', 'rt'}   # RT = retweet
 
@@ -49,7 +48,7 @@ class Tokenizer(Debugger):
         # Tokenize all tweets
         for index, tweet in enumerate(self.tweets_list, 1):
             tokens = tokenizer.tokenize(tweet)
-            words = [token for token in tokens if self.is_valid_word(token)]
+            words = [token for token in tokens if self.is_valid_token(token)]
             words_stemmed = self.stem_words(words)
             self.update_occurrences(words_stemmed)
             self.words_list.append(words_stemmed)
@@ -68,8 +67,8 @@ class Tokenizer(Debugger):
         for word in words:
             self.word_occurrence[word] = self.word_occurrence.get(word, 0) + 1
 
-    def is_valid_word(self, token):
-        return re.fullmatch(self.valid_word_regexp, token)
+    def is_valid_token(self, token):
+        return re.fullmatch(self.valid_token_regexp, token)
 
     def build_unique_words_list(self):
         stopwords_stemmed_set = set(self.stem_words(self.stopwords_set))

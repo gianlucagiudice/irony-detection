@@ -1,3 +1,4 @@
+import re
 from multiprocessing.pool import ThreadPool
 
 import torch
@@ -12,6 +13,9 @@ class Bert(TextFeature):
 
     chunk_size = 1000
     pool = ThreadPool
+
+    valid_token_regexp = "#*[a-zA-Z]+"
+    exclude_words_set = {'irony', 'ironic', 'rt'}   # RT = retweet
 
     def __init__(self, tweets):
         super().__init__()
@@ -41,11 +45,22 @@ class Bert(TextFeature):
         self.model.eval()
 
     def tokenize(self, tweet):
+        # Mark tweet
         marked_text = '{}{}{}'.format('[CLS] ', tweet, ' [SEP]')
+        # Tokenize tweet
         tokenized_text = self.tokenizer.tokenize(marked_text)
-        indexed_tokens = self.tokenizer.convert_tokens_to_ids(tokenized_text)
-        segments_ids = [1] * len(tokenized_text)
+        # Exclude invalid tokens
+        tokenized_text_valid = self.validate_tokens(tokenized_text)
+        # Convert tokens to Indexes
+        indexed_tokens = self.tokenizer.convert_tokens_to_ids(tokenized_text_valid)
+        segments_ids = [1] * len(tokenized_text_valid)
         return indexed_tokens, segments_ids
+
+    def validate_tokens(self, tokenized_text):
+        tokenized_text_valid = [token for token in tokenized_text[1:-1]
+                                if re.fullmatch(self.valid_token_regexp, token)
+                                and token not in self.exclude_words_set]
+        return [tokenized_text[0]] + tokenized_text_valid + [tokenized_text[-1]]
 
     def compute_row(self, tweet):
         # Tokenize tweet
@@ -61,4 +76,3 @@ class Bert(TextFeature):
         sentence_embedding = torch.mean(tokens_vects, dim=0)
         # Return tokens average
         return [tensor.item() for tensor in sentence_embedding]
-
