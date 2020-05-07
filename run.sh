@@ -1,3 +1,3 @@
-./venv/bin/python3 main.py Test bow
-./venv/bin/python3 main.py Test bert
-./venv/bin/python3 training.py Test
+./venv/bin/python3 main.py TwReyes2013 bow
+./venv/bin/python3 main.py TwReyes2013 bert
+./venv/bin/python3 training.py TwReyes2013
