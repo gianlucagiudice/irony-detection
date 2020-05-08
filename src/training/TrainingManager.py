@@ -97,12 +97,12 @@ class TrainingManager:
         process_mem = process_info.memory_info()[0]
         # Wait for memory
         while True:
-            #time.sleep(5)
+            time.sleep(5)
             available_mem = psutil.virtual_memory()[1]
             if available_mem - 1.5 * process_mem > 0:
                 break
             else:
-                #time.sleep(10)
+                time.sleep(10)
                 pass
 
     def join_all_processes(self):
