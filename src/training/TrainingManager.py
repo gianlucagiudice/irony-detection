@@ -13,9 +13,9 @@ N_FOLDS = 10
 
 # List of classifier to train
 CLASSIFIER_LIST = [
-    naive_bayes.MultinomialNB(),    # Multinomial Naive Bayes
-    svm.SVC(kernel='linear'),       # Support Vector Machines
-    tree.DecisionTreeClassifier()   # Decision Trees
+    naive_bayes.MultinomialNB(),            # Multinomial Naive Bayes
+    tree.DecisionTreeClassifier(),          # Decision Trees
+    svm.SVC(kernel='linear', verbose=True)  # Support Vector Machines
 ]
 
 
@@ -91,7 +91,7 @@ class TrainingManager:
         # Add process to process pool
         self.process_pool.append(process)
         # Print info
-        self.logger.print(str(process))
+        self.logger.print('{} -> Target fold: {}'.format(str(process), fold_number))
         # Memory usage
         process_info = psutil.Process(process.pid)
         process_mem = process_info.memory_info()[0]
