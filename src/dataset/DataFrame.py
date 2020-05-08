@@ -7,7 +7,7 @@ import pandas as pd
 from src.config import DATASET_PATH_OUT
 
 
-def read_data_frame(filename):
+def read_dataframe(filename):
     n_cols = pd.read_csv(filename, nrows=1).values.size - 1
     n_rows = sum(1 for _ in open(filename)) - 1
     # Create matrix

@@ -43,7 +43,7 @@ def main():
         # Read dataset for target features
         logger.print('Reading dataset . . .')
         path = '{}{}/{}'.format(DATASET_PATH_OUT, TARGET_DATASET, target_file)
-        X, y = shuffle(*read_data_frame(path), random_state=22)
+        X, y = shuffle(*read_dataframe(path), random_state=22)
         logger.print('Read completed.')
         # Iterate over each classifier
         for idx_classifier, target_classifier in enumerate(CLASSIFIER_LIST, 1):
