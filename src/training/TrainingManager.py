@@ -99,7 +99,7 @@ class TrainingManager:
         while True:
             time.sleep(5)
             available_mem = psutil.virtual_memory()[1]
-            if available_mem - 1.5 * process_mem > 0:
+            if available_mem - 2 * process_mem > 0:
                 break
             else:
                 time.sleep(10)
