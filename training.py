@@ -13,9 +13,8 @@ from src.training.TrainingReport import TrainingReport
 
 def create_report_folder():
     report_path = REPORTS_PATH + TARGET_DATASET
-    if os.path.exists(report_path):
-        shutil.rmtree(report_path)
-    Path(report_path).mkdir(parents=True)
+    if not os.path.exists(report_path):
+        Path(report_path).mkdir(parents=True)
 
 
 def extract_features_from_name(filename):
@@ -23,8 +22,9 @@ def extract_features_from_name(filename):
 
 
 def read_matrix_filename():
+    return ['labeled_matrix-bow-pos.csv', 'labeled_matrix-bert-emot.csv', 'labeled_matrix-pos.csv']
     files_path = DATASET_PATH_OUT + TARGET_DATASET
-    return sorted([file for file in os.listdir(files_path) if 'labeled_matrix' in file])
+    return sorted([file for file in os.listdir(files_path) if 'labeled_matrix' in file and file not in no])
 
 
 def main():

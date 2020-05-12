@@ -24,6 +24,8 @@ def parse_parameters_main(argv):
         text_feature_strategy = Bow.Bow
     elif target_text_feature == 'bert':
         text_feature_strategy = Bert.Bert
+    elif target_text_feature == 'sbert':
+        text_feature_strategy = Sbert.Sbert
     else:
         print("Error: Invalid text feature!")
         quit(-2)

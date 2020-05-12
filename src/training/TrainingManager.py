@@ -57,7 +57,7 @@ class TrainingManager:
             # Start new process
             self.start_new_process(X_train, y_train, X_test, y_test, fold_number)
         # Print info
-        self.logger.print('All process started.')
+        self.logger.print('All processes started.')
 
     def fit_classifier(self, X_train, y_train, X_test, y_test, fold):
         start_time = time.time()
@@ -99,7 +99,7 @@ class TrainingManager:
         while True:
             time.sleep(5)
             available_mem = psutil.virtual_memory()[1]
-            if available_mem - 2 * process_mem > 0:
+            if available_mem - 1.75 * process_mem > 0:
                 break
             else:
                 time.sleep(10)
