@@ -29,4 +29,4 @@ class Sbert(TextFeature):
         return self.matrix, list(range(1, self.feature_length + 1)), self.name
 
     def compute_row(self, tweet):
-        return self.model.encode(tweet)
+        return self.model.encode([tweet])[0]

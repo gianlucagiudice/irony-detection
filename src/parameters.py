@@ -1,6 +1,6 @@
 import sys
 
-from src.features.text import Bow, Bert
+from src.features.text import Bow, Bert, Sbert
 
 # ---- Target dataset ----
 TARGET_DATASET = None
