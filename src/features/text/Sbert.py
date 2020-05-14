@@ -1,3 +1,4 @@
+import re
 from multiprocessing.pool import ThreadPool
 
 from sentence_transformers import SentenceTransformer
@@ -11,6 +12,8 @@ class Sbert(TextFeature):
 
     chunk_size = 1000
     pool = ThreadPool
+
+    exclude_words_set = {'irony', 'ironic', 'rt'}
 
     def __init__(self, tweets):
         super().__init__()
@@ -29,4 +32,16 @@ class Sbert(TextFeature):
         return self.matrix, list(range(1, self.feature_length + 1)), self.name
 
     def compute_row(self, tweet):
-        return self.model.encode([tweet])[0]
+        target_tweet = self.remove_hot_words(tweet.lower())
+        return self.model.encode([target_tweet])[0]
+
+    def remove_hot_words(self, tweet):
+        out_tweet = tweet
+        for hot_word in self.exclude_words_set:
+            # Search for hot_word in tweet
+            for match in re.finditer(hot_word, tweet):
+                start, end = match.start(), match.end()
+                p = '\0' * (end - start)
+                # Replace hot word with placeholder
+                out_tweet = out_tweet[:start] + p + out_tweet[end:]
+        return re.sub('\0', '', out_tweet)
