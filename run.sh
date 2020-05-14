@@ -1,3 +1,5 @@
-python3 main.py TwReyes2013 bow
-python3 main.py TwReyes2013 bert
-python3 training.py TwReyes2013
+args=("$@")
+python3 main.py ${args[0]} bow
+python3 main.py ${args[0]} bert
+python3 main.py ${args[0]} sbert
+python3 training.py ${args[0]}
