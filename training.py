@@ -1,11 +1,10 @@
 import os
-import shutil
 
 from sklearn.utils import shuffle
 
-from src.config import REPORTS_PATH
+from src.utils.config import REPORTS_PATH
 from src.dataset.DataFrame import *
-from src.parameters import TARGET_DATASET
+from src.utils.parameters import TARGET_DATASET
 from src.training.Logger import Logger
 from src.training.TrainingManager import TrainingManager, CLASSIFIER_LIST
 from src.training.TrainingReport import TrainingReport

@@ -1,7 +1,7 @@
 import json
 
-from src.config import DATASET_LABEL_NAME
-from src.config import DATASET_PATH_IN
+from src.utils.config import DATASET_LABEL_NAME
+from src.utils.config import DATASET_PATH_IN
 
 
 class Dataset:

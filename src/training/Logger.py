@@ -2,7 +2,7 @@ import logging
 import time
 
 from main import TARGET_DATASET
-from src.config import REPORTS_PATH
+from src.utils.config import REPORTS_PATH
 
 LOG_FILENAME = 'training'
 LOG_FILE_PATH = '{}{}/{}.log'.format(REPORTS_PATH, TARGET_DATASET, LOG_FILENAME)

@@ -4,9 +4,9 @@ from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 from nltk.tokenize import TweetTokenizer
 
-from src.config import DATASET_PATH_OUT
+from src.utils.config import DATASET_PATH_OUT
 from src.features.Debugger import Debugger
-from src.parameters import TARGET_DATASET
+from src.utils.parameters import TARGET_DATASET
 
 OCCURRENCE_THRESHOLD = 10
 

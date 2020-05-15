@@ -2,7 +2,7 @@ import csv
 import tempfile
 from abc import ABCMeta, abstractmethod
 
-from src.config import THREAD_NUMBER
+from src.utils.config import THREAD_NUMBER
 from src.features.Debugger import Debugger
 from src.features.Feature import Feature
 

@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from src.config import DATASET_PATH_OUT
+from src.utils.config import DATASET_PATH_OUT
 
 
 def read_dataframe(filename):

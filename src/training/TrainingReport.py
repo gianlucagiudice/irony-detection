@@ -3,8 +3,8 @@ from pathlib import Path
 
 import numpy as np
 
-from src.config import REPORTS_PATH
-from src.parameters import TARGET_DATASET
+from src.utils.config import REPORTS_PATH
+from src.utils.parameters import TARGET_DATASET
 
 
 class TrainingReport:

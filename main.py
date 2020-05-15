@@ -1,7 +1,7 @@
 from src.dataset.DataFrame import DataFrame
 from src.dataset.Dataset import Dataset
 from src.features.FeatureManager import FeatureManager
-from src.parameters import TARGET_TEXT_FEATURE, TARGET_DATASET, TEXT_FEATURE_STRATEGY
+from src.utils.parameters import TARGET_TEXT_FEATURE, TARGET_DATASET, TEXT_FEATURE_STRATEGY
 
 
 def main():
