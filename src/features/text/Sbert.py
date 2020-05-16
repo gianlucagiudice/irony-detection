@@ -41,7 +41,6 @@ class Sbert(TextFeature):
             # Search for hot_word in tweet
             for match in re.finditer(hot_word, tweet):
                 start, end = match.start(), match.end()
-                p = '\0' * (end - start)
                 # Replace hot word with placeholder
-                out_tweet = out_tweet[:start] + p + out_tweet[end:]
+                out_tweet = out_tweet[:start] + '\0' * (end - start) + out_tweet[end:]
         return re.sub('\0', '', out_tweet)
