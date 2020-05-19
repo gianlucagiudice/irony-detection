@@ -1,14 +1,12 @@
+import threading
+from multiprocessing.pool import ThreadPool
+
 import numpy as np
 import pandas as pd
 import torch
 from pytorch_pretrained_bert import BertTokenizer
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
-
-import threading
-from multiprocessing.pool import ThreadPool
-
-from tqdm import tqdm
 
 from src.dataset.Dataset import Dataset
 from src.features.text.Bert import Bert
@@ -73,8 +71,6 @@ class Pca:
             with self.lock:
                 to_average = self.average_dict.get(idx, cat_token)
                 self.average_dict[idx] = np.mean([cat_token, to_average], axis=0)
-
-
 
     def fill_matrix(self):
         # Build matrix
