@@ -2,9 +2,9 @@ import re
 
 import numpy as np
 
-from src.utils.config import EMOTICONS_PATH, INITIALISM_PATH, ONOMATOPOEIC_PATH
 from src.features.Debugger import Debugger
 from src.features.Feature import Feature
+from src.utils.config import EMOTICONS_PATH, INITIALISM_PATH, ONOMATOPOEIC_PATH
 
 targetPunctuation = [',', '!', '?']
 

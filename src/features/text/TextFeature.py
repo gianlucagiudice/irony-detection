@@ -2,9 +2,9 @@ import csv
 import tempfile
 from abc import ABCMeta, abstractmethod
 
-from src.utils.config import THREAD_NUMBER
 from src.features.Debugger import Debugger
 from src.features.Feature import Feature
+from src.utils.config import THREAD_NUMBER
 
 
 class TextFeature(Feature, Debugger, metaclass=ABCMeta):

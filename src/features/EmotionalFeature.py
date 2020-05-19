@@ -1,11 +1,11 @@
 import numpy as np
 
-from src.utils.config import EMOLEX_PATH, EMOSENTICNET_PATH
 from src.features.Debugger import Debugger
 from src.features.Feature import Feature
 from src.lexicons.Lexicon import Lexicon
 from src.lexicons.parser.EmoLexParser import EmoLexParser
 from src.lexicons.parser.EmoSenticNetParser import EmoSenticNetParser
+from src.utils.config import EMOLEX_PATH, EMOSENTICNET_PATH
 
 # Lexicons list
 LEXICONS_LIST = [Lexicon(EmoLexParser(EMOLEX_PATH)),

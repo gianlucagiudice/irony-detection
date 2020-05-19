@@ -42,5 +42,5 @@ def parse_parameters_training(argv):
 script_name = sys.argv[0].split('/')[-1]
 if script_name == 'main.py':
     TARGET_DATASET, TARGET_TEXT_FEATURE, TEXT_FEATURE_STRATEGY = parse_parameters_main(sys.argv)
-elif script_name == 'training.py':
+elif script_name == 'training.py' or script_name == 'pca.py':
     TARGET_DATASET = parse_parameters_training(sys.argv)

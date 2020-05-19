@@ -1,9 +1,9 @@
 import subprocess
 import tempfile
 
-from src.utils.config import SCRIPT_PATH, RAM_SIZE, THREAD_NUMBER
 from src.features.Debugger import Debugger
 from src.features.Feature import Feature
+from src.utils.config import SCRIPT_PATH, RAM_SIZE, THREAD_NUMBER
 
 # Target Tags
 targetTagsDescription = \

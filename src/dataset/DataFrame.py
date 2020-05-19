@@ -26,6 +26,12 @@ def read_dataframe(filename):
     return X, y
 
 
+def create_folder(name):
+    # Dataset folder
+    path = '{}{}/'.format(DATASET_PATH_OUT, name)
+    Path(path).mkdir(parents=True, exist_ok=True)
+
+
 class DataFrame:
     def __init__(self, dataset, matrix_dict):
         self.dataset = dataset
@@ -35,16 +41,11 @@ class DataFrame:
 
     def save_data_frame(self):
         # Create dataset folder
-        self.create_folder()
+        create_folder(self.dataset.dataset_name)
         # Export labeled tweets
         self.export_labeled_tweets()
         # Export labeled matrix
         self.export_labeled_matrix()
-
-    def create_folder(self):
-        # Dataset folder
-        path = '{}{}/'.format(DATASET_PATH_OUT, self.dataset.dataset_name)
-        Path(path).mkdir(parents=True, exist_ok=True)
 
     def export_labeled_matrix(self):
         # Save all dataframes
