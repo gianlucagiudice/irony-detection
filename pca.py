@@ -50,7 +50,6 @@ class Pca:
         self.dump_df()
 
     def compute_dict(self):
-        print("\r\t{}% completed".format(0), end='')
         with ThreadPool(THREAD_NUMBER) as pool:
             pool.map(self.compute_row, self.tweet_list)
         print("\r\t{}% completed".format(100))
