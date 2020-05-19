@@ -10,13 +10,15 @@ from sklearn.preprocessing import StandardScaler
 
 from src.dataset.Dataset import Dataset
 from src.features.text.Bert import Bert
-from src.utils.config import REPORTS_PATH, THREAD_NUMBER
+from src.utils.config import REPORTS_PATH, THREAD_NUMBER, DATASET_PATH_OUT
 from src.utils.parameters import TARGET_DATASET
+
+COMPUTE_MATRIX = False
 
 
 class Pca:
 
-    def __init__(self, tweets):
+    def __init__(self, tweets=None):
         # Tweets
         self.tweet_list = tweets
         # Tokenizer
@@ -31,23 +33,17 @@ class Pca:
         self.idx = None
         # Principal component
         self.principal_components = None
-        # Out dataframe
-        self.df = None
         # Lock
         self.lock = threading.Lock()
 
     def compute_matrix(self):
         # Compute dict
         self.compute_dict()
-        # Write dict to file
         # Create matrix
         self.fill_matrix()
-        # Fit pca
-        self.transform()
-        # Create dataframe
-        self.build_df()
-        # Save dataframe
-        self.dump_df()
+        # Dump matrix
+        self.dump_df(
+            self.build_df(self.matrix, self.idx), '{}{}.pca/PCA_matrix.pkl'.format(DATASET_PATH_OUT, TARGET_DATASET))
 
     def compute_dict(self):
         with ThreadPool(THREAD_NUMBER) as pool:
@@ -84,20 +80,31 @@ class Pca:
         # Standardize the Data
         self.matrix = StandardScaler().fit_transform(self.matrix)
 
-    def transform(self):
+    def transform(self, n_components):
         # Transform data
-        pca = PCA(n_components=2)
+        pca = PCA(n_components=n_components)
         self.principal_components = pca.fit_transform(self.matrix)
-
-    def build_df(self):
-        data = np.concatenate([self.principal_components, self.idx], axis=1)
         # Create dataframe
-        self.df = pd.DataFrame(
-            data=data, columns=['principal component 1', 'principal component 2', 'idx'])
+        columns = ['principal component {}'.format(i) for i in range(1, n_components + 1)] + ['idx']
+        df = self.build_df(self.principal_components, self.idx, columns=columns)
+        # Save dataframe
+        self.dump_df(df, '{}{}.pca/PCA_{}D.pkl'.format(REPORTS_PATH, TARGET_DATASET, n_components))
 
-    def dump_df(self):
-        filename = '{}{}.pca/PCA.pkl'.format(REPORTS_PATH, TARGET_DATASET)
-        self.df.to_pickle(filename)
+    def load_matrix(self):
+        df = pd.read_pickle("{}{}.pca/PCA_matrix.pkl".format(DATASET_PATH_OUT, TARGET_DATASET))
+        self.matrix = df.iloc[:,:-1].values
+        self.idx = np.array([[x] for x in df.iloc[:,-1].values])
+
+    @staticmethod
+    def build_df(data, idx, columns=None):
+        data = np.concatenate([data, idx], axis=1)
+        # Create dataframe
+        return pd.DataFrame(data=data, columns=columns)
+
+    @staticmethod
+    def dump_df(df, path):
+        df.to_pickle(path)
+
 
     @staticmethod
     def reshape_layers(encoded_layers):
@@ -122,12 +129,20 @@ def main():
     print("\tReading completed.")
     # PCA matrix
     print("> Computing matrix . . .")
-    pca = Pca(tweets)
-    pca.compute_matrix()
+    if COMPUTE_MATRIX:
+        pca = Pca(tweets)
+        pca.compute_matrix()
+    else:
+        pca = Pca()
+        pca.load_matrix()
     print("\tComputing completed.")
     # PCA fit
-    print("> Data transformation . . .")
-    pca.transform()
+    print("> Data transformation 2D. . .")
+    pca.transform(n_components=2)
+    print("\tTransformation completed.")
+    # PCA fit
+    print("> Data transformation 3D. . .")
+    pca.transform(n_components=3)
     print("\tTransformation completed.")
 
 
