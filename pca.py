@@ -5,9 +5,14 @@ from pytorch_pretrained_bert import BertTokenizer
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 
+import threading
+from multiprocessing.pool import ThreadPool
+
+from tqdm import tqdm
+
 from src.dataset.Dataset import Dataset
 from src.features.text.Bert import Bert
-from src.utils.config import REPORTS_PATH
+from src.utils.config import REPORTS_PATH, THREAD_NUMBER
 from src.utils.parameters import TARGET_DATASET
 
 
@@ -30,6 +35,8 @@ class Pca:
         self.principal_components = None
         # Out dataframe
         self.df = None
+        # Lock
+        self.lock = threading.Lock()
 
     def compute_matrix(self):
         # Compute dict
@@ -45,37 +52,40 @@ class Pca:
         self.dump_df()
 
     def compute_dict(self):
-        for i, tweet in enumerate(self.tweet_list):
-            # Tokenize tweet
-            indexed_tokens, segments_ids = Bert.tokenize(tweet, self.tokenizer)
-            # Create tensor
-            tokens_tensor = torch.tensor([indexed_tokens])
-            segments_tensor = torch.tensor([segments_ids])
-            # Predict hidden states
-            with torch.no_grad():
-                encoded_layers, _ = self.model(tokens_tensor, segments_tensor)
-            token_embeddings = Pca.reshape_layers(encoded_layers)
-            # Update dict
-            print("\r\t{}% completed".format(0), end='')
-            for idx, token in zip(indexed_tokens, token_embeddings):
-                cat_token = np.array(Pca.pooling_strategy(token))
+        print("\r\t{}% completed".format(0), end='')
+        with ThreadPool(THREAD_NUMBER) as pool:
+            pool.map(self.compute_row, self.tweet_list)
+        print("\r\t{}% completed".format(100))
+
+    def compute_row(self, tweet):
+        # Tokenize tweet
+        indexed_tokens, segments_ids = Bert.tokenize(tweet, self.tokenizer)
+        # Create tensor
+        tokens_tensor = torch.tensor([indexed_tokens])
+        segments_tensor = torch.tensor([segments_ids])
+        # Predict hidden states
+        with torch.no_grad():
+            encoded_layers, _ = self.model(tokens_tensor, segments_tensor)
+        token_embeddings = Pca.reshape_layers(encoded_layers)
+        # Update dict
+        for idx, token in zip(indexed_tokens, token_embeddings):
+            cat_token = np.array(Pca.pooling_strategy(token))
+            with self.lock:
                 to_average = self.average_dict.get(idx, cat_token)
                 self.average_dict[idx] = np.mean([cat_token, to_average], axis=0)
-            if i % 100:
-                perc = round(i / len(self.tweet_list) * 100, 3)
-                print("\r\t{}% completed".format(perc), end='')
-        print("\r\t{}% completed".format(100))
+
+
 
     def fill_matrix(self):
         # Build matrix
         n_row = len(self.average_dict)
         n_cols = len(next(iter(self.average_dict.values())))
         self.matrix = np.zeros((n_row, n_cols))
-        self.idx = np.zeros((n_row, 1))
+        self.idx = np.zeros((n_row, 1), dtype=np.int)
         # Fill matrix
         for i, (idx, value) in enumerate(self.average_dict.items()):
             self.matrix[i] = value
-            self.idx[i] = idx
+            self.idx[i] = int(idx)
         # Standardize the Data
         self.matrix = StandardScaler().fit_transform(self.matrix)
 
