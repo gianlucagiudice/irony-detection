@@ -124,11 +124,11 @@ def main():
     print("> Computing matrix . . .")
     pca = Pca(tweets)
     pca.compute_matrix()
-    print("\tComputing completed")
+    print("\tComputing completed.")
     # PCA fit
-    print("> Transforming data . . .")
+    print("> Data transformation . . .")
     pca.transform()
-    print("\tTransformation completed . . .")
+    print("\tTransformation completed.")
 
 
 main()
