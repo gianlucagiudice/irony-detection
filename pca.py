@@ -1,6 +1,3 @@
-import threading
-from multiprocessing.pool import ThreadPool
-
 import numpy as np
 import pandas as pd
 import torch
@@ -10,49 +7,76 @@ from sklearn.preprocessing import StandardScaler
 
 from src.dataset.Dataset import Dataset
 from src.features.text.Bert import Bert
-from src.utils.config import REPORTS_PATH, THREAD_NUMBER, DATASET_PATH_OUT
+from src.utils.config import REPORTS_PATH, DATASET_PATH_OUT
 from src.utils.parameters import TARGET_DATASET
 
-COMPUTE_MATRIX = False
+COMPUTE_MATRIX = True
 
 
 class Pca:
 
-    def __init__(self, tweets=None):
+    def __init__(self, tweets=None, labels=None):
         # Tweets
         self.tweet_list = tweets
+        self.labels = labels
         # Tokenizer
         self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
         # Model
         self.model = Bert.build_model()
         # Matrix dict
-        self.average_dict = dict()
+        self.word_embedding_dict = dict()
         # Matrix
         self.matrix = None
         # Idx
         self.idx = None
         # Principal component
         self.principal_components = None
-        # Lock
-        self.lock = threading.Lock()
+        # Coefficient
+        self.coefficient_dict = dict()
+        self.coefficient_matrix = None
 
     def compute_matrix(self):
         # Compute dict
-        self.compute_dict()
+        self.compute_word_embedding()
         # Create matrix
         self.fill_matrix()
+        # Create coefficient matrix
+        self.evaluate_coefficient_vector()
         # Dump matrix
-        self.dump_df(
-            self.build_df(self.matrix, self.idx), '{}{}.pca/PCA_matrix.pkl'.format(DATASET_PATH_OUT, TARGET_DATASET))
+        path = '{}{}.pca/PCA_matrix.pkl'.format(DATASET_PATH_OUT, TARGET_DATASET)
+        self.dump_df(self.build_df([self.matrix, self.idx, self.coefficient_matrix]), path)
 
-    def compute_dict(self):
-        with ThreadPool(THREAD_NUMBER) as pool:
-            pool.map(self.compute_row, self.tweet_list)
+    def compute_word_embedding(self):
+        for index, tweet in enumerate(self.tweet_list):
+            self.compute_row(tweet, index)
+            if index % 100 == 0:
+                print("\r\t{}% completed".format((index+1) / len(self.tweet_list) * 100), end='')
         print("\r\t{}% completed".format(100))
 
-    def compute_row(self, tweet):
+    def fill_matrix(self):
+        # Build matrix
+        n_row = len(self.word_embedding_dict)
+        n_cols = len(next(iter(self.word_embedding_dict.values())))
+        self.matrix = np.zeros((n_row, n_cols))
+        self.idx = np.zeros((n_row, 1), dtype=np.int)
+        # Fill matrix
+        for i, (idx, value) in enumerate(self.word_embedding_dict.items()):
+            self.matrix[i] = value
+            self.idx[i] = int(idx)
+        # Standardize the Data
+        self.matrix = StandardScaler().fit_transform(self.matrix)
+
+    def evaluate_coefficient_vector(self):
+        # Initialize coefficient vector
+        self.coefficient_matrix = np.zeros((len(self.word_embedding_dict), 4))
+        # Evaluate vector
+        for i, word_idx in enumerate(self.idx):
+            pos, neg = self.coefficient_dict[word_idx[0]]['+'], self.coefficient_dict[word_idx[0]]['-']
+            self.coefficient_matrix[i] = [pos, neg, pos + neg, (pos/(pos + neg)) - (neg/(pos + neg))]
+
+    def compute_row(self, tweet, row_idx):
         # Tokenize tweet
-        indexed_tokens, segments_ids = Bert.tokenize(tweet, self.tokenizer)
+        indexed_tokens, segments_ids = Bert.tokenize(tweet, self.tokenizer, exclude_hot_words=False)
         # Create tensor
         tokens_tensor = torch.tensor([indexed_tokens])
         segments_tensor = torch.tensor([segments_ids])
@@ -63,30 +87,24 @@ class Pca:
         # Update dict
         for idx, token in zip(indexed_tokens, token_embeddings):
             cat_token = np.array(Pca.pooling_strategy(token))
-            with self.lock:
-                to_average = self.average_dict.get(idx, cat_token)
-                self.average_dict[idx] = np.mean([cat_token, to_average], axis=0)
-
-    def fill_matrix(self):
-        # Build matrix
-        n_row = len(self.average_dict)
-        n_cols = len(next(iter(self.average_dict.values())))
-        self.matrix = np.zeros((n_row, n_cols))
-        self.idx = np.zeros((n_row, 1), dtype=np.int)
-        # Fill matrix
-        for i, (idx, value) in enumerate(self.average_dict.items()):
-            self.matrix[i] = value
-            self.idx[i] = int(idx)
-        # Standardize the Data
-        self.matrix = StandardScaler().fit_transform(self.matrix)
+            # Update word embeddings
+            to_average = self.word_embedding_dict.get(idx, cat_token)
+            self.word_embedding_dict[idx] = np.mean([cat_token, to_average], axis=0)
+            # Update coefficient dict
+            dict_to_update = self.coefficient_dict.get(idx, {'+': 0, '-': 0})
+            dict_to_update['+'] = dict_to_update['+'] + (self.labels[row_idx] == 'ironic')
+            dict_to_update['-'] = dict_to_update['-'] + (self.labels[row_idx] == 'non_ironic')
+            self.coefficient_dict.update([(idx, dict_to_update)])
 
     def transform(self, n_components):
         # Transform data
         pca = PCA(n_components=n_components)
         self.principal_components = pca.fit_transform(self.matrix)
         # Create dataframe
-        columns = ['principal component {}'.format(i) for i in range(1, n_components + 1)] + ['idx']
-        df = self.build_df(self.principal_components, self.idx, columns=columns)
+        columns = ['principal component {}'.format(i) for i in range(1, n_components + 1)] +\
+                  ['idx', '#+', '#-', '#', 'coefficient']
+        data = [self.principal_components, self.idx, self.coefficient_matrix]
+        df = self.build_df(data, columns=columns)
         # Save dataframe
         self.dump_df(df, '{}{}.pca/PCA_{}D.pkl'.format(REPORTS_PATH, TARGET_DATASET, n_components))
 
@@ -96,15 +114,14 @@ class Pca:
         self.idx = np.array([[x] for x in df.iloc[:,-1].values])
 
     @staticmethod
-    def build_df(data, idx, columns=None):
-        data = np.concatenate([data, idx], axis=1)
+    def build_df(data_list, columns=None):
+        data = np.concatenate([*data_list], axis=1)
         # Create dataframe
         return pd.DataFrame(data=data, columns=columns)
 
     @staticmethod
     def dump_df(df, path):
         df.to_pickle(path)
-
 
     @staticmethod
     def reshape_layers(encoded_layers):
@@ -125,12 +142,14 @@ class Pca:
 def main():
     # Read all tweets
     print("> Reading dataset . . .")
-    tweets = Dataset(TARGET_DATASET).extract()
+    dataset = Dataset(TARGET_DATASET)
+    tweets = dataset.extract()
+    labels = dataset.labels
     print("\tReading completed.")
     # PCA matrix
     print("> Computing matrix . . .")
     if COMPUTE_MATRIX:
-        pca = Pca(tweets)
+        pca = Pca(tweets=tweets, labels=labels)
         pca.compute_matrix()
     else:
         pca = Pca()

@@ -61,21 +61,21 @@ class Bert(TextFeature):
         return model
 
     @staticmethod
-    def tokenize(tweet, tokenizer):
+    def tokenize(tweet, tokenizer, exclude_hot_words=True):
         # Mark tweet
         marked_text = '{}{}{}'.format('[CLS] ', tweet, ' [SEP]')
         # Tokenize tweet
         tokenized_text = tokenizer.tokenize(marked_text)
         # Exclude invalid tokens
-        tokenized_text_valid = Bert.validate_tokens(tokenized_text)
+        tokenized_text_valid = Bert.validate_tokens(tokenized_text, exclude_hot_words)
         # Convert tokens to Indexes
         indexed_tokens = tokenizer.convert_tokens_to_ids(tokenized_text_valid)
         segments_ids = [1] * len(tokenized_text_valid)
         return indexed_tokens, segments_ids
 
     @staticmethod
-    def validate_tokens(tokenized_text):
-        tokenized_text_valid = [token for token in tokenized_text[1:-1]
-                                if re.fullmatch(valid_token_regexp, token)
-                                and token not in exclude_words_set]
+    def validate_tokens(tokenized_text, exclude_hot_words):
+        tokenized_text_valid = [token for token in tokenized_text[1:-1] if re.fullmatch(valid_token_regexp, token)]
+        if exclude_hot_words:
+            tokenized_text_valid = [token for token in tokenized_text[1:-1] if token not in exclude_words_set]
         return [tokenized_text[0]] + tokenized_text_valid + [tokenized_text[-1]]
