@@ -12,6 +12,8 @@ from src.utils.parameters import TARGET_DATASET
 
 COMPUTE_MATRIX = True
 
+valid_token_regexp = "[a-zA-Z]+"
+
 
 class Pca:
 
@@ -29,8 +31,7 @@ class Pca:
         self.matrix = None
         # Idx
         self.idx = None
-        # Principal component
-        self.principal_components = None
+        self.words_vector = None
         # Coefficient
         self.coefficient_dict = dict()
         self.coefficient_matrix = None
@@ -44,7 +45,7 @@ class Pca:
         self.evaluate_coefficient_vector()
         # Dump matrix
         path = '{}{}.pca/PCA_matrix.pkl'.format(DATASET_PATH_OUT, TARGET_DATASET)
-        self.dump_df(self.build_df([self.matrix, self.idx, self.coefficient_matrix]), path)
+        self.dump_df(self.build_df([self.matrix, self.idx, self.words_vector, self.coefficient_matrix]), path)
 
     def compute_word_embedding(self):
         for index, tweet in enumerate(self.tweet_list):
@@ -69,14 +70,18 @@ class Pca:
     def evaluate_coefficient_vector(self):
         # Initialize coefficient vector
         self.coefficient_matrix = np.zeros((len(self.word_embedding_dict), 4))
+        words_vector = []
         # Evaluate vector
         for i, word_idx in enumerate(self.idx):
             pos, neg = self.coefficient_dict[word_idx[0]]['+'], self.coefficient_dict[word_idx[0]]['-']
             self.coefficient_matrix[i] = [pos, neg, pos + neg, (pos/(pos + neg)) - (neg/(pos + neg))]
+            words_vector.append(self.tokenizer.convert_ids_to_tokens(word_idx)[0])
+        self.words_vector = np.array([[word] for word in words_vector])
 
     def compute_row(self, tweet, row_idx):
         # Tokenize tweet
-        indexed_tokens, segments_ids = Bert.tokenize(tweet, self.tokenizer, exclude_hot_words=False)
+        indexed_tokens, segments_ids = Bert.tokenize(
+            tweet, self.tokenizer, exclude_hot_words=False, token_regexp=valid_token_regexp)
         # Create tensor
         tokens_tensor = torch.tensor([indexed_tokens])
         segments_tensor = torch.tensor([segments_ids])
@@ -99,14 +104,28 @@ class Pca:
     def transform(self, n_components):
         # Transform data
         pca = PCA(n_components=n_components)
-        self.principal_components = pca.fit_transform(self.matrix)
+        # x = pca.fit(self.matrix)
+        principal_components = pca.fit_transform(self.matrix)
         # Create dataframe
         columns = ['principal component {}'.format(i) for i in range(1, n_components + 1)] +\
-                  ['idx', '#+', '#-', '#', 'coefficient']
-        data = [self.principal_components, self.idx, self.coefficient_matrix]
-        df = self.build_df(data, columns=columns)
+                  ['idx', 'word', '#+', '#-', '#', 'coefficient']
+        data = [principal_components, self.idx, self.words_vector, self.coefficient_matrix]
+        types = {'idx': int, 'word': np.str, '#+': float, '#-': float, '#': float, 'coefficient': float}
+        types.update([('principal component {}'.format(i), float) for i in range(1, n_components + 1)])
+        df = self.build_df(data, types=types, columns=columns)
         # Save dataframe
         self.dump_df(df, '{}{}.pca/PCA_{}D.pkl'.format(REPORTS_PATH, TARGET_DATASET, n_components))
+
+    def transform_transposed(self, n_components):
+        # Transform data
+        pca = PCA(n_components=n_components)
+        principal_components = pca.fit_transform(self.matrix.transpose())
+        # Create dataframe
+        columns = ['principal component {}'.format(i) for i in range(1, n_components + 1)]
+        types = {'principal component {}'.format(i): float for i in range(1, n_components + 1)}
+        df = self.build_df([principal_components], types=types, columns=columns)
+        # Save dataframe
+        self.dump_df(df, '{}{}.pca/PCA_{}D_transposed.pkl'.format(REPORTS_PATH, TARGET_DATASET, n_components))
 
     def load_matrix(self):
         df = pd.read_pickle("{}{}.pca/PCA_matrix.pkl".format(DATASET_PATH_OUT, TARGET_DATASET))
@@ -114,10 +133,13 @@ class Pca:
         self.idx = np.array([[x] for x in df.iloc[:,-1].values])
 
     @staticmethod
-    def build_df(data_list, columns=None):
+    def build_df(data_list, types=None, columns=None):
         data = np.concatenate([*data_list], axis=1)
         # Create dataframe
-        return pd.DataFrame(data=data, columns=columns)
+        if types:
+            return pd.DataFrame(data=data, columns=columns).astype(types)
+        else:
+            return pd.DataFrame(data=data, columns=columns)
 
     @staticmethod
     def dump_df(df, path):
@@ -155,13 +177,17 @@ def main():
         pca = Pca()
         pca.load_matrix()
     print("\tComputing completed.")
-    # PCA fit
+    # PCA fit 2D
     print("> Data transformation 2D. . .")
     pca.transform(n_components=2)
     print("\tTransformation completed.")
-    # PCA fit
+    # PCA fit 3D
     print("> Data transformation 3D. . .")
     pca.transform(n_components=3)
+    print("\tTransformation completed.")
+    # PCA fit 2D transposed
+    print("> Data transformation 2D (transposed). . .")
+    pca.transform_transposed(n_components=2)
     print("\tTransformation completed.")
 
 
