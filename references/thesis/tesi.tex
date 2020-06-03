@@ -1,0 +1,157 @@
+\documentclass[oneside]{book}   
+
+\usepackage{graphicx}
+
+\usepackage{geometry}
+
+\geometry{a4paper}
+
+
+
+\begin{document}
+	
+	
+	\begin{titlepage} 
+		\noindent
+		\begin{minipage}[t]{0.19\textwidth}
+			\vspace{-4mm}{\includegraphics[scale=1.15]{logo_unimib.pdf}}
+		\end{minipage}
+		\begin{minipage}[t]{0.81\textwidth}
+			{
+				{\textsc{Università degli Studi di Milano - Bicocca}} \\
+				\textbf{Scuola di Scienze} \\
+				\textbf{Dipartimento di Informatica, Sistemistica e Comunicazione} \\
+				\textbf{Corso di laurea in Informatica} \\
+				\par
+			}
+		\end{minipage}
+		\vspace{40mm}
+		
+		\begin{center}{\LARGE{\textbf{Enhancing irony detection with affective information}\par}}
+		\end{center}        
+		\vspace{50mm}
+		\noindent
+		{\large \textbf{Relatore:} Prof. Elisabetta Fersini} \\        
+		\vspace{15mm}
+		\begin{flushright}
+			{\large \textbf{Relazione della prova finale di:}} \\
+			\large{Gianluca Giudice} \\
+			\large{Matricola 830694} 
+		\end{flushright}
+		\vspace{20mm}
+		\begin{center}
+			{\large{Anno Accademico 2019-2020}}
+		\end{center}
+	\end{titlepage}
+
+
+\tableofcontents
+
+% 3 PAGINE
+\chapter*{Introduzione}
+
+\section*{Descrizione del problema}
+
+\section*{Approccio al problema}
+
+\section*{Sintesi dei risultati}
+
+
+
+
+\chapter{Stato dell'arte}
+
+\section{Approccio supervisionato}
+
+\section{Approccio non supervisionato}
+
+\section{Approccio semi supervisionato}
+
+
+
+
+\chapter{Sistema realizzato}
+
+\section{Descrizine del sistema proposto}
+
+\section{Rappresentazione del testo}
+
+\subsection{Rappresentazione booleana}
+
+\subsection{Rappresentazione mediante transformer}
+
+\section{Caratteristiche linguistiche}
+\subsection{PP}
+\subsection{POS}
+\subsection{Onomatopeic}
+\subsection{...Tutto il resto}
+\subsection{EMOT}
+
+\section{Modelli supervisionati}
+\subsection{Alberi di decisione}
+\subsection{Support Vector Machine}
+\subsection{Naive Bayes}
+\subsection{Bayesian Network}
+
+\section{Strumenti utilizzati}
+
+\subsection{Scikit-learn}
+\subsection{Weka}
+
+
+
+
+\chapter{Campagna sperimentale}
+\section{Dataset}
+\section{Misure di performance}
+\section{BOW + Caratteristiche linguistiche}
+\section{BERT + Caratteristiche linguistiche}
+\section{SBERT + Caratteristiche linguistiche}
+\section{Analisi lessico con PCA}
+
+
+
+
+
+\chapter{Conclusioni e sviluppi futuri}
+
+
+\end{document}
+
+
+TESI: 
+- Introduzione (3 pagine)
+- Descrizione problema
+Comprensibile
+Social network prodotto linguaggio naturale caratterizzato da ironia ed è importante saperla distinguure e il motivo.
+- Come ho affronatato
+Tenciche di NLP e problema di apprendiamento automatico usando machine learnign
+- Sintesi risultati
+- Struttura della tesi
+- Capitolo 1 -> Stato dell'arte
+1.1 approcci supervisoonati
+1.2 non supervisionati
+1.3 semi supervisionati
+- Captiolo 2 -> Ssitema realizzato		
+2.1 Descrizione del sitema proposto
+Workflow e descrizione di massima del sistema
+2.2 Rappresentazione del testo
+2.2.1 Rappresentazione booleana
+2.2.2 Rappresentazione mediante transformer
+2.3 Caratteristiche linguistiche
+2.3.1 POS
+2.3.2 PP
+2.3.3 Emot			
+2.4 Modelli supervisionati
+2.4.1 Alberi di decisione
+ecc...
+2.5 Strumenti utilizzati
+2.5.1 SKleanr
+2.5.2 Weka
+
+- Capitolo 3 -> Campagna sperimetnale
+3.0 Dataset e misure di performance
+3.1 Rappresentazione BOW + caratteristiche linguistiche
+3.2 Rappresentazione BERT + caratteristiche linguistiche
+3.3 Analisi lessico con PCA
+- Capitolo 4 -> Conlcusioni e sviluppi futuri
