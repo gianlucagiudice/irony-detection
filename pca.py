@@ -44,8 +44,11 @@ class Pca:
         # Create coefficient matrix
         self.evaluate_coefficient_vector()
         # Dump matrix
-        path = '{}{}.pca/PCA_matrix.pkl'.format(DATASET_PATH_OUT, TARGET_DATASET)
-        self.dump_df(self.build_df([self.matrix, self.idx, self.words_vector, self.coefficient_matrix]), path)
+        path = '{}{}.pca/out_matrix.pkl'.format(DATASET_PATH_OUT, TARGET_DATASET)
+        columns = ["embedding_{}".format(i) for i in range(1, np.size(self.matrix, 1) + 1)] +\
+                  ['#+', '#-', '#', 'coeff']
+        self.dump_df(self.build_df([self.matrix, self.coefficient_matrix],
+                                   columns=columns, index=self.words_vector.flatten()), path)
 
     def compute_word_embedding(self):
         for index, tweet in enumerate(self.tweet_list):
@@ -128,18 +131,18 @@ class Pca:
         self.dump_df(df, '{}{}.pca/PCA_{}D_transposed.pkl'.format(REPORTS_PATH, TARGET_DATASET, n_components))
 
     def load_matrix(self):
-        df = pd.read_pickle("{}{}.pca/PCA_matrix.pkl".format(DATASET_PATH_OUT, TARGET_DATASET))
+        df = pd.read_pickle("{}{}.pca/out_matrix.pkl".format(DATASET_PATH_OUT, TARGET_DATASET))
         self.matrix = df.iloc[:,:-1].values
         self.idx = np.array([[x] for x in df.iloc[:,-1].values])
 
     @staticmethod
-    def build_df(data_list, types=None, columns=None):
+    def build_df(data_list, types=None, columns=None, index=None):
         data = np.concatenate([*data_list], axis=1)
         # Create dataframe
         if types:
-            return pd.DataFrame(data=data, columns=columns).astype(types)
+            return pd.DataFrame(data=data, columns=columns, index=index).astype(types)
         else:
-            return pd.DataFrame(data=data, columns=columns)
+            return pd.DataFrame(data=data, columns=columns, index=index)
 
     @staticmethod
     def dump_df(df, path):
@@ -158,7 +161,7 @@ class Pca:
 
     @staticmethod
     def pooling_strategy(token):
-        return torch.cat((token[-4],token[-3],token[-2],token[-1]))
+        return torch.cat((token[-4], token[-3], token[-2], token[-1]))
 
 
 def main():
