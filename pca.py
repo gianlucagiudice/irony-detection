@@ -15,6 +15,10 @@ COMPUTE_MATRIX = True
 valid_token_regexp = "[a-zA-Z]+"
 
 
+def dataset_type_name(dataset_type):
+    return '+'.join([key for key, value in dataset_type.items() if value])
+
+
 class Pca:
 
     def __init__(self, tweets=None, labels=None):
@@ -36,7 +40,7 @@ class Pca:
         self.coefficient_dict = dict()
         self.coefficient_matrix = None
 
-    def compute_matrix(self):
+    def compute_matrix(self, target_dataset):
         # Compute dict
         self.compute_word_embedding()
         # Create matrix
@@ -44,7 +48,8 @@ class Pca:
         # Create coefficient matrix
         self.evaluate_coefficient_vector()
         # Dump matrix
-        path = '{}{}.pca/out_matrix.pkl'.format(DATASET_PATH_OUT, TARGET_DATASET)
+        filename = 'out_matrix${}'.format(dataset_type_name(target_dataset))
+        path = '{}{}.pca/{}.pkl'.format(DATASET_PATH_OUT, TARGET_DATASET, filename)
         columns = ["embedding_{}".format(i) for i in range(1, np.size(self.matrix, 1) + 1)] +\
                   ['#+', '#-', '#', 'coeff']
         self.dump_df(self.build_df([self.matrix, self.coefficient_matrix],
@@ -54,8 +59,8 @@ class Pca:
         for index, tweet in enumerate(self.tweet_list):
             self.compute_row(tweet, index)
             if index % 100 == 0:
-                print("\r\t{}% completed".format((index+1) / len(self.tweet_list) * 100), end='')
-        print("\r\t{}% completed".format(100))
+                print("\r\t\t{}% completed".format((index+1) / len(self.tweet_list) * 100), end='')
+        print("\r\t\t{}% completed".format(100))
 
     def fill_matrix(self):
         # Build matrix
@@ -164,34 +169,46 @@ class Pca:
         return torch.cat((token[-4], token[-3], token[-2], token[-1]))
 
 
-def main():
-    # Read all tweets
-    print("> Reading dataset . . .")
-    dataset = Dataset(TARGET_DATASET)
-    tweets = dataset.extract()
+def compute_target_dataset(dataset, target_dataset):
+    tweets = dataset.extract(target_dataset=target_dataset)
     labels = dataset.labels
-    print("\tReading completed.")
     # PCA matrix
-    print("> Computing matrix . . .")
+    print("\t> Computing matrix . . .")
     if COMPUTE_MATRIX:
         pca = Pca(tweets=tweets, labels=labels)
-        pca.compute_matrix()
+        pca.compute_matrix(target_dataset=target_dataset)
     else:
         pca = Pca()
         pca.load_matrix()
-    print("\tComputing completed.")
+    print("\t\tComputing completed.")
     # PCA fit 2D
-    print("> Data transformation 2D. . .")
+    print("\t> Data transformation 2D. . .")
     pca.transform(n_components=2)
-    print("\tTransformation completed.")
+    print("\t\tTransformation completed.")
     # PCA fit 3D
-    print("> Data transformation 3D. . .")
+    print("\t> Data transformation 3D. . .")
     pca.transform(n_components=3)
-    print("\tTransformation completed.")
+    print("\t\tTransformation completed.")
     # PCA fit 2D transposed
-    print("> Data transformation 2D (transposed). . .")
+    print("\t> Data transformation 2D (transposed). . .")
     pca.transform_transposed(n_components=2)
-    print("\tTransformation completed.")
+    print("\t\tTransformation completed.")
+
+
+def main():
+    # Read all tweets
+    print("> Reading dataset . . .")
+    print("\tReading completed.")
+    dataset = Dataset(TARGET_DATASET)
+    # Combinations of dataset
+    # IMPORTANT! Do not reorder items
+    target_dataset_list = [{'ironic': True, 'non_ironic': False},
+                           {'ironic': False, 'non_ironic': True},
+                           {'ironic': True, 'non_ironic': True}]
+    # Compute each dataset separately
+    for i, target_dataset in enumerate(target_dataset_list, 1):
+        print("% Target dataset: {} - ({}/{})".format(target_dataset, i, len(target_dataset_list)))
+        compute_target_dataset(dataset, target_dataset=target_dataset)
 
 
 main()
