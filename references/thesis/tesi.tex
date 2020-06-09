@@ -50,29 +50,95 @@
 % 3 PAGINE
 \chapter*{Introduzione}
 
+
+
+onsiste nell'affermare il contrario di ciò che si pensa con lo scopo di ridicolizzare o sottolineare concetti provocando, a volte, una risata e finendo, in quei casi, nel sarcasmo, ma ha assunto anche significati più profondi. Di essi si possono definire tre accezioni:
+
+
 \section*{Descrizione del problema}
+Il riconoscimento automatico dell'ironia nei contenuti generati da utenti, è uno dei compiti più complessi per quanto riguarda l'elaborazione del linguaggio naturale.
+Questo è molto importante per tutti i sistemi di sentiment analysis, in quanto facendo uso dell'ironia è possibile invertire completamente la polarità di una propria opinione, facendola passare da positiva a negativa e viceversa, penalizzando in questo modo le performance dei sistemi.
+Diventa pertanto cruciale sviluppare irony-aware sentiment analysis systems, ovvero sistemi che sono in grado di riconoscere questo fenomeno.
+
+L'ironia è un tema studiato in diverse discipline, come la linguistica, filosofia e psicologia, ma è difficile da definire formalmente, soprattutto per questo motivo ne è difficile il riconoscimento. Tuttavia ci sono basi teoriche che suggeriscono il ruolo importante della sfera emozionale nell'uso dell'ironia, quindi un fattore chiave per riconoscerlo. Con questo si intende anche un uso indiretto e non esplicito del carico emotivo in ciò che si vuole comunicare.
+
+I social netowork in generale, e twitter nello specifico, sono ampiamente utilizzati come fonte di informazione per sperimentare con modelli computazionali per il riconoscimento dell'ironia, essendo di fatti una grande risorsa per quanto riguarda i dati testuali generati da utenti.
+
+
+
+CITAZIONE: 2 Paper 
 
 \section*{Approccio al problema}
+Si può considerare il riconoscimento dell'ironia come un problema di classificazione. Una frase potrà quindi essere classificata come appartenente alla classe ironica o non ironica.
+
+Come già detto, twitter è una risorsa che fornisce moltissimi contenuti generati da utenti. Viene sfruttato questo aspetto creando dei modelli supervisionati di machine learning in grado di apprendere dai dati. A questo scopo, si estraggono varie caratteristiche dal testo, le quali permettono di distinguere le due classi.
+Le features e i modelli utilizzati saranno meglio spiegati nei capitolo successivi, ma tra tutte verranno usate caratteristiche relative alla sfera emotiva, così da cercare di migliorare le performance dei modelli.
 
 \section*{Sintesi dei risultati}
-
-
+Devo mettere le tabelle i grafici? Quanto deve essere sintetico?
 
 
 \chapter{Stato dell'arte}
 
 \section{Approccio supervisionato}
 
-\section{Approccio non supervisionato}
-
 \section{Approccio semi supervisionato}
+
+\section{Approccio non supervisionato}
 
 
 
 
 \chapter{Sistema realizzato}
+In questo capitolo vengono spiegate ed analizzate tutte le operazioni di preprocessing e le features estratte dal testo, così da preparare il dataset per essere fornito in input ai vari classificatori nella fase di training.
 
-\section{Descrizine del sistema proposto}
+
+\section{Descrizione del sistema proposto}
+
+Grafico con workflow
+
+\section{Dataset}
+
+\subsection{Metodi di labeling}
+Il dataset a disposizione con le relative etichette (ironico/non ironico) sono una parte cruciale per identificare l'ironia e quindi la costruzione dei modelli.
+Per etichettare i messaggi degli utenti si possono seguire due strade:
+\begin{itemize}
+	\item Self-Tagging
+	
+	Twitter mette a disposizione l'utilizzo degli hashtag nei messaggi. Assumendo che un utente che utilizza l'hashtag \emph{\#irony}, voglia esprimere ironia, è facile collezionare una serie di tweet etichettati come ironici.
+	
+	
+	\item Crowdsourcing
+	
+	I vari tweet vengono etichettati manualmente da alcune persone
+	
+	
+	
+	
+\end{itemize}
+
+
+\subsection{Dataset utilizzato}
+
+Nel caso specifico, viene utilizzato il dataset \emph{TwReyes2013}, composto da 40,000 tweet accumulati usando la tecnica self-tagging. Vengono quindi considerati 4 hashtag diversi:
+
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}[t]{lcc}
+		\hline
+		\textbf{Numero} & \textbf{Hashtag}  & \textbf{Label assocaita}\\
+		\hline
+		10,000 & \emph{\#education} & non ironico \\
+		10,000 & \emph{\#humor}     & non ironico \\
+		10,000 & \emph{\#politics}  & non ironico \\
+		10,000 & \emph{\#irony}     & ironico     \\
+		\hline
+	\end{tabular}
+	\caption{Hashtag e label associate}
+\end{table}%
+
+
 
 \section{Rappresentazione del testo}
 
