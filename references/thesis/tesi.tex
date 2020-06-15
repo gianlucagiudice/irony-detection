@@ -1,8 +1,16 @@
-\documentclass[oneside]{book}   
+\documentclass[oneside]{book}
+
+\setcounter{secnumdepth}{4}
+
+\setcounter{tocdepth}{4}
 
 \usepackage{graphicx}
 
 \usepackage{geometry}
+
+\usepackage{hyperref}
+
+\usepackage{url}
 
 \geometry{a4paper}
 
@@ -50,29 +58,24 @@
 % 3 PAGINE
 \chapter*{Introduzione}
 
-
-
-onsiste nell'affermare il contrario di ciò che si pensa con lo scopo di ridicolizzare o sottolineare concetti provocando, a volte, una risata e finendo, in quei casi, nel sarcasmo, ma ha assunto anche significati più profondi. Di essi si possono definire tre accezioni:
-
-
 \section*{Descrizione del problema}
-Il riconoscimento automatico dell'ironia nei contenuti generati da utenti, è uno dei compiti più complessi per quanto riguarda l'elaborazione del linguaggio naturale.
-Questo è molto importante per tutti i sistemi di sentiment analysis, in quanto facendo uso dell'ironia è possibile invertire completamente la polarità di una propria opinione, facendola passare da positiva a negativa e viceversa, penalizzando in questo modo le performance dei sistemi.
-Diventa pertanto cruciale sviluppare irony-aware sentiment analysis systems, ovvero sistemi che sono in grado di riconoscere questo fenomeno.
 
-L'ironia è un tema studiato in diverse discipline, come la linguistica, filosofia e psicologia, ma è difficile da definire formalmente, soprattutto per questo motivo ne è difficile il riconoscimento. Tuttavia ci sono basi teoriche che suggeriscono il ruolo importante della sfera emozionale nell'uso dell'ironia, quindi un fattore chiave per riconoscerlo. Con questo si intende anche un uso indiretto e non esplicito del carico emotivo in ciò che si vuole comunicare.
+La sentiment analysis è un campo dell'elaborazione del linguaggio naturale (NLP) che si occupa di costruire sistemi per l'analisi di un testo, ha il fine di identificare e classificare l'informazione come il sentimento e l'opinione espressa nello stesso. Si basa sui principali metodi di linguistica computazionale e di analisi testuale. L'analisi del sentiment è utilizzata in molteplici settori: dalla politica ai mercati azionari, dal marketing alla comunicazione, dall'analisi dei social media alla valutazione delle preferenze del consumatore. 
 
-I social netowork in generale, e twitter nello specifico, sono ampiamente utilizzati come fonte di informazione per sperimentare con modelli computazionali per il riconoscimento dell'ironia, essendo di fatti una grande risorsa per quanto riguarda i dati testuali generati da utenti.
+Il riconoscimento automatico dell'ironia nei contenuti generati da utenti, è uno dei compiti più complessi per quanto riguarda l'elaborazione del linguaggio naturale. Tuttavia è di fondamentale importanza per tutti i sistemi di sentiment analysis, in quanto facendo uso dell'ironia è possibile invertire completamente la polarità di una propria opinione, facendola passare da positiva a negativa e viceversa.
+Diventa pertanto cruciale sviluppare dei sistemi di sentiment analysis che sono consapevoli del fenomeno e in grado di riconoscerlo.
 
+L'ironia è un tema studiato in diverse discipline, come la linguistica, filosofia e psicologia, ma è difficile da definire formalmente, soprattutto per questo motivo ne è difficile il riconoscimento. Nonostante ciò ci sono basi teoriche che suggeriscono il ruolo importante della sfera emozionale nell'uso dell'ironia, quindi un fattore chiave per riconoscerlo. Con questo si intende anche un uso indiretto e non esplicito del carico emotivo in ciò che si vuole comunicare.
 
+I social netowork in generale, e twitter nello specifico, sono ampiamente utilizzati come fonte di informazione per comprendere la web reputation di un brand, perciò si prestano bene per la sperimentazione di modelli computazionali per il riconoscimento dell'ironia, essendo di fatti una grande risorsa per quanto riguarda i dati testuali generati da utenti.
 
-CITAZIONE: 2 Paper 
 
 \section*{Approccio al problema}
 Si può considerare il riconoscimento dell'ironia come un problema di classificazione. Una frase potrà quindi essere classificata come appartenente alla classe ironica o non ironica.
 
-Come già detto, twitter è una risorsa che fornisce moltissimi contenuti generati da utenti. Viene sfruttato questo aspetto creando dei modelli supervisionati di machine learning in grado di apprendere dai dati. A questo scopo, si estraggono varie caratteristiche dal testo, le quali permettono di distinguere le due classi.
-Le features e i modelli utilizzati saranno meglio spiegati nei capitolo successivi, ma tra tutte verranno usate caratteristiche relative alla sfera emotiva, così da cercare di migliorare le performance dei modelli.
+Come già detto, twitter è una risorsa che fornisce moltissimi contenuti generati da utenti. Viene sfruttato questo aspetto per creare dei modelli supervisionati di machine learning in grado di apprendere dai dati con lo scopo di riconoscere l'ironia nel testo.
+
+
 
 \section*{Sintesi dei risultati}
 Devo mettere le tabelle i grafici? Quanto deve essere sintetico?
@@ -87,62 +90,121 @@ Devo mettere le tabelle i grafici? Quanto deve essere sintetico?
 \section{Approccio non supervisionato}
 
 
-
-
 \chapter{Sistema realizzato}
-In questo capitolo vengono spiegate ed analizzate tutte le operazioni di preprocessing e le features estratte dal testo, così da preparare il dataset per essere fornito in input ai vari classificatori nella fase di training.
-
 
 \section{Descrizione del sistema proposto}
+Partendo dai dati a disposizione si utilizzano delle tecniche di preprocessing che consistono nel pulire il testo di partenza e prepararlo per essere dato in input ai vari classificatori. Inoltre si estraggono delle features da ogni messaggio, le quali più sono discriminanti nel riconoscimento dell'ironia, meglio distinguono la classe di appartenenza.
 
-Grafico con workflow
+Il dataset viene diviso in due parti: training set e test set. La prima ha dimensione decisamente maggiore e viene utilizzata per far apprendere uno specifico classificate, l'altra per testarlo. Questo è importante in quanto un determinato modello dovrà riconoscere l'ironia in un generico documento e non solo tra quelli a disposizione. Si noti che entrambe le porzioni sono composte sia dal testo già codificato e processato che le features estratte, hanno solo scopi diversi quando si tratta di creare il classificatore. 
 
-\section{Dataset}
+Vengono quindi creati vari modelli supervisionati di machine learning fornendo in input il dataset di training. Avendo costruito più classificatori che utilizzano diversi algoritmi per apprendere dai dati, è possibile confrontarne le performance per valutare il migliore tra tutti, ovvero quello che meglio distingue tra documenti ironici e non ironici.
 
-\subsection{Metodi di labeling}
-Il dataset a disposizione con le relative etichette (ironico/non ironico) sono una parte cruciale per identificare l'ironia e quindi la costruzione dei modelli.
-Per etichettare i messaggi degli utenti si possono seguire due strade:
-\begin{itemize}
-	\item Self-Tagging
-	
-	Twitter mette a disposizione l'utilizzo degli hashtag nei messaggi. Assumendo che un utente che utilizza l'hashtag \emph{\#irony}, voglia esprimere ironia, è facile collezionare una serie di tweet etichettati come ironici.
-	
-	
-	\item Crowdsourcing
-	
-	I vari tweet vengono etichettati manualmente da alcune persone
-	
-	
-	
-	
-\end{itemize}
+\begin{figure}
+	\includegraphics[width=\linewidth]{assets/Workflow.png}
+	\caption{Workflow.}
+	\label{fig:workflow}
+\end{figure}
 
 
-\subsection{Dataset utilizzato}
+\clearpage
 
-Nel caso specifico, viene utilizzato il dataset \emph{TwReyes2013}, composto da 40,000 tweet accumulati usando la tecnica self-tagging. Vengono quindi considerati 4 hashtag diversi:
+\section{Dati in input}
+
+Per procedere con la costruzione di modelli supervisionati per il riconoscimento dell'ironia, è necessaria una collezione di testi (in questo caso tweet) che insieme alle relative etichette associate ad ogni documento, costituisce il dataset. Questo aspetto è cruciale in quanto, una volta essere stati opportunamente processati, saranno proprio questi i dati forniti in input al classificatore, e hanno lo scopo di farlo apprendere e quindi successivamente riconoscere l'ironia in testi che non ha mai visto prima.
 
 
-\begin{table}[ht]
+\begin{table}[h!]
 	\centering
-	\begin{tabular}[t]{lcc}
+	\begin{tabular}[t]{lr}
 		\hline
-		\textbf{Numero} & \textbf{Hashtag}  & \textbf{Label assocaita}\\
+		\textbf{Tweet} & \textbf{Label assocaita}\\
 		\hline
-		10,000 & \emph{\#education} & non ironico \\
-		10,000 & \emph{\#humor}     & non ironico \\
-		10,000 & \emph{\#politics}  & non ironico \\
-		10,000 & \emph{\#irony}     & ironico     \\
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit & ironico     \\
+		Cras ornare turpis ut odio finibus, viverra porta felis lobortis & ironico \\
+		Suspendisse in ex a felis porta convallis & non ironico \\
+		Nam laoreet, lacus at ullamcorper iaculis, id interdum nisl elit nec elit. & non ironico \\
+		
 		\hline
 	\end{tabular}
-	\caption{Hashtag e label associate}
+	\caption{Esempio di dataset a disposizione.}
 \end{table}%
 
 
 
-\section{Rappresentazione del testo}
 
-\subsection{Rappresentazione booleana}
+\section{Rappresentazione del testo}
+Il corpora a disposizione è definito "crudo" e non può essere direttamente utilizzato la fase di training. Prima è necessario codificare il testo per ottenere una rappresentazione numerica da dare in input ad un algoritmo di classificazione per la fase di training e test. A questo scopo sono state utilizzate due diverse tecniche
+
+\subsection{Rappresentazione Bag-of-word}
+La prima tecnica di rappresentazione utilizzata è boolean bag-of-words.
+Il testo viene codificato come una matrice booleana costituita dai documenti sulle righe e i tokens sulle colonne. I tokens sono tutte quelle parole appartenenti ad un dizionario costruito a partire dal corpora, tutte le operazioni eseguite sono spiegate di seguito.
+
+\subsubsection{Tokenization}
+La tokenizzazione è un passo preliminare per l'elaborazione computazionale del testo. Tokenizzare vuol dire dividere le sequenze di caratteri in unità minime di analisi dette "token". Un approccio potrebbe essere considerare un token come una sequenza di caratteri delimitata da spazi, tuttavia una tale definizione lascia spazio a numerose eccezzione, come ad esempio la presenza di punteggiatura. Per questa operaziona viene pertanto utilizzata la libreria
+nltkl\footnote{Natural Language Toolkit: \url{www.nltk.org}} in grado di gestire correttamente tutti questi casi limite, oltre a poter sfruttare una Twitter-aware tokenization adattandosi quindi bene al dominio in questione.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=9cm]{assets/text-to-tokens.jpg}
+	\caption{Text tokenization.}
+	\label{fig:tokenization}
+\end{figure}
+
+
+\pagebreak
+
+I vari tokens estratti vengono convertiti in lowercase e sono considerati validi solo se in match con il pattern regex \texttt{[a-z]+}. Così facendo non si considerano gli hashtag, la punteggiatura, le emoji e tutto ciò che non è considerato una parola. Si noti che potrebbero verificarsi casi in cui lo stesso token è presente in documenti diversi, questo è ragionevole in quanto le stesse parole possono essere presenti in tweet diversi.
+
+
+Il risultato ottenuto è una lista di tokens validi contenuti in ogni tweet:
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}[t]{lr}
+		\hline
+		\textbf{Tweet} & \textbf{Tokens lowercase}\\
+		\hline
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit				& [$t_1$, $t_2$, $t_3$, $t_4$, $t_5$] \\
+		Cras ornare turpis ut odio finibus, viverra porta felis lobortis 	& [$t_6$, $t_7$, $t_1$, $t_8$, $t_9$, $t_4$] \\
+		Suspendisse in ex a felis porta convallis							& [$t_{10}$, $t_6$, $t_{11}$, $t_{12}$] \\
+		Nam laoreet, lacus at ullamcorper iaculis.							& [$t_{13}$, $t_{14}$, $t_8$, $t_{15}$]\\
+		
+		\hline
+	\end{tabular}
+	\caption{Esempio di tokens associati ad ogni tweet.}
+\end{table}
+
+Da qui si crea l'insieme di tokens univoci.
+
+\subsubsection{Filtering}
+L'insieme di termini univoci ottenuto è filtrato in base ai seguenti criteri:
+\begin{itemize}
+	\item \textbf{Occorrenza minimia} fissato valore di threshold
+		
+		Viene fissato un valore di soglia (Es. 10) e si scartano tutte quelle parole che compaiono tra tutti i testi meno del valore scelto. 
+	\item \textbf{Stopwords}
+	
+		Vengono scartate tutte le parole più comuni che sono generalmente presenti in una frase. Queste sono un insieme predefinito contenente parole come gli articoli, proposizioni, pronomi e verbi ausiliari.
+		
+		Es: $\{a,\ the,\ of,\ is,\ into,\ it,\ ...\}$
+	
+		
+	\item \textbf{Irony} e \textbf{Ironic}
+	
+	Essendo il dataset a disposizione etichettato mediante la tecnica self-tagging (\autoref{chap:self-taggin}), è presente l'hashtag \emph{\#irony} in tutti i tweet ironici. Pertanto nell'insieme dei tokens validi verranno escluse le parole \emph{irony} e \emph{ironic}, così da non avere un bias nei dati sotto questo aspetto. Nel caso contrario i dati usati per creare i modelli avrebbero a disposizione una componente che ben distingue i tweet ironici, ma che nella realtà non sarebbe preente, in quanto non è decisamente corretto assumere che ogni testo ironico contenga una delle due parole.
+	
+	
+\end{itemize}
+
+\subsubsection{Stemming}
+
+
+\subsubsection{Costruzione dizionario}
+Costruzione dizionario
+
+\subsubsection{Vector encoding}
+Costruzione matrice
+
 
 \subsection{Rappresentazione mediante transformer}
 
@@ -168,15 +230,52 @@ Nel caso specifico, viene utilizzato il dataset \emph{TwReyes2013}, composto da 
 
 
 \chapter{Campagna sperimentale}
+
 \section{Dataset}
+
+
+
+Trattandosi di un modello supervisionato, è richiesto che il dataset sia etichettato. Per associare una specifica label ai messaggi generati dagli utenti si possono seguire due strade:
+
+\begin{itemize}
+	\item \textbf{Self-Tagging}
+	
+	\label{chap:self-taggin}
+	Twitter mette a disposizione l'utilizzo degli hashtag nei messaggi. Assumendo che un utente utilizzi l'hashtag \emph{\#irony} con la volontà di esprimere ironia, è facile collezionare una serie di tweet etichettati come ironici.
+	
+	\item \textbf{Crowdsourcing}
+	
+	I vari tweet vengono etichettati manualmente da alcune persone
+	
+	
+\end{itemize}
+
+Nel caso specifico, viene utilizzato il dataset \emph{TwReyes2013}, composto da 40,000 tweet accumulati usando la tecnica self-tagging. Vengono quindi considerati 4 hashtag diversi:
+
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}[t]{llr}
+		\hline
+		\textbf{Numero} & \textbf{Hashtag}  & \textbf{Label assocaita}\\
+		\hline
+		10,000 & \emph{\#irony}     & ironico     \\
+		10,000 & \emph{\#education} & non ironico \\
+		10,000 & \emph{\#humor}     & non ironico \\
+		10,000 & \emph{\#politics}  & non ironico \\
+		\hline
+	\end{tabular}
+	\caption{Hashtag e label associate}
+\end{table}%
+
+
+
+
 \section{Misure di performance}
 \section{BOW + Caratteristiche linguistiche}
 \section{BERT + Caratteristiche linguistiche}
 \section{SBERT + Caratteristiche linguistiche}
 \section{Analisi lessico con PCA}
-
-
-
 
 
 \chapter{Conclusioni e sviluppi futuri}
