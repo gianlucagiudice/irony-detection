@@ -7,6 +7,25 @@
 \usepackage{graphicx}
 
 \usepackage{geometry}
+\usepackage{listings}
+\lstdefinestyle{lsstyle}{
+	basicstyle=\ttfamily,
+	basicstyle=\small,
+	captionpos=b
+}
+
+
+\usepackage[bottom]{footmisc}
+
+\usepackage{varwidth}
+
+\lstset{style=lsstyle}
+
+\usepackage{amsmath,systeme}
+
+\usepackage{verbatim}
+
+\usepackage{courier}
 
 \usepackage{hyperref}
 
@@ -17,41 +36,43 @@
 
 
 \begin{document}
-	
-	
-	\begin{titlepage} 
-		\noindent
-		\begin{minipage}[t]{0.19\textwidth}
-			\vspace{-4mm}{\includegraphics[scale=1.15]{logo_unimib.pdf}}
-		\end{minipage}
-		\begin{minipage}[t]{0.81\textwidth}
-			{
-				{\textsc{Università degli Studi di Milano - Bicocca}} \\
-				\textbf{Scuola di Scienze} \\
-				\textbf{Dipartimento di Informatica, Sistemistica e Comunicazione} \\
-				\textbf{Corso di laurea in Informatica} \\
-				\par
-			}
-		\end{minipage}
-		\vspace{40mm}
-		
-		\begin{center}{\LARGE{\textbf{Enhancing irony detection with affective information}\par}}
-		\end{center}        
-		\vspace{50mm}
-		\noindent
-		{\large \textbf{Relatore:} Prof. Elisabetta Fersini} \\        
-		\vspace{15mm}
-		\begin{flushright}
-			{\large \textbf{Relazione della prova finale di:}} \\
-			\large{Gianluca Giudice} \\
-			\large{Matricola 830694} 
-		\end{flushright}
-		\vspace{20mm}
-		\begin{center}
-			{\large{Anno Accademico 2019-2020}}
-		\end{center}
-	\end{titlepage}
 
+
+
+\begin{titlepage} 
+	\noindent
+	\begin{minipage}[t]{0.19\textwidth}
+		\vspace{-4mm}{\includegraphics[scale=1.15]{logo_unimib.pdf}}
+	\end{minipage}
+	\begin{minipage}[t]{0.81\textwidth}
+	{
+	{\textsc{Università degli Studi di Milano - Bicocca}} \\
+	\textbf{Scuola di Scienze} \\
+	\textbf{Dipartimento di Informatica, Sistemistica e Comunicazione} \\
+	\textbf{Corso di laurea in Informatica} \\
+	\par
+	}
+	\end{minipage}
+	\vspace{40mm}
+	
+	\begin{center}{\LARGE{\textbf{Enhancing irony detection with affective information}\par}}
+	\end{center}        
+	\vspace{50mm}
+	\noindent
+	{\large \textbf{Relatore:} Prof. Elisabetta Fersini} \\        
+	\vspace{15mm}
+	\begin{flushright}
+		{\large \textbf{Relazione della prova finale di:}} \\
+		\large{Gianluca Giudice} \\
+		\large{Matricola 830694} 
+	\end{flushright}
+	\vspace{20mm}
+	\begin{center}
+		{\large{Anno Accademico 2019-2020}}
+	\end{center}
+\end{titlepage}
+	
+	
 
 \tableofcontents
 
@@ -71,7 +92,7 @@ I social netowork in generale, e twitter nello specifico, sono ampiamente utiliz
 
 
 \section*{Approccio al problema}
-Si può considerare il riconoscimento dell'ironia come un problema di classificazione. Una frase potrà quindi essere classificata come appartenente alla classe ironica o non ironica.
+Si può considerare il riconoscimento dell'ironia come un problema di classificazione. Una frase potrà quindi essere classificata come appartenente alla classe ironica o non ironica. Si noti che per come viene approcciato il problema, l'ironia è considerata al pari del sarcasmo.
 
 Come già detto, twitter è una risorsa che fornisce moltissimi contenuti generati da utenti. Viene sfruttato questo aspetto per creare dei modelli supervisionati di machine learning in grado di apprendere dai dati con lo scopo di riconoscere l'ironia nel testo.
 
@@ -182,37 +203,181 @@ L'insieme di termini univoci ottenuto è filtrato in base ai seguenti criteri:
 	\item \textbf{Occorrenza minimia} fissato valore di threshold
 		
 		Viene fissato un valore di soglia (Es. 10) e si scartano tutte quelle parole che compaiono tra tutti i testi meno del valore scelto. 
-	\item \textbf{Stopwords}
+	\item \textbf{Stopwords + RT}
 	
 		Vengono scartate tutte le parole più comuni che sono generalmente presenti in una frase. Queste sono un insieme predefinito contenente parole come gli articoli, proposizioni, pronomi e verbi ausiliari.
 		
 		Es: $\{a,\ the,\ of,\ is,\ into,\ it,\ ...\}$
+		
+		Dato il dominio preso in considerazione, è possibile che un utente compia l'operazione di ReTweet. Questo è codificato nei messaggi dall'abbreviazione \emph{"rt"}. Non ritenendolo un aspetto rilevante per il riconoscimento dell'ironia, viene anch'essa considerata una stopwords, e di conseguenza non trattato come token valido.
 	
 		
 	\item \textbf{Irony} e \textbf{Ironic}
 	
-	Essendo il dataset a disposizione etichettato mediante la tecnica self-tagging (\autoref{chap:self-taggin}), è presente l'hashtag \emph{\#irony} in tutti i tweet ironici. Pertanto nell'insieme dei tokens validi verranno escluse le parole \emph{irony} e \emph{ironic}, così da non avere un bias nei dati sotto questo aspetto. Nel caso contrario i dati usati per creare i modelli avrebbero a disposizione una componente che ben distingue i tweet ironici, ma che nella realtà non sarebbe preente, in quanto non è decisamente corretto assumere che ogni testo ironico contenga una delle due parole.
+	Essendo il dataset a disposizione etichettato mediante la tecnica self-tagging (\autoref{chap:self-taggin}), è presente l'hashtag \emph{\#irony} in tutti i tweet ironici. Pertanto nell'insieme dei tokens validi verranno escluse le parole \emph{irony} e \emph{ironic}, così da non avere un bias nei dati sotto questo aspetto. Nel caso contrario i dati usati per creare i modelli avrebbero a disposizione una componente che ben distingue i tweet ironici, ma che nella realtà non sarebbe presente, in quanto non è decisamente corretto assumere che ogni testo ironico contenga una delle due parole.
 	
 	
 \end{itemize}
 
 \subsubsection{Stemming}
+Lo stemming è il processo di riduzione della forma flessa di una parola alla sua forma radice.
 
 
-\subsubsection{Costruzione dizionario}
-Costruzione dizionario
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=11cm]{assets/stemming.jpg}
+	\caption{Words stemming. \\ \url{www.datacamp.com/community/tutorials/stemming-lemmatization-python}.}
+	\label{fig:stemming}
+\end{figure}
+
+Con questa tecnica è possibile ridurre il numero di tokens, dal momento che le stesse parole con suffisso diverso verranno mappate nella medesima radice. Inoltre non è necessario che una parola dopo il processo di stemming venga trasformata in un'altra di senso compiuto, quello che conta è la semantica del token.
+
 
 \subsubsection{Vector encoding}
-Costruzione matrice
+
+L'insieme delle parole ottenute costituisce il dizionario del corpora. Si procede costruendo una matrice booleana composta dai tweets sulle righe e le parole del dizionario sulle colonne.\\
+
+Sia $D = \{w_1,\ w_2, ...,\ w_m\}$ il dizionario individuato dall'insieme delle $n$ parole univoche.
+
+Sia $T_i = \{t_{i0}\ ,t_{i1},\ ...,\ t_{ik}\}, \ 1 \leq i \leq n$ l'i-esimo tweet composto da $k$ tokens opportunamente stemmatizzati.\\
+
+Viene definita la matrice $M_{n,m}$
+\[
+M[i,j] =
+\begin{cases}
+1 & \text{se}\ w_j \in T_i\\
+0 & \text{altrimenti}
+\end{cases}
+\ t.c\ 1\leq i\leq n,\ 1 \leq j \leq m
+\]
 
 
 \subsection{Rappresentazione mediante transformer}
 
+
+\subsubsection{BERT}
+
+\subsubsection{Sentence-BERT}
+
+
 \section{Caratteristiche linguistiche}
-\subsection{PP}
+La scelta di features ad alto contenuto informativo ed indipendenti tra loro, è un passo fondamentale per un corretto riconoscimento di pattern nei dati.
+A questo scopo vengono estratte delle caratteristiche linguistiche dal testo che sono rilevanti per il riconoscimento dell'ironia. Più le caratteristiche sono discriminanti quando si esprime un messaggio ironico, meglio si potranno distinguere le due classi. Queste features, insieme alla codifica testuale, verranno usate per creare il modello.
+
+\subsection{Pragmatic particles}
+Per catturare il senso non letterale racchiuso in ogni messaggio, vengono considerati alcuni elementi linguistici di seguito elencati.
+
+\subsubsection{Emoticons}
+Le emoticons sono riproduzioni stilizzate di quelle principali espressioni facciali umane che esprimono un'emozione. In accordo con l'assunzione che esista una relazione tra il sentimento espresso e l'ironia, queste vengono distinte in due categorie:
+\begin{itemize}
+	\item
+	Positive
+	
+	E.g.: ':-)', ':-D'
+	\item
+	Negative
+	
+	E.g.: ':-(', ':=('
+	
+\end{itemize}
+
+\subsubsection{Acronimi}
+Gli acronimi sono un ulteriore strumento della comunicazione non verbale. Come le emoticons vengono presi in considerazione dal momento che possono esprire sentimenti positivi o negativi, infatti possiamo anch'essi dividerli in due categoire:
+
+\begin{itemize}
+	\item
+	Positivi
+	
+	E.g.: 'ROLF' (Rolling On Floor Laughing), 'LHO' (Laughing Head Off)
+	\item
+	Negativi
+	
+	E.g: 'BM' (Bad Manner)
+	
+\end{itemize}
+
+\subsubsection{Espressioni onomatopeiche}
+L'uso di espressioni onomatopeiche come 'boom' o 'clap' possono essere utilizzate nell'esprimere un messaggio ironico. Tuttavia in questo caso viene presa in considerazione solo la frequenza di queste espressioni, al contrario di come visto in precedenza per le emoticons e gli acronimi, dove si valutava anche la polarità.
+
+\subsubsection{Punteggiatura}
+La punteggiatura nei social media non segue le convenzioni ortografiche:\\
+E.g.: 'Do you hear us now ?????'\\
+Per questa ragione viene contata la frequenza di virgole, punti di domanda e punti esclamativi.
+
+\subsubsection{Estrazione particelle pragmatiche}
+Di seguite viene mostrato un esempio di come le particelle pragmatiche vengono estratte da un messaggio:
+
+\begin{lstlisting}[caption={Esempio di tweet processato per estrarre le particelle pragmatiche.}]
+Tweet: ':D lmao! RT @KarlDetkenProDJ iPad Humor Steve, I'ma let you finish,
+        but Moses had the greatest  tablet of all time ;) clap clap'
+Emot (-, +)  >>> [0, 1]
+Init (-, +)  >>> [0, 1]
+Onom (#)     >>> [2]
+Punct        >>> {',': 2, '!': 1, '?': 0}
+\end{lstlisting}
+
+
 \subsection{POS}
-\subsection{Onomatopeic}
-\subsection{...Tutto il resto}
+La struttura delle frasi che costituiscono il tweet, può essere un indicatore per il riconoscimento dell'ironia. A questo scopo viene tenuta in considerazione la frequenza dei POS (part-of-speech) tag relativi ai tokens parole presenti in un messaggi.
+
+Per associare i POS tag ad ogni tweet viene utilizzato un POS tagger\footnote{ARK Twitter Part-of-Speech Tagger: \url{www.ark.cs.cmu.edu/TweetNLP/}} supervisionato specifico per il dominio considerato. Si procede con una tokenizzazione del tweet per poi associare ad ognuno di questi il corretto tag. Di seguito la lista di tags considerati:\\
+
+
+\begin{varwidth}[t]{\textwidth}
+	\textbf{Nominale}
+	\begin{itemize}
+		\item \textbf{N}: Nome comune
+		\item \textbf{O}: Pronome personale
+		\item \textbf{\^}: Nome proprio
+		\item \textbf{S}: Nominale + Possessiva
+		\item \textbf{Z}: Nome proprio + Possessiva
+	\end{itemize}
+\end{varwidth}
+\hspace{4em}
+\begin{varwidth}[t]{\textwidth}
+	\textbf{Closed-class words}
+	\begin{itemize}
+		\item \textbf{D}: Determiner
+		\item \textbf{P}: Pre/Post-posizione;\\Congiunzione subordinante
+		\item \textbf{\&}: Congiunzione coordinante
+		\item \textbf{T}: Verb particles
+		\item \textbf{X}: Existential there
+	\end{itemize}
+\end{varwidth}\\\\
+
+\begin{varwidth}[t]{\textwidth}
+	\textbf{Open-class words}
+	\begin{itemize}
+		\item \textbf{V}: Verbo
+		\item \textbf{A}: Aggettivo
+		\item \textbf{R}: Avverbio
+		\item \textbf{!}: Interjection
+	\end{itemize}
+\end{varwidth}
+\hspace{11em}
+\begin{varwidth}[t]{\textwidth}
+	\textbf{Composti}
+	\begin{itemize}
+		\item \textbf{L}: Nominale + Verbo (e.g.: I'm)
+		\item \textbf{M}: Nome proprio + Verbo
+		\item \textbf{Y}: X + Verbo
+	\end{itemize}
+\end{varwidth}\\\\\\\\
+Di seguito è mostrato un esempio di POS tags associati al tweet passando per i tokens:
+
+
+\begin{lstlisting}[caption={Esempio di tweet con POS tag associte.}]
+
+Tweet: 'Need a second opinion? Who gave you the first one?'
+Tokens  >>> [Need], [a], [second], [opinion], [?], [Who],
+            [gave], [you], [the], [first], [one], [?]
+Tags    >>> ['V', 'D', 'A', 'N', ',', 'O', 'V', 'O', 'D', 'A', '$', ',']
+Freq.   >>> {'N': 1, 'O': 2, '^': 0, 'S': 0, 'Z': 0, 'V': 2,
+             'A': 2, 'R': 0, '!': 0, 'D': 2, 'P': 0, '&': 0,
+             'T': 0, 'X': 0, 'L': 0, 'M': 0, 'Y': 0}
+\end{lstlisting}
+Come si può notare, il POS tagger associa dei tag che non sono stati elencati sopra, i verranno semplicemente ignorati e non utilizzati come features per il modello. 
+
 \subsection{EMOT}
 
 \section{Modelli supervisionati}
@@ -232,8 +397,7 @@ Costruzione matrice
 \chapter{Campagna sperimentale}
 
 \section{Dataset}
-
-
+Fare notare che è in inglese
 
 Trattandosi di un modello supervisionato, è richiesto che il dataset sia etichettato. Per associare una specifica label ai messaggi generati dagli utenti si possono seguire due strade:
 
