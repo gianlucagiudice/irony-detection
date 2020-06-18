@@ -1,7 +1,14 @@
+from pathlib import Path
+
 from src.dataset.DataFrame import DataFrame
 from src.dataset.Dataset import Dataset
 from src.features.FeatureManager import FeatureManager
+from src.utils.config import DATASET_PATH_OUT
 from src.utils.parameters import TARGET_TEXT_FEATURE, TARGET_DATASET, TEXT_FEATURE_STRATEGY
+
+
+def create_processed_directory():
+    Path("{}{}".format(DATASET_PATH_OUT, TARGET_DATASET)).mkdir(parents=True, exist_ok=True)
 
 
 def main():
@@ -12,6 +19,8 @@ def main():
     print(">> Reading dataset . . .")
     dataset = Dataset(TARGET_DATASET)
     dataset.extract()
+    # ----- Create processed directory -----
+    create_processed_directory()
     # ----- Compute matrix -----
     print(">> Extracting features . . .")
     feature_extractor = FeatureManager(dataset.tweets, TEXT_FEATURE_STRATEGY, debug=False)
