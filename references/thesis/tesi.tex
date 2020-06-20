@@ -92,6 +92,11 @@ I social netowork in generale, e twitter nello specifico, sono ampiamente utiliz
 
 
 \section*{Approccio al problema}
+Parlare QUI di machine learning e di intelligenza artificiale
+
+
+
+
 Si può considerare il riconoscimento dell'ironia come un problema di classificazione. Una frase potrà quindi essere classificata come appartenente alla classe ironica o non ironica. Si noti che per come viene approcciato il problema, l'ironia è considerata al pari del sarcasmo.
 
 Come già detto, twitter è una risorsa che fornisce moltissimi contenuti generati da utenti. Viene sfruttato questo aspetto per creare dei modelli supervisionati di machine learning in grado di apprendere dai dati con lo scopo di riconoscere l'ironia nel testo.
@@ -181,7 +186,7 @@ Il risultato ottenuto è una lista di tokens validi contenuti in ogni tweet:
 
 \begin{table}[h!]
 	\centering
-	\begin{tabular}[t]{lr}
+	\begin{tabular}[t]{l|l}
 		\hline
 		\textbf{Tweet} & \textbf{Tokens lowercase}\\
 		\hline
@@ -264,7 +269,7 @@ M[i,j] =
 La scelta di features ad alto contenuto informativo ed indipendenti tra loro, è un passo fondamentale per un corretto riconoscimento di pattern nei dati.
 A questo scopo vengono estratte delle caratteristiche linguistiche dal testo che sono rilevanti per il riconoscimento dell'ironia. Più le caratteristiche sono discriminanti quando si esprime un messaggio ironico, meglio si potranno distinguere le due classi. Queste features, insieme alla codifica testuale, verranno usate per creare il modello.
 
-\subsection{Pragmatic particles}
+\subsection{PP (Pragmatic particles)}
 Per catturare il senso non letterale racchiuso in ogni messaggio, vengono considerati alcuni elementi linguistici di seguito elencati.
 
 \subsubsection{Emoticons}
@@ -317,7 +322,7 @@ Punct        >>> {',': 2, '!': 1, '?': 0}
 \end{lstlisting}
 
 
-\subsection{POS}
+\subsection{POS (Part Of Speech)}
 La struttura delle frasi che costituiscono il tweet, può essere un indicatore per il riconoscimento dell'ironia. A questo scopo viene tenuta in considerazione la frequenza dei POS (part-of-speech) tag relativi ai tokens parole presenti in un messaggi.
 
 Per associare i POS tag ad ogni tweet viene utilizzato un POS tagger\footnote{ARK Twitter Part-of-Speech Tagger: \url{www.ark.cs.cmu.edu/TweetNLP/}} supervisionato specifico per il dominio considerato. Si procede con una tokenizzazione del tweet per poi associare ad ognuno di questi il corretto tag. Di seguito la lista di tags considerati:\\
@@ -378,9 +383,68 @@ Freq.   >>> {'N': 1, 'O': 2, '^': 0, 'S': 0, 'Z': 0, 'V': 2,
 \end{lstlisting}
 Come si può notare, il POS tagger associa dei tag che non sono stati elencati sopra, i verranno semplicemente ignorati e non utilizzati come features per il modello. 
 
-\subsection{EMOT}
+\subsection{EMOT (Emotional Features)}
+Alcune teorie psicologiche suggeriscono l'esistenza di emozioni primarie. Per questo motivo sono stati utilizzati i lessici EmoLex e EmoSenticNet, in cui vengono riportate le sfere emotive a cui appartengono le parole.
+I lessici si possono intendere come diversi insiemi che caratterizzano le emozioni primarie, dove ognuno di questi insiemi è composto dalle parole che sono considerate appartenenti a quella specifica categoria emozionale. Inoltre gli insiemi considerati non devono necessariamente essere disgiunti.
+
+
+E.g.:\\
+$birthday \in JOY \land birthday \in SURPRISE \land birthday \in ANTICIPATION$\\
+$honor \in TRUST$\\
+$ stair \notin (JOY \lor SURPRISE \lor ANTICIPATION \lor TRUST) $\\
+
+Come feature aggiuntiva per il riconoscimento dell'ironia, dato un tweet si considerano tutti i tokens validi che rappresentano le parole. Quindi si procede consultando i lessici per ognuna delle parole, così da recuperate le sfere emotive a cui è essa associata. Una volta eseguita l'operazione per tutte queste, si calcola la frequenza totale di ogni emozione all'interno del tweet.
+
+Le due risorse si basano su differenti teorie che identificano ognuna le proprie emozioni primarie, per questo motivo si combina il risultato di entrambe sommando le frequenze ottenute da ognuna delle due risorse.
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}[t]{l|l}
+		\hline
+		\textbf{Emozione} & \textbf{Lessico} \\
+		\hline
+		Anger			& EmoLex, EmoSenticNet \\
+		Anticipation	& EmoLex \\
+		Disgust			& EmoLex, EmoSenticNet \\
+		Fear			& EmoLex, EmoSenticNet \\
+		Joy				& EmoLex, EmoSenticNet \\
+		Sadness			& EmoLex, EmoSenticNet \\
+		Suprise			& EmoLex, EmoSenticNet \\
+		Trust			& EmoLex \\
+		\hline
+	\end{tabular}
+	\caption{Emozioni primarie dei lessici.}
+\end{table}
+
+
+Un esempio di come vengono estratte le features emozionali da un tweet:
+
+\begin{lstlisting}[caption={Esempio di estrazione delle emozioni da un tweet.}]
+
+Tweet: 'I nominate @MrsStephenFry for a Shorty Award in because... why
+        not? http://bit.ly/shorty'
+Words	     >>> ['nominate', 'shorty', 'award']
+EmoLex       >>> {'anger': 0, 'anticipation': 1, 'disgust': 0, 'fear': 0,
+                  'joy': 1, 'sadness': 0, 'surprise': 1, 'trust': 1}
+EmoSenticNet >>> {'anger': 0, 'disgust': 0, 'joy': 3, 'sadness': 0,
+                  'surprise': 0, 'fear': 0}
+Combined     >>> {'sadness': 0, 'anticipation': 1, 'fear': 0, 'anger': 0,
+                  'joy': 4, 'disgust': 0, 'trust': 1, 'surprise': 1}
+\end{lstlisting}
 
 \section{Modelli supervisionati}
+Il machine learning è lo studio di algoritmi che migliorano automaticamente attraverso l'esperienza, ed è solo un aspetto dell'intelligenza artificiale. Il machine learning crea modelli matematici basati sui dati, i quali vengono utilizzati per far apprendere alla macchina, con lo scopo di fare previsioni o decidere riguardo dati che non sono mai stati visti prima.
+
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=7cm]{assets/ai_diagram.png}
+	\caption{Diagramma intelligenza artificiale. \\ \url{https://mc.ai/machine-learning-in-5-minutes/}.}
+	\label{fig:artificial-intelligence}
+\end{figure}
+
+Nello specifico i modelli supervisionati fanno parte di quell'insieme di algoritmi "classici" che per apprendere dai dati ed estrarre dei pattern da questi, oltre ai dati di training in input, hanno bisogno delle relative etichette. Queste informazione aggiuntiva viene usata nella fase di apprendimento e indica a priori la relativa classe di appartenenza delle istanze che compongono il dataset. Nel caso dell'ironia si fa riferimento ad algoritmi supervisionati di machine learning per risolvere un problema di classificazione, ovvero dato un tweet classificarlo come "ironico" o "non ironico".
+
 \subsection{Alberi di decisione}
 \subsection{Support Vector Machine}
 \subsection{Naive Bayes}
