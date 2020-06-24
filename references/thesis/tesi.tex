@@ -385,13 +385,15 @@ Come si può notare, il POS tagger associa dei tag che non sono stati elencati s
 
 \subsection{EMOT (Emotional Features)}
 Alcune teorie psicologiche suggeriscono l'esistenza di emozioni primarie. Per questo motivo sono stati utilizzati i lessici EmoLex e EmoSenticNet, in cui vengono riportate le sfere emotive a cui appartengono le parole.
-I lessici si possono intendere come diversi insiemi che caratterizzano le emozioni primarie, dove ognuno di questi insiemi è composto dalle parole che sono considerate appartenenti a quella specifica categoria emozionale. Inoltre gli insiemi considerati non devono necessariamente essere disgiunti.
+I lessici si possono intendere come diversi insiemi che caratterizzano le emozioni primarie, dove ognuno di questi insiemi è composto dalle parole che sono considerate appartenenti a quella specifica categoria emozionale. Inoltre gli insiemi considerati non devono necessariamente essere disgiunti.\\
+Qualche esempio di seguito:
 
+$birthday \in JOY \land birthday \in SURPRISE \land birthday \in ANTICIPATION$
 
-E.g.:\\
-$birthday \in JOY \land birthday \in SURPRISE \land birthday \in ANTICIPATION$\\
-$honor \in TRUST$\\
-$ stair \notin (JOY \lor SURPRISE \lor ANTICIPATION \lor TRUST) $\\
+$honor \in TRUST$
+
+$ stair \notin (JOY \cup SURPRISE \cup ANTICIPATION \cup TRUST) $\\
+
 
 Come feature aggiuntiva per il riconoscimento dell'ironia, dato un tweet si considerano tutti i tokens validi che rappresentano le parole. Quindi si procede consultando i lessici per ognuna delle parole, così da recuperate le sfere emotive a cui è essa associata. Una volta eseguita l'operazione per tutte queste, si calcola la frequenza totale di ogni emozione all'interno del tweet.
 
@@ -433,7 +435,7 @@ Combined     >>> {'sadness': 0, 'anticipation': 1, 'fear': 0, 'anger': 0,
 \end{lstlisting}
 
 \section{Modelli supervisionati}
-Il machine learning è lo studio di algoritmi che migliorano automaticamente attraverso l'esperienza, ed è solo un aspetto dell'intelligenza artificiale. Il machine learning crea modelli matematici basati sui dati, i quali vengono utilizzati per far apprendere alla macchina, con lo scopo di fare previsioni o decidere riguardo dati che non sono mai stati visti prima.
+Il machine learning è lo studio di algoritmi che migliorano automaticamente attraverso l'esperienza, ed è sottoinsieme dell'intelligenza artificiale. Il machine learning crea modelli matematici basati sui dati, i quali vengono utilizzati per far apprendere alla macchina, con lo scopo di fare previsioni o decidere riguardo dati che non sono mai stati visti prima.
 
 
 \begin{figure}[!h]
@@ -443,15 +445,30 @@ Il machine learning è lo studio di algoritmi che migliorano automaticamente att
 	\label{fig:artificial-intelligence}
 \end{figure}
 
-Nello specifico i modelli supervisionati fanno parte di quell'insieme di algoritmi "classici" che per apprendere dai dati ed estrarre dei pattern da questi, oltre ai dati di training in input, hanno bisogno delle relative etichette. Queste informazione aggiuntiva viene usata nella fase di apprendimento e indica a priori la relativa classe di appartenenza delle istanze che compongono il dataset. Nel caso dell'ironia si fa riferimento ad algoritmi supervisionati di machine learning per risolvere un problema di classificazione, ovvero dato un tweet classificarlo come "ironico" o "non ironico".
+Nello specifico i modelli supervisionati fanno parte di quell'insieme di algoritmi "classici" che per apprendere dai dati ed estrarre dei pattern da questi, oltre ai dati di training in input, hanno bisogno delle relative etichette. Questa informazione aggiuntiva viene usata nella fase di apprendimento e indica a priori la relativa classe di appartenenza delle istanze che compongono il dataset. Nel caso dell'ironia si fa riferimento ad algoritmi supervisionati di machine learning per risolvere un problema di classificazione, ovvero dato un tweet classificarlo come "ironico" o "non ironico".
+
+Esistono diversi algoritmi per creare modelli supervisionati, di seguito vengono spiegati quelli che sono stati utilizzati.
 
 \subsection{Alberi di decisione}
-\subsection{Support Vector Machine}
+Un albero di decisione è un modello predittivo con una struttura ad albero. Ogni nodo interno rappresenta una variabile, un arco verso un nodo figlio rappresenta un possibile valore per quella proprietà e una foglia il valore predetto. Il processo consiste in una sequenza di test, comincia sempre dal nodo radice, e procede verso il basso. A seconda dei valori rilevati in ciascun nodo, si otterrà un path che porterà ad un nodo foglia e quindi una classificazione.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=13cm]{assets/decision_tree.png}
+	\caption{Albero di decisione. \\ \url{www.medium.com/datadriveninvestor/decision-tree-algorithm}.}
+	\label{fig:decision-tree}
+\end{figure}
+
+Gli alberi logici hanno l'indiscusso vantaggio della semplicità. Infatti è possibile seguire il percorso radice-foglia per analizzare come la macchina è giunta a una determinata decisione basandosi sui dati in input.
+
+
 \subsection{Naive Bayes}
+
 \subsection{Bayesian Network}
+\subsection{Support Vector Machine}
+
 
 \section{Strumenti utilizzati}
-
 \subsection{Scikit-learn}
 \subsection{Weka}
 
@@ -466,19 +483,15 @@ Fare notare che è in inglese
 Trattandosi di un modello supervisionato, è richiesto che il dataset sia etichettato. Per associare una specifica label ai messaggi generati dagli utenti si possono seguire due strade:
 
 \begin{itemize}
-	\item \textbf{Self-Tagging}
-	
+	\item \textbf{Self-Tagging}:
 	\label{chap:self-taggin}
 	Twitter mette a disposizione l'utilizzo degli hashtag nei messaggi. Assumendo che un utente utilizzi l'hashtag \emph{\#irony} con la volontà di esprimere ironia, è facile collezionare una serie di tweet etichettati come ironici.
 	
-	\item \textbf{Crowdsourcing}
-	
+	\item \textbf{Crowdsourcing}:	
 	I vari tweet vengono etichettati manualmente da alcune persone
-	
-	
 \end{itemize}
 
-Nel caso specifico, viene utilizzato il dataset \emph{TwReyes2013}, composto da 40,000 tweet accumulati usando la tecnica self-tagging. Vengono quindi considerati 4 hashtag diversi:
+Nel caso specifico, viene utilizzato il dataset \emph{TwReyes2013}, composto da 40,000 tweet in lingua inglese, accumulati usando la tecnica self-tagging. Vengono quindi considerati 4 hashtag diversi:
 
 
 \begin{table}[ht]
@@ -496,14 +509,75 @@ Nel caso specifico, viene utilizzato il dataset \emph{TwReyes2013}, composto da 
 	\caption{Hashtag e label associate}
 \end{table}%
 
+\section{10-Folds Cross-Validation}
+Per la fase di training dei modelli è necessario suddividere il dataset a disposizione in due diversi insiemi: training-set e test-set. Questo è un passaggio fondamentale in quanto non si otterrebbero delle misure di performance valide testando i modelli su dati che sono stati utilizzati per la fase di trainig. In pratica si vuole testare il modello su dati che non sono mai stati visti in precedenza.
 
+Prima di iniziare la fase ti training, i dati in input, che sono composti dalla matrice contenente le features estratte, vengono opportunamente mescolati. Con questo si intende che le righe della matrice vengono casualmente cambiate di posto, chiaramente mantenendo coerenza con le labels associate. Un aspetto importante è che lo shuffle della matrice è eseguito con lo stesso seed per tutti i modelli, così da ottenere delle misure di performance statisticamente valide.
+
+Le performance ottenute, dipendono anche da come è stato diviso il dataset tra training-set e test-set. Per questo motivo viene utilizzata la tecnica k-Folds Cross-Validitation, che permette di sfruttare diverse porzioni di dati per i due insiemi. Il vantaggio di questa tecnica è quello di ottenere valutazioni più affidabile mediando i risultati di ognuno dei k modelli di cui è stato fatto il training, a discapito del tempo necessario, in quanto si effettuerà k volte il training di un modello.
+
+Per gli esperimenti effettuati, è stato scelto $k=10$, ovvero il dataset è stato diviso 10 volte, utilizzando ad ogni iterazioni una porzione di dati diversa per il trainig-set e test-set. Avendo scelto questo valore di $k$, la proporzione tra i due insiemi sarà sempre $90\%$ per il training-set e $10\%$ per il test-set.
+
+Nel seguente diagramma si possono considerare i pallini verdi e rossi come i tweets ironici e non ironici. Quindi, fissata un'istanza del dataset mescolato, si considera una sliding window di dimensione $\#samples \cdot \frac{1}{k}$, dove per ogni $k$ iterazione viene effettuato il training di un nuovo modello.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=13cm]{assets/cross-validation.png}
+	\caption{k-Folds Cross-Validation. \\ \url{www.wikipedia.org/wiki/Cross-validation_(statistics)}.}
+	\label{fig:cross-validation}
+\end{figure}
 
 
 \section{Misure di performance}
-\section{BOW + Caratteristiche linguistiche}
-\section{BERT + Caratteristiche linguistiche}
-\section{SBERT + Caratteristiche linguistiche}
-\section{Analisi lessico con PCA}
+Essendo stati creati diversi modelli, è necessario valutarli. Avendo diviso il dataset a disposizione tra test-set e training-set, una volta completata la fase di training è possibile utilizzare il test-set per la valutazione. Si procede prendendo un tweet e facendolo classificare al modello, il quale verrà quindi identificato come ironico o non ironico. Trattandosi di modelli supervisionati, oltre ai dati si hanno a disposizione le labels associate, è quindi possibile confrontare l'output fornito dal modello con la reale classe di un tweet. Da qui si può capire se per quella particolare istanza, la classificazione è corretta o meno.
+
+Per la valutazione si utilizza tutto il test-set a disposizione e viene contano il numero di:
+\begin{itemize}
+	\item \textbf{TP} (True positive): Un tweet ironico è classificato come ironico - \emph{corretto}
+	
+	\item \textbf{TN} (True negative): Un tweet non ironico è classificato come non ironico - \emph{corretto}
+	
+	\item \textbf{FP} (False positive):	Un tweet non ironico è classificato come ironico - \emph{errato}
+	
+	\item \textbf{FN} (False negative):	Un tweet ironico è classificato come non ironico - \emph{errato}
+\end{itemize}
+Si noti che un modello può sbagliare la classificazione in due modi diversi, e c'è differenza tra classificare un tweet ironico come non ironico piuttosto che uno non ironico come ironico. Questi valori verranno poi analizzati sfruttando una matrice di confusione:
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=10cm]{assets/confusion-matrix.jpg}
+	\caption{Confusion matrix. \url{www.radiopaedia.org/cases/confusion-matrix-3}.}
+	\label{fig:decision-tree}
+\end{figure}
+
+Basandosi su questi dati vengono definite delle misure di performance per la valutazione:
+
+\begin{itemize}
+	\item \textbf{Accuracy}: Il rapporto tra il numero di classificazioni corrette e le classificazioni totali.
+	
+	$$Accuracy = \frac{TP + TN}{TP + FP + TN + FN} $$
+	
+	\item \textbf{Precision}: La porizione di classificazioni positive corrette.
+	
+	$$Precision = \frac{TP}{TP + FP} $$
+		
+	\item \textbf{Recall}: La porzione di sample positivi identificati.
+	$$Recall = \frac{TP}{TP + FN} $$
+	
+	
+	\item \textbf{F-measure}: Metrica per calcolare la valutazione complessiva. Formalmente è definita come la media armonica di recall e precision.
+	$$F\text{-}measure =  2 \cdot \frac{Precision \cdot Recall}{Precision + Recall} $$
+	
+\end{itemize}
+
+\section{Esperimenti}
+
+\subsection{Caratteristiche linguistiche}
+\subsection{BOW + Caratteristiche linguistiche}
+\subsection{BERT + Caratteristiche linguistiche}
+\subsection{Sentence-BERT + Caratteristiche linguistiche}
+\subsection{BOW vs BERT vs Sentence-BERT}
+\subsection{Analisi lessico con PCA}
 
 
 \chapter{Conclusioni e sviluppi futuri}
