@@ -101,6 +101,9 @@ Si può considerare il riconoscimento dell'ironia come un problema di classifica
 
 Come già detto, twitter è una risorsa che fornisce moltissimi contenuti generati da utenti. Viene sfruttato questo aspetto per creare dei modelli supervisionati di machine learning in grado di apprendere dai dati con lo scopo di riconoscere l'ironia nel testo.
 
+Il codice sviluppato è in questo repo:
+www.github
+
 
 
 \section*{Sintesi dei risultati}
@@ -449,8 +452,8 @@ Nello specifico i modelli supervisionati fanno parte di quell'insieme di algorit
 
 Esistono diversi algoritmi per creare modelli supervisionati, di seguito vengono spiegati quelli che sono stati utilizzati.
 
-\subsection{Alberi di decisione}
-Un albero di decisione è un modello predittivo con una struttura ad albero. Ogni nodo interno rappresenta una variabile, un arco verso un nodo figlio rappresenta un possibile valore per quella proprietà e una foglia il valore predetto. Il processo consiste in una sequenza di test, comincia sempre dal nodo radice, e procede verso il basso. A seconda dei valori rilevati in ciascun nodo, si otterrà un path che porterà ad un nodo foglia e quindi una classificazione.
+\subsection{Decision Trees}
+Un albero di decisione è un modello predittivo con una struttura ad albero. Ogni nodo interno rappresenta una feature, un arco verso un nodo figlio rappresenta un possibile valore per quella proprietà, ovvero una decisione, e una foglia il valore predetto. Il processo consiste in una sequenza di test, comincia sempre dal nodo radice, e procede verso il basso. A seconda dei valori rilevati in ciascun nodo, si otterrà un path che porterà ad un nodo foglia e quindi una classificazione.
 
 \begin{figure}[!h]
 	\centering
@@ -459,10 +462,33 @@ Un albero di decisione è un modello predittivo con una struttura ad albero. Ogn
 	\label{fig:decision-tree}
 \end{figure}
 
-Gli alberi logici hanno l'indiscusso vantaggio della semplicità. Infatti è possibile seguire il percorso radice-foglia per analizzare come la macchina è giunta a una determinata decisione basandosi sui dati in input.
+Gli alberi di decisione hanno il vantaggio della semplicità. Infatti è possibile seguire il percorso radice-foglia per analizzare come la macchina è giunta a una determinata decisione basandosi sui dati in input. Questo processo rappresenta di fatto la logica utilizzata dalla macchina per interpretare i dati.
+
+Un problema degli alberi di decisione è che tendono ad andare in overfitting.
 
 
 \subsection{Naive Bayes}
+L'algoritmo di classificazione Naive Bayes si basa sull'applicazione del teorema di Bayes:
+$$P(A|B) = \frac{P(B|A)P(A)}{P(B)}$$
+Contestualizzato per la creazione di un modello per un task di classificazione, si ha la tupla composta dalle features di un particolare individuo identificato da:
+
+$$\textbf{X} = (x_1, x_2, ..., x_n)$$
+Applicando il teorema di Bayes, rappresentando $y$ come classe di appartenenza di un individuo si ottiene:
+
+$$P(y|\textbf{X}) = \frac{P(\textbf{X}|y)P(y)}{P(\textbf{X})}$$
+Si noti che la parte destra dell'uguaglianza è la probabilità a priori, ed è stimabile utilizzando il dataset a disposizione. In questo modo è possibile calcolare la probabilità a posteriori. Il classificatore preso in questione è considerato "naive", in quanto si assume che le features siano indipendenti. Con questa assunzione si procede sviluppando l'equazione:
+$$P(y|x_1, x_2, ..., x_n) =
+\frac
+	{P(x_1|y)P(x_2|y)...P(x_n|y)P(y)}
+	{P(x_1)P(x_2)...P(x_n)}$$
+A questo punto, date le features di un individuo, è possibile calcolare la probabilità che questo appartenga ad una particolare classe $y$. Inoltre, fissate le fetures, il denominatore è costante. Si considera quindi:
+$$P(y|x_1, x_2, ..., x_n) \propto
+P(y)\prod\limits_{i=1}^{n}P(x_i|y)
+$$
+Un individuo viene classificato come quella classe $y$ che massimizza la probabilità a posteriori:
+$$y = argmax_yP(y)\prod\limits_{i=1}^{n}P(x_i|y)$$
+
+
 
 \subsection{Bayesian Network}
 \subsection{Support Vector Machine}
