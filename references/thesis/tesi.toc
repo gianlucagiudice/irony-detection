@@ -24,10 +24,11 @@
 \contentsline {subsection}{\numberline {2.4.2}POS (Part Of Speech)}{12}{subsection.2.4.2}%
 \contentsline {subsection}{\numberline {2.4.3}EMOT (Emotional Features)}{13}{subsection.2.4.3}%
 \contentsline {section}{\numberline {2.5}Modelli supervisionati}{14}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1}Decision Trees}{14}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.1}Decision Tree}{15}{subsection.2.5.1}%
 \contentsline {subsection}{\numberline {2.5.2}Naive Bayes}{15}{subsection.2.5.2}%
-\contentsline {subsection}{\numberline {2.5.3}Bayesian Network}{16}{subsection.2.5.3}%
-\contentsline {subsection}{\numberline {2.5.4}Support Vector Machine}{16}{subsection.2.5.4}%
+\contentsline {subsection}{\numberline {2.5.3}Multinomial Naive Bayes}{16}{subsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.5.4}Bayesian Network}{16}{subsection.2.5.4}%
+\contentsline {subsection}{\numberline {2.5.5}Support Vector Machine}{16}{subsection.2.5.5}%
 \contentsline {section}{\numberline {2.6}Strumenti utilizzati}{16}{section.2.6}%
 \contentsline {subsection}{\numberline {2.6.1}Scikit-learn}{16}{subsection.2.6.1}%
 \contentsline {subsection}{\numberline {2.6.2}Weka}{16}{subsection.2.6.2}%

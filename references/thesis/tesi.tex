@@ -6,6 +6,8 @@
 
 \usepackage{graphicx}
 
+
+
 \usepackage{geometry}
 \usepackage{listings}
 \lstdefinestyle{lsstyle}{
@@ -22,6 +24,8 @@
 \lstset{style=lsstyle}
 
 \usepackage{amsmath,systeme}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
 
 \usepackage{verbatim}
 
@@ -450,9 +454,15 @@ Il machine learning è lo studio di algoritmi che migliorano automaticamente att
 
 Nello specifico i modelli supervisionati fanno parte di quell'insieme di algoritmi "classici" che per apprendere dai dati ed estrarre dei pattern da questi, oltre ai dati di training in input, hanno bisogno delle relative etichette. Questa informazione aggiuntiva viene usata nella fase di apprendimento e indica a priori la relativa classe di appartenenza delle istanze che compongono il dataset. Nel caso dell'ironia si fa riferimento ad algoritmi supervisionati di machine learning per risolvere un problema di classificazione, ovvero dato un tweet classificarlo come "ironico" o "non ironico".
 
-Esistono diversi algoritmi per creare modelli supervisionati, di seguito vengono spiegati quelli che sono stati utilizzati.
+Esistono diversi algoritmi per creare modelli supervisionati, quelli che sono stati utilizzati negli esperimenti sono:
+	\begin{itemize}
+	\item Decision Tree
+	\item Multinomial Naive Bayes
+	\item Bayesian Network
+	\item Support Vector Machine
+\end{itemize}
 
-\subsection{Decision Trees}
+\subsection{Decision Tree}
 Un albero di decisione è un modello predittivo con una struttura ad albero. Ogni nodo interno rappresenta una feature, un arco verso un nodo figlio rappresenta un possibile valore per quella proprietà, ovvero una decisione, e una foglia il valore predetto. Il processo consiste in una sequenza di test, comincia sempre dal nodo radice, e procede verso il basso. A seconda dei valori rilevati in ciascun nodo, si otterrà un path che porterà ad un nodo foglia e quindi una classificazione.
 
 \begin{figure}[!h]
@@ -470,12 +480,13 @@ Un problema degli alberi di decisione è che tendono ad andare in overfitting.
 \subsection{Naive Bayes}
 L'algoritmo di classificazione Naive Bayes si basa sull'applicazione del teorema di Bayes:
 $$P(A|B) = \frac{P(B|A)P(A)}{P(B)}$$
-Contestualizzato per la creazione di un modello per un task di classificazione, si ha la tupla composta dalle features di un particolare individuo identificato da:
+Contestualizzato per la creazione di un modello per un task di classificazione, si ha la tupla composta dalle features di un particolare documento identificato da:
 
 $$\textbf{X} = (x_1, x_2, ..., x_n)$$
-Applicando il teorema di Bayes, rappresentando $y$ come classe di appartenenza di un individuo si ottiene:
+Applicando il teorema di Bayes, rappresentando $y$ come classe di appartenenza per un individuo si ottiene:
 
-$$P(y|\textbf{X}) = \frac{P(\textbf{X}|y)P(y)}{P(\textbf{X})}$$
+$$P(y|\textbf{X}) =
+\frac{P(\textbf{X}|y)P(y)}{P(\textbf{X})}$$
 Si noti che la parte destra dell'uguaglianza è la probabilità a priori, ed è stimabile utilizzando il dataset a disposizione. In questo modo è possibile calcolare la probabilità a posteriori. Il classificatore preso in questione è considerato "naive", in quanto si assume che le features siano indipendenti. Con questa assunzione si procede sviluppando l'equazione:
 $$P(y|x_1, x_2, ..., x_n) =
 \frac
@@ -486,11 +497,22 @@ $$P(y|x_1, x_2, ..., x_n) \propto
 P(y)\prod\limits_{i=1}^{n}P(x_i|y)
 $$
 Un individuo viene classificato come quella classe $y$ che massimizza la probabilità a posteriori:
-$$y = argmax_yP(y)\prod\limits_{i=1}^{n}P(x_i|y)$$
+$$\hat{y} = \argmax_y P(y)\prod\limits_{i=1}^{n}P(x_i|y)$$
 
+
+\subsection{Multinomial Naive Bayes}
+Nell'algoritmo Naive Bayes, avendo dati n-dimensionali e k classi, la probabilità a posteriori si ottiene conoscendo $P(x_i|y_j)$ per ogni $1\leq n,\ 1\leq j \leq k$
+
+Queste probabilità vanno stimate dal dataset, e nella variante Multinomial Naive Bayes si considera una distribuzione multinomiale per ognuna di esse. Si hanno quindi i parametri $\theta_y = (\theta_{y1}, \theta_{y2}, ...\theta_{yn})$, dove $\theta_{yi} = P(x_i|y)$ e vengono stimati in questo modo:
+
+$$\hat{\theta}_{yi} = \frac{N_{yi} + \alpha }{N_{y} + \alpha n}$$
+Dove $N_{yi} = \sum_{x \in T}x_i$ è il numero di volte che, nel training set $T$, la feature $i$ appartiene alla classe $y$, e $N_{y} = \sum_{i=1}^{n}N_{yi}$.
+
+The smoothing priors $\alpha \geq 0$ accounts for features not present in the learning samples and prevents zero probabilities in further computations. Setting $\alpha = 1$ is called Laplace smoothing, while $\alpha < 1$ is called Lidstone smoothing.
 
 
 \subsection{Bayesian Network}
+I classificatori naive Bayes si basano sull'assunzione di indipendenza delle caratteristiche. Ciò permette di semplificare 
 \subsection{Support Vector Machine}
 
 
@@ -555,7 +577,7 @@ Nel seguente diagramma si possono considerare i pallini verdi e rossi come i twe
 
 
 \section{Misure di performance}
-Essendo stati creati diversi modelli, è necessario valutarli. Avendo diviso il dataset a disposizione tra test-set e training-set, una volta completata la fase di training è possibile utilizzare il test-set per la valutazione. Si procede prendendo un tweet e facendolo classificare al modello, il quale verrà quindi identificato come ironico o non ironico. Trattandosi di modelli supervisionati, oltre ai dati si hanno a disposizione le labels associate, è quindi possibile confrontare l'output fornito dal modello con la reale classe di un tweet. Da qui si può capire se per quella particolare istanza, la classificazione è corretta o meno.
+Essendo stati creati diversi modelli, è necessario valutarli. Avendo diviso il dataset a disposizione tra test-set e training-set, una volta completata la fase di training è possibile utilizzare il test-set per la valutazione. Si procede prendendo un tweet e facendolo classificare al modello, il quale verrà quindi identificato come ironico o non ironico. Trattandosi di modelli supervisionati, oltre ai dati si hanno a disposizione le labels associate, è quindi possibile confrontare l'output fornito dal modello con la reale classe di un tweet. Da qui si può capire se per quel particolare individuo, la classificazione è corretta o meno.
 
 Per la valutazione si utilizza tutto il test-set a disposizione e viene contano il numero di:
 \begin{itemize}
