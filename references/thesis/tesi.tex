@@ -21,6 +21,10 @@
 
 \usepackage{varwidth}
 
+
+\usepackage{subcaption,graphicx}
+
+
 \lstset{style=lsstyle}
 
 \usepackage{amsmath,systeme}
@@ -251,8 +255,7 @@ L'insieme delle parole ottenute costituisce il dizionario del corpora. Si proced
 
 Sia $D = \{w_1,\ w_2, ...,\ w_m\}$ il dizionario individuato dall'insieme delle $n$ parole univoche.
 
-Sia $T_i = \{t_{i0}\ ,t_{i1},\ ...,\ t_{ik}\}, \ 1 \leq i \leq n$ l'i-esimo tweet composto da $k$ tokens opportunamente stemmatizzati.\\
-
+Sia $T_i = \{t_{i0}\ ,t_{i1},\ ...,\ t_{ik}\}, \ 1 \leq i \leq n$, l'i-esimo tweet composto da $k$ tokens opportunamente stemmatizzati.\\
 Viene definita la matrice $M_{n,m}$
 \[
 M[i,j] =
@@ -479,40 +482,82 @@ Un problema degli alberi di decisione è che tendono ad andare in overfitting.
 
 \subsection{Naive Bayes}
 L'algoritmo di classificazione Naive Bayes si basa sull'applicazione del teorema di Bayes:
-$$P(A|B) = \frac{P(B|A)P(A)}{P(B)}$$
+$$P(A\ |\ B) = \frac{P(B\ |\ A)P(A)}{P(B)}$$
 Contestualizzato per la creazione di un modello per un task di classificazione, si ha la tupla composta dalle features di un particolare documento identificato da:
 
-$$\textbf{X} = (x_1, x_2, ..., x_n)$$
-Applicando il teorema di Bayes, rappresentando $y$ come classe di appartenenza per un individuo si ottiene:
+$$\textbf{x} = (x_1, ..., x_n)$$
+Applicando il teorema di Bayes, rappresentando $y$ come la classe a cui appartiene un individuo, si ottiene:
 
-$$P(y|\textbf{X}) =
-\frac{P(\textbf{X}|y)P(y)}{P(\textbf{X})}$$
-Si noti che la parte destra dell'uguaglianza è la probabilità a priori, ed è stimabile utilizzando il dataset a disposizione. In questo modo è possibile calcolare la probabilità a posteriori. Il classificatore preso in questione è considerato "naive", in quanto si assume che le features siano indipendenti. Con questa assunzione si procede sviluppando l'equazione:
-$$P(y|x_1, x_2, ..., x_n) =
+$$P(y|\textbf{x}) =
+\frac{P(\textbf{x}\ |\ y)P(y)}{P(\textbf{x})}$$
+Si noti che la parte destra dell'uguaglianza è la probabilità a priori, ed è stimabile utilizzando il dataset a disposizione. In particolare il numeratore rappresenta la probabilità:
+
+$$P(\textbf{x} \cap y) = P(x_1, ..., x_n, y)$$
+Viene sviluppata la probabilità congiunta utilizzando la chain rule per l'applicazione ripetuta della porbabilità condizionata:
+
+
+
+
+\begin{align}
+\begin{split}\label{eq:1}
+P(x_1, ..., x_n, y){} &=  P(x_1 \,|\, x_2, ..., x_n, y)P(x_2, ..., x_n, y)\\
+&= P(x_1 \,|\, x_2, ..., x_n, y)P(x_2\, |\, x_3, ..., x_n, y)P(x_3, ..., x_n, y)\\
+&= ...\\
+&= P(x_1 \,|\, x_2, ..., x_n, y)P(x_2\, |\, x_3, ..., x_n, y)...P(x_{n-1}\,|\,x_n,y)P(x_n\,|\,y)P(y)\\
+\end{split}
+\end{align}
+Il classificatore preso in questione è considerato "naive", in quanto si assume che le features siano indipendenti tra loro, pertanto:
+$$P(x_i\,|\, x_{i+1}, ...,x_n, y) = P(x_i\,|\,y)$$
+Si procede quindi sviluppando l'equazione per il calcolo della probabilità a posteriori:
+$$P(y\,|\,x_1, x_2, ..., x_n) =
 \frac
-	{P(x_1|y)P(x_2|y)...P(x_n|y)P(y)}
-	{P(x_1)P(x_2)...P(x_n)}$$
+	{P(x_1\,|\,y)...P(x_n\,|\,y)P(y)}
+	{P(x_1)...P(x_n)}$$
 A questo punto, date le features di un individuo, è possibile calcolare la probabilità che questo appartenga ad una particolare classe $y$. Inoltre, fissate le fetures, il denominatore è costante. Si considera quindi:
-$$P(y|x_1, x_2, ..., x_n) \propto
-P(y)\prod\limits_{i=1}^{n}P(x_i|y)
+$$P(y\,|\,x_1, x_2, ..., x_n) \propto
+P(y)\prod\limits_{i=1}^{n}P(x_i\,|\,y)
 $$
 Un individuo viene classificato come quella classe $y$ che massimizza la probabilità a posteriori:
-$$\hat{y} = \argmax_y P(y)\prod\limits_{i=1}^{n}P(x_i|y)$$
+$$\hat{y} = \argmax_y P(y)\prod\limits_{i=1}^{n}P(x_i\,|\,y)$$
 
 
 \subsection{Multinomial Naive Bayes}
-Nell'algoritmo Naive Bayes, avendo dati n-dimensionali e k classi, la probabilità a posteriori si ottiene conoscendo $P(x_i|y_j)$ per ogni $1\leq n,\ 1\leq j \leq k$
+Nell'algoritmo Naive Bayes, avendo dati n-dimensionali e k classi, la probabilità a posteriori si ottiene conoscendo $P(x_i\,|\,y_j)$ per ogni $1\leq n,\ 1\leq j \leq k$
 
-Queste probabilità vanno stimate dal dataset, e nella variante Multinomial Naive Bayes si considera una distribuzione multinomiale per ognuna di esse. Si hanno quindi i parametri $\theta_y = (\theta_{y1}, \theta_{y2}, ...\theta_{yn})$, dove $\theta_{yi} = P(x_i|y)$ e vengono stimati in questo modo:
+Queste probabilità vanno stimate dal dataset, e nella variante Multinomial Naive Bayes si considera una distribuzione binomiale in più variabili (da qui multinomiale). Si hanno quindi i parametri $\theta_y = (\theta_{y1}, \theta_{y2}, ...\theta_{yn})$, dove $\theta_{yi} = P(x_i\,|\,y)$ vengono stimati in questo modo:
 
 $$\hat{\theta}_{yi} = \frac{N_{yi} + \alpha }{N_{y} + \alpha n}$$
 Dove $N_{yi} = \sum_{x \in T}x_i$ è il numero di volte che, nel training set $T$, la feature $i$ appartiene alla classe $y$, e $N_{y} = \sum_{i=1}^{n}N_{yi}$.
 
-The smoothing priors $\alpha \geq 0$ accounts for features not present in the learning samples and prevents zero probabilities in further computations. Setting $\alpha = 1$ is called Laplace smoothing, while $\alpha < 1$ is called Lidstone smoothing.
-
+Il parametro $\alpha: 0 < \alpha \leq 1$ è chiamato di smoothing, e ha lo scopo di gestire quei casi in cui una features non è presente nel training set, così da non ottenere probabilità uguali a $0$.
 
 \subsection{Bayesian Network}
-I classificatori naive Bayes si basano sull'assunzione di indipendenza delle caratteristiche. Ciò permette di semplificare 
+I classificatori naive Bayes si basano sull'assunzione di indipendenza delle caratteristiche. Ciò permette di semplificare le cose quando si considera l'equazione \eqref{eq:1} come risultato dell'applicazione della chain rule.
+Tuttavia questa è un'assunzione piuttosto forte.
+
+A questo scopo i classificatori Bayesian Network introducono una struttura dati per far fronte a questo problema. Viene pertanto considerato un DAG (Directed acyclic graph) in cui le $n$ features compongono i nodi del grafo, e gli archi rappresentano la dipendenza tra le variabili.
+
+
+
+\begin{figure}[!h]
+	\centering
+	\begin{subfigure}[b]{0.4\textwidth}
+		\centering
+		\includegraphics[width=5cm]{assets/naive-bayes.png}
+		\caption{Naive Bayes network.}
+		\label{fig:naive-bayes}
+	\end{subfigure}%
+	\hspace{4em}
+	\begin{subfigure}[b]{0.4\textwidth}
+	\centering
+		\includegraphics[width=5cm]{assets/bayes-network.png}
+		\caption{Bayes network per problema specifico.}
+		\label{fig:naive-bayes}
+	\end{subfigure}
+	\caption{Dipendenza tra variabili.}
+\end{figure}
+
+
 \subsection{Support Vector Machine}
 
 
@@ -613,7 +658,7 @@ Basandosi su questi dati vengono definite delle misure di performance per la val
 	$$Recall = \frac{TP}{TP + FN} $$
 	
 	
-	\item \textbf{F-measure}: Metrica per calcolare la valutazione complessiva. Formalmente è definita come la media armonica di recall e precision.
+	\item \textbf{F-measure}: Metrica per calcolare la valutazione complessiva. Formalmente è definita come la media armonica tra recall e precision.
 	$$F\text{-}measure =  2 \cdot \frac{Precision \cdot Recall}{Precision + Recall} $$
 	
 \end{itemize}
