@@ -20,8 +20,17 @@ data/processed/DATASET_NAME/
     ```
     /training.py 
     ```
-- Report analysis
+- PCA
     ```
-    /notebooks/report_analysis.ipynb
+    /pca.py 
     ```
+- Analysis
+    - Models report
+        ```
+        /notebooks/report_analysis_unbiased.ipynb
+        ```
+     - PCA
+        ```
+        /notebooks/pca*.ipynb
+        ```
  
