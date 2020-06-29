@@ -22,7 +22,8 @@ def extract_features_from_name(filename):
 
 def read_matrix_filename():
     files_path = DATASET_PATH_OUT + TARGET_DATASET
-    return sorted([file for file in os.listdir(files_path)])
+    files = [file for file in os.listdir(files_path) if file.split('.')[-1] == 'csv']
+    return sorted(files)
 
 
 def main():
