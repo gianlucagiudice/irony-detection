@@ -6,7 +6,7 @@
 
 \usepackage{graphicx}
 
-
+\usepackage{scalerel}
 
 \usepackage{geometry}
 \usepackage{listings}
@@ -23,6 +23,8 @@
 
 
 \usepackage{subcaption,graphicx}
+
+\usepackage{mathtools}
 
 
 \lstset{style=lsstyle}
@@ -109,8 +111,7 @@ Si può considerare il riconoscimento dell'ironia come un problema di classifica
 
 Come già detto, twitter è una risorsa che fornisce moltissimi contenuti generati da utenti. Viene sfruttato questo aspetto per creare dei modelli supervisionati di machine learning in grado di apprendere dai dati con lo scopo di riconoscere l'ironia nel testo.
 
-Il codice sviluppato è in questo repo:
-www.github
+Il codice scritto in python, utilizzato per l'estrazione delle features, il training dei modelli e la creazione della matrice su cui è stata fatta PCA, oltre ai notebooks utilizzati per l'analisi dei report e il risultato della PCA, è disponibile in questo repository\footnote{Irony detection repository: \url{www.github.com/gianlucagiudice/irony-detection}} su github.
 
 
 
@@ -458,7 +459,7 @@ Il machine learning è lo studio di algoritmi che migliorano automaticamente att
 Nello specifico i modelli supervisionati fanno parte di quell'insieme di algoritmi "classici" che per apprendere dai dati ed estrarre dei pattern da questi, oltre ai dati di training in input, hanno bisogno delle relative etichette. Questa informazione aggiuntiva viene usata nella fase di apprendimento e indica a priori la relativa classe di appartenenza delle istanze che compongono il dataset. Nel caso dell'ironia si fa riferimento ad algoritmi supervisionati di machine learning per risolvere un problema di classificazione, ovvero dato un tweet classificarlo come "ironico" o "non ironico".
 
 Esistono diversi algoritmi per creare modelli supervisionati, quelli che sono stati utilizzati negli esperimenti sono:
-	\begin{itemize}
+\begin{itemize}
 	\item Decision Tree
 	\item Multinomial Naive Bayes
 	\item Bayesian Network
@@ -482,7 +483,7 @@ Un problema degli alberi di decisione è che tendono ad andare in overfitting.
 
 \subsection{Naive Bayes}
 L'algoritmo di classificazione Naive Bayes si basa sull'applicazione del teorema di Bayes:
-$$P(A\ |\ B) = \frac{P(B\ |\ A)P(A)}{P(B)}$$
+$$P(A \mid B) = \frac{P(B \mid A)P(A)}{P(B)}$$
 Contestualizzato per la creazione di un modello per un task di classificazione, si ha la tupla composta dalle features di un particolare documento identificato da:
 
 $$\textbf{x} = (x_1, ..., x_n)$$
@@ -503,32 +504,33 @@ Viene sviluppata la probabilità congiunta utilizzando la chain rule per l'appli
 P(x_1, ..., x_n, y){} &=  P(x_1 \,|\, x_2, ..., x_n, y)P(x_2, ..., x_n, y)\\
 &= P(x_1 \,|\, x_2, ..., x_n, y)P(x_2\, |\, x_3, ..., x_n, y)P(x_3, ..., x_n, y)\\
 &= ...\\
-&= P(x_1 \,|\, x_2, ..., x_n, y)P(x_2\, |\, x_3, ..., x_n, y)...P(x_{n-1}\,|\,x_n,y)P(x_n\,|\,y)P(y)\\
+&= P(x_1 \,|\, x_2, ..., x_n, y)P(x_2\, |\, x_3, ..., x_n, y)...P(x_{n-1}\,|\,x_n,y)P(x_n \mid y)P(y)\\
 \end{split}
 \end{align}
 Il classificatore preso in questione è considerato "naive", in quanto si assume che le features siano indipendenti tra loro, pertanto:
-$$P(x_i\,|\, x_{i+1}, ...,x_n, y) = P(x_i\,|\,y)$$
+$$P(x_i\,|\, x_{i+1}, ...,x_n, y) = P(x_i \mid y)$$
 Si procede quindi sviluppando l'equazione per il calcolo della probabilità a posteriori:
-$$P(y\,|\,x_1, x_2, ..., x_n) =
+$$P(y \mid x_1, x_2, ..., x_n) =
 \frac
-	{P(x_1\,|\,y)...P(x_n\,|\,y)P(y)}
+	{P(x_1 \mid y)...P(x_n \mid y)P(y)}
 	{P(x_1)...P(x_n)}$$
 A questo punto, date le features di un individuo, è possibile calcolare la probabilità che questo appartenga ad una particolare classe $y$. Inoltre, fissate le fetures, il denominatore è costante. Si considera quindi:
-$$P(y\,|\,x_1, x_2, ..., x_n) \propto
-P(y)\prod\limits_{i=1}^{n}P(x_i\,|\,y)
+$$P(y \mid x_1, x_2, ..., x_n) \propto
+P(y)\prod\limits_{i=1}^{n}P(x_i \mid y)
 $$
 Un individuo viene classificato come quella classe $y$ che massimizza la probabilità a posteriori:
-$$\hat{y} = \argmax_y P(y)\prod\limits_{i=1}^{n}P(x_i\,|\,y)$$
+$$\hat{y} = \argmax_y P(y)\prod\limits_{i=1}^{n}P(x_i \mid y)$$
 
 
 \subsection{Multinomial Naive Bayes}
-Nell'algoritmo Naive Bayes, avendo dati n-dimensionali e k classi, la probabilità a posteriori si ottiene conoscendo $P(x_i\,|\,y_j)$ per ogni $1\leq n,\ 1\leq j \leq k$
+Nell'algoritmo Naive Bayes, avendo dati n-dimensionali e k classi, la probabilità a posteriori si ottiene conoscendo $P(x_i \mid y_j)$ per ogni $1\leq n,\ 1\leq j \leq k$
 
-Queste probabilità vanno stimate dal dataset, e nella variante Multinomial Naive Bayes si considera una distribuzione binomiale in più variabili (da qui multinomiale). Si hanno quindi i parametri $\theta_y = (\theta_{y1}, \theta_{y2}, ...\theta_{yn})$, dove $\theta_{yi} = P(x_i\,|\,y)$ vengono stimati in questo modo:
+Queste probabilità vanno stimate dal dataset, e nella variante Multinomial Naive Bayes si considera una distribuzione binomiale in più variabili (da qui multinomiale). Si hanno quindi i parametri $\theta_y = (\theta_{y1}, \theta_{y2}, ...\theta_{yn})$, dove $\theta_{yi} = P(x_i \mid y)$ vengono stimati in questo modo:
 
 $$\hat{\theta}_{yi} = \frac{N_{yi} + \alpha }{N_{y} + \alpha n}$$
-Dove $N_{yi} = \sum_{x \in T}x_i$ è il numero di volte che, nel training set $T$, la feature $i$ appartiene alla classe $y$, e $N_{y} = \sum_{i=1}^{n}N_{yi}$.
-
+Dove, indicando con $T$ il training set:
+$$N_{yi} = \sum_{x \in T}x_i \qquad
+N_{y} = \sum_{i=1}^{n}N_{yi}$$
 Il parametro $\alpha: 0 < \alpha \leq 1$ è chiamato di smoothing, e ha lo scopo di gestire quei casi in cui una features non è presente nel training set, così da non ottenere probabilità uguali a $0$.
 
 \subsection{Bayesian Network}
@@ -537,8 +539,6 @@ Tuttavia questa è un'assunzione piuttosto forte.
 
 A questo scopo i classificatori Bayesian Network introducono una struttura dati per far fronte a questo problema. Viene pertanto considerato un DAG (Directed acyclic graph) in cui le $n$ features compongono i nodi del grafo, e gli archi rappresentano la dipendenza tra le variabili.
 
-
-
 \begin{figure}[!h]
 	\centering
 	\begin{subfigure}[b]{0.4\textwidth}
@@ -546,7 +546,7 @@ A questo scopo i classificatori Bayesian Network introducono una struttura dati 
 		\includegraphics[width=5cm]{assets/naive-bayes.png}
 		\caption{Naive Bayes network.}
 		\label{fig:naive-bayes}
-	\end{subfigure}%
+	\end{subfigure}
 	\hspace{4em}
 	\begin{subfigure}[b]{0.4\textwidth}
 	\centering
@@ -556,7 +556,27 @@ A questo scopo i classificatori Bayesian Network introducono una struttura dati 
 	\end{subfigure}
 	\caption{Dipendenza tra variabili.}
 \end{figure}
+\noindent Considerando le $n$ features indipendenti tra loro si ha:
+$$P(X_1, ..., X_n) = \prod\limits_{i=1}^{n}P(X_i) $$
+Senza questa assunzione si applica la chain rule per la probabilità congiunta, la quale è computazionalmente onerosa:
 
+\[ 
+P \left( \bigcap_{i=1}^n X_i \right) = 
+\prod\limits_{i=1}^{n}P
+\left( X_i  \bigg\vert
+\bigcap_{j=1}^{i-1} X_j \right)
+\]
+Tuttavia si sfrutta il grafo diretto aciclico G così definito:
+\begin{itemize}
+	\item $G = (V, E)$
+	\item $V = \{X_1, ..., X_n\}$
+	\item $E = \{(u,v) \mid (u,v) \in V^2 \land P(u, v) \neq P(u)P(v) \}$
+\end{itemize}
+Il quale rappresenta le dipendenze tra variabili. Quindi nello sviluppo della probabilità congiunta, si considerano solo quei fattori con un arco presente nel grafo. Pertanto, indicando con $\pi(u) = \{v \mid (v, u) \in E\}, v,u \in V$ si ha:
+
+
+$$P(X_1, ..., X_n) = \prod\limits_{i=1}^{n}P(X_i \mid X_1, ..., X_{i-1}) = \prod\limits_{i=1}^{n}P(X_i \mid \pi(X_i)) $$
+Così facendo viene semplificata la probabilità congiunta, pur non assumendo la mutua indipendenza tra le variabili.
 
 \subsection{Support Vector Machine}
 
