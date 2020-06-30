@@ -21,7 +21,7 @@ entrypoints==0.3
 filelock==3.0.12
 future==0.18.2
 hidpidaemon==18.4.5
-httplib2==0.14.0
+httplib2==0.18.0
 idna==2.8
 ipykernel==5.2.1
 ipython==7.14.0
