@@ -4,7 +4,7 @@ from src.utils.config import REPORTS_PATH, WEKA_PATH, DATASET_PATH_OUT
 from src.utils.parameters import TARGET_DATASET
 from training import create_report_folder, extract_features_from_name, read_matrix_filename
 
-COMMAND = ['java', '-classpath', WEKA_PATH, 'weka.classifiers.bayes.BayesNet',
+COMMAND = ['java', '-Xms1G', '-Xmx8G', '-classpath', WEKA_PATH, 'weka.classifiers.bayes.BayesNet',
            '-x', '10', '-t', '{}', '-D', '-Q', 'weka.classifiers.bayes.net.search.local.K2',
            '--', '-P', '1', '-S', 'BAYES', '-E','weka.classifiers.bayes.net.estimate.SimpleEstimator',
            '--', '-A', '0.5']
