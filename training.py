@@ -1,4 +1,5 @@
 import os
+import re
 
 from sklearn.utils import shuffle
 
@@ -10,8 +11,8 @@ from src.training.TrainingManager import TrainingManager, CLASSIFIER_LIST
 from src.training.TrainingReport import TrainingReport
 
 
-def create_report_folder():
-    report_path = REPORTS_PATH + TARGET_DATASET
+def create_report_folder(optional=""):
+    report_path = REPORTS_PATH + TARGET_DATASET + optional
     if not os.path.exists(report_path):
         Path(report_path).mkdir(parents=True)
 
@@ -22,7 +23,8 @@ def extract_features_from_name(filename):
 
 def read_matrix_filename():
     files_path = DATASET_PATH_OUT + TARGET_DATASET
-    files = [file for file in os.listdir(files_path) if file.split('.')[-1] == 'csv']
+    files = [file for file in os.listdir(files_path)
+             if file.split('.')[-1] == 'csv' and not re.match('labeled_tweets', file)]
     return sorted(files)
 
 
@@ -67,4 +69,5 @@ def main():
     logger.completed()
 
 
-main()
+if __name__ == "__main__":
+    main()

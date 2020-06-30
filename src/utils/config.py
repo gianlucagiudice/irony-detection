@@ -4,6 +4,7 @@ import os
 script_rel_path = "lib/"
 script_name = "ark-tweet-nlp-0.3.2.jar"
 SCRIPT_PATH = script_rel_path + script_name
+WEKA_PATH = '{}/weka.jar'.format(script_rel_path)
 THREAD_NUMBER = os.cpu_count()
 RAM_SIZE = "2G"
 
