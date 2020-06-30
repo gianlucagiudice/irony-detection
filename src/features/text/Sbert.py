@@ -24,8 +24,8 @@ class Sbert(TextFeature):
         Model URL: https://public.ukp.informatik.tu-darmstadt.de/reimers/sentence-transformers/v0.2/
         Github Repo: https://github.com/UKPLab/sentence-transformers 
         '''
-        #self.model = SentenceTransformer('bert-base-nli-mean-tokens')
-        self.model = SentenceTransformer('./lib/bert-base-nli-mean-tokens')
+        #self.model = SentenceTransformer('./lib/bert-base-nli-mean-tokens')
+        self.model = SentenceTransformer('bert-base-nli-mean-tokens')
         # Sentence BERT feature length
         self.feature_length = 0
 
