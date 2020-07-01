@@ -243,9 +243,14 @@ Lo stemming è il processo di riduzione della forma flessa di una parola alla su
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=11cm]{assets/stemming.jpg}
-	\caption{Words stemming. \\ \url{www.datacamp.com/community/tutorials/stemming-lemmatization-python}.}
+
+	\caption[Caption for LOF]{Words stemming. \footnotemark}
 	\label{fig:stemming}
 \end{figure}
+
+
+\footnotetext{Fonte: \url{www.datacamp.com/community/tutorials/stemming-lemmatization-python}.}
+
 
 Con questa tecnica è possibile ridurre il numero di tokens, dal momento che le stesse parole con suffisso diverso verranno mappate nella medesima radice. Inoltre non è necessario che una parola dopo il processo di stemming venga trasformata in un'altra di senso compiuto, quello che conta è la semantica del token.
 
@@ -452,9 +457,11 @@ Il machine learning è lo studio di algoritmi che migliorano automaticamente att
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=7cm]{assets/ai_diagram.png}
-	\caption{Diagramma intelligenza artificiale. \\ \url{https://mc.ai/machine-learning-in-5-minutes/}.}
+	\caption[Caption for LOF]{Diagramma intelligenza artificiale.\footnotemark}
 	\label{fig:artificial-intelligence}
 \end{figure}
+
+\footnotetext{Fonte: \url{www.mc.ai/machine-learning-in-5-minutes/}.}
 
 Nello specifico i modelli supervisionati fanno parte di quell'insieme di algoritmi "classici" che per apprendere dai dati ed estrarre dei pattern da questi, oltre ai dati di training in input, hanno bisogno delle relative etichette. Questa informazione aggiuntiva viene usata nella fase di apprendimento e indica a priori la relativa classe di appartenenza delle istanze che compongono il dataset. Nel caso dell'ironia si fa riferimento ad algoritmi supervisionati di machine learning per risolvere un problema di classificazione, ovvero dato un tweet classificarlo come "ironico" o "non ironico".
 
@@ -472,15 +479,19 @@ Un albero di decisione è un modello predittivo con una struttura ad albero. Ogn
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=13cm]{assets/decision_tree.png}
-	\caption{Albero di decisione. \\ \url{www.medium.com/datadriveninvestor/decision-tree-algorithm}.}
+	\caption[Caption for LOF]{Albero di decisione.\footnotemark}
 	\label{fig:decision-tree}
 \end{figure}
+
+
+\footnotetext{Fonte: \url{www.medium.com/datadriveninvestor/decision-tree-algorithm}.}
+
 
 Gli alberi di decisione hanno il vantaggio della semplicità. Infatti è possibile seguire il percorso radice-foglia per analizzare come la macchina è giunta a una determinata decisione basandosi sui dati in input. Questo processo rappresenta di fatto la logica utilizzata dalla macchina per interpretare i dati.
 
 Un problema degli alberi di decisione è che tendono ad andare in overfitting.
 
-
+\newpage
 \subsection{Naive Bayes}
 L'algoritmo di classificazione Naive Bayes si basa sull'applicazione del teorema di Bayes:
 $$P(A \mid B) = \frac{P(B \mid A)P(A)}{P(B)}$$
@@ -521,7 +532,7 @@ $$
 Un individuo viene classificato come quella classe $y$ che massimizza la probabilità a posteriori:
 $$\hat{y} = \argmax_y P(y)\prod\limits_{i=1}^{n}P(x_i \mid y)$$
 
-
+\newpage
 \subsection{Multinomial Naive Bayes}
 Nell'algoritmo Naive Bayes, avendo dati n-dimensionali e k classi, la probabilità a posteriori si ottiene conoscendo $P(x_i \mid y_j)$ per ogni $1\leq n,\ 1\leq j \leq k$
 
@@ -533,6 +544,7 @@ $$N_{yi} = \sum_{x \in T}x_i \qquad
 N_{y} = \sum_{i=1}^{n}N_{yi}$$
 Il parametro $\alpha: 0 < \alpha \leq 1$ è chiamato di smoothing, e ha lo scopo di gestire quei casi in cui una features non è presente nel training set, così da non ottenere probabilità uguali a $0$.
 
+\newpage
 \subsection{Bayesian Network}
 I classificatori naive Bayes si basano sull'assunzione di indipendenza delle caratteristiche. Ciò permette di semplificare le cose quando si considera l'equazione \eqref{eq:1} come risultato dell'applicazione della chain rule.
 Tuttavia questa è un'assunzione piuttosto forte.
@@ -578,8 +590,55 @@ Il quale rappresenta le dipendenze tra variabili. Quindi nello sviluppo della pr
 $$P(X_1, ..., X_n) = \prod\limits_{i=1}^{n}P(X_i \mid X_1, ..., X_{i-1}) = \prod\limits_{i=1}^{n}P(X_i \mid \pi(X_i)) $$
 Così facendo viene semplificata la probabilità congiunta, pur non assumendo la mutua indipendenza tra le variabili.
 
+\newpage
 \subsection{Support Vector Machine}
+Support vector machine è un'altro algoritmo di machine learning supervisionato, in cui gli $n$ individui sono rappresentati nella forma:
+$$(\vec{x}_1, y_1),...,(\vec{x}_n, y_n)$$
+Dove $y_i \in \{0, 1\}$ rappresenta la classe di appartenenza di un individuo. Ogni $\vec{x}_i$ è un vettore reale k-dimensionale, con tante dimensioni quante sono le features.
 
+\subsubsection{Iperpiano}
+L'obbiettivo dell'algoritmo è trovare l'iperpiano ottimo che che meglio separa le due classi.
+Nel caso 2-dimensionale, l'iperpiano è individuato da una retta, tuttavia è facilmente generalizzare il concetto al caso 3-dimensionale e così via:
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=15cm]{assets/svm-hyperplane.png}
+	\caption[Caption for LOF]{Iperpiano ottimo.\footnotemark}
+	\label{fig:svm-2d}
+\end{figure}
+
+
+\footnotetext{Fonte: \url{www.towardsdatascience.com/a-friendly-introduction-to-support-vector-machines-svm}.}
+
+
+\subsubsection{Iperpiano ottimo}
+Per iperpriano ottimo si intende quello che massimizza la distanza tra l'iperpiano e il più vicino punto $\vec{x}_i$ di ciascuna classe. Indicando con $\vec{w}$ il vettore normale all'iperpiano, ogni iperpiano può essere scritto come l'insieme dei punti $\vec{x}$ che soddisfano l'equazione:
+$$\vec{w}\cdot\vec{x} - b = 0$$
+
+Vengono considerati i due iperpiani paralleli che separano le due classi, la quale distanza tra essi è la più grande possibile. La regione compresa tra questi è detta margine, e l'iperpiano ottimo si trova nel mezzo tra i due. I due iperpiani possono essere scritti come:
+$$\vec{w}\cdot\vec{x} - b = 1$$
+$$\vec{w}\cdot\vec{x} - b = - 1$$
+Essendo $\vec{w}$ il vettore normale all'iperpiano, la distanza tra i due è $\frac{2}{||\vec{w}||}$, pertanto per massimizzare la distanza si vuole minimizzare $ ||\vec{w}||$.
+
+Si considerano inoltre i vincoli per esprimere che ogni punto deve cadere nel lato corretto rispetto al margine:
+$$\vec{w}\cdot\vec{x} - b \geq 1,\ se\ y_i = 1$$
+$$\vec{w}\cdot\vec{x} - b \leq - 1,\ se\ y_i = -1$$
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=8cm]{assets/svm-margin.png}
+	\caption[Caption for LOF]{Margine SVM.\footnotemark}
+	\label{fig:svm-margin}
+\end{figure}
+
+\footnotetext{Fonte: \url{www.wikipedia.org/wiki/File:SVM_margin.png}.}
+
+
+\subsubsection{Vettori di supporto}
+I vettori di supporto appartengono al dataset, e sono quei punti 
+
+\subsubsection{Kernel}
+Ciao
 
 \section{Strumenti utilizzati}
 \subsection{Scikit-learn}

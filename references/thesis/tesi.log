@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.5.31)  29 JUN 2020 17:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.5.31)  1 JUL 2020 20:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -507,7 +507,7 @@ LaTeX Info: Redefining \nameref on input line 48.
 \@outlinefile=\write3
 \openout3 = `tesi.out'.
 
-<logo_unimib.pdf, id=188, 67.8029pt x 66.29492pt>
+<logo_unimib.pdf, id=205, 67.8029pt x 66.29492pt>
 File: logo_unimib.pdf Graphic file (type pdf)
 <use logo_unimib.pdf>
 Package pdftex.def Info: logo_unimib.pdf  used on input line 55.
@@ -530,7 +530,7 @@ Overfull \hbox (2.2222pt too wide) in paragraph at lines 53--67
 ge.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.37 ...0-Folds Cross-Validation}{19}{section.3.2}
+l.38 ...berline {2.6.2}Weka}{20}{subsection.2.6.2}
                                                   % [1
 
 ])
@@ -551,7 +551,7 @@ Chapter 1.
 
 ]
 Chapter 2.
-<assets/Workflow.png, id=283, 801.99625pt x 691.58376pt>
+<assets/Workflow.png, id=303, 801.99625pt x 691.58376pt>
 File: assets/Workflow.png Graphic file (type png)
 <use assets/Workflow.png>
 Package pdftex.def Info: assets/Workflow.png  used on input line 141.
@@ -559,7 +559,7 @@ Package pdftex.def Info: assets/Workflow.png  used on input line 141.
 [6
 
 ] [7 <./assets/Workflow.png>]
-<assets/text-to-tokens.jpg, id=298, 613.29124pt x 152.57pt>
+<assets/text-to-tokens.jpg, id=318, 613.29124pt x 152.57pt>
 File: assets/text-to-tokens.jpg Graphic file (type jpg)
 <use assets/text-to-tokens.jpg>
 Package pdftex.def Info: assets/text-to-tokens.jpg  used on input line 186.
@@ -577,136 +577,160 @@ gli ar-ti-coli, propo-sizioni, pronomi
  []
 
 [9 <./assets/text-to-tokens.jpg>]
-<assets/stemming.jpg, id=317, 563.85657pt x 363.60844pt>
+<assets/stemming.jpg, id=337, 563.85657pt x 363.60844pt>
 File: assets/stemming.jpg Graphic file (type jpg)
 <use assets/stemming.jpg>
 Package pdftex.def Info: assets/stemming.jpg  used on input line 245.
 (pdftex.def)             Requested size: 312.9803pt x 201.82726pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 255--256
+Underfull \hbox (badness 10000) in paragraph at lines 260--261
 
  []
 
 [10 <./assets/stemming.jpg>] [11]
 LaTeX Font Info:    Trying to load font information for OML+cmr on input line 3
-29.
+34.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <9> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 329.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 334.
 LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 3
-32.
+37.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 332.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 337.
 
-Underfull \hbox (badness 10000) in paragraph at lines 339--340
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 342--363
+Underfull \hbox (badness 10000) in paragraph at lines 344--345
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 342--363
+Underfull \hbox (badness 10000) in paragraph at lines 347--368
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--383
+Underfull \hbox (badness 10000) in paragraph at lines 347--368
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--383
+Underfull \hbox (badness 10000) in paragraph at lines 369--388
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--383
+Underfull \hbox (badness 10000) in paragraph at lines 369--388
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 369--388
 
  []
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 406--407
+Underfull \hbox (badness 10000) in paragraph at lines 411--412
 
  []
 
 [13]
-Overfull \hbox (4.85822pt too wide) in paragraph at lines 449--450
+Overfull \hbox (4.85822pt too wide) in paragraph at lines 454--455
 \OT1/cmr/m/n/10 Il ma-chine learn-ing ^^Re lo stu-dio di al-go-ritmi che miglio
 -rano au-to-mati-ca-mente at-traverso l'esperienza,
  []
 
-<assets/ai_diagram.png, id=364, 497.86pt x 301.125pt>
+<assets/ai_diagram.png, id=386, 497.86pt x 301.125pt>
 File: assets/ai_diagram.png Graphic file (type png)
 <use assets/ai_diagram.png>
-Package pdftex.def Info: assets/ai_diagram.png  used on input line 454.
+Package pdftex.def Info: assets/ai_diagram.png  used on input line 459.
 (pdftex.def)             Requested size: 199.16928pt x 120.46623pt.
 [14 <./assets/ai_diagram.png>]
-<assets/decision_tree.png, id=384, 675.52374pt x 339.2675pt>
+<assets/decision_tree.png, id=408, 675.52374pt x 339.2675pt>
 File: assets/decision_tree.png Graphic file (type png)
 <use assets/decision_tree.png>
-Package pdftex.def Info: assets/decision_tree.png  used on input line 474.
+Package pdftex.def Info: assets/decision_tree.png  used on input line 481.
 (pdftex.def)             Requested size: 369.88582pt x 185.76941pt.
  [15 <./assets/decision_tree.png (PNG copy)>]
-[16]
-<assets/naive-bayes.png, id=399, 532.99126pt x 282.05376pt>
+[16] [17]
+<assets/naive-bayes.png, id=429, 532.99126pt x 282.05376pt>
 File: assets/naive-bayes.png Graphic file (type png)
 <use assets/naive-bayes.png>
-Package pdftex.def Info: assets/naive-bayes.png  used on input line 546.
+Package pdftex.def Info: assets/naive-bayes.png  used on input line 558.
 (pdftex.def)             Requested size: 142.26378pt x 75.28186pt.
-<assets/bayes-network.png, id=400, 532.99126pt x 432.61626pt>
+<assets/bayes-network.png, id=430, 532.99126pt x 432.61626pt>
 File: assets/bayes-network.png Graphic file (type png)
 <use assets/bayes-network.png>
-Package pdftex.def Info: assets/bayes-network.png  used on input line 553.
+Package pdftex.def Info: assets/bayes-network.png  used on input line 565.
 (pdftex.def)             Requested size: 142.26378pt x 115.46791pt.
- [17 <./assets/naive-bayes.png> <./assets/bayes-network.png>] [18]
+ [18 <./assets/naive-bayes.png> <./assets/bayes-network.png>]
+<assets/svm-hyperplane.png, id=440, 1405.25pt x 594.22pt>
+File: assets/svm-hyperplane.png Graphic file (type png)
+<use assets/svm-hyperplane.png>
+Package pdftex.def Info: assets/svm-hyperplane.png  used on input line 604.
+(pdftex.def)             Requested size: 426.79134pt x 180.47067pt.
+
+Overfull \hbox (8.53766pt too wide) in paragraph at lines 604--605
+ [][] 
+ []
+
+
+Overfull \hbox (20.73036pt too wide) in paragraph at lines 610--610
+[][][]\OT1/cmr/m/n/8 Fonte: []$\OT1/pcr/m/n/8 www . towardsdatascience . com / 
+a-[]friendly-[]introduction-[]to-[]support-[]vector-[]machines-[]svm$[]\OT1/cmr
+/m/n/8 .| 
+ []
+
+[19 <./assets/svm-hyperplane.png (PNG copy)>]
+<assets/svm-margin.png, id=450, 167.30505pt x 162.6075pt>
+File: assets/svm-margin.png Graphic file (type png)
+<use assets/svm-margin.png>
+Package pdftex.def Info: assets/svm-margin.png  used on input line 629.
+(pdftex.def)             Requested size: 227.62204pt x 221.24004pt.
+ [20 <./assets/svm-margin.png>]
 Chapter 3.
-[19
+[21
 
 ]
-<assets/cross-validation.png, id=418, 1027.84pt x 506.89375pt>
+<assets/cross-validation.png, id=466, 1027.84pt x 506.89375pt>
 File: assets/cross-validation.png Graphic file (type png)
 <use assets/cross-validation.png>
-Package pdftex.def Info: assets/cross-validation.png  used on input line 638.
+Package pdftex.def Info: assets/cross-validation.png  used on input line 697.
 (pdftex.def)             Requested size: 369.88582pt x 182.412pt.
- [20 <./assets/cross-validation.png>]
-<assets/confusion-matrix.jpg, id=428, 919.435pt x 733.74126pt>
+ [22 <./assets/cross-validation.png>]
+<assets/confusion-matrix.jpg, id=475, 919.435pt x 733.74126pt>
 File: assets/confusion-matrix.jpg Graphic file (type jpg)
 <use assets/confusion-matrix.jpg>
-Package pdftex.def Info: assets/confusion-matrix.jpg  used on input line 661.
+Package pdftex.def Info: assets/confusion-matrix.jpg  used on input line 720.
 (pdftex.def)             Requested size: 284.52756pt x 227.06558pt.
- [21 <./assets/confusion-matrix.jpg>]
-[22]
+ [23 <./assets/confusion-matrix.jpg>]
+[24]
 Chapter 4.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 699.
-[23
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 758.
+[25
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 699.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 758.
  (./tesi.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 699.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 699.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 758.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 758.
 Package rerunfilecheck Info: File `tesi.out' has not changed.
-(rerunfilecheck)             Checksum: D0C0C8A132840BE746F3FB79738BDBBC;3373.
+(rerunfilecheck)             Checksum: 2DC891141753A986754DEAC5A903CF52;3679.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 10854 strings out of 481239
- 164290 string characters out of 5920377
- 452688 words of memory out of 5000000
- 25809 multiletter control sequences out of 15000+600000
+ 10885 strings out of 481239
+ 164897 string characters out of 5920377
+ 452640 words of memory out of 5000000
+ 25825 multiletter control sequences out of 15000+600000
  542859 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  48i,14n,46p,798b,1793s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -731,10 +755,10 @@ cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
 </usr/share/texmf/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf/fo
 nts/type1/public/cm-super/sfrm1000.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/urw/courier/ucrr8a.pfb>
-Output written on tesi.pdf (24 pages, 685273 bytes).
+Output written on tesi.pdf (26 pages, 1222052 bytes).
 PDF statistics:
- 540 PDF objects out of 1000 (max. 8388607)
- 467 compressed objects within 5 object streams
- 118 named destinations out of 1000 (max. 500000)
- 419 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 591 PDF objects out of 1000 (max. 8388607)
+ 510 compressed objects within 6 object streams
+ 131 named destinations out of 1000 (max. 500000)
+ 461 words of extra memory for PDF output out of 10000 (max. 10000000)
 

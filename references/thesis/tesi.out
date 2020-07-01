@@ -29,18 +29,22 @@
 \BOOKMARK [2][-]{subsection.2.5.3}{Multinomial Naive Bayes}{section.2.5}% 29
 \BOOKMARK [2][-]{subsection.2.5.4}{Bayesian Network}{section.2.5}% 30
 \BOOKMARK [2][-]{subsection.2.5.5}{Support Vector Machine}{section.2.5}% 31
-\BOOKMARK [1][-]{section.2.6}{Strumenti utilizzati}{chapter.2}% 32
-\BOOKMARK [2][-]{subsection.2.6.1}{Scikit-learn}{section.2.6}% 33
-\BOOKMARK [2][-]{subsection.2.6.2}{Weka}{section.2.6}% 34
-\BOOKMARK [0][-]{chapter.3}{Campagna sperimentale}{}% 35
-\BOOKMARK [1][-]{section.3.1}{Dataset}{chapter.3}% 36
-\BOOKMARK [1][-]{section.3.2}{10-Folds Cross-Validation}{chapter.3}% 37
-\BOOKMARK [1][-]{section.3.3}{Misure di performance}{chapter.3}% 38
-\BOOKMARK [1][-]{section.3.4}{Esperimenti}{chapter.3}% 39
-\BOOKMARK [2][-]{subsection.3.4.1}{Caratteristiche linguistiche}{section.3.4}% 40
-\BOOKMARK [2][-]{subsection.3.4.2}{BOW + Caratteristiche linguistiche}{section.3.4}% 41
-\BOOKMARK [2][-]{subsection.3.4.3}{BERT + Caratteristiche linguistiche}{section.3.4}% 42
-\BOOKMARK [2][-]{subsection.3.4.4}{Sentence-BERT + Caratteristiche linguistiche}{section.3.4}% 43
-\BOOKMARK [2][-]{subsection.3.4.5}{BOW vs BERT vs Sentence-BERT}{section.3.4}% 44
-\BOOKMARK [2][-]{subsection.3.4.6}{Analisi lessico con PCA}{section.3.4}% 45
-\BOOKMARK [0][-]{chapter.4}{Conclusioni e sviluppi futuri}{}% 46
+\BOOKMARK [3][-]{subsubsection.2.5.5.1}{Iperpiano}{subsection.2.5.5}% 32
+\BOOKMARK [3][-]{subsubsection.2.5.5.2}{Iperpiano ottimo}{subsection.2.5.5}% 33
+\BOOKMARK [3][-]{subsubsection.2.5.5.3}{Vettori di supporto}{subsection.2.5.5}% 34
+\BOOKMARK [3][-]{subsubsection.2.5.5.4}{Kernel}{subsection.2.5.5}% 35
+\BOOKMARK [1][-]{section.2.6}{Strumenti utilizzati}{chapter.2}% 36
+\BOOKMARK [2][-]{subsection.2.6.1}{Scikit-learn}{section.2.6}% 37
+\BOOKMARK [2][-]{subsection.2.6.2}{Weka}{section.2.6}% 38
+\BOOKMARK [0][-]{chapter.3}{Campagna sperimentale}{}% 39
+\BOOKMARK [1][-]{section.3.1}{Dataset}{chapter.3}% 40
+\BOOKMARK [1][-]{section.3.2}{10-Folds Cross-Validation}{chapter.3}% 41
+\BOOKMARK [1][-]{section.3.3}{Misure di performance}{chapter.3}% 42
+\BOOKMARK [1][-]{section.3.4}{Esperimenti}{chapter.3}% 43
+\BOOKMARK [2][-]{subsection.3.4.1}{Caratteristiche linguistiche}{section.3.4}% 44
+\BOOKMARK [2][-]{subsection.3.4.2}{BOW + Caratteristiche linguistiche}{section.3.4}% 45
+\BOOKMARK [2][-]{subsection.3.4.3}{BERT + Caratteristiche linguistiche}{section.3.4}% 46
+\BOOKMARK [2][-]{subsection.3.4.4}{Sentence-BERT + Caratteristiche linguistiche}{section.3.4}% 47
+\BOOKMARK [2][-]{subsection.3.4.5}{BOW vs BERT vs Sentence-BERT}{section.3.4}% 48
+\BOOKMARK [2][-]{subsection.3.4.6}{Analisi lessico con PCA}{section.3.4}% 49
+\BOOKMARK [0][-]{chapter.4}{Conclusioni e sviluppi futuri}{}% 50
