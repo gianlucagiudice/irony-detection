@@ -1,0 +1,37 @@
+{
+    "overall": {
+        "report": {
+            "accuracy": 77.58999999999999,
+            "False": {
+                "precision": 0.9291562722595372,
+                "recall": 0.7591000000000001,
+                "f1-score": 0.8355365201077645,
+                "support": 3000.0
+            },
+            "True": {
+                "precision": 0.5335278220621313,
+                "recall": 0.8263,
+                "f1-score": 0.6483467151070363,
+                "support": 1000.0
+            },
+            "weighted avg": {
+                "precision": 0.8302491597101858,
+                "recall": 0.7759,
+                "f1-score": 0.7887390688575824,
+                "support": 4000.0
+            }
+        },
+        "confusion-matrix": [
+            [
+                2277.3,
+                173.7
+            ],
+            [
+                722.7,
+                826.3
+            ]
+        ]
+    },
+    "features": "bert-pos-emot",
+    "classifier": "BayesianNetworks"
+}
