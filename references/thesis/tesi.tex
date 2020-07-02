@@ -456,6 +456,8 @@ Combined     >>> {'sadness': 0, 'anticipation': 1, 'fear': 0, 'anger': 0,
 \end{lstlisting}
 
 \section{Modelli supervisionati}
+\label{chap:supervised-models}
+
 Il machine learning è lo studio di algoritmi che migliorano automaticamente attraverso l'esperienza, ed è sottoinsieme dell'intelligenza artificiale. Il machine learning crea modelli matematici basati sui dati, i quali vengono utilizzati per far apprendere alla macchina, con lo scopo di fare previsioni o decidere riguardo dati che non sono mai stati visti prima.
 
 
@@ -698,6 +700,29 @@ Nella figura~\ref{fig:iperpiano-r2}, è riportata la linea di dicisione per le d
 \newpage
 \section{Strumenti utilizzati}
 \subsection{Scikit-learn}
+
+Scikit-learn è un modulo di python per il machine learning. Utilizzando questo modulo, è stato scritto il codice python per creare i modelli con gli algoritmi:
+\begin{itemize}
+	\item Decision Tree
+	\item Multinomial Naive Bayes
+	\item Sipport Vector Machine - Kernel lineare
+	\item Sipport Vector Machine - Kernel RBF
+\end{itemize}
+Inoltre per ogni algoritmo sono stati creati più modelli considerando diverse l'insieme potenza delle features. Quindi sono stati eseguiti i seguenti macrostep:
+\begin{enumerate}
+	\item Lettura del dataset
+	\item Shuffle del dataset con lo stesso seed per ogni modello
+	\item Standardizzare del dataset
+	\item Creazione di 10 folds in cui viene effettuato lo split del dataset tra training-set e test-set
+	\item Training dei modelli per ogni folds
+	\item Valutazione dei classificatori per ogni folds
+	\item Media delle misure di performance rispetto ogni folds
+	\item Dump del report così da poter essere sucessivamente messo a confronto con altri modelli
+\end{enumerate}
+Essendo scikit-learn un modulo per python, e non un applicativo a parte, è stato possibile gestire manualmente la politica per il training.
+
+Infatti per questioni di ottimizzazione, fissato un algoritmo e le features per un determinato modello, è stato scelto di creare $k$ processi eseguiti in parallelo, ognuno dei quali si prende in carico il training del modello su un particolare fold dei $k$ considerati. Avendo scelto per gli esperimenti 10 folds, ed utilizzato una macchina con 8 cores, ciò si presta bene sfruttare ognuno degli 8 cores, con il risultato di ridurre il tempo totale impiegato per il training dei diversi modelli, dovendo considerare diverse features per ogni modello e i molteplici algoritmi di classificazione.
+
 \subsection{Weka}
 
 
