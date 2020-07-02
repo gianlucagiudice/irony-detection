@@ -16,7 +16,8 @@
 	captionpos=b
 }
 
-
+\usepackage{hyperref}
+\def\UrlBreaks{\do\/\do-}
 \usepackage[bottom]{footmisc}
 
 \usepackage{varwidth}
@@ -39,7 +40,11 @@
 
 \usepackage{hyperref}
 
+
 \usepackage{url}
+
+
+\usepackage{hyperref}
 
 \geometry{a4paper}
 
@@ -555,15 +560,15 @@ A questo scopo i classificatori Bayesian Network introducono una struttura dati 
 	\centering
 	\begin{subfigure}[b]{0.4\textwidth}
 		\centering
-		\includegraphics[width=5cm]{assets/naive-bayes.png}
-		\caption{Naive Bayes network.}
+		\includegraphics[width=\linewidth]{assets/naive-bayes.png}
+		\caption{Naive Bayes network}
 		\label{fig:naive-bayes}
 	\end{subfigure}
-	\hspace{4em}
+	\hfill
 	\begin{subfigure}[b]{0.4\textwidth}
 	\centering
-		\includegraphics[width=5cm]{assets/bayes-network.png}
-		\caption{Bayes network per problema specifico.}
+		\includegraphics[width=\linewidth]{assets/bayes-network.png}
+		\caption{Bayes network per problema specifico}
 		\label{fig:naive-bayes}
 	\end{subfigure}
 	\caption{Dipendenza tra variabili.}
@@ -594,7 +599,7 @@ Così facendo viene semplificata la probabilità congiunta, pur non assumendo la
 \subsection{Support Vector Machine}
 Support vector machine è un'altro algoritmo di machine learning supervisionato, in cui gli $n$ individui sono rappresentati nella forma:
 $$(\vec{x}_1, y_1),...,(\vec{x}_n, y_n)$$
-Dove $y_i \in \{0, 1\}$ rappresenta la classe di appartenenza di un individuo. Ogni $\vec{x}_i$ è un vettore reale k-dimensionale, con tante dimensioni quante sono le features.
+Dove $y_i \in \{1, -1\}$ rappresenta la classe di appartenenza di un individuo. Ogni $\vec{x}_i$ è un vettore reale k-dimensionale, con tante dimensioni quante sono le features.
 
 \subsubsection{Iperpiano}
 L'obbiettivo dell'algoritmo è trovare l'iperpiano ottimo che che meglio separa le due classi.
@@ -607,14 +612,14 @@ Nel caso 2-dimensionale, l'iperpiano è individuato da una retta, tuttavia è fa
 \end{figure}
 
 
-\footnotetext{Fonte: \url{www.towardsdatascience.com/a-friendly-introduction-to-support-vector-machines-svm}.}
+\footnotetext{Fonte: \url{www.towardsdatascience.com/a-friendly-introduction-to-support-vector-machines-svm-925b68c5a079}.}
 
 
 \subsubsection{Iperpiano ottimo}
 Per iperpriano ottimo si intende quello che massimizza la distanza tra l'iperpiano e il più vicino punto $\vec{x}_i$ di ciascuna classe. Indicando con $\vec{w}$ il vettore normale all'iperpiano, ogni iperpiano può essere scritto come l'insieme dei punti $\vec{x}$ che soddisfano l'equazione:
 $$\vec{w}\cdot\vec{x} - b = 0$$
 
-Vengono considerati i due iperpiani paralleli che separano le due classi, la quale distanza tra essi è la più grande possibile. La regione compresa tra questi è detta margine, e l'iperpiano ottimo si trova nel mezzo tra i due. I due iperpiani possono essere scritti come:
+Vengono considerati i due iperpiani paralleli che separano le due classi, la quale distanza tra i due è la più grande possibile. La regione compresa tra questi è detta margine, e l'iperpiano ottimo si trova nel mezzo tra i due. I due iperpiani possono essere scritti come:
 $$\vec{w}\cdot\vec{x} - b = 1$$
 $$\vec{w}\cdot\vec{x} - b = - 1$$
 Essendo $\vec{w}$ il vettore normale all'iperpiano, la distanza tra i due è $\frac{2}{||\vec{w}||}$, pertanto per massimizzare la distanza si vuole minimizzare $ ||\vec{w}||$.
@@ -626,7 +631,7 @@ $$\vec{w}\cdot\vec{x} - b \leq - 1,\ se\ y_i = -1$$
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=8cm]{assets/svm-margin.png}
+	\includegraphics[width=7cm]{assets/svm-margin.png}
 	\caption[Caption for LOF]{Margine SVM.\footnotemark}
 	\label{fig:svm-margin}
 \end{figure}
@@ -635,11 +640,62 @@ $$\vec{w}\cdot\vec{x} - b \leq - 1,\ se\ y_i = -1$$
 
 
 \subsubsection{Vettori di supporto}
-I vettori di supporto appartengono al dataset, e sono quei punti 
+I due iperpiani che individuano il margine, sono trovati a partire dai vettori che appartengono al dataset. Quei punti che permettono di individuare le frontiere del margine, ovvero i due iperpiani paralleli, sono i vettori di supporto. Questi punti del dataset sono fondamentali, in quanto per costruzione cadono sul bordo del margine, pertanto lo spostamento o la rimozione di uno di essi, avrebbe come risultato due iperpiani diversi che definiscono il margine, quindi un differente iperpiano ottimo.
 
-\subsubsection{Kernel}
-Ciao
+\subsubsection{SVM non lineare}
+Fino ad ora sono stati presi in considerazione solo dataset linearmente separabili. Tuttavia questo può non essere sempre possibile. L'idea è quindi di mappare i dati in uno spazio con una dimensione in più, con lo scopo di ottenere la separazione lineare utilizzando un iperpiano nello spazio con una dimensione aggiuntiva.
 
+Sotto viene preso come esempio un dataset in $R^2$ non separabile utilizzando un iperpiano. Si considerano quindi la trasformazione:
+
+
+$$\phi \colon R^2 \to R^3$$
+$$\phi(\boldsymbol{X})  = [x_1, x_2, x_1^2 + x_2^2]^T$$ 
+Utilizzando tale trasformazione, il dataset di partenza viene mappato in uno spazio con una dimensione in più:
+
+
+\begin{figure}[!h]
+
+	\begin{subfigure}[b]{0.48\textwidth}
+
+		\includegraphics[width=\linewidth]{assets/svm-non-separable-1.png}
+		\caption{Dataset in $R^2$}
+		\label{fig:dataset-r2}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.48\textwidth}
+		\includegraphics[width=\linewidth]{assets/svm-non-separable-2.png}
+		\caption{Dataset trasformato in $R^3$}
+		\label{fig:dataset-r3}
+	\end{subfigure}%
+	\caption[Caption for LOF]{Aggiunta di una nuova dimensione.\footnotemark}
+\end{figure}
+
+\footnotetext{Fonte: \url{www.medium.com/@vivek.yadav/why-is-gradient-descent-robust-to-non-linearly-separable-data-a50c543e8f4a}.}
+\noindent
+Dopo la trasformazione, come si può notare dalla figura~\ref{fig:dataset-r3}, è possibile trovare un iperpiano in $R^3$ che ben separa le due classi:
+
+\begin{figure}[!h]
+
+	\begin{subfigure}[b]{0.48\textwidth}
+		
+		\includegraphics[width=\linewidth]{assets/svm-separable-1.png}
+		\caption{Iperpiano in $R^3$}
+		\label{fig:iperpiano-r3}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.48\textwidth}
+		\includegraphics[width=\linewidth]{assets/svm-separable-2.png}
+		\caption{Iperpiano proiettato in $R^2$}
+		\label{fig:iperpiano-r2}
+	\end{subfigure}%
+	\caption[Caption for LOF]{Aggiunta di una nuova dimensione.\footnotemark}
+\end{figure}
+
+\footnotetext{Fonte: \url{https://www.eric-kim.net/eric-kim-net/posts/1/imgs/data_2d_to_3d_hyperplane.png}.}
+\noindent
+Nella figura~\ref{fig:iperpiano-r2}, è riportata la linea di dicisione per le due classi, ovvero l'iperpiano trovato in $R^3$ e poi proiettato in $R^2$.
+
+\newpage
 \section{Strumenti utilizzati}
 \subsection{Scikit-learn}
 \subsection{Weka}

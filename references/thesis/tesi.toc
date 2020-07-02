@@ -32,19 +32,19 @@
 \contentsline {subsubsection}{\numberline {2.5.5.1}Iperpiano}{19}{subsubsection.2.5.5.1}%
 \contentsline {subsubsection}{\numberline {2.5.5.2}Iperpiano ottimo}{19}{subsubsection.2.5.5.2}%
 \contentsline {subsubsection}{\numberline {2.5.5.3}Vettori di supporto}{20}{subsubsection.2.5.5.3}%
-\contentsline {subsubsection}{\numberline {2.5.5.4}Kernel}{20}{subsubsection.2.5.5.4}%
-\contentsline {section}{\numberline {2.6}Strumenti utilizzati}{20}{section.2.6}%
-\contentsline {subsection}{\numberline {2.6.1}Scikit-learn}{20}{subsection.2.6.1}%
-\contentsline {subsection}{\numberline {2.6.2}Weka}{20}{subsection.2.6.2}%
-\contentsline {chapter}{\numberline {3}Campagna sperimentale}{21}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Dataset}{21}{section.3.1}%
-\contentsline {section}{\numberline {3.2}10-Folds Cross-Validation}{21}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Misure di performance}{22}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Esperimenti}{24}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Caratteristiche linguistiche}{24}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}BOW + Caratteristiche linguistiche}{24}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}BERT + Caratteristiche linguistiche}{24}{subsection.3.4.3}%
-\contentsline {subsection}{\numberline {3.4.4}Sentence-BERT + Caratteristiche linguistiche}{24}{subsection.3.4.4}%
-\contentsline {subsection}{\numberline {3.4.5}BOW vs BERT vs Sentence-BERT}{24}{subsection.3.4.5}%
-\contentsline {subsection}{\numberline {3.4.6}Analisi lessico con PCA}{24}{subsection.3.4.6}%
-\contentsline {chapter}{\numberline {4}Conclusioni e sviluppi futuri}{25}{chapter.4}%
+\contentsline {subsubsection}{\numberline {2.5.5.4}SVM non lineare}{20}{subsubsection.2.5.5.4}%
+\contentsline {section}{\numberline {2.6}Strumenti utilizzati}{22}{section.2.6}%
+\contentsline {subsection}{\numberline {2.6.1}Scikit-learn}{22}{subsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.6.2}Weka}{22}{subsection.2.6.2}%
+\contentsline {chapter}{\numberline {3}Campagna sperimentale}{23}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Dataset}{23}{section.3.1}%
+\contentsline {section}{\numberline {3.2}10-Folds Cross-Validation}{23}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Misure di performance}{24}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Esperimenti}{26}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Caratteristiche linguistiche}{26}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}BOW + Caratteristiche linguistiche}{26}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}BERT + Caratteristiche linguistiche}{26}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}Sentence-BERT + Caratteristiche linguistiche}{26}{subsection.3.4.4}%
+\contentsline {subsection}{\numberline {3.4.5}BOW vs BERT vs Sentence-BERT}{26}{subsection.3.4.5}%
+\contentsline {subsection}{\numberline {3.4.6}Analisi lessico con PCA}{26}{subsection.3.4.6}%
+\contentsline {chapter}{\numberline {4}Conclusioni e sviluppi futuri}{27}{chapter.4}%
