@@ -455,7 +455,7 @@ Combined     >>> {'sadness': 0, 'anticipation': 1, 'fear': 0, 'anger': 0,
                   'joy': 4, 'disgust': 0, 'trust': 1, 'surprise': 1}
 \end{lstlisting}
 
-\section{Modelli supervisionati}
+\chapter{Modelli supervisionati}
 \label{chap:supervised-models}
 
 Il machine learning è lo studio di algoritmi che migliorano automaticamente attraverso l'esperienza, ed è sottoinsieme dell'intelligenza artificiale. Il machine learning crea modelli matematici basati sui dati, i quali vengono utilizzati per far apprendere alla macchina, con lo scopo di fare previsioni o decidere riguardo dati che non sono mai stati visti prima.
@@ -480,7 +480,7 @@ Esistono diversi algoritmi per creare modelli supervisionati, quelli che sono st
 	\item Support Vector Machine
 \end{itemize}
 
-\subsection{Decision Tree}
+\section{Decision Tree}
 Un albero di decisione è un modello predittivo con una struttura ad albero. Ogni nodo interno rappresenta una feature, un arco verso un nodo figlio rappresenta un possibile valore per quella proprietà, ovvero una decisione, e una foglia il valore predetto. Il processo consiste in una sequenza di test, comincia sempre dal nodo radice, e procede verso il basso. A seconda dei valori rilevati in ciascun nodo, si otterrà un path che porterà ad un nodo foglia e quindi una classificazione.
 
 \begin{figure}[!h]
@@ -499,7 +499,7 @@ Gli alberi di decisione hanno il vantaggio della semplicità. Infatti è possibi
 Un problema degli alberi di decisione è che tendono ad andare in overfitting.
 
 \newpage
-\subsection{Naive Bayes}
+\section{Naive Bayes}
 L'algoritmo di classificazione Naive Bayes si basa sull'applicazione del teorema di Bayes:
 $$P(A \mid B) = \frac{P(B \mid A)P(A)}{P(B)}$$
 Contestualizzato per la creazione di un modello per un task di classificazione, si ha la tupla composta dalle features di un particolare documento identificato da:
@@ -539,8 +539,8 @@ $$
 Un individuo viene classificato come quella classe $y$ che massimizza la probabilità a posteriori:
 $$\hat{y} = \argmax_y P(y)\prod\limits_{i=1}^{n}P(x_i \mid y)$$
 
-\newpage
-\subsection{Multinomial Naive Bayes}
+
+\section{Multinomial Naive Bayes}
 Nell'algoritmo Naive Bayes, avendo dati n-dimensionali e k classi, la probabilità a posteriori si ottiene conoscendo $P(x_i \mid y_j)$ per ogni $1\leq n,\ 1\leq j \leq k$
 
 Queste probabilità vanno stimate dal dataset, e nella variante Multinomial Naive Bayes si considera una distribuzione binomiale in più variabili (da qui multinomiale). Si hanno quindi i parametri $\theta_y = (\theta_{y1}, \theta_{y2}, ...\theta_{yn})$, dove $\theta_{yi} = P(x_i \mid y)$ vengono stimati in questo modo:
@@ -551,8 +551,7 @@ $$N_{yi} = \sum_{x \in T}x_i \qquad
 N_{y} = \sum_{i=1}^{n}N_{yi}$$
 Il parametro $\alpha: 0 < \alpha \leq 1$ è chiamato di smoothing, e ha lo scopo di gestire quei casi in cui una features non è presente nel training set, così da non ottenere probabilità uguali a $0$.
 
-\newpage
-\subsection{Bayesian Network}
+\section{Bayesian Network}
 I classificatori naive Bayes si basano sull'assunzione di indipendenza delle caratteristiche. Ciò permette di semplificare le cose quando si considera l'equazione \eqref{eq:1} come risultato dell'applicazione della chain rule.
 Tuttavia questa è un'assunzione piuttosto forte.
 
@@ -597,13 +596,13 @@ Il quale rappresenta le dipendenze tra variabili. Quindi nello sviluppo della pr
 $$P(X_1, ..., X_n) = \prod\limits_{i=1}^{n}P(X_i \mid X_1, ..., X_{i-1}) = \prod\limits_{i=1}^{n}P(X_i \mid \pi(X_i)) $$
 Così facendo viene semplificata la probabilità congiunta, pur non assumendo la mutua indipendenza tra le variabili.
 
-\newpage
-\subsection{Support Vector Machine}
+
+\section{Support Vector Machine}
 Support vector machine è un'altro algoritmo di machine learning supervisionato, in cui gli $n$ individui sono rappresentati nella forma:
 $$(\vec{x}_1, y_1),...,(\vec{x}_n, y_n)$$
 Dove $y_i \in \{1, -1\}$ rappresenta la classe di appartenenza di un individuo. Ogni $\vec{x}_i$ è un vettore reale k-dimensionale, con tante dimensioni quante sono le features.
 
-\subsubsection{Iperpiano}
+\subsection{Iperpiano}
 L'obbiettivo dell'algoritmo è trovare l'iperpiano ottimo che che meglio separa le due classi.
 Nel caso 2-dimensionale, l'iperpiano è individuato da una retta, tuttavia è facilmente generalizzare il concetto al caso 3-dimensionale e così via:
 \begin{figure}[h!]
@@ -617,7 +616,7 @@ Nel caso 2-dimensionale, l'iperpiano è individuato da una retta, tuttavia è fa
 \footnotetext{Fonte: \url{www.towardsdatascience.com/a-friendly-introduction-to-support-vector-machines-svm-925b68c5a079}.}
 
 
-\subsubsection{Iperpiano ottimo}
+\subsection{Iperpiano ottimo}
 Per iperpriano ottimo si intende quello che massimizza la distanza tra l'iperpiano e il più vicino punto $\vec{x}_i$ di ciascuna classe. Indicando con $\vec{w}$ il vettore normale all'iperpiano, ogni iperpiano può essere scritto come l'insieme dei punti $\vec{x}$ che soddisfano l'equazione:
 $$\vec{w}\cdot\vec{x} - b = 0$$
 
@@ -641,10 +640,10 @@ $$\vec{w}\cdot\vec{x} - b \leq - 1,\ se\ y_i = -1$$
 \footnotetext{Fonte: \url{www.wikipedia.org/wiki/File:SVM_margin.png}.}
 
 
-\subsubsection{Vettori di supporto}
+\subsection{Vettori di supporto}
 I due iperpiani che individuano il margine, sono trovati a partire dai vettori che appartengono al dataset. Quei punti che permettono di individuare le frontiere del margine, ovvero i due iperpiani paralleli, sono i vettori di supporto. Questi punti del dataset sono fondamentali, in quanto per costruzione cadono sul bordo del margine, pertanto lo spostamento o la rimozione di uno di essi, avrebbe come risultato due iperpiani diversi che definiscono il margine, quindi un differente iperpiano ottimo.
 
-\subsubsection{SVM non lineare}
+\subsection{SVM non lineare}
 Fino ad ora sono stati presi in considerazione solo dataset linearmente separabili. Tuttavia questo può non essere sempre possibile. L'idea è quindi di mappare i dati in uno spazio con una dimensione in più, con lo scopo di ottenere la separazione lineare utilizzando un iperpiano nello spazio con una dimensione aggiuntiva.
 
 Sotto viene preso come esempio un dataset in $R^2$ non separabile utilizzando un iperpiano. Si considerano quindi la trasformazione:
@@ -657,14 +656,14 @@ Utilizzando tale trasformazione, il dataset di partenza viene mappato in uno spa
 
 \begin{figure}[!h]
 
-	\begin{subfigure}[b]{0.48\textwidth}
+	\begin{subfigure}[b]{0.5\textwidth}
 
 		\includegraphics[width=\linewidth]{assets/svm-non-separable-1.png}
 		\caption{Dataset in $R^2$}
 		\label{fig:dataset-r2}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[b]{0.48\textwidth}
+	\begin{subfigure}[b]{0.5\textwidth}
 		\includegraphics[width=\linewidth]{assets/svm-non-separable-2.png}
 		\caption{Dataset trasformato in $R^3$}
 		\label{fig:dataset-r3}
@@ -678,14 +677,14 @@ Dopo la trasformazione, come si può notare dalla figura~\ref{fig:dataset-r3}, �
 
 \begin{figure}[!h]
 
-	\begin{subfigure}[b]{0.48\textwidth}
+	\begin{subfigure}[b]{0.5\textwidth}
 		
 		\includegraphics[width=\linewidth]{assets/svm-separable-1.png}
 		\caption{Iperpiano in $R^3$}
 		\label{fig:iperpiano-r3}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[b]{0.48\textwidth}
+	\begin{subfigure}[b]{0.5\textwidth}
 		\includegraphics[width=\linewidth]{assets/svm-separable-2.png}
 		\caption{Iperpiano proiettato in $R^2$}
 		\label{fig:iperpiano-r2}
@@ -697,11 +696,11 @@ Dopo la trasformazione, come si può notare dalla figura~\ref{fig:dataset-r3}, �
 \noindent
 Nella figura~\ref{fig:iperpiano-r2}, è riportata la linea di dicisione per le due classi, ovvero l'iperpiano trovato in $R^3$ e poi proiettato in $R^2$.
 
-\newpage
 \section{Strumenti utilizzati}
-\subsection{Scikit-learn}
+Per l'implementazione degli algoritmi, sono stati utilizzati degli strumenti che mettono a disposizione la possibilità di effettuare il training dei modelli.
 
-Scikit-learn è un modulo di python per il machine learning. Utilizzando questo modulo, è stato scritto il codice python per creare i modelli con gli algoritmi:
+\subsection{Scikit-learn}
+Scikit-learn\footnote{Scikit-learn: www.scikit-learn.org/stable/} è un modulo di python open soruce per il machine learning. Utilizzando questo modulo, è stato scritto il codice python per creare i modelli con gli algoritmi:
 \begin{itemize}
 	\item Decision Tree
 	\item Multinomial Naive Bayes
@@ -719,21 +718,24 @@ Inoltre per ogni algoritmo sono stati creati più modelli considerando diverse l
 	\item Media delle misure di performance rispetto ogni folds
 	\item Dump del report così da poter essere sucessivamente messo a confronto con altri modelli
 \end{enumerate}
-Essendo scikit-learn un modulo per python, e non un applicativo a parte, è stato possibile gestire manualmente la politica per il training.
+Essendo scikit-learn un modulo per python, che mette a disposizione delle API, è stato possibile gestire manualmente la politica per il training.
 
 Infatti per questioni di ottimizzazione, fissato un algoritmo e le features per un determinato modello, è stato scelto di creare $k$ processi eseguiti in parallelo, ognuno dei quali si prende in carico il training del modello su un particolare fold dei $k$ considerati. Avendo scelto per gli esperimenti 10 folds, ed utilizzato una macchina con 8 cores, ciò si presta bene sfruttare ognuno degli 8 cores, con il risultato di ridurre il tempo totale impiegato per il training dei diversi modelli, dovendo considerare diverse features per ogni modello e i molteplici algoritmi di classificazione.
 
 \subsection{Weka}
 
+Weka\footnote{Weka: www.cs.waikato.ac.nz/ml/weka/} è un software open source per il machine learning. Questo applicativo può essere utilizzato attraverso interfaccia grafica, ed è in generale più immediato rispetto a scrivere del codice in python che utilizza le API fornite dal modulo scikit-learn. Con questo software sono stati creati i modelli utilizzando l'algoritmo:
+\begin{itemize}
+	\item Bayesian network
+\end{itemize}
+Non è stato utilizzato scikit-learn in quanto questo algoritmo non è implementato nel modulo.
 
-
+Essendo weka un software che fornisce un'interfaccia grafica, ha il vantaggio di essere più immediato rispetto a scikit-learn, tuttavia non essendo possibile implementare manualmente lo script per il training, in questo caso non vengono sfruttati tutti i cores per il training dei modelli.
 
 \chapter{Campagna sperimentale}
 
 \section{Dataset}
-Fare notare che è in inglese
-
-Trattandosi di un modello supervisionato, è richiesto che il dataset sia etichettato. Per associare una specifica label ai messaggi generati dagli utenti si possono seguire due strade:
+Il dataset a disposizione è il corpora \emph{TwReyes2013}, composto da 40,000 tweets in lingua inglese. Trattandosi di un approccio supervisionato, è richiesto che il dataset sia etichettato. Per associare una specifica label ai messaggi generati dagli utenti si possono seguire due strade:
 
 \begin{itemize}
 	\item \textbf{Self-Tagging}:
@@ -824,6 +826,7 @@ Basandosi su questi dati vengono definite delle misure di performance per la val
 \end{itemize}
 
 \section{Esperimenti}
+Insieme potenza della features e differenti algoritmi.
 
 \subsection{Caratteristiche linguistiche}
 \subsection{BOW + Caratteristiche linguistiche}

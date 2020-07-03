@@ -23,28 +23,28 @@
 \BOOKMARK [3][-]{subsubsection.2.4.1.5}{Estrazione particelle pragmatiche}{subsection.2.4.1}% 23
 \BOOKMARK [2][-]{subsection.2.4.2}{POS \(Part Of Speech\)}{section.2.4}% 24
 \BOOKMARK [2][-]{subsection.2.4.3}{EMOT \(Emotional Features\)}{section.2.4}% 25
-\BOOKMARK [1][-]{section.2.5}{Modelli supervisionati}{chapter.2}% 26
-\BOOKMARK [2][-]{subsection.2.5.1}{Decision Tree}{section.2.5}% 27
-\BOOKMARK [2][-]{subsection.2.5.2}{Naive Bayes}{section.2.5}% 28
-\BOOKMARK [2][-]{subsection.2.5.3}{Multinomial Naive Bayes}{section.2.5}% 29
-\BOOKMARK [2][-]{subsection.2.5.4}{Bayesian Network}{section.2.5}% 30
-\BOOKMARK [2][-]{subsection.2.5.5}{Support Vector Machine}{section.2.5}% 31
-\BOOKMARK [3][-]{subsubsection.2.5.5.1}{Iperpiano}{subsection.2.5.5}% 32
-\BOOKMARK [3][-]{subsubsection.2.5.5.2}{Iperpiano ottimo}{subsection.2.5.5}% 33
-\BOOKMARK [3][-]{subsubsection.2.5.5.3}{Vettori di supporto}{subsection.2.5.5}% 34
-\BOOKMARK [3][-]{subsubsection.2.5.5.4}{SVM non lineare}{subsection.2.5.5}% 35
-\BOOKMARK [1][-]{section.2.6}{Strumenti utilizzati}{chapter.2}% 36
-\BOOKMARK [2][-]{subsection.2.6.1}{Scikit-learn}{section.2.6}% 37
-\BOOKMARK [2][-]{subsection.2.6.2}{Weka}{section.2.6}% 38
-\BOOKMARK [0][-]{chapter.3}{Campagna sperimentale}{}% 39
-\BOOKMARK [1][-]{section.3.1}{Dataset}{chapter.3}% 40
-\BOOKMARK [1][-]{section.3.2}{10-Folds Cross-Validation}{chapter.3}% 41
-\BOOKMARK [1][-]{section.3.3}{Misure di performance}{chapter.3}% 42
-\BOOKMARK [1][-]{section.3.4}{Esperimenti}{chapter.3}% 43
-\BOOKMARK [2][-]{subsection.3.4.1}{Caratteristiche linguistiche}{section.3.4}% 44
-\BOOKMARK [2][-]{subsection.3.4.2}{BOW + Caratteristiche linguistiche}{section.3.4}% 45
-\BOOKMARK [2][-]{subsection.3.4.3}{BERT + Caratteristiche linguistiche}{section.3.4}% 46
-\BOOKMARK [2][-]{subsection.3.4.4}{Sentence-BERT + Caratteristiche linguistiche}{section.3.4}% 47
-\BOOKMARK [2][-]{subsection.3.4.5}{BOW vs BERT vs Sentence-BERT}{section.3.4}% 48
-\BOOKMARK [2][-]{subsection.3.4.6}{Analisi lessico con PCA}{section.3.4}% 49
-\BOOKMARK [0][-]{chapter.4}{Conclusioni e sviluppi futuri}{}% 50
+\BOOKMARK [0][-]{chapter.3}{Modelli supervisionati}{}% 26
+\BOOKMARK [1][-]{section.3.1}{Decision Tree}{chapter.3}% 27
+\BOOKMARK [1][-]{section.3.2}{Naive Bayes}{chapter.3}% 28
+\BOOKMARK [1][-]{section.3.3}{Multinomial Naive Bayes}{chapter.3}% 29
+\BOOKMARK [1][-]{section.3.4}{Bayesian Network}{chapter.3}% 30
+\BOOKMARK [1][-]{section.3.5}{Support Vector Machine}{chapter.3}% 31
+\BOOKMARK [2][-]{subsection.3.5.1}{Iperpiano}{section.3.5}% 32
+\BOOKMARK [2][-]{subsection.3.5.2}{Iperpiano ottimo}{section.3.5}% 33
+\BOOKMARK [2][-]{subsection.3.5.3}{Vettori di supporto}{section.3.5}% 34
+\BOOKMARK [2][-]{subsection.3.5.4}{SVM non lineare}{section.3.5}% 35
+\BOOKMARK [1][-]{section.3.6}{Strumenti utilizzati}{chapter.3}% 36
+\BOOKMARK [2][-]{subsection.3.6.1}{Scikit-learn}{section.3.6}% 37
+\BOOKMARK [2][-]{subsection.3.6.2}{Weka}{section.3.6}% 38
+\BOOKMARK [0][-]{chapter.4}{Campagna sperimentale}{}% 39
+\BOOKMARK [1][-]{section.4.1}{Dataset}{chapter.4}% 40
+\BOOKMARK [1][-]{section.4.2}{10-Folds Cross-Validation}{chapter.4}% 41
+\BOOKMARK [1][-]{section.4.3}{Misure di performance}{chapter.4}% 42
+\BOOKMARK [1][-]{section.4.4}{Esperimenti}{chapter.4}% 43
+\BOOKMARK [2][-]{subsection.4.4.1}{Caratteristiche linguistiche}{section.4.4}% 44
+\BOOKMARK [2][-]{subsection.4.4.2}{BOW + Caratteristiche linguistiche}{section.4.4}% 45
+\BOOKMARK [2][-]{subsection.4.4.3}{BERT + Caratteristiche linguistiche}{section.4.4}% 46
+\BOOKMARK [2][-]{subsection.4.4.4}{Sentence-BERT + Caratteristiche linguistiche}{section.4.4}% 47
+\BOOKMARK [2][-]{subsection.4.4.5}{BOW vs BERT vs Sentence-BERT}{section.4.4}% 48
+\BOOKMARK [2][-]{subsection.4.4.6}{Analisi lessico con PCA}{section.4.4}% 49
+\BOOKMARK [0][-]{chapter.5}{Conclusioni e sviluppi futuri}{}% 50

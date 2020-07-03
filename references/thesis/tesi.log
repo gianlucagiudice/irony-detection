@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.5.31)  3 JUL 2020 00:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.5.31)  3 JUL 2020 16:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -530,7 +530,7 @@ Overfull \hbox (2.2222pt too wide) in paragraph at lines 58--72
 ge.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.38 ...berline {2.6.2}Weka}{22}{subsection.2.6.2}
+l.37 ...{3.6.1}Scikit-learn}{22}{subsection.3.6.1}
                                                   % [1
 
 ])
@@ -639,127 +639,154 @@ Underfull \hbox (badness 10000) in paragraph at lines 416--417
 
  []
 
-[13]
+[13] [14]
+Chapter 3.
+
 Overfull \hbox (4.85822pt too wide) in paragraph at lines 461--462
 \OT1/cmr/m/n/10 Il ma-chine learn-ing ^^Re lo stu-dio di al-go-ritmi che miglio
 -rano au-to-mati-ca-mente at-traverso l'esperienza,
  []
 
-<assets/ai_diagram.png, id=387, 497.86pt x 301.125pt>
+<assets/ai_diagram.png, id=402, 497.86pt x 301.125pt>
 File: assets/ai_diagram.png Graphic file (type png)
 <use assets/ai_diagram.png>
 Package pdftex.def Info: assets/ai_diagram.png  used on input line 466.
 (pdftex.def)             Requested size: 199.16928pt x 120.46623pt.
-[14 <./assets/ai_diagram.png>]
-<assets/decision_tree.png, id=409, 675.52374pt x 339.2675pt>
+[15
+
+ <./assets/ai_diagram.png>]
+<assets/decision_tree.png, id=413, 675.52374pt x 339.2675pt>
 File: assets/decision_tree.png Graphic file (type png)
 <use assets/decision_tree.png>
 Package pdftex.def Info: assets/decision_tree.png  used on input line 488.
 (pdftex.def)             Requested size: 369.88582pt x 185.76941pt.
- [15 <./assets/decision_tree.png (PNG copy)>]
-[16] [17]
+ [16 <./assets/decision_tree.png (PNG copy)>]
+[17]
 <assets/naive-bayes.png, id=430, 532.99126pt x 282.05376pt>
 File: assets/naive-bayes.png Graphic file (type png)
 <use assets/naive-bayes.png>
-Package pdftex.def Info: assets/naive-bayes.png  used on input line 565.
+Package pdftex.def Info: assets/naive-bayes.png  used on input line 564.
 (pdftex.def)             Requested size: 167.2989pt x 88.53322pt.
 <assets/bayes-network.png, id=431, 532.99126pt x 432.61626pt>
 File: assets/bayes-network.png Graphic file (type png)
 <use assets/bayes-network.png>
-Package pdftex.def Info: assets/bayes-network.png  used on input line 572.
+Package pdftex.def Info: assets/bayes-network.png  used on input line 571.
 (pdftex.def)             Requested size: 167.2989pt x 135.79295pt.
  [18 <./assets/naive-bayes.png> <./assets/bayes-network.png>]
 <assets/svm-hyperplane.png, id=440, 1405.25pt x 594.22pt>
 File: assets/svm-hyperplane.png Graphic file (type png)
 <use assets/svm-hyperplane.png>
-Package pdftex.def Info: assets/svm-hyperplane.png  used on input line 611.
+Package pdftex.def Info: assets/svm-hyperplane.png  used on input line 610.
 (pdftex.def)             Requested size: 426.79134pt x 180.47067pt.
 
-Overfull \hbox (8.53766pt too wide) in paragraph at lines 611--612
+Overfull \hbox (8.53766pt too wide) in paragraph at lines 610--611
  [][] 
  []
 
-[19 <./assets/svm-hyperplane.png (PNG copy)>]
-<assets/svm-margin.png, id=452, 167.30505pt x 162.6075pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[19]
+<assets/svm-margin.png, id=450, 167.30505pt x 162.6075pt>
 File: assets/svm-margin.png Graphic file (type png)
 <use assets/svm-margin.png>
-Package pdftex.def Info: assets/svm-margin.png  used on input line 636.
+Package pdftex.def Info: assets/svm-margin.png  used on input line 635.
 (pdftex.def)             Requested size: 199.16928pt x 193.58472pt.
-<assets/svm-non-separable-1.png, id=456, 722.7pt x 651.43375pt>
+ [20 <./assets/svm-hyperplane.png (PNG copy)> <./assets/svm-margin.png>]
+<assets/svm-non-separable-1.png, id=463, 722.7pt x 651.43375pt>
 File: assets/svm-non-separable-1.png Graphic file (type png)
 <use assets/svm-non-separable-1.png>
-Package pdftex.def Info: assets/svm-non-separable-1.png  used on input line 662
+Package pdftex.def Info: assets/svm-non-separable-1.png  used on input line 661
 .
-(pdftex.def)             Requested size: 200.75996pt x 180.9589pt.
-<assets/svm-non-separable-2.png, id=457, 582.175pt x 462.72874pt>
+(pdftex.def)             Requested size: 209.12683pt x 188.5034pt.
+<assets/svm-non-separable-2.png, id=464, 582.175pt x 462.72874pt>
 File: assets/svm-non-separable-2.png Graphic file (type png)
 <use assets/svm-non-separable-2.png>
-Package pdftex.def Info: assets/svm-non-separable-2.png  used on input line 668
+Package pdftex.def Info: assets/svm-non-separable-2.png  used on input line 667
 .
-(pdftex.def)             Requested size: 200.75996pt x 159.56392pt.
- [20 <./assets/svm-margin.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 675--675
+(pdftex.def)             Requested size: 209.12683pt x 166.21506pt.
+
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 659--671
+[][]  [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 674--674
 [][]\OT1/cmr/m/n/8 Fonte: []$\OT1/pcr/m/n/8 www\OML/cmm/m/it/8 :\OT1/pcr/m/n/8 
 medium\OML/cmm/m/it/8 :\OT1/pcr/m/n/8 com / @vivek\OML/cmm/m/it/8 :\OT1/pcr/m/n
 /8 yadav / why -[] is -[] gradient -[] descent -[] robust -[] to -[] non -[] li
 nearly -[]
  []
 
-<assets/svm-separable-1.png, id=470, 493.845pt x 382.42876pt>
+<assets/svm-separable-1.png, id=469, 493.845pt x 382.42876pt>
 File: assets/svm-separable-1.png Graphic file (type png)
 <use assets/svm-separable-1.png>
-Package pdftex.def Info: assets/svm-separable-1.png  used on input line 683.
-(pdftex.def)             Requested size: 200.75996pt x 155.46632pt.
-<assets/svm-separable-2.png, id=471, 607.51968pt x 550.30594pt>
+Package pdftex.def Info: assets/svm-separable-1.png  used on input line 682.
+(pdftex.def)             Requested size: 209.12683pt x 161.9436pt.
+<assets/svm-separable-2.png, id=470, 607.51968pt x 550.30594pt>
 File: assets/svm-separable-2.png Graphic file (type png)
 <use assets/svm-separable-2.png>
-Package pdftex.def Info: assets/svm-separable-2.png  used on input line 689.
-(pdftex.def)             Requested size: 200.75996pt x 181.85342pt.
-[21 <./assets/svm-non-separable-1.png> <./assets/svm-non-separable-2.png> <./as
-sets/svm-separable-1.png> <./assets/svm-separable-2.png>] [22]
-Chapter 3.
-[23
+Package pdftex.def Info: assets/svm-separable-2.png  used on input line 688.
+(pdftex.def)             Requested size: 209.12683pt x 189.4275pt.
+
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 680--692
+[][]  [] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[21 <./assets/svm-non-separable-1.png> <./assets/svm-non-separable-2.png>]
+[22 <./assets/svm-separable-1.png> <./assets/svm-separable-2.png>] [23]
+Chapter 4.
+[24
 
 ]
-<assets/cross-validation.png, id=506, 1027.84pt x 506.89375pt>
+<assets/cross-validation.png, id=515, 1027.84pt x 506.89375pt>
 File: assets/cross-validation.png Graphic file (type png)
 <use assets/cross-validation.png>
-Package pdftex.def Info: assets/cross-validation.png  used on input line 778.
+Package pdftex.def Info: assets/cross-validation.png  used on input line 780.
 (pdftex.def)             Requested size: 369.88582pt x 182.412pt.
- [24 <./assets/cross-validation.png>]
-<assets/confusion-matrix.jpg, id=516, 919.435pt x 733.74126pt>
+ [25 <./assets/cross-validation.png>]
+<assets/confusion-matrix.jpg, id=524, 919.435pt x 733.74126pt>
 File: assets/confusion-matrix.jpg Graphic file (type jpg)
 <use assets/confusion-matrix.jpg>
-Package pdftex.def Info: assets/confusion-matrix.jpg  used on input line 801.
+Package pdftex.def Info: assets/confusion-matrix.jpg  used on input line 803.
 (pdftex.def)             Requested size: 284.52756pt x 227.06558pt.
- [25 <./assets/confusion-matrix.jpg>]
-[26]
-Chapter 4.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 839.
-[27
+ [26 <./assets/confusion-matrix.jpg>]
+[27]
+Chapter 5.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 842.
+[28
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 839.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 842.
  (./tesi.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 839.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 839.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 842.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 842.
 Package rerunfilecheck Info: File `tesi.out' has not changed.
-(rerunfilecheck)             Checksum: 382C6459CDAF52DAFCF5C00FEBE8A499;3688.
+(rerunfilecheck)             Checksum: EB0EDB060EC235EE20D3802BACE4612D;3602.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 10951 strings out of 481239
- 166135 string characters out of 5920377
- 455229 words of memory out of 5000000
+ 10954 strings out of 481239
+ 166072 string characters out of 5920377
+ 455223 words of memory out of 5000000
  25866 multiletter control sequences out of 15000+600000
  545337 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  48i,14n,46p,798b,1793s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{Hfootnote.10} has been referenced but does not ex
+pdfTeX warning (dest): name{Hfootnote.12} has been referenced but does not ex
 ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.11} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.10} has been referenced but does not exis
+t, replaced by a fixed one
 
 pdfTeX warning (dest): name{Hfootnote.9} has been referenced but does not exist
 , replaced by a fixed one
@@ -811,10 +838,10 @@ are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/te
 xmf/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf/fonts/type1/publ
 ic/cm-super/sfrm1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier
 /ucrr8a.pfb>
-Output written on tesi.pdf (28 pages, 1487046 bytes).
+Output written on tesi.pdf (29 pages, 1490352 bytes).
 PDF statistics:
- 641 PDF objects out of 1000 (max. 8388607)
- 546 compressed objects within 6 object streams
- 145 named destinations out of 1000 (max. 500000)
+ 649 PDF objects out of 1000 (max. 8388607)
+ 553 compressed objects within 6 object streams
+ 148 named destinations out of 1000 (max. 500000)
  481 words of extra memory for PDF output out of 10000 (max. 10000000)
 
