@@ -5,6 +5,10 @@
 \setcounter{tocdepth}{4}
 
 \usepackage{graphicx}
+\usepackage[mathscr]{euscript}
+\let\euscr\mathscr \let\mathscr\relax% just so we can load this and rsfs
+\usepackage[scr]{rsfso}
+\newcommand{\powerset}{\raisebox{.15\baselineskip}{\Large\ensuremath{\wp}}}
 
 \usepackage{scalerel}
 
@@ -20,8 +24,10 @@
 \def\UrlBreaks{\do\/\do-}
 \usepackage[bottom]{footmisc}
 
-\usepackage{varwidth}
+\usepackage{lipsum}
 
+\usepackage{varwidth}
+\usepackage{float}
 
 \usepackage{subcaption,graphicx}
 
@@ -42,7 +48,6 @@
 
 
 \usepackage{url}
-
 
 \usepackage{hyperref}
 
@@ -107,18 +112,13 @@ I social netowork in generale, e twitter nello specifico, sono ampiamente utiliz
 
 
 \section*{Approccio al problema}
-Parlare QUI di machine learning e di intelligenza artificiale
-
-
-
-
 Si può considerare il riconoscimento dell'ironia come un problema di classificazione. Una frase potrà quindi essere classificata come appartenente alla classe ironica o non ironica. Si noti che per come viene approcciato il problema, l'ironia è considerata al pari del sarcasmo.
 
-Come già detto, twitter è una risorsa che fornisce moltissimi contenuti generati da utenti. Viene sfruttato questo aspetto per creare dei modelli supervisionati di machine learning in grado di apprendere dai dati con lo scopo di riconoscere l'ironia nel testo.
+A questo scopo, la classificazione avviene con l'utilizzo di tecniche che fanno parte dell'intelligenza artificiale. Nello specifico, vengono creati dei modelli supervisionati di machine learning. Tramite l'utilizzo di algoritmi, vengono utilizzate grande quantità di dati così da estrarre dei pattern presenti in quest'ultimi.
+
+Come già detto, twitter è una risorsa che fornisce moltissimi contenuti generati da utenti. Viene sfruttato questo aspetto creando i modelli matematici in grado di far apprendere alla macchina dai dati, per fa sì che sia possibile riconoscere l'ironia nel testo.
 
 Il codice scritto in python, utilizzato per l'estrazione delle features, il training dei modelli e la creazione della matrice su cui è stata fatta PCA, oltre ai notebooks utilizzati per l'analisi dei report e il risultato della PCA, è disponibile in questo repository\footnote{Irony detection repository: \url{www.github.com/gianlucagiudice/irony-detection}} su github.
-
-
 
 \section*{Sintesi dei risultati}
 Devo mettere le tabelle i grafici? Quanto deve essere sintetico?
@@ -136,6 +136,7 @@ Devo mettere le tabelle i grafici? Quanto deve essere sintetico?
 \chapter{Sistema realizzato}
 
 \section{Descrizione del sistema proposto}
+Per riconoscere l'ironia nel testo, vengono creati dei modelli supervisionati di machine learning.
 Partendo dai dati a disposizione si utilizzano delle tecniche di preprocessing che consistono nel pulire il testo di partenza e prepararlo per essere dato in input ai vari classificatori. Inoltre si estraggono delle features da ogni messaggio, le quali più sono discriminanti nel riconoscimento dell'ironia, meglio distinguono la classe di appartenenza.
 
 Il dataset viene diviso in due parti: training set e test set. La prima ha dimensione decisamente maggiore e viene utilizzata per far apprendere uno specifico classificate, l'altra per testarlo. Questo è importante in quanto un determinato modello dovrà riconoscere l'ironia in un generico documento e non solo tra quelli a disposizione. Si noti che entrambe le porzioni sono composte sia dal testo già codificato e processato che le features estratte, hanno solo scopi diversi quando si tratta di creare il classificatore. 
@@ -655,9 +656,7 @@ Utilizzando tale trasformazione, il dataset di partenza viene mappato in uno spa
 
 
 \begin{figure}[!h]
-
 	\begin{subfigure}[b]{0.5\textwidth}
-
 		\includegraphics[width=\linewidth]{assets/svm-non-separable-1.png}
 		\caption{Dataset in $R^2$}
 		\label{fig:dataset-r2}
@@ -826,13 +825,288 @@ Basandosi su questi dati vengono definite delle misure di performance per la val
 \end{itemize}
 
 \section{Esperimenti}
-Insieme potenza della features e differenti algoritmi.
+Avendo creato diversi modelli, questi sono stati confrontati per valutare il più performante. Nello specifico sono stati creati i modelli con gli algoritmi di classificazione:
+\begin{itemize}
+	\item Decision Tree
+	\item Multinomial Naive Bayes
+	\item Bayesian Network
+	\item Support Vector Machine - Lineare
+\end{itemize}
+Inoltre sia $F = \{text,\ pp,\ pos,\ emot\}$ l'insieme delle features considerate. Per ogni algoritmo di classificazione, sono stati creati i modelli utilizzando come features $\mathscr{P}(F)$.
 
+\newpage
 \subsection{Caratteristiche linguistiche}
+
+\subsubsection{Weighted average}
+\vfill
+\begin{figure}[!h]
+	\hspace*{-3cm}
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=10cm]{assets/reports/macro/nobow/MultinomialNB.png}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\hspace*{0.15cm}
+		\includegraphics[width=10cm]{assets/reports/macro/nobow/BayesianNetworks.png}
+	\end{subfigure}
+\end{figure}
+\vfill
+\begin{figure}[!h]
+	\hspace*{-3cm}
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=10cm]{assets/reports/macro/nobow/DecisionTree.png}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.5\textwidth}		
+		\centering
+		\hspace*{0.15cm}
+		\includegraphics[width=10cm]{assets/reports/macro/nobow/SVM - Linear.png}
+	\end{subfigure}
+\end{figure}
+\newpage
+
+\begin{figure}[!h]
+	\hspace*{-3cm}
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=10cm]{assets/reports/micro/nobow/MultinomialNB.png}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.5\textwidth}
+		\hspace*{0.15cm}
+		\centering
+		\includegraphics[width=10cm]{assets/reports/micro/nobow/BayesianNetworks.png}
+	\end{subfigure}
+\end{figure}
+\vfill
+\begin{figure}[!h]
+	\hspace*{-3cm}
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=10cm]{assets/reports/micro/nobow/DecisionTree.png}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\hspace*{0.15cm}
+		\includegraphics[width=10cm]{assets/reports/micro/nobow/SVM - Linear.png}
+	\end{subfigure}
+\end{figure}
+
+\vfill
+\restoregeometry
+
+\newpage
+\newgeometry{
+	bottom=0cm
+}
+\subsubsection{Confusion matrix}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=13cm]{assets/reports/conf-matrix/nobow/emot.png}
+\end{figure}
+\vspace*{-0.8cm}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=13cm]{assets/reports/conf-matrix/nobow/pos.png}
+\end{figure}
+\vspace*{-0.8cm}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=13cm]{assets/reports/conf-matrix/nobow/pp.png}
+\end{figure}
+\vspace*{-0.8cm}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=13cm]{assets/reports/conf-matrix/nobow/pp-emot.png}
+\end{figure}
+\vspace*{-0.8cm}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=13cm]{assets/reports/conf-matrix/nobow/pos-emot.png}
+\end{figure}
+\vspace*{-0.8cm}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=13cm]{assets/reports/conf-matrix/nobow/pp-pos.png}
+\end{figure}
+\vspace*{-0.8cm}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=13cm]{assets/reports/conf-matrix/nobow/pp-pos-emot.png}
+\end{figure}
+\vspace*{-0.8cm}
+\restoregeometry
+\newpage
+
+
 \subsection{BOW + Caratteristiche linguistiche}
-\subsection{BERT + Caratteristiche linguistiche}
-\subsection{Sentence-BERT + Caratteristiche linguistiche}
+
+\subsubsection{Weighted average}
+\vfill
+\begin{figure}[!h]
+	\hspace*{-3cm}
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=10cm]{assets/reports/macro/bow/MultinomialNB.png}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\hspace*{0.15cm}
+		\includegraphics[width=10cm]{assets/reports/macro/bow/BayesianNetworks.png}
+	\end{subfigure}
+\end{figure}
+\vfill
+\begin{figure}[!h]
+	\hspace*{-3cm}
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=10cm]{assets/reports/macro/bow/DecisionTree.png}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.5\textwidth}		
+		\centering
+		\hspace*{0.15cm}
+		\includegraphics[width=10cm]{assets/reports/macro/bow/SVM - Linear.png}
+	\end{subfigure}
+\end{figure}
+\newpage
+
+\begin{figure}[!h]
+	\hspace*{-3cm}
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=10cm]{assets/reports/micro/bow/MultinomialNB.png}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.5\textwidth}
+		\hspace*{0.15cm}
+		\centering
+		\includegraphics[width=10cm]{assets/reports/micro/bow/BayesianNetworks.png}
+	\end{subfigure}
+\end{figure}
+\vfill
+\begin{figure}[!h]
+	\hspace*{-3cm}
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=10cm]{assets/reports/micro/bow/DecisionTree.png}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\hspace*{0.15cm}
+		\includegraphics[width=10cm]{assets/reports/micro/bow/SVM - Linear.png}
+	\end{subfigure}
+\end{figure}
+
+\vfill
+\restoregeometry
+
+\newpage
+\newgeometry{
+	bottom=0cm
+}
+\subsubsection{Confusion matrix}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=13cm]{assets/reports/conf-matrix/bow/bow.png}
+\end{figure}
+\vspace*{-0.8cm}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=13cm]{assets/reports/conf-matrix/bow/bow-emot.png}
+\end{figure}
+\vspace*{-0.8cm}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=13cm]{assets/reports/conf-matrix/bow/bow-pos.png}
+\end{figure}
+\vspace*{-0.8cm}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=13cm]{assets/reports/conf-matrix/bow/bow-pp.png}
+\end{figure}
+\vspace*{-0.8cm}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=13cm]{assets/reports/conf-matrix/bow/bow-pp-emot.png}
+\end{figure}
+\vspace*{-0.8cm}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=13cm]{assets/reports/conf-matrix/bow/bow-pos-emot.png}
+\end{figure}
+\vspace*{-0.8cm}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=13cm]{assets/reports/conf-matrix/bow/bow-pp-pos.png}
+\end{figure}
+\vspace*{-0.8cm}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=13cm]{assets/reports/conf-matrix/bow/bow-pp-pos-emot.png}
+\end{figure}
+\vspace*{-0.8cm}
+\restoregeometry
+\newpage
+
 \subsection{BOW vs BERT vs Sentence-BERT}
+
+\subsubsection{Weighted average - Accuracy}
+
+\begin{figure}[!h]
+	\hspace*{-3cm}
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=10cm]{assets/reports/text/acc/DecisionTree.png}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.5\textwidth}		
+		\centering
+		\hspace*{0.15cm}
+		\includegraphics[width=10cm]{assets/reports/text/acc/SVM - Linear.png}
+	\end{subfigure}
+\end{figure}
+\subsubsection{Weighted average - F measure}
+
+\begin{figure}[!h]
+	\hspace*{-3cm}
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=10cm]{assets/reports/text/f1/DecisionTree.png}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.5\textwidth}		
+		\centering
+		\hspace*{0.15cm}
+		\includegraphics[width=10cm]{assets/reports/text/f1/SVM - Linear.png}
+	\end{subfigure}
+\end{figure}
+\newpage
+
+
 \subsection{Analisi lessico con PCA}
 
 

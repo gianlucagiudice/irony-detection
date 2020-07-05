@@ -41,10 +41,14 @@
 \contentsline {section}{\numberline {4.2}10-Folds Cross-Validation}{24}{section.4.2}%
 \contentsline {section}{\numberline {4.3}Misure di performance}{25}{section.4.3}%
 \contentsline {section}{\numberline {4.4}Esperimenti}{27}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Caratteristiche linguistiche}{27}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}BOW + Caratteristiche linguistiche}{27}{subsection.4.4.2}%
-\contentsline {subsection}{\numberline {4.4.3}BERT + Caratteristiche linguistiche}{27}{subsection.4.4.3}%
-\contentsline {subsection}{\numberline {4.4.4}Sentence-BERT + Caratteristiche linguistiche}{27}{subsection.4.4.4}%
-\contentsline {subsection}{\numberline {4.4.5}BOW vs BERT vs Sentence-BERT}{27}{subsection.4.4.5}%
-\contentsline {subsection}{\numberline {4.4.6}Analisi lessico con PCA}{27}{subsection.4.4.6}%
-\contentsline {chapter}{\numberline {5}Conclusioni e sviluppi futuri}{28}{chapter.5}%
+\contentsline {subsection}{\numberline {4.4.1}Caratteristiche linguistiche}{28}{subsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.1.1}Weighted average}{28}{subsubsection.4.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.4.1.2}Confusion matrix}{30}{subsubsection.4.4.1.2}%
+\contentsline {subsection}{\numberline {4.4.2}BOW + Caratteristiche linguistiche}{31}{subsection.4.4.2}%
+\contentsline {subsubsection}{\numberline {4.4.2.1}Weighted average}{31}{subsubsection.4.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.4.2.2}Confusion matrix}{33}{subsubsection.4.4.2.2}%
+\contentsline {subsection}{\numberline {4.4.3}BOW vs BERT vs Sentence-BERT}{34}{subsection.4.4.3}%
+\contentsline {subsubsection}{\numberline {4.4.3.1}Weighted average - Accuracy}{34}{subsubsection.4.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.4.3.2}Weighted average - F measure}{34}{subsubsection.4.4.3.2}%
+\contentsline {subsection}{\numberline {4.4.4}Analisi lessico con PCA}{35}{subsection.4.4.4}%
+\contentsline {chapter}{\numberline {5}Conclusioni e sviluppi futuri}{36}{chapter.5}%
