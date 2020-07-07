@@ -97,9 +97,9 @@
 \tableofcontents
 
 % 3 PAGINE
-\chapter*{Introduzione}
+\chapter{Introduzione}
 
-\section*{Descrizione del problema}
+\section{Descrizione del problema}
 
 La sentiment analysis è un campo dell'elaborazione del linguaggio naturale (NLP) che si occupa di costruire sistemi per l'analisi di un testo, ha il fine di identificare e classificare l'informazione come il sentimento e l'opinione espressa nello stesso. Si basa sui principali metodi di linguistica computazionale e di analisi testuale. L'analisi del sentiment è utilizzata in molteplici settori: dalla politica ai mercati azionari, dal marketing alla comunicazione, dall'analisi dei social media alla valutazione delle preferenze del consumatore. 
 
@@ -111,7 +111,7 @@ L'ironia è un tema studiato in diverse discipline, come la linguistica, filosof
 I social netowork in generale, e twitter nello specifico, sono ampiamente utilizzati come fonte di informazione per comprendere la web reputation di un brand, perciò si prestano bene per la sperimentazione di modelli computazionali per il riconoscimento dell'ironia, essendo di fatti una grande risorsa per quanto riguarda i dati testuali generati da utenti.
 
 
-\section*{Approccio al problema}
+\section{Approccio al problema}
 Si può considerare il riconoscimento dell'ironia come un problema di classificazione. Una frase potrà quindi essere classificata come appartenente alla classe ironica o non ironica. Si noti che per come viene approcciato il problema, l'ironia è considerata al pari del sarcasmo.
 
 A questo scopo, la classificazione avviene con l'utilizzo di tecniche che fanno parte dell'intelligenza artificiale. Nello specifico, vengono creati dei modelli supervisionati di machine learning. Tramite l'utilizzo di algoritmi, vengono utilizzate grande quantità di dati così da estrarre dei pattern presenti in quest'ultimi.
@@ -120,8 +120,8 @@ Come già detto, twitter è una risorsa che fornisce moltissimi contenuti genera
 
 Il codice scritto in python, utilizzato per l'estrazione delle features, il training dei modelli e la creazione della matrice su cui è stata fatta PCA, oltre ai notebooks utilizzati per l'analisi dei report e il risultato della PCA, è disponibile in questo repository\footnote{Irony detection repository: \url{www.github.com/gianlucagiudice/irony-detection}} su github.
 
-\section*{Sintesi dei risultati}
-Devo mettere le tabelle i grafici? Quanto deve essere sintetico?
+\section{Sintesi dei risultati}
+Il risultato degli esperimenti mostra come per il riconoscimento dell'ironia si ottengo i risultati migliori combinando tutte le features considerate. Inoltre le performance variano decisamente a seconda dell'algoritmo utilizzato per creare i classificatori. Nel caso preso in considerazione, l'algoritmo Support Vector Machine con un kernel lineare risulta essere il migliore tra quelli analizzati.
 
 
 \chapter{Stato dell'arte}
@@ -280,11 +280,23 @@ M[i,j] =
 
 
 \subsection{Rappresentazione mediante transformer}
-
-
 \subsubsection{BERT}
+BERT (Bidirectional Encoder Representations from Transformers) è un modello di deep learning creato da Google. A partire da un documento, una volta generati i tokens, è possibile fornire questi come input al modello per generare word embeddings, ovvero un vettore di numeri reali associato ad ogni token. Questo modello viene sfruttato per utilizzare gli embeddings come features, sostituendoli alla rappresentazione del testo BOW.
+
+La rete neurale è composta da 12 hidden layers, ciascuno di questi fornisce in output un vettore di 768 elementi. Sorge quindi il problema della scelta del vettore da utilizzare, inoltre per gli emebddings vengono generati per ciascuno dei tokens. Bisogna pertanto adottare la corretta pooling strategy:
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=11cm]{assets/pooling-strategy.png}
+	\caption[Caption for LOF]{Pooling strategy. \footnotemark}
+\end{figure}
+
+\footnotetext{Fonte: \url{www.jalammar.github.io/illustrated-bert}.}
+\noindent
+Nel caso in questione, si è scelto di concatenare gli ultimi 4 hidden layers e mediare tutti gli embeddings dei tokens presenti nel documento. In tutto si ottiene un vettore di 3072 elementi, il quale sarà utilizzato come features dei modelli in sostituzione della rappresentazione BOW.
 
 \subsubsection{Sentence-BERT}
+Sentence-BERT\footnote{Sentence-BERT: \url{www.arxiv.org/abs/1908.10084}} è una modifica della rete neurale BERT. Questa messa a punto del modello, permette di generare embeddings semanticamente validi relativi ad intere frasi.
 
 
 \section{Caratteristiche linguistiche}
@@ -606,9 +618,9 @@ Dove $y_i \in \{1, -1\}$ rappresenta la classe di appartenenza di un individuo. 
 \subsection{Iperpiano}
 L'obbiettivo dell'algoritmo è trovare l'iperpiano ottimo che che meglio separa le due classi.
 Nel caso 2-dimensionale, l'iperpiano è individuato da una retta, tuttavia è facilmente generalizzare il concetto al caso 3-dimensionale e così via:
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=15cm]{assets/svm-hyperplane.png}
+	\includegraphics[width=12cm]{assets/svm-hyperplane.png}
 	\caption[Caption for LOF]{Iperpiano ottimo.\footnotemark}
 	\label{fig:svm-2d}
 \end{figure}
