@@ -29,6 +29,9 @@
 \usepackage{varwidth}
 \usepackage{float}
 
+
+\usepackage{graphicx}
+
 \usepackage{subcaption,graphicx}
 
 \usepackage{mathtools}
@@ -250,7 +253,7 @@ Lo stemming è il processo di riduzione della forma flessa di una parola alla su
 	\centering
 	\includegraphics[width=11cm]{assets/stemming.jpg}
 
-	\caption[Caption for LOF]{Words stemming. \footnotemark}
+	\caption[Caption for LOF]{Words stemming.\footnotemark}
 	\label{fig:stemming}
 \end{figure}
 
@@ -601,15 +604,15 @@ Tuttavia si sfrutta il grafo diretto aciclico G così definito:
 \begin{itemize}
 	\item $G = (V, E)$
 	\item $V = \{X_1, ..., X_n\}$
-	\item $E = \{(u,v) \mid (u,v) \in V^2 \land P(u, v) \neq P(u)P(v) \}$
+	\item $E = \{(U,V) \mid (U,V) \in V^2 \land P(U, V) = P(V \mid U)P(U) = P(U \mid V)P(V) \}$
 \end{itemize}
 Il quale rappresenta le dipendenze tra variabili. Quindi nello sviluppo della probabilità congiunta, si considerano solo quei fattori con un arco presente nel grafo. Pertanto, indicando con $\pi(u) = \{v \mid (v, u) \in E\}, v,u \in V$ si ha:
 
 
-$$P(X_1, ..., X_n) = \prod\limits_{i=1}^{n}P(X_i \mid X_1, ..., X_{i-1}) = \prod\limits_{i=1}^{n}P(X_i \mid \pi(X_i)) $$
+$$P(X_1, ..., X_n) = \prod\limits_{i=1}^{n}P(X_i \mid X_{i+1}, ..., X_{n}) = \prod\limits_{i=1}^{n}P(X_i \mid \pi(X_i)) $$
 Così facendo viene semplificata la probabilità congiunta, pur non assumendo la mutua indipendenza tra le variabili.
 
-
+\newpage
 \section{Support Vector Machine}
 Support vector machine è un'altro algoritmo di machine learning supervisionato, in cui gli $n$ individui sono rappresentati nella forma:
 $$(\vec{x}_1, y_1),...,(\vec{x}_n, y_n)$$
@@ -1120,8 +1123,68 @@ Inoltre sia $F = \{text,\ pp,\ pos,\ emot\}$ l'insieme delle features considerat
 
 
 \subsection{Analisi lessico con PCA}
+La principal component analysis (PCA) è una tecnica per la semplificazione dei dati, il cui scopo è ridurre il numero di variabili che descrivono il dataset, limitando il più possibile la perdita di informazioni.
+
+Per limitare la perdita di informazioni, si considerano solo quelle variabili con la quantità di varianza spiegata più alta, ovvero quelle che meglio differenziano il dataset, per l'appunto le componenti principali. Di fatto la riduzione delle dimensioni sfrutta questo aspetto, ma nel caso considerato si terrà conto solo del contributo di ogni variabile, senza realmente andare a ridurre le dimensioni del dataset.
+
+A questo scopo si procede standardizzando il dataset, quindi viene calcolata la matrice di covarianza $n \times n$ dove $n$ corrisponde al numero di variabili. Dopodiché si calcolano gli autovalori associati agli autovettori della matrice di covarianza. Come risultato si ottengono le componenti principali, nuove variabili costruite come combinazione lineare delle variabili di partenza. La percentuale di varianza spiegata da ogni componente principale si calcola a partire dagli autovalori: $$\%PC_k = \frac{\lambda_k}{\sum_{i=1}^n \lambda_i}$$
+
+Questa tecnica viene qui utilizzata per analizzare il lessico e cercare un'eventuale associazione tra parole e ironia. Si considera quindi il dataset ironico e non ironico separatamente, e si procede generando gli embeddings tramite BERT. Si ottiene quindi la matrice $M$ composta dagli embeddings sulle colonne, e le diverse parole che occorrono nel dataset sulle righe. Dal momento che si vuole cercare un'associazione tra le parole e l'ironia, si considera la matrice $M^T$ e si effettua PCA, così da valutare se alcune parole contribuiscono maggiormente relativamente al dataset ironico.
+
+\subsubsection{Top k componenti principali}
+Per ogni componente principale, viene calcolata la varianza spiegata. Di seguito viene mostrata la varianza spiegata dalle prime 50 componenti principali (la varianza spiegata totale è 1):
+
+\begin{figure}[H]
+	\begin{subfigure}[H]{0.5 \textwidth}
+		\centering
+		\includegraphics[width=7.25cm]{assets/pca/non_ironic/var.png}
+		\caption{Dataset non ironico}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[H]{0.5 \textwidth}
+		\centering
+		\includegraphics[width=7.25cm]{assets/pca/ironic/var.png}
+		\caption{Dataset ironico}
+	\end{subfigure}
+	\caption{Varianza spiegata}
+\end{figure}
+
+\begin{figure}[H]
+	\begin{subfigure}[H]{0.5 \textwidth}
+		\centering
+		\includegraphics[width=7.25cm]{assets/pca/non_ironic/cum-var.png}
+		\caption{Dataset non ironico}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[H]{0.5 \textwidth}
+		\centering
+		\includegraphics[width=7.25cm]{assets/pca/ironic/cum-var.png}
+		\caption{Dataset ironico}
+	\end{subfigure}
+	\caption{Varianza spiegata cumulata}
+\end{figure}
 
 
+\subsubsection{Features con contributo maggiore}
+Per calcolare le features più importanti, si considerano gli autovettori associati agli autovalori, si procede quindi sommando tutti gli elementi del vettore in valore assoluto. Il risultato è il contributo espresso da quello feature rispetto a tutte le componenti principali (maggiore il valore, più alta l'importanza). Vengono quindi considerate le 50 features con il contributo più alto (il contributo totale è 1):
+
+\begin{figure}[H]
+	\begin{subfigure}[H]{0.5 \textwidth}
+		\centering
+		\includegraphics[width=7.25cm]{assets/pca/non_ironic/contribution.png}
+		\caption{Dataset non ironico}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[H]{0.5 \textwidth}
+		\centering
+		\includegraphics[width=7.25cm]{assets/pca/ironic/contribution.png}
+		\caption{Dataset ironico}
+	\end{subfigure}
+	\caption{Contributo dell features}
+\end{figure}
+
+\subsubsection{Conlcusioni}
+Come si può notare da queste analisi, non emerge un'associazione chiara tra lessico e ironia.
 \chapter{Conclusioni e sviluppi futuri}
 
 
