@@ -107,7 +107,7 @@
 La sentiment analysis è un campo dell'elaborazione del linguaggio naturale (NLP) che si occupa di costruire sistemi per l'analisi di un testo, ha il fine di identificare e classificare l'informazione come il sentimento e l'opinione espressa nello stesso. Si basa sui principali metodi di linguistica computazionale e di analisi testuale. L'analisi del sentiment è utilizzata in molteplici settori: dalla politica ai mercati azionari, dal marketing alla comunicazione, dall'analisi dei social media alla valutazione delle preferenze del consumatore. 
 
 Il riconoscimento automatico dell'ironia nei contenuti generati da utenti, è uno dei compiti più complessi per quanto riguarda l'elaborazione del linguaggio naturale. Tuttavia è di fondamentale importanza per tutti i sistemi di sentiment analysis, in quanto facendo uso dell'ironia è possibile invertire completamente la polarità di una propria opinione, facendola passare da positiva a negativa e viceversa.
-Diventa pertanto cruciale sviluppare dei sistemi di sentiment analysis che sono consapevoli del fenomeno e in grado di riconoscerlo.
+Diventa pertanto cruciale sviluppare dei sistemi di sentiment analysis che siano consapevoli del fenomeno e in grado di riconoscerlo.
 
 L'ironia è un tema studiato in diverse discipline, come la linguistica, filosofia e psicologia, ma è difficile da definire formalmente, soprattutto per questo motivo ne è difficile il riconoscimento. Nonostante ciò ci sono basi teoriche che suggeriscono il ruolo importante della sfera emozionale nell'uso dell'ironia, quindi un fattore chiave per riconoscerlo. Con questo si intende anche un uso indiretto e non esplicito del carico emotivo in ciò che si vuole comunicare.
 
@@ -605,6 +605,7 @@ Tuttavia si sfrutta il grafo diretto aciclico G così definito:
 	\item $G = (V, E)$
 	\item $V = \{X_1, ..., X_n\}$
 	\item $E = \{(U,V) \mid (U,V) \in V^2 \land P(U, V) = P(V \mid U)P(U) = P(U \mid V)P(V) \}$
+	\item $E = \{(U,V) \mid (U,V) \in V^2 \land P(U, V) \neq P(U)P(V) \}$
 \end{itemize}
 Il quale rappresenta le dipendenze tra variabili. Quindi nello sviluppo della probabilità congiunta, si considerano solo quei fattori con un arco presente nel grafo. Pertanto, indicando con $\pi(u) = \{v \mid (v, u) \in E\}, v,u \in V$ si ha:
 
@@ -1185,45 +1186,19 @@ Per calcolare le features più importanti, si considerano gli autovettori associ
 
 \subsubsection{Conlcusioni}
 Come si può notare da queste analisi, non emerge un'associazione chiara tra lessico e ironia.
+
 \chapter{Conclusioni e sviluppi futuri}
+I sistemi di sentiment analysis vengono utilizzati per estrarre l'informazione relativa al sentimento e l'opinione espressa in un testo. Nel linguaggio naturale esistono figure retoriche come l'ironia che sono in grado di invertire completamente la polarità di ciò che si esprime, di conseguenza i sistemi di sentiment analysi vengono "ingannati".
+
+In questa tesi sono stati presentati diversi modelli supervisionati di machine learning per il riconoscimento dell'ironia nei tweets. A questo scopo è stato necessario esprimere il linguaggio naturale tramite una rappresentazione matematica, quindi prima con la tecnica BOW e poi mediante l'uso del transformer BERT.
+
+Tra le features utilizzate, è stata prestata particolare attenzione alla componente affettiva. Infatti tramite l'utilizzo di lessici, viene tenuta in considerazione la sfera emotiva di un particolare token presente nel documento. Inoltre nei social network viene fatto largo uso delle emoticons, le quali esprimono una grande componente emotiva. Altri elementi come la punteggiatura, che nei social network non segue convenzioni ortografiche, può avere un carico emotivo.
+
+Trattandosi di modelli supervisionati, è stato utilizzato il dataset \textit{TwReyes2013} in cui tramite la tecnica self-tagging, i vari tweets vengono etichettati dagli stessi utenti facendo uso degli hashtag.
+
+Nella fase di sperimentazione sono stati analizzati e testati diversi algoritmi di apprendimento, così da creare più modelli con i vari algoritmi e considerando per ognuno di questi un insieme di features dierse. I vari modelli sono stati messi a confronto, valutando le performance di ognuno in base a diverse metriche.
+
+Come ulteriore esperimento si potrebbe meglio approfondire l'uso di BERT. Negli esperimenti è stato utilizzato il modello pre-trained, mentre si potrebbe utilizzare una versione fine-tuned di BERT ed usare gli embeddings di questo nuovo modello come features testuali.
 
 
 \end{document}
-
-
-TESI: 
-- Introduzione (3 pagine)
-- Descrizione problema
-Comprensibile
-Social network prodotto linguaggio naturale caratterizzato da ironia ed è importante saperla distinguure e il motivo.
-- Come ho affronatato
-Tenciche di NLP e problema di apprendiamento automatico usando machine learnign
-- Sintesi risultati
-- Struttura della tesi
-- Capitolo 1 -> Stato dell'arte
-1.1 approcci supervisoonati
-1.2 non supervisionati
-1.3 semi supervisionati
-- Captiolo 2 -> Ssitema realizzato		
-2.1 Descrizione del sitema proposto
-Workflow e descrizione di massima del sistema
-2.2 Rappresentazione del testo
-2.2.1 Rappresentazione booleana
-2.2.2 Rappresentazione mediante transformer
-2.3 Caratteristiche linguistiche
-2.3.1 POS
-2.3.2 PP
-2.3.3 Emot			
-2.4 Modelli supervisionati
-2.4.1 Alberi di decisione
-ecc...
-2.5 Strumenti utilizzati
-2.5.1 SKleanr
-2.5.2 Weka
-
-- Capitolo 3 -> Campagna sperimetnale
-3.0 Dataset e misure di performance
-3.1 Rappresentazione BOW + caratteristiche linguistiche
-3.2 Rappresentazione BERT + caratteristiche linguistiche
-3.3 Analisi lessico con PCA
-- Capitolo 4 -> Conlcusioni e sviluppi futuri
