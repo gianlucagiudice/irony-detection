@@ -114,6 +114,15 @@ L'ironia è un tema studiato in diverse discipline, come la linguistica, filosof
 I social netowork in generale, e twitter nello specifico, sono ampiamente utilizzati come fonte di informazione per comprendere la web reputation di un brand, perciò si prestano bene per la sperimentazione di modelli computazionali per il riconoscimento dell'ironia, essendo di fatti una grande risorsa per quanto riguarda i dati testuali generati da utenti.
 
 
+\section{Stato dell'arte}
+Lo stato dell'arte per il riconoscimento dell'ironia, fa uso di tradizionali metodi supervisionati
+\footnote{Irony Detection in Twitter: The Role of Affective Content\\ \url{https://dl.acm.org/doi/10.1145/2930663}}.
+come Support Vecotr machine (SVM) e Decision Tree. Il problema viene approcciato estraendo delle features linguistiche per poi valutare i modelli migliori.
+
+Alcuni metodi più avanzati considerano Ensable methods in cui diversi classificatori vengono combinati, considerando ognuno di questi durante la classificazione per ottenere risultati più affidabili. Tra le tecniche di questo tipo possiamo trovare Majority Voting (MV) e Bayesian Model Averaging (BMA)\footnote{Detecting Irony and Sarcasm in Microblogs: The Role of Expressive Signals and Ensemble Classifiers\\ \url{https://ieeexplore.ieee.org/document/7344888}}.
+
+Un ulteriore approccio è utilizzare metodi di transfer learning\footnote{Irony Detection via Sentiment-based Transfer Learning\\ \url{http://www.xiuzhenzhang.org/publications/ipm2018.zhang.irony.pdf}}, in cui reti neurale già addestrate vengono arricchite e ottimizzate per task di irony detection. In questo modo viene sfruttata la conoscenza di questi modelli pre-trained.
+
 \section{Approccio al problema}
 Si può considerare il riconoscimento dell'ironia come un problema di classificazione. Una frase potrà quindi essere classificata come appartenente alla classe ironica o non ironica. Si noti che per come viene approcciato il problema, l'ironia è considerata al pari del sarcasmo.
 
@@ -125,15 +134,6 @@ Il codice scritto in python, utilizzato per l'estrazione delle features, il trai
 
 \section{Sintesi dei risultati}
 Il risultato degli esperimenti mostra come per il riconoscimento dell'ironia si ottengo i risultati migliori combinando tutte le features considerate. Inoltre le performance variano decisamente a seconda dell'algoritmo utilizzato per creare i classificatori. Nel caso preso in considerazione, l'algoritmo Support Vector Machine con un kernel lineare risulta essere il migliore tra quelli analizzati.
-
-
-\chapter{Stato dell'arte}
-
-\section{Approccio supervisionato}
-
-\section{Approccio semi supervisionato}
-
-\section{Approccio non supervisionato}
 
 
 \chapter{Sistema realizzato}
@@ -224,6 +224,7 @@ Il risultato ottenuto è una lista di tokens validi contenuti in ogni tweet:
 Da qui si crea l'insieme di tokens univoci.
 
 \subsubsection{Filtering}
+\label{section:filtering}
 L'insieme di termini univoci ottenuto è filtrato in base ai seguenti criteri:
 \begin{itemize}
 	\item \textbf{Occorrenza minimia} fissato valore di threshold
@@ -320,7 +321,7 @@ Le emoticons sono riproduzioni stilizzate di quelle principali espressioni facci
 	Negative
 	
 	E.g.: ':-(', ':=('
-	
+Viene quindi considerata l'occorrenza di emoticons positive e negative presenti in un tweet.
 \end{itemize}
 
 \subsubsection{Acronimi}
@@ -336,6 +337,7 @@ Gli acronimi sono un ulteriore strumento della comunicazione non verbale. Come l
 	
 	E.g: 'BM' (Bad Manner)
 	
+Anche in questo caso si considera l'occorrenza di acronimi positivi e negativi.
 \end{itemize}
 
 \subsubsection{Espressioni onomatopeiche}
@@ -344,7 +346,14 @@ L'uso di espressioni onomatopeiche come 'boom' o 'clap' possono essere utilizzat
 \subsubsection{Punteggiatura}
 La punteggiatura nei social media non segue le convenzioni ortografiche:\\
 E.g.: 'Do you hear us now ?????'\\
-Per questa ragione viene contata la frequenza di virgole, punti di domanda e punti esclamativi.
+Per questa ragione viene contata la frequenza di:
+\begin{itemize}
+	\item Virgole
+	
+	\item Punti di domanda
+	
+	\item Punti escalmativi
+\end{itemize}
 
 \subsubsection{Estrazione particelle pragmatiche}
 Di seguite viene mostrato un esempio di come le particelle pragmatiche vengono estratte da un messaggio:
@@ -470,6 +479,32 @@ EmoSenticNet >>> {'anger': 0, 'disgust': 0, 'joy': 3, 'sadness': 0,
 Combined     >>> {'sadness': 0, 'anticipation': 1, 'fear': 0, 'anger': 0,
                   'joy': 4, 'disgust': 0, 'trust': 1, 'surprise': 1}
 \end{lstlisting}
+
+\subsection{Sintesi features utilizzate}
+Viene sotto riportata la tabella delle features utilizzate con il relativo numero:
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}[t]{l|c}
+		\hline
+		\textbf{Caratteristica} & \textbf{\#features} \\
+		\hline
+		Emoticons  			 & 2 \\
+		Acronimi & 2 \\
+		Espressioni onomatopeiche  & 1 \\
+		Punteggiatura & 3 \\
+		Part Of Speech & 17 \\
+		Emotional features & 8 \\
+		\hline
+		& 33 \\
+		
+	\end{tabular}
+	\caption{Features utilizzate.}
+\end{table}
+
+Oltre alle caratteristiche linguistice, bisogna prendere in considerazione la rappresentazione del testo. Nel caso BOW dipende dalla cardinalità del dizionario. In questo caso, dagli esperimenti è emerso che, dopo l'opportuno filtraggio dei tokens \ref{section:filtering}, considerando tutto il dataset a disposizione il dizionario contiene 3967 tokens univoci.
+
+Nel caso di BERT invece, le features dipendono dalla pooling strategy adottata. Dal momento che ognuno dei 12 layer della rete neurale fornisce in output un vettore composto da 768 elementi, e negli esperimenti eseguiti si è scelto di concatenare gli ultimi 4 layers, la rappresentazione del testo mediante BERT prende in considerazione 3072 features.
 
 \chapter{Modelli supervisionati}
 \label{chap:supervised-models}
@@ -720,7 +755,7 @@ Scikit-learn\footnote{Scikit-learn: www.scikit-learn.org/stable/} è un modulo d
 	\item Decision Tree
 	\item Multinomial Naive Bayes
 	\item Sipport Vector Machine - Kernel lineare
-	\item Sipport Vector Machine - Kernel RBF
+	
 \end{itemize}
 Inoltre per ogni algoritmo sono stati creati più modelli considerando diverse l'insieme potenza delle features. Quindi sono stati eseguiti i seguenti macrostep:
 \begin{enumerate}
@@ -793,9 +828,12 @@ Nel seguente diagramma si possono considerare i pallini verdi e rossi come i twe
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=13cm]{assets/cross-validation.png}
-	\caption{k-Folds Cross-Validation. \\ \url{www.wikipedia.org/wiki/Cross-validation_(statistics)}.}
+	\caption[Caption for LOF]{k-Folds Cross-Validation.\footnotemark}
 	\label{fig:cross-validation}
 \end{figure}
+
+
+\footnotetext{Fonte: \url{www.wikipedia.org/wiki/Cross-validation_(statistics)}.}
 
 
 \section{Misure di performance}
@@ -816,9 +854,10 @@ Si noti che un modello può sbagliare la classificazione in due modi diversi, e 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=10cm]{assets/confusion-matrix.jpg}
-	\caption{Confusion matrix. \url{www.radiopaedia.org/cases/confusion-matrix-3}.}
-	\label{fig:decision-tree}
+	\caption[Caption for LOF]{Confusion matrix.\footnotemark}
 \end{figure}
+
+\footnotetext{Fonte: \url{www.radiopaedia.org/cases/confusion-matrix-3}.}
 
 Basandosi su questi dati vengono definite delle misure di performance per la valutazione:
 
@@ -1198,7 +1237,7 @@ Trattandosi di modelli supervisionati, è stato utilizzato il dataset \textit{Tw
 
 Nella fase di sperimentazione sono stati analizzati e testati diversi algoritmi di apprendimento, così da creare più modelli con i vari algoritmi e considerando per ognuno di questi un insieme di features dierse. I vari modelli sono stati messi a confronto, valutando le performance di ognuno in base a diverse metriche.
 
-Come ulteriore esperimento si potrebbe meglio approfondire l'uso di BERT. Negli esperimenti è stato utilizzato il modello pre-trained, mentre si potrebbe utilizzare una versione fine-tuned di BERT ed usare gli embeddings di questo nuovo modello come features testuali.
+Come passo ulteriore è possibile meglio approfondire l'uso di BERT. Negli esperimenti è stato utilizzato il modello pre-trained, mentre si potrebbe utilizzare una versione fine-tuned di BERT ed usare gli embeddings di questo nuovo modello come features testuali.
 
 
 \end{document}
