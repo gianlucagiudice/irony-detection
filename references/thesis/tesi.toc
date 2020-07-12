@@ -12,8 +12,8 @@
 \contentsline {subsubsection}{\numberline {2.3.1.2}Filtering}{8}{subsubsection.2.3.1.2}%
 \contentsline {subsubsection}{\numberline {2.3.1.3}Stemming}{9}{subsubsection.2.3.1.3}%
 \contentsline {subsubsection}{\numberline {2.3.1.4}Vector encoding}{9}{subsubsection.2.3.1.4}%
-\contentsline {subsection}{\numberline {2.3.2}Rappresentazione mediante transformer}{10}{subsection.2.3.2}%
-\contentsline {subsubsection}{\numberline {2.3.2.1}BERT}{10}{subsubsection.2.3.2.1}%
+\contentsline {subsection}{\numberline {2.3.2}Rappresentazione mediante transformer}{9}{subsection.2.3.2}%
+\contentsline {subsubsection}{\numberline {2.3.2.1}BERT}{9}{subsubsection.2.3.2.1}%
 \contentsline {subsubsection}{\numberline {2.3.2.2}Sentence-BERT}{10}{subsubsection.2.3.2.2}%
 \contentsline {section}{\numberline {2.4}Caratteristiche linguistiche}{10}{section.2.4}%
 \contentsline {subsection}{\numberline {2.4.1}PP (Pragmatic particles)}{11}{subsection.2.4.1}%
