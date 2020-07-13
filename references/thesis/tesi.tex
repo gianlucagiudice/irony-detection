@@ -29,6 +29,7 @@
 \usepackage{varwidth}
 \usepackage{float}
 
+\usepackage{cite}
 
 \usepackage{graphicx}
 
@@ -114,14 +115,6 @@ L'ironia è un tema studiato in diverse discipline, come la linguistica, filosof
 I social netowork in generale, e twitter nello specifico, sono ampiamente utilizzati come fonte di informazione per comprendere la web reputation di un brand, perciò si prestano bene per la sperimentazione di modelli computazionali per il riconoscimento dell'ironia, essendo di fatti una grande risorsa per quanto riguarda i dati testuali generati da utenti.
 
 
-\section{Stato dell'arte}
-Lo stato dell'arte per il riconoscimento dell'ironia, fa uso di tradizionali metodi supervisionati\footnote{Irony Detection in Twitter: The Role of Affective Content\\ \url{https://dl.acm.org/doi/10.1145/2930663}}
-come Support Vecotr machine (SVM) e Decision Tree. Il problema viene approcciato estraendo delle features linguistiche per poi creare diversi modelli e valutare il migliore.
-
-Alcuni metodi più avanzati utilizzano tecniche ensemble in cui diversi classificatori vengono combinati, considerando ognuno di questi durante la classificazione per ottenere risultati più affidabili. Tra le tecniche di questo tipo possiamo trovare Majority Voting (MV) e Bayesian Model Averaging (BMA)\footnote{Detecting Irony and Sarcasm in Microblogs: The Role of Expressive Signals and Ensemble Classifiers\\ \url{https://ieeexplore.ieee.org/document/7344888}}.
-
-Un ulteriore approccio è utilizzare metodi di transfer learning\footnote{Irony Detection via Sentiment-based Transfer Learning\\ \url{http://www.xiuzhenzhang.org/publications/ipm2018.zhang.irony.pdf}}, in cui reti neurale già addestrate vengono arricchite e ottimizzate per task di irony detection. In questo modo viene sfruttata la conoscenza di questi modelli pre-trained.
-
 \section{Approccio al problema}
 Si può considerare il riconoscimento dell'ironia come un problema di classificazione. Una frase potrà quindi essere classificata come appartenente alla classe ironica o non ironica. Si noti che per come viene approcciato il problema, l'ironia è considerata al pari del sarcasmo.
 
@@ -134,6 +127,20 @@ Il codice scritto in python, utilizzato per l'estrazione delle features, il trai
 \section{Sintesi dei risultati}
 Il risultato degli esperimenti mostra come per il riconoscimento dell'ironia si ottengo i risultati migliori combinando tutte le features considerate. Inoltre le performance variano decisamente a seconda dell'algoritmo utilizzato per creare i classificatori. Nel caso preso in considerazione, l'algoritmo Support Vector Machine con un kernel lineare risulta essere il migliore tra quelli analizzati.
 
+\chapter{Stato dell'arte}
+Ciao ciao \cite{einstein}
+
+\section{Approccio supervisionato}
+\section{Approccio semi supervisionato}
+\section{Approccio non supervisionato}
+
+
+Lo stato dell'arte per il riconoscimento dell'ironia, fa uso di tradizionali metodi supervisionati\footnote{Irony Detection in Twitter: The Role of Affective Content\\ \url{https://dl.acm.org/doi/10.1145/2930663}}
+come Support Vecotr machine (SVM) e Decision Tree. Il problema viene approcciato estraendo delle features linguistiche per poi creare diversi modelli e valutare il migliore.
+
+Alcuni metodi più avanzati utilizzano tecniche Ensemble in cui diversi classificatori vengono combinati, considerando ognuno di questi durante la classificazione per ottenere risultati più affidabili. Tra le tecniche di questo tipo possiamo trovare Majority Voting (MV) e Bayesian Model Averaging (BMA)\footnote{Detecting Irony and Sarcasm in Microblogs: The Role of Expressive Signals and Ensemble Classifiers\\ \url{https://ieeexplore.ieee.org/document/7344888}}.
+
+Un ulteriore approccio è utilizzare metodi di transfer learning\footnote{Irony Detection via Sentiment-based Transfer Learning\\ \url{http://www.xiuzhenzhang.org/publications/ipm2018.zhang.irony.pdf}}, in cui reti neurale già addestrate vengono arricchite e ottimizzate per task di irony detection. In questo modo viene sfruttata la conoscenza di questi modelli pre-trained.
 
 \chapter{Sistema realizzato}
 
@@ -280,7 +287,9 @@ M[i,j] =
 \]
 
 
-\subsection{Rappresentazione mediante transformer}
+\subsection{Rappresentazione mediante Transformer}
+Nell'ambito dei modelli di deep learning, per Transformer si intende un particolare tipo di architettura della rete neurale. Questi modelli hanno il vantaggio di essere parallelizzabili, ciò comporta una diminuzione di tempo per la fase di training. Inoltre fanno uso di alcuni particolari meccanismi, per fare un'analogia con quello che è il processo cognitivo si può far riferimento all'attenzione (Da qui il titolo del paper in cui Google introduce il modello BERT "Attention Is All You Need"\cite{bert}), per meglio comprendere la semantica della frase\cite{transformer}.
+
 \subsubsection{BERT}
 BERT (Bidirectional Encoder Representations from Transformers) è un modello di deep learning creato da Google. A partire da un documento, una volta generati i tokens, è possibile fornire questi come input al modello per generare word embeddings, ovvero un vettore di numeri reali associato ad ogni token. Questo modello viene sfruttato per utilizzare gli embeddings come features, sostituendoli alla rappresentazione del testo BOW.
 
@@ -501,7 +510,7 @@ Viene sotto riportata la tabella delle features utilizzate con il relativo numer
 
 Oltre alle caratteristiche linguistice, bisogna prendere in considerazione la rappresentazione del testo. Nel caso BOW dipende dalla cardinalità del dizionario. In questo caso, dagli esperimenti è emerso che, dopo l'opportuno filtraggio dei tokens \ref{section:filtering}, considerando tutto il dataset a disposizione il dizionario contiene 3967 tokens univoci.
 
-Nel caso di BERT invece, le features dipendono dalla pooling strategy adottata. Dal momento che ognuno dei 12 layer della rete neurale fornisce in output un vettore composto da 768 elementi, e negli esperimenti eseguiti si è scelto di concatenare gli ultimi 4 layers, la rappresentazione del testo mediante BERT prende in considerazione 3072 features.
+Nel caso di BERT invece, le features dipendono dalla pooling strategy adottata. Dal momento che ognuno dei 12 hidden layers della rete neurale fornisce in output un vettore composto da 768 elementi, e negli esperimenti eseguiti si è scelto di concatenare gli ultimi 4 layers, nella rappresentazione del testo mediante BERT vengono considerate 3072 features.
 
 \chapter{Modelli supervisionati}
 \label{chap:supervised-models}
@@ -1221,7 +1230,7 @@ Per calcolare le features più importanti, si considerano gli autovettori associ
 \end{figure}
 
 \subsubsection{Conlcusioni}
-Come si può notare da queste analisi, non emerge un'associazione chiara tra lessico e ironia.
+Come si può notare da queste analisi, pur considerando le prime 50 componenti principali, viene spiegata solo il 40\% circa della varianza totale. Inoltre per quanto riguarda il contributo di ogni fetures, nessuna di queste prevale tra le altre. Questi data-driven insights mostrano come non ci sia una chiara associazione tra lessico e ironia. In effetti il risultato è coerente con ciò che ci si aspetta, per riconoscere l'ironia non è sufficiente basarsi solo sul lessico utilizzato in una frase.
 
 \chapter{Conclusioni e sviluppi futuri}
 I sistemi di sentiment analysis vengono utilizzati per estrarre l'informazione relativa al sentimento e l'opinione espressa in un testo. Nel linguaggio naturale esistono figure retoriche come l'ironia che sono in grado di invertire completamente la polarità di ciò che si esprime, di conseguenza i sistemi di sentiment analysi vengono "ingannati".
@@ -1237,4 +1246,31 @@ Nella fase di sperimentazione sono stati analizzati e testati diversi algoritmi 
 Come passo ulteriore è possibile meglio approfondire l'uso di BERT. Negli esperimenti è stato utilizzato il modello pre-trained, mentre si potrebbe utilizzare una versione fine-tuned di BERT ed usare gli embeddings di questo nuovo modello come features testuali.
 
 
+
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliography{bibliography}
+\bibliographystyle{ieeetr}
+
 \end{document}
+
+http://jalammar.github.io/illustrated-transformer/
+
+Attention is all you need papaer
+
+https://link-springer-com.proxy.unimib.it/article/10.1007/s10462-012-9392-5
+
+
+
+
+
+
+https://link.springer.com/article/10.1007/s10462-012-9392-5
+
+
+https://ieeexplore.ieee.org/abstract/document/9074163?casa_token=ermotMUbgU4AAAAA:RPlZT8jE_F12SnuopN566ZJ5wyJY_Xb1Gi0jBlnFh280eGPULjPmxsWQh17ahFE-gWNslqcq
+
+https://link.springer.com/chapter/10.1007/978-3-030-34080-3_48
+
+https://dl.acm.org/doi/abs/10.1145/3124420?casa_token=vsMQpv6EHFIAAAAA:OCKlIUsbhdCsn3tdQ17k-Ma-rbtwfflFRB_vjTn47pS7VKHC6tGfSCwvDwlGraHWWu-nUVBQa0I
+
+https://ieeexplore.ieee.org/abstract/document/8300120?casa_token=Y_WpkkUrl1AAAAAA:EWSrq_bnwOwQ9JcDcLna7eI3_y_gcotV0QNSlTT9e-r8dvJuDh3FDe1RSxukLGxqPoaCRawj
