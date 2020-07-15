@@ -81,10 +81,11 @@
 	
 	\begin{center}{\LARGE{\textbf{Enhancing irony detection with affective information}\par}}
 	\end{center}        
-	\vspace{50mm}
+	\vspace{35mm}
 	\noindent
-	{\large \textbf{Relatore:} Prof. Elisabetta Fersini} \\        
-	\vspace{15mm}
+	{\large \textbf{Relatore:} Prof.ssa Elisabetta Fersini} \\\\
+	{\large \textbf{Co-Relatore:} Dott.ssa Debora Nozza} \\        
+	\vspace{20mm}
 	\begin{flushright}
 		{\large \textbf{Relazione della prova finale di:}} \\
 		\large{Gianluca Giudice} \\
@@ -100,12 +101,12 @@
 
 \tableofcontents
 
-% 3 PAGINE
+
 \chapter{Introduzione}
 
 \section{Descrizione del problema}
 
-La sentiment analysis è un campo dell'elaborazione del linguaggio naturale (NLP) che si occupa di costruire sistemi per l'analisi del testo, ha il fine di identificare e classificare l'informazione come il sentimento e l'opinione espressa nello stesso. Si basa sui principali metodi di linguistica computazionale e di analisi testuale. L'analisi del sentiment è utilizzata in molteplici settori: dalla politica ai mercati azionari, dal marketing alla comunicazione, dall'analisi dei social media alla valutazione delle preferenze del consumatore. 
+La sentiment analysis è un campo dell'elaborazione del linguaggio naturale (NLP) che si occupa di costruire sistemi per l'analisi del testo, ha il fine di identificare e classificare l'informazione riguardo il sentimento e l'opinione espressa nello stesso. Si basa sui principali metodi di linguistica computazionale e di analisi testuale. L'analisi del sentiment è utilizzata in molteplici settori: dalla politica ai mercati azionari, dal marketing alla comunicazione, dall'analisi dei social media alla valutazione delle preferenze del consumatore. 
 
 Il riconoscimento automatico dell'ironia nei contenuti generati da utenti, è uno dei compiti più complessi per quanto riguarda l'elaborazione del linguaggio naturale. Tuttavia è di fondamentale importanza per tutti i sistemi di sentiment analysis, in quanto facendo uso dell'ironia è possibile invertire completamente la polarità di una propria opinione, facendola passare da positiva a negativa e viceversa.
 Diventa pertanto cruciale sviluppare dei sistemi che siano consapevoli del fenomeno e in grado di riconoscerlo.
@@ -116,11 +117,11 @@ I social netowork in generale, e twitter nello specifico, sono ampiamente utiliz
 
 
 \section{Approccio al problema}
-Si può considerare il riconoscimento dell'ironia come un problema di classificazione. Una frase potrà quindi essere classificata come appartenente alla classe ironica o non ironica. Si noti che per come viene approcciato il problema, l'ironia è considerata al pari del sarcasmo.
+Si può considerare il riconoscimento dell'ironia come un problema di classificazione. Una frase potrà quindi essere classificata come appartenente alla classe ironica o non ironica. Si noti che per come viene approcciato il problema in questa tesi, l'ironia è considerata al pari del sarcasmo.
 
-A questo scopo, la classificazione avviene con mediante tecniche di machine learning (una branca dell'intelligenza artificiale). Nello specifico vengono creati dei modelli supervisionati tramite l'utilizzo di algoritmi, i quali fanno uso di una grande quantità di dati per estrarre dei pattern presenti in quest'ultimi.
+A questo scopo, la classificazione avviene mediante tecniche di machine learning (una branca dell'intelligenza artificiale). Nello specifico vengono creati dei modelli supervisionati tramite l'utilizzo di algoritmi, i quali fanno uso di una grande quantità di dati per estrarre dei pattern presenti in quest'ultimi.
 
-Come già detto, twitter è una risorsa che fornisce moltissimi contenuti generati da utenti. Viene sfruttato questo aspetto creando i modelli matematici in grado di far apprendere alla macchina dai dati, per fa sì che sia possibile riconoscere l'ironia nel testo.
+Come già detto, twitter è una risorsa che fornisce moltissimi contenuti generati da utenti. Viene sfruttato questo aspetto collezionando i dati utilizzati dai modelli matematici, così da far apprendere la macchina con lo scopo di riconoscere l'ironia nel testo.
 
 Il codice scritto in python, utilizzato per l'estrazione delle features, il training dei modelli, la creazione della matrice su cui è stata fatta PCA, oltre ai notebooks utilizzati per l'analisi dei report e il risultato della PCA, è disponibile in questo repository\footnote{Irony detection repository: \url{www.github.com/gianlucagiudice/irony-detection}} su github.
 
@@ -128,14 +129,58 @@ Il codice scritto in python, utilizzato per l'estrazione delle features, il trai
 Il risultato degli esperimenti mostra come per il riconoscimento dell'ironia si ottengo i risultati migliori combinando tutte le features considerate. Inoltre le performance variano decisamente a seconda dell'algoritmo utilizzato per creare i classificatori. Nel caso preso in considerazione, l'algoritmo Support Vector Machine con un kernel lineare risulta essere il migliore tra quelli analizzati.
 
 \chapter{Stato dell'arte}
-Ciao ciao \cite{einstein}
+L'ironia è figura retorica molto importante, è uno strumento usato nella comunicazione in cui un individuo esprime l'opposto di ciò che realmente intende. Il riconoscimento automatico dell'ironia ha attirato l'attenzione nell'ambito natural language
+processing (NLP) e machine learning (ML) così da dinvetare un ambito di ricerca. 
 
-\section{Approccio supervisionato}
-\section{Approccio semi supervisionato}
-\section{Approccio non supervisionato}
+\section{Sarcasmo e sentiment analysis}
+Facendo riferimento a \cite{survey4}, un'analisi dal punto di vista della linguistica computazionale sull'ironia, può fornire approfondimenti data-driven, facendo luce riguardo i meccanismi nascosti nell'uso di questo fenomeno, potenzialmente migliorando la comprensione per quanto riguarda i processi mentali umani, la linguistica e la comunicazione. 
+
+Tralasciando l'aspetto più filosofico, il riconoscimento dell'ironia ha implicazioni pratiche per quanto riguarda i sistemi di sentiment analysis, ed in effetti lo stato dell'arte in questo ambito, punta proprio a portare benefici verso questi sistemi. Sentiment analysis vuol dire estrarre l'opinione di un individuo o della società riguardo un particolare evento o argomento. La presenza di ironia nei messaggi, è responsabile di molti errori di classificazione in cui cadono i metodi usati nello stato dell'arte per la creazione di questi sistemi. Ciò avviene in quanto usando l'ironia viene invertita la polarità dell'opinione espressa nella frase, ingannando i questo modo gli approcci che non tengono in considerazione del fenomeno.
+
+In questi anni i social network, soprattutto Twitter e Facebbok, hanno acquisito molta importanza in questo ambito, dal momento che gli individui condividono i propri pensieri, emozioni e opinioni su queste piattaforme. Di fatto, dato l'enorme contenuto di messaggi generati, questo è un esempio di Big Data. In diverse aree c'è un grande interesse nell'estrarre l'informazione riguardo l'opinione contenuta in questi dati generati da utenti, così da conoscere, ad esempio, la reputazione relativa ad un prodotto piuttosto che l'opinione politica.
+
+Per dare un'idea di quanto possano essere utili sistemi di questo tipo, come fatto notare nel survey \cite{survey1}, nel 2014 D. K. Tayal e altri \cite{political} hanno introdotto un sistema per riconoscere il sarcasmo e identificare la polarità espressa nei tweets politici. Il loro lavoro include la collezione del data set, data pre-processing e la classificazione. Attraverso un approccio supervisionato hanno concluso che da questi dati, compresa la componente sarcastica, è stato possibile fare una previsione sul risultato delle elezioni in modo efficiente.
+
+\section{Difficoltà e problemi}
+
+\subsection{Ironia nel testo}
+Come indicato nel survey \cite{survey3}, il riconoscimento dell'ironia è un compito complesso non solo per quanto riguarda le macchine, ma in alcuni casi anche per gli uomini. Questo è dovuto all'ambiguità intrinseca del sarcasmo. Altri aspetti come l'uso informale del linguaggio sui social network complica ulteriormente le cose, senza contare tutti quei casi in cui sono presenti errori grammaticali.
+
+Bisogna anche tenere in considerazione che nel testo è più difficile cogliere l'ironia rispetto che nel parlato, in quanto non si hanno a disposizioni features come il tono della voce, il linguaggio del corpo e le espressioni del volto. In questo ambito sono stati condotti degli studi da Tepperman e altri \cite{audio-sarcasm}, in cui si vuole riconoscere l'ironia nel parlato estraendo dallo spettro del suono features come l'intonazione, le pause etc.
+
+\subsection{Importanza del contesto}
+Un altro aspetto importante, analizzato da Joshi e altri \cite{survey5} è il ruolo fondamentale del contesto quando si tratta di riconoscere il sarcasmo. Pur essendo questo un fattore chiave, Wallance in \cite{survey4} fa notare come non venga tenuto conto di ciò nei modelli nello stato dell'arte.
+
+Per contesto si intende l'informazione che va oltre e al di fuori rispetto al contenuto del testo di per sè. Oltre ad una conoscenza o semantica in generale, esistono altre informazioni legate al contesto come dettagli sull'autore (vine tenuto conto del sesso in \cite{audio-sarcasm}), a chi viene rivolto il messaggio e l'ambito in generale. In questo campo è stato condotto uno studio da Rajadesingan e altri \cite{scuba} che hanno sviluppato un modello SCUBA (sarcasm using behavioral modeling), dove per riconoscere il sarcasmo vengono analizzati anche i tweets passati di uno specifico utente.
 
 
-Lo stato dell'arte per il riconoscimento dell'ironia, fa uso di tradizionali metodi supervisionati\footnote{Irony Detection in Twitter: The Role of Affective Content\\ \url{https://dl.acm.org/doi/10.1145/2930663}}
+
+\section{Linguistica del sarcasmo}
+\subsection{Definizione formale}
+\subsection{Tipi di sarcasmo}
+
+\section{Dataset utilizzati}
+
+Principalmente in inglese
+
+
+
+La qualità dei dati è cruciale
+\subsection{Etichettamento}
+
+
+\section{Approcci adottati}
+\subsection{Rule based}
+\subsection{Approcci generali}
+\subsection{Semi supervisionati}
+\subsection{Supervisionati}
+\subsection{Deep Learning}
+
+\section{Conclusioni}
+Riconoscere il tipo di ironia e riconoscere il significato latente.
+
+
+Lo stato dell'arte per il riconoscimento dell'ironia, fa per lo più uso di tradizionali metodi supervisionati\footnote{Irony Detection in Twitter: The Role of Affective Content\\ \url{https://dl.acm.org/doi/10.1145/2930663}}
 come Support Vecotr machine (SVM) e Decision Tree. Il problema viene approcciato estraendo delle features linguistiche per poi creare diversi modelli e valutare il migliore.
 
 Alcuni metodi più avanzati utilizzano tecniche Ensemble in cui diversi classificatori vengono combinati, considerando ognuno di questi durante la classificazione per ottenere risultati più affidabili. Tra le tecniche di questo tipo possiamo trovare Majority Voting (MV) e Bayesian Model Averaging (BMA)\footnote{Detecting Irony and Sarcasm in Microblogs: The Role of Expressive Signals and Ensemble Classifiers\\ \url{https://ieeexplore.ieee.org/document/7344888}}.
@@ -193,7 +238,7 @@ Il testo viene codificato come una matrice booleana composta dai documenti sulle
 
 \subsubsection{Tokenization}
 La tokenizzazione è un passo preliminare per l'elaborazione computazionale del testo. Tokenizzare vuol dire dividere le sequenze di caratteri in unità minime di analisi dette "token". Un approccio potrebbe essere considerare un token come una sequenza di caratteri delimitata da spazi, tuttavia una tale definizione lascia spazio a numerose eccezzione, come ad esempio la presenza di punteggiatura. Per questa operaziona viene utilizzata la libreria
-nltkl\footnote{Natural Language Toolkit: \url{www.nltk.org}} in grado di gestire correttamente tutti questi casi limite, oltre a poter sfruttare una Twitter-aware tokenization adattandosi quindi bene al dominio in questione.
+nltkl \cite{nltk} in grado di gestire correttamente tutti questi casi limite, oltre a poter sfruttare una Twitter-aware tokenization adattandosi quindi bene al dominio in questione.
 
 \begin{figure}[!h]
 	\centering
@@ -275,7 +320,7 @@ L'insieme delle parole ottenute costituisce il dizionario del corpora. Si proced
 
 Sia $D = \{w_1,\ w_2, ...,\ w_m\}$ il dizionario individuato dall'insieme delle $n$ parole univoche.
 
-Sia $T_i = \{t_{i0}\ ,t_{i1},\ ...,\ t_{ik}\}, \ 1 \leq i \leq n$, l'i-esimo tweet composto da $k$ tokens opportunamente stemmatizzati.\\
+Sia $T_i = \{t_{i0}\ ,t_{i1},\ ...,\ t_{ik}\}, \ 1 \leq i \leq n$, l'i-esimo tweet composto dai $k$ tokens opportunamente stemmatizzati presenti nello stesso.\\
 Viene definita la matrice $M_{n,m}$
 \[
 M[i,j] =
@@ -301,13 +346,12 @@ La rete neurale è composta da 12 hidden layers, ciascuno di questi fornisce in 
 	\caption[Caption for LOF]{Pooling strategy. \footnotemark}
 \end{figure}
 
-\footnotetext{Fonte: \url{www.jalammar.github.io/illustrated-bert}.}
+\footnotetext{Fonte: \url{http://jalammar.github.io/illustrated-bert/}.}
 \noindent
-Nel caso in questione, si è scelto di concatenare gli ultimi 4 hidden layers e mediare tutti gli embeddings dei tokens presenti nel documento. In tutto si ottiene un vettore di 3072 elementi, il quale sarà utilizzato come features dei modelli in sostituzione della rappresentazione BOW.
+Nel caso in questione, si è scelto di concatenare gli ultimi 4 hidden layers e mediare tutti gli embeddings dei tokens presenti nel documento. In tutto si ottiene un vettore di 3072 elementi, il quale sarà utilizzato come features dei modelli in sostituzione della rappresentazione BOW \cite{berttutorial}.
 
 \subsubsection{Sentence-BERT}
-Sentence-BERT\footnote{Sentence-BERT: \url{www.arxiv.org/abs/1908.10084}} è una modifica della rete neurale BERT. Questa messa a punto del modello, permette di generare embeddings semanticamente validi relativi ad intere frasi.
-
+Sentence-BERT\cite{sentencebert} è una messa a punto della rete neurale BERT, permette di generare embeddings semanticamente validi relativi ad intere frasi.
 
 \section{Caratteristiche linguistiche}
 La scelta di features ad alto contenuto informativo ed indipendenti tra loro, è un passo fondamentale per un corretto riconoscimento di pattern nei dati.
@@ -756,7 +800,7 @@ Nella figura~\ref{fig:iperpiano-r2}, è riportata la linea di dicisione per le d
 Per l'implementazione degli algoritmi, sono stati utilizzati degli strumenti che mettono a disposizione la possibilità di effettuare il training dei modelli.
 
 \subsection{Scikit-learn}
-Scikit-learn\footnote{Scikit-learn: www.scikit-learn.org/stable/} è un modulo di python open soruce per il machine learning. Utilizzando questo modulo, è stato scritto il codice python per creare i modelli con gli algoritmi:
+Scikit-learn\cite{scikit-learn} è un modulo di python open soruce per il machine learning. Utilizzando questo modulo, è stato scritto il codice python per creare i modelli con gli algoritmi:
 \begin{itemize}
 	\item Decision Tree
 	\item Multinomial Naive Bayes
@@ -780,7 +824,7 @@ Infatti per questioni di ottimizzazione, fissato un algoritmo e le features per 
 
 \subsection{Weka}
 
-Weka\footnote{Weka: www.cs.waikato.ac.nz/ml/weka/} è un software open source per il machine learning. Questo applicativo può essere utilizzato attraverso interfaccia grafica, ed è in generale più immediato rispetto a scrivere del codice in python che utilizza le API fornite dal modulo scikit-learn. Con questo software sono stati creati i modelli utilizzando l'algoritmo:
+Weka\cite{weka} è un software open source per il machine learning. Questo applicativo può essere utilizzato attraverso interfaccia grafica, ed è in generale più immediato rispetto a scrivere del codice in python che utilizza le API fornite dal modulo scikit-learn. Con questo software sono stati creati i modelli utilizzando l'algoritmo:
 \begin{itemize}
 	\item Bayesian network
 \end{itemize}
@@ -1212,7 +1256,7 @@ Per ogni componente principale, viene calcolata la varianza spiegata. Di seguito
 
 
 \subsubsection{Features con contributo maggiore}
-Per calcolare le features più importanti, si considerano gli autovettori associati agli autovalori, si procede quindi sommando tutti gli elementi del vettore in valore assoluto. Il risultato è il contributo espresso da quello feature rispetto a tutte le componenti principali (maggiore il valore, più alta l'importanza). Vengono quindi considerate le 50 features con il contributo più alto (il contributo totale è 1):
+Per calcolare le features più importanti, si considerano gli autovettori associati agli autovalori, si procede quindi sommando tutti gli elementi del vettore in valore assoluto. Il risultato è il contributo espresso da quello feature rispetto a tutte le componenti principali (maggiore il valore, più alta l'importanza) \cite{pcaeigenvectors}. Vengono quindi considerate le 50 features con il contributo più alto (il contributo totale è 1):
 
 \begin{figure}[H]
 	\begin{subfigure}[H]{0.5 \textwidth}
@@ -1230,7 +1274,7 @@ Per calcolare le features più importanti, si considerano gli autovettori associ
 \end{figure}
 
 \subsubsection{Conlcusioni}
-Come si può notare da queste analisi, pur considerando le prime 50 componenti principali, viene spiegata solo il 40\% circa della varianza totale. Inoltre per quanto riguarda il contributo di ogni fetures, nessuna di queste prevale tra le altre. Questi data-driven insights mostrano come non ci sia una chiara associazione tra lessico e ironia. In effetti il risultato è coerente con ciò che ci si aspetta, per riconoscere l'ironia non è sufficiente basarsi solo sul lessico utilizzato in una frase.
+Come si può notare da queste analisi, pur considerando le prime 50 componenti principali, viene spiegata solo il 40\% circa della varianza totale. Inoltre per quanto riguarda il contributo di ogni fetures, nessuna di queste prevale tra le altre. Questi ragionamenti data-driven mostrano come non ci sia una chiara associazione tra lessico e ironia. In effetti il risultato è coerente con ciò che ci si aspetta, per riconoscere l'ironia non è sufficiente basarsi solo sul lessico utilizzato in una frase.
 
 \chapter{Conclusioni e sviluppi futuri}
 I sistemi di sentiment analysis vengono utilizzati per estrarre l'informazione relativa al sentimento e l'opinione espressa in un testo. Nel linguaggio naturale esistono figure retoriche come l'ironia che sono in grado di invertire completamente la polarità di ciò che si esprime, di conseguenza i sistemi di sentiment analysi vengono "ingannati".

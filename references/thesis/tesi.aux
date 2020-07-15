@@ -22,128 +22,168 @@
 \@writefile{toc}{\contentsline {section}{\numberline {1.1}Descrizione del problema}{3}{section.1.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {1.2}Approccio al problema}{3}{section.1.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {1.3}Sintesi dei risultati}{4}{section.1.3}\protected@file@percent }
-\citation{einstein}
+\citation{survey4}
+\citation{survey1}
+\citation{political}
+\citation{survey3}
 \@writefile{toc}{\contentsline {chapter}{\numberline {2}Stato dell'arte}{5}{chapter.2}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {2.1}Approccio supervisionato}{5}{section.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2.2}Approccio semi supervisionato}{5}{section.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2.3}Approccio non supervisionato}{5}{section.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}Sistema realizzato}{6}{chapter.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.1}Sarcasmo e sentiment analysis}{5}{section.2.1}\protected@file@percent }
+\citation{audio-sarcasm}
+\citation{survey5}
+\citation{survey4}
+\citation{audio-sarcasm}
+\citation{scuba}
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}Difficoltà e problemi}{6}{section.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}Ironia nel testo}{6}{subsection.2.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}Importanza del contesto}{6}{subsection.2.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}Linguistica del sarcasmo}{6}{section.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}Definizione formale}{6}{subsection.2.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.2}Tipi di sarcasmo}{6}{subsection.2.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.4}Dataset utilizzati}{6}{section.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.1}Etichettamento}{7}{subsection.2.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.5}Approcci adottati}{7}{section.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.1}Rule based}{7}{subsection.2.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.2}Approcci generali}{7}{subsection.2.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.3}Semi supervisionati}{7}{subsection.2.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.4}Supervisionati}{7}{subsection.2.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.5}Deep Learning}{7}{subsection.2.5.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.6}Conclusioni}{7}{section.2.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Sistema realizzato}{8}{chapter.3}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {3.1}Descrizione del sistema proposto}{6}{section.3.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Workflow.\relax }}{7}{figure.caption.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Descrizione del sistema proposto}{8}{section.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Workflow.\relax }}{9}{figure.caption.2}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:workflow}{{3.1}{7}{Workflow.\relax }{figure.caption.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}Dati in input}{8}{section.3.2}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Esempio di dataset a disposizione.\relax }}{8}{table.caption.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}Rappresentazione del testo}{8}{section.3.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Rappresentazione Bag-of-word}{8}{subsection.3.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1.1}Tokenization}{8}{subsubsection.3.3.1.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Text tokenization.\relax }}{9}{figure.caption.4}\protected@file@percent }
-\newlabel{fig:tokenization}{{3.2}{9}{Text tokenization.\relax }{figure.caption.4}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Esempio di tokens associati ad ogni tweet.\relax }}{9}{table.caption.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1.2}Filtering}{9}{subsubsection.3.3.1.2}\protected@file@percent }
-\newlabel{section:filtering}{{3.3.1.2}{9}{Filtering}{subsubsection.3.3.1.2}{}}
+\newlabel{fig:workflow}{{3.1}{9}{Workflow.\relax }{figure.caption.2}{}}
+\citation{nltk}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Dati in input}{10}{section.3.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Esempio di dataset a disposizione.\relax }}{10}{table.caption.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Rappresentazione del testo}{10}{section.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Rappresentazione Bag-of-word}{10}{subsection.3.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1.1}Tokenization}{10}{subsubsection.3.3.1.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Text tokenization.\relax }}{10}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:tokenization}{{3.2}{10}{Text tokenization.\relax }{figure.caption.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Esempio di tokens associati ad ogni tweet.\relax }}{11}{table.caption.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1.2}Filtering}{11}{subsubsection.3.3.1.2}\protected@file@percent }
+\newlabel{section:filtering}{{3.3.1.2}{11}{Filtering}{subsubsection.3.3.1.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1.3}Stemming}{11}{subsubsection.3.3.1.3}\protected@file@percent }
 \citation{bert}
 \citation{transformer}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1.3}Stemming}{10}{subsubsection.3.3.1.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Caption for LOF}}{10}{figure.caption.6}\protected@file@percent }
-\newlabel{fig:stemming}{{3.3}{10}{Caption for LOF}{figure.caption.6}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1.4}Vector encoding}{10}{subsubsection.3.3.1.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Rappresentazione mediante Transformer}{10}{subsection.3.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2.1}BERT}{11}{subsubsection.3.3.2.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Caption for LOF}}{11}{figure.caption.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2.2}Sentence-BERT}{11}{subsubsection.3.3.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.4}Caratteristiche linguistiche}{12}{section.3.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}PP (Pragmatic particles)}{12}{subsection.3.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.1.1}Emoticons}{12}{subsubsection.3.4.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.1.2}Acronimi}{12}{subsubsection.3.4.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.1.3}Espressioni onomatopeiche}{12}{subsubsection.3.4.1.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.1.4}Punteggiatura}{13}{subsubsection.3.4.1.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.1.5}Estrazione particelle pragmatiche}{13}{subsubsection.3.4.1.5}\protected@file@percent }
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {3.1}Esempio di tweet processato per estrarre le particelle pragmatiche.}{13}{lstlisting.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}POS (Part Of Speech)}{13}{subsection.3.4.2}\protected@file@percent }
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {3.2}Esempio di tweet con POS tag associte.}{14}{lstlisting.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.3}EMOT (Emotional Features)}{14}{subsection.3.4.3}\protected@file@percent }
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {3.3}Esempio di estrazione delle emozioni da un tweet.}{14}{lstlisting.3.3}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3.3}{\ignorespaces Emozioni primarie dei lessici.\relax }}{15}{table.caption.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.4}Sintesi features utilizzate}{15}{subsection.3.4.4}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3.4}{\ignorespaces Features utilizzate.\relax }}{15}{table.caption.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Modelli supervisionati}{16}{chapter.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Caption for LOF}}{12}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:stemming}{{3.3}{12}{Caption for LOF}{figure.caption.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1.4}Vector encoding}{12}{subsubsection.3.3.1.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Rappresentazione mediante Transformer}{12}{subsection.3.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2.1}BERT}{12}{subsubsection.3.3.2.1}\protected@file@percent }
+\citation{berttutorial}
+\citation{sentencebert}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Caption for LOF}}{13}{figure.caption.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2.2}Sentence-BERT}{13}{subsubsection.3.3.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Caratteristiche linguistiche}{13}{section.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}PP (Pragmatic particles)}{13}{subsection.3.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.1.1}Emoticons}{14}{subsubsection.3.4.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.1.2}Acronimi}{14}{subsubsection.3.4.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.1.3}Espressioni onomatopeiche}{14}{subsubsection.3.4.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.1.4}Punteggiatura}{14}{subsubsection.3.4.1.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.1.5}Estrazione particelle pragmatiche}{14}{subsubsection.3.4.1.5}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {3.1}Esempio di tweet processato per estrarre le particelle pragmatiche.}{15}{lstlisting.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}POS (Part Of Speech)}{15}{subsection.3.4.2}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {3.2}Esempio di tweet con POS tag associte.}{15}{lstlisting.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.3}EMOT (Emotional Features)}{16}{subsection.3.4.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3.3}{\ignorespaces Emozioni primarie dei lessici.\relax }}{16}{table.caption.8}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {3.3}Esempio di estrazione delle emozioni da un tweet.}{16}{lstlisting.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.4}Sintesi features utilizzate}{17}{subsection.3.4.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3.4}{\ignorespaces Features utilizzate.\relax }}{17}{table.caption.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Modelli supervisionati}{18}{chapter.4}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chap:supervised-models}{{4}{16}{Modelli supervisionati}{chapter.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Caption for LOF}}{16}{figure.caption.10}\protected@file@percent }
-\newlabel{fig:artificial-intelligence}{{4.1}{16}{Caption for LOF}{figure.caption.10}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Decision Tree}{17}{section.4.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Caption for LOF}}{17}{figure.caption.11}\protected@file@percent }
-\newlabel{fig:decision-tree}{{4.2}{17}{Caption for LOF}{figure.caption.11}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Naive Bayes}{18}{section.4.2}\protected@file@percent }
-\newlabel{eq:1}{{4.1}{18}{Naive Bayes}{equation.4.2.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Multinomial Naive Bayes}{19}{section.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}Bayesian Network}{19}{section.4.4}\protected@file@percent }
-\newlabel{fig:naive-bayes}{{4.3a}{19}{Naive Bayes network\relax }{figure.caption.12}{}}
-\newlabel{sub@fig:naive-bayes}{{a}{19}{Naive Bayes network\relax }{figure.caption.12}{}}
-\newlabel{fig:naive-bayes}{{4.3b}{19}{Bayes network per problema specifico\relax }{figure.caption.12}{}}
-\newlabel{sub@fig:naive-bayes}{{b}{19}{Bayes network per problema specifico\relax }{figure.caption.12}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Dipendenza tra variabili.\relax }}{19}{figure.caption.12}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.5}Support Vector Machine}{21}{section.4.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.1}Iperpiano}{21}{subsection.4.5.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Caption for LOF}}{21}{figure.caption.13}\protected@file@percent }
-\newlabel{fig:svm-2d}{{4.4}{21}{Caption for LOF}{figure.caption.13}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.2}Iperpiano ottimo}{21}{subsection.4.5.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Caption for LOF}}{22}{figure.caption.14}\protected@file@percent }
-\newlabel{fig:svm-margin}{{4.5}{22}{Caption for LOF}{figure.caption.14}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.3}Vettori di supporto}{22}{subsection.4.5.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.4}SVM non lineare}{22}{subsection.4.5.4}\protected@file@percent }
-\newlabel{fig:dataset-r2}{{4.6a}{23}{Dataset in $R^2$\relax }{figure.caption.15}{}}
-\newlabel{sub@fig:dataset-r2}{{a}{23}{Dataset in $R^2$\relax }{figure.caption.15}{}}
-\newlabel{fig:dataset-r3}{{4.6b}{23}{Dataset trasformato in $R^3$\relax }{figure.caption.15}{}}
-\newlabel{sub@fig:dataset-r3}{{b}{23}{Dataset trasformato in $R^3$\relax }{figure.caption.15}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Caption for LOF}}{23}{figure.caption.15}\protected@file@percent }
-\newlabel{fig:iperpiano-r3}{{4.7a}{23}{Iperpiano in $R^3$\relax }{figure.caption.16}{}}
-\newlabel{sub@fig:iperpiano-r3}{{a}{23}{Iperpiano in $R^3$\relax }{figure.caption.16}{}}
-\newlabel{fig:iperpiano-r2}{{4.7b}{23}{Iperpiano proiettato in $R^2$\relax }{figure.caption.16}{}}
-\newlabel{sub@fig:iperpiano-r2}{{b}{23}{Iperpiano proiettato in $R^2$\relax }{figure.caption.16}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Caption for LOF}}{23}{figure.caption.16}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.6}Strumenti utilizzati}{24}{section.4.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.1}Scikit-learn}{24}{subsection.4.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.2}Weka}{24}{subsection.4.6.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Campagna sperimentale}{26}{chapter.5}\protected@file@percent }
+\newlabel{chap:supervised-models}{{4}{18}{Modelli supervisionati}{chapter.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Caption for LOF}}{18}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:artificial-intelligence}{{4.1}{18}{Caption for LOF}{figure.caption.10}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Decision Tree}{19}{section.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Caption for LOF}}{19}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:decision-tree}{{4.2}{19}{Caption for LOF}{figure.caption.11}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Naive Bayes}{20}{section.4.2}\protected@file@percent }
+\newlabel{eq:1}{{4.1}{20}{Naive Bayes}{equation.4.2.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Multinomial Naive Bayes}{21}{section.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Bayesian Network}{21}{section.4.4}\protected@file@percent }
+\newlabel{fig:naive-bayes}{{4.3a}{21}{Naive Bayes network\relax }{figure.caption.12}{}}
+\newlabel{sub@fig:naive-bayes}{{a}{21}{Naive Bayes network\relax }{figure.caption.12}{}}
+\newlabel{fig:naive-bayes}{{4.3b}{21}{Bayes network per problema specifico\relax }{figure.caption.12}{}}
+\newlabel{sub@fig:naive-bayes}{{b}{21}{Bayes network per problema specifico\relax }{figure.caption.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Dipendenza tra variabili.\relax }}{21}{figure.caption.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Support Vector Machine}{23}{section.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.1}Iperpiano}{23}{subsection.4.5.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Caption for LOF}}{23}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:svm-2d}{{4.4}{23}{Caption for LOF}{figure.caption.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.2}Iperpiano ottimo}{23}{subsection.4.5.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Caption for LOF}}{24}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:svm-margin}{{4.5}{24}{Caption for LOF}{figure.caption.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.3}Vettori di supporto}{24}{subsection.4.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.4}SVM non lineare}{24}{subsection.4.5.4}\protected@file@percent }
+\newlabel{fig:dataset-r2}{{4.6a}{25}{Dataset in $R^2$\relax }{figure.caption.15}{}}
+\newlabel{sub@fig:dataset-r2}{{a}{25}{Dataset in $R^2$\relax }{figure.caption.15}{}}
+\newlabel{fig:dataset-r3}{{4.6b}{25}{Dataset trasformato in $R^3$\relax }{figure.caption.15}{}}
+\newlabel{sub@fig:dataset-r3}{{b}{25}{Dataset trasformato in $R^3$\relax }{figure.caption.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Caption for LOF}}{25}{figure.caption.15}\protected@file@percent }
+\newlabel{fig:iperpiano-r3}{{4.7a}{25}{Iperpiano in $R^3$\relax }{figure.caption.16}{}}
+\newlabel{sub@fig:iperpiano-r3}{{a}{25}{Iperpiano in $R^3$\relax }{figure.caption.16}{}}
+\newlabel{fig:iperpiano-r2}{{4.7b}{25}{Iperpiano proiettato in $R^2$\relax }{figure.caption.16}{}}
+\newlabel{sub@fig:iperpiano-r2}{{b}{25}{Iperpiano proiettato in $R^2$\relax }{figure.caption.16}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Caption for LOF}}{25}{figure.caption.16}\protected@file@percent }
+\citation{scikit-learn}
+\citation{weka}
+\@writefile{toc}{\contentsline {section}{\numberline {4.6}Strumenti utilizzati}{26}{section.4.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.1}Scikit-learn}{26}{subsection.4.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.2}Weka}{26}{subsection.4.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Campagna sperimentale}{27}{chapter.5}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}Dataset}{26}{section.5.1}\protected@file@percent }
-\newlabel{chap:self-taggin}{{5.1}{26}{Dataset}{section.5.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces Hashtag e label associate\relax }}{26}{table.caption.17}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}10-Folds Cross-Validation}{26}{section.5.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Caption for LOF}}{27}{figure.caption.18}\protected@file@percent }
-\newlabel{fig:cross-validation}{{5.1}{27}{Caption for LOF}{figure.caption.18}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}Misure di performance}{27}{section.5.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Caption for LOF}}{28}{figure.caption.19}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.4}Esperimenti}{29}{section.5.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}Caratteristiche linguistiche}{30}{subsection.5.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.1.1}Weighted average}{30}{subsubsection.5.4.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.1.2}Confusion matrix}{32}{subsubsection.5.4.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}BOW + Caratteristiche linguistiche}{33}{subsection.5.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.2.1}Weighted average}{33}{subsubsection.5.4.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.2.2}Confusion matrix}{35}{subsubsection.5.4.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.3}BOW vs BERT vs Sentence-BERT}{36}{subsection.5.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.3.1}Weighted average - Accuracy}{36}{subsubsection.5.4.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.3.2}Weighted average - F measure}{36}{subsubsection.5.4.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.4}Analisi lessico con PCA}{37}{subsection.5.4.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.4.1}Top k componenti principali}{37}{subsubsection.5.4.4.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.13}{\ignorespaces Varianza spiegata\relax }}{37}{figure.caption.45}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces Varianza spiegata cumulata\relax }}{38}{figure.caption.46}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.4.2}Features con contributo maggiore}{38}{subsubsection.5.4.4.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.15}{\ignorespaces Contributo dell features\relax }}{38}{figure.caption.47}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.4.3}Conlcusioni}{38}{subsubsection.5.4.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Dataset}{27}{section.5.1}\protected@file@percent }
+\newlabel{chap:self-taggin}{{5.1}{27}{Dataset}{section.5.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces Hashtag e label associate\relax }}{27}{table.caption.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}10-Folds Cross-Validation}{27}{section.5.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Caption for LOF}}{28}{figure.caption.18}\protected@file@percent }
+\newlabel{fig:cross-validation}{{5.1}{28}{Caption for LOF}{figure.caption.18}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Misure di performance}{28}{section.5.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Caption for LOF}}{29}{figure.caption.19}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Esperimenti}{30}{section.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}Caratteristiche linguistiche}{31}{subsection.5.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.1.1}Weighted average}{31}{subsubsection.5.4.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.1.2}Confusion matrix}{33}{subsubsection.5.4.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}BOW + Caratteristiche linguistiche}{34}{subsection.5.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.2.1}Weighted average}{34}{subsubsection.5.4.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.2.2}Confusion matrix}{36}{subsubsection.5.4.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.3}BOW vs BERT vs Sentence-BERT}{37}{subsection.5.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.3.1}Weighted average - Accuracy}{37}{subsubsection.5.4.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.3.2}Weighted average - F measure}{37}{subsubsection.5.4.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.4}Analisi lessico con PCA}{38}{subsection.5.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.4.1}Top k componenti principali}{38}{subsubsection.5.4.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.13}{\ignorespaces Varianza spiegata\relax }}{38}{figure.caption.45}\protected@file@percent }
+\citation{pcaeigenvectors}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces Varianza spiegata cumulata\relax }}{39}{figure.caption.46}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.4.2}Features con contributo maggiore}{39}{subsubsection.5.4.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.15}{\ignorespaces Contributo dell features\relax }}{39}{figure.caption.47}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.4.3}Conlcusioni}{39}{subsubsection.5.4.4.3}\protected@file@percent }
 \bibdata{bibliography}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Conclusioni e sviluppi futuri}{39}{chapter.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Conclusioni e sviluppi futuri}{40}{chapter.6}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {chapter}{Bibliography}{39}{chapter.6}\protected@file@percent }
-\bibcite{bert}{1}
-\bibcite{transformer}{2}
+\@writefile{toc}{\contentsline {chapter}{Bibliography}{40}{chapter.6}\protected@file@percent }
+\bibcite{survey4}{1}
+\bibcite{survey1}{2}
+\bibcite{political}{3}
+\bibcite{survey3}{4}
+\bibcite{audio-sarcasm}{5}
+\bibcite{survey5}{6}
+\bibcite{scuba}{7}
+\bibcite{nltk}{8}
+\bibcite{bert}{9}
+\bibcite{transformer}{10}
+\bibcite{berttutorial}{11}
+\bibcite{sentencebert}{12}
+\bibcite{scikit-learn}{13}
+\bibcite{weka}{14}
+\bibcite{pcaeigenvectors}{15}
 \bibstyle{ieeetr}

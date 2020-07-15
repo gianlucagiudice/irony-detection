@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.5.31)  13 JUL 2020 17:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.5.31)  15 JUL 2020 02:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -552,7 +552,7 @@ LaTeX Info: Redefining \nameref on input line 62.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-<logo_unimib.pdf, id=256, 67.8029pt x 66.29492pt>
+<logo_unimib.pdf, id=308, 67.8029pt x 66.29492pt>
 File: logo_unimib.pdf Graphic file (type pdf)
 <use logo_unimib.pdf>
 Package pdftex.def Info: logo_unimib.pdf  used on input line 69.
@@ -567,6 +567,11 @@ Overfull \hbox (2.2222pt too wide) in paragraph at lines 67--81
 [] []
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 85--89
+
+ []
+
 [1
 
 
@@ -575,7 +580,7 @@ Overfull \hbox (2.2222pt too wide) in paragraph at lines 67--81
 ge.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.37 ...ne {4.5.1}Iperpiano}{21}{subsection.4.5.1}
+l.37 ...4.1.2}Acronimi}{14}{subsubsection.3.4.1.2}
                                                   % [1
 
 ])
@@ -588,173 +593,166 @@ Chapter 1.
 
 ]
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 1
-25.
+26.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ) [4]
 Chapter 2.
-
-LaTeX Warning: Citation `einstein' on page 5 undefined on input line 131.
-
 [5
 
-]
+] [6] [7]
 Chapter 3.
-<assets/Workflow.png, id=374, 801.99625pt x 691.58376pt>
+<assets/Workflow.png, id=464, 801.99625pt x 691.58376pt>
 File: assets/Workflow.png Graphic file (type png)
 <use assets/Workflow.png>
-Package pdftex.def Info: assets/Workflow.png  used on input line 156.
+Package pdftex.def Info: assets/Workflow.png  used on input line 203.
 (pdftex.def)             Requested size: 418.25368pt x 360.6809pt.
-[6
-
-] [7 <./assets/Workflow.png>]
-<assets/text-to-tokens.jpg, id=389, 613.29124pt x 152.57pt>
-File: assets/text-to-tokens.jpg Graphic file (type jpg)
-<use assets/text-to-tokens.jpg>
-Package pdftex.def Info: assets/text-to-tokens.jpg  used on input line 200.
-(pdftex.def)             Requested size: 256.0748pt x 63.70415pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 [8
 
-]
-Overfull \hbox (2.27486pt too wide) in paragraph at lines 239--240
+] [9 <./assets/Workflow.png>]
+<assets/text-to-tokens.jpg, id=478, 613.29124pt x 152.57pt>
+File: assets/text-to-tokens.jpg Graphic file (type jpg)
+<use assets/text-to-tokens.jpg>
+Package pdftex.def Info: assets/text-to-tokens.jpg  used on input line 247.
+(pdftex.def)             Requested size: 256.0748pt x 63.70415pt.
+ [10
+
+ <./assets/text-to-tokens.jpg>]
+Overfull \hbox (2.27486pt too wide) in paragraph at lines 286--287
 \OT1/cmr/m/n/10 Queste sono un in-sieme pre-definito con-te-nente pa-role come 
 gli ar-ti-coli, propo-sizioni, pronomi
  []
 
-<assets/stemming.jpg, id=397, 563.85657pt x 363.60844pt>
+<assets/stemming.jpg, id=487, 563.85657pt x 363.60844pt>
 File: assets/stemming.jpg Graphic file (type jpg)
 <use assets/stemming.jpg>
-Package pdftex.def Info: assets/stemming.jpg  used on input line 259.
+Package pdftex.def Info: assets/stemming.jpg  used on input line 306.
 (pdftex.def)             Requested size: 312.9803pt x 201.82726pt.
-[9 <./assets/text-to-tokens.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 274--275
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 321--322
 
  []
 
-[10 <./assets/stemming.jpg>]
-<assets/pooling-strategy.png, id=421, 945.5325pt x 667.49374pt>
+[11] [12 <./assets/stemming.jpg>]
+<assets/pooling-strategy.png, id=513, 945.5325pt x 667.49374pt>
 File: assets/pooling-strategy.png Graphic file (type png)
 <use assets/pooling-strategy.png>
-Package pdftex.def Info: assets/pooling-strategy.png  used on input line 300.
+Package pdftex.def Info: assets/pooling-strategy.png  used on input line 347.
 (pdftex.def)             Requested size: 312.9803pt x 220.94583pt.
- [11 <./assets/pooling-strategy.png>] [12]
-LaTeX Font Info:    Trying to load font information for OML+cmr on input line 3
-70.
+ [13 <./assets/pooling-strategy.png>]
+LaTeX Font Info:    Trying to load font information for OML+cmr on input line 4
+16.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <9> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 370.
-LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 3
-73.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 416.
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 4
+19.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 373.
-
-Underfull \hbox (badness 10000) in paragraph at lines 380--381
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 383--404
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 419.
+ [14]
+Underfull \hbox (badness 10000) in paragraph at lines 426--427
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 383--404
+Underfull \hbox (badness 10000) in paragraph at lines 429--450
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 405--424
+Underfull \hbox (badness 10000) in paragraph at lines 429--450
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 405--424
+Underfull \hbox (badness 10000) in paragraph at lines 451--470
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 405--424
-
- []
-
-[13]
-Underfull \hbox (badness 10000) in paragraph at lines 447--448
+Underfull \hbox (badness 10000) in paragraph at lines 451--470
 
  []
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+Underfull \hbox (badness 10000) in paragraph at lines 451--470
 
-[14] [15]
+ []
+
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 493--494
+
+ []
+
+[16] [17]
 Chapter 4.
 
-Overfull \hbox (4.85822pt too wide) in paragraph at lines 518--519
+Overfull \hbox (4.85822pt too wide) in paragraph at lines 564--565
 \OT1/cmr/m/n/10 Il ma-chine learn-ing ^^Re lo stu-dio di al-go-ritmi che miglio
 -rano au-to-mati-ca-mente at-traverso l'esperienza,
  []
 
-<assets/ai_diagram.png, id=492, 497.86pt x 301.125pt>
+<assets/ai_diagram.png, id=581, 497.86pt x 301.125pt>
 File: assets/ai_diagram.png Graphic file (type png)
 <use assets/ai_diagram.png>
-Package pdftex.def Info: assets/ai_diagram.png  used on input line 523.
+Package pdftex.def Info: assets/ai_diagram.png  used on input line 569.
 (pdftex.def)             Requested size: 199.16928pt x 120.46623pt.
-[16
+[18
 
  <./assets/ai_diagram.png>]
-<assets/decision_tree.png, id=503, 675.52374pt x 339.2675pt>
+<assets/decision_tree.png, id=594, 675.52374pt x 339.2675pt>
 File: assets/decision_tree.png Graphic file (type png)
 <use assets/decision_tree.png>
-Package pdftex.def Info: assets/decision_tree.png  used on input line 545.
+Package pdftex.def Info: assets/decision_tree.png  used on input line 591.
 (pdftex.def)             Requested size: 369.88582pt x 185.76941pt.
- [17 <./assets/decision_tree.png (PNG copy)>]
-[18]
-<assets/naive-bayes.png, id=521, 532.99126pt x 282.05376pt>
+ [19 <./assets/decision_tree.png (PNG copy)>]
+[20]
+<assets/naive-bayes.png, id=611, 532.99126pt x 282.05376pt>
 File: assets/naive-bayes.png Graphic file (type png)
 <use assets/naive-bayes.png>
-Package pdftex.def Info: assets/naive-bayes.png  used on input line 621.
+Package pdftex.def Info: assets/naive-bayes.png  used on input line 667.
 (pdftex.def)             Requested size: 167.2989pt x 88.53322pt.
-<assets/bayes-network.png, id=522, 532.99126pt x 432.61626pt>
+<assets/bayes-network.png, id=612, 532.99126pt x 432.61626pt>
 File: assets/bayes-network.png Graphic file (type png)
 <use assets/bayes-network.png>
-Package pdftex.def Info: assets/bayes-network.png  used on input line 628.
+Package pdftex.def Info: assets/bayes-network.png  used on input line 674.
 (pdftex.def)             Requested size: 167.2989pt x 135.79295pt.
- [19 <./assets/naive-bayes.png> <./assets/bayes-network.png>] [20]
-<assets/svm-hyperplane.png, id=534, 1405.25pt x 594.22pt>
+ [21 <./assets/naive-bayes.png> <./assets/bayes-network.png>] [22]
+<assets/svm-hyperplane.png, id=624, 1405.25pt x 594.22pt>
 File: assets/svm-hyperplane.png Graphic file (type png)
 <use assets/svm-hyperplane.png>
-Package pdftex.def Info: assets/svm-hyperplane.png  used on input line 668.
+Package pdftex.def Info: assets/svm-hyperplane.png  used on input line 714.
 (pdftex.def)             Requested size: 341.43306pt x 144.37471pt.
- [21 <./assets/svm-hyperplane.png (PNG copy)>]
-<assets/svm-margin.png, id=545, 167.30505pt x 162.6075pt>
+ [23 <./assets/svm-hyperplane.png (PNG copy)>]
+<assets/svm-margin.png, id=635, 167.30505pt x 162.6075pt>
 File: assets/svm-margin.png Graphic file (type png)
 <use assets/svm-margin.png>
-Package pdftex.def Info: assets/svm-margin.png  used on input line 693.
+Package pdftex.def Info: assets/svm-margin.png  used on input line 739.
 (pdftex.def)             Requested size: 199.16928pt x 193.58472pt.
-<assets/svm-non-separable-1.png, id=549, 722.7pt x 651.43375pt>
+<assets/svm-non-separable-1.png, id=639, 722.7pt x 651.43375pt>
 File: assets/svm-non-separable-1.png Graphic file (type png)
 <use assets/svm-non-separable-1.png>
-Package pdftex.def Info: assets/svm-non-separable-1.png  used on input line 717
+Package pdftex.def Info: assets/svm-non-separable-1.png  used on input line 763
 .
 (pdftex.def)             Requested size: 209.12683pt x 188.5034pt.
-<assets/svm-non-separable-2.png, id=550, 582.175pt x 462.72874pt>
+<assets/svm-non-separable-2.png, id=640, 582.175pt x 462.72874pt>
 File: assets/svm-non-separable-2.png Graphic file (type png)
 <use assets/svm-non-separable-2.png>
-Package pdftex.def Info: assets/svm-non-separable-2.png  used on input line 723
+Package pdftex.def Info: assets/svm-non-separable-2.png  used on input line 769
 .
 (pdftex.def)             Requested size: 209.12683pt x 166.21506pt.
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 716--727
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 762--773
 [][]  [] 
  []
 
@@ -762,160 +760,160 @@ Overfull \hbox (2.2222pt too wide) in paragraph at lines 716--727
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 730--730
+Underfull \hbox (badness 10000) in paragraph at lines 776--776
 [][]\OT1/cmr/m/n/8 Fonte: []$\OT1/pcr/m/n/8 www\OML/cmm/m/it/8 :\OT1/pcr/m/n/8 
 medium\OML/cmm/m/it/8 :\OT1/pcr/m/n/8 com / @vivek\OML/cmm/m/it/8 :\OT1/pcr/m/n
 /8 yadav / why -[] is -[] gradient -[] descent -[] robust -[] to -[] non -[] li
 nearly -[]
  []
 
-[22 <./assets/svm-margin.png>]
-<assets/svm-separable-1.png, id=563, 493.845pt x 382.42876pt>
+[24 <./assets/svm-margin.png>]
+<assets/svm-separable-1.png, id=654, 493.845pt x 382.42876pt>
 File: assets/svm-separable-1.png Graphic file (type png)
 <use assets/svm-separable-1.png>
-Package pdftex.def Info: assets/svm-separable-1.png  used on input line 738.
+Package pdftex.def Info: assets/svm-separable-1.png  used on input line 784.
 (pdftex.def)             Requested size: 209.12683pt x 161.9436pt.
-<assets/svm-separable-2.png, id=564, 607.51968pt x 550.30594pt>
+<assets/svm-separable-2.png, id=655, 607.51968pt x 550.30594pt>
 File: assets/svm-separable-2.png Graphic file (type png)
 <use assets/svm-separable-2.png>
-Package pdftex.def Info: assets/svm-separable-2.png  used on input line 744.
+Package pdftex.def Info: assets/svm-separable-2.png  used on input line 790.
 (pdftex.def)             Requested size: 209.12683pt x 189.4275pt.
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 736--748
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 782--794
 [][]  [] 
  []
 
-[23 <./assets/svm-non-separable-1.png> <./assets/svm-non-separable-2.png> <./as
-sets/svm-separable-1.png> <./assets/svm-separable-2.png>] [24] [25]
+[25 <./assets/svm-non-separable-1.png> <./assets/svm-non-separable-2.png> <./as
+sets/svm-separable-1.png> <./assets/svm-separable-2.png>] [26]
 Chapter 5.
-[26
+[27
 
 ]
-<assets/cross-validation.png, id=609, 1027.84pt x 506.89375pt>
+<assets/cross-validation.png, id=694, 1027.84pt x 506.89375pt>
 File: assets/cross-validation.png Graphic file (type png)
 <use assets/cross-validation.png>
-Package pdftex.def Info: assets/cross-validation.png  used on input line 836.
+Package pdftex.def Info: assets/cross-validation.png  used on input line 882.
 (pdftex.def)             Requested size: 369.88582pt x 182.412pt.
- [27 <./assets/cross-validation.png>]
-<assets/confusion-matrix.jpg, id=620, 919.435pt x 733.74126pt>
+ [28 <./assets/cross-validation.png>]
+<assets/confusion-matrix.jpg, id=705, 919.435pt x 733.74126pt>
 File: assets/confusion-matrix.jpg Graphic file (type jpg)
 <use assets/confusion-matrix.jpg>
-Package pdftex.def Info: assets/confusion-matrix.jpg  used on input line 862.
+Package pdftex.def Info: assets/confusion-matrix.jpg  used on input line 908.
 (pdftex.def)             Requested size: 284.52756pt x 227.06558pt.
- [28 <./assets/confusion-matrix.jpg>]
-LaTeX Font Info:    Trying to load font information for U+rsfso on input line 8
-96.
+ [29 <./assets/confusion-matrix.jpg>]
+LaTeX Font Info:    Trying to load font information for U+rsfso on input line 9
+42.
 
 (/usr/share/texlive/texmf-dist/tex/latex/rsfso/ursfso.fd
 File: ursfso.fd 2011/02/13 Fontinst v1.933 font definitions for U/rsfso.
 )
 LaTeX Font Info:    Font shape `U/rsfso/m/n' will be
-(Font)              scaled to size 10.0pt on input line 896.
+(Font)              scaled to size 10.0pt on input line 942.
 LaTeX Font Info:    Font shape `U/rsfso/m/n' will be
-(Font)              scaled to size 7.0pt on input line 896.
+(Font)              scaled to size 7.0pt on input line 942.
 LaTeX Font Info:    Font shape `U/rsfso/m/n' will be
-(Font)              scaled to size 5.0pt on input line 896.
- [29]
-<assets/reports/macro/nobow/MultinomialNB.png, id=635, 1198.4775pt x 873.2625pt
+(Font)              scaled to size 5.0pt on input line 942.
+ [30]
+<assets/reports/macro/nobow/MultinomialNB.png, id=721, 1198.4775pt x 873.2625pt
 >
 File: assets/reports/macro/nobow/MultinomialNB.png Graphic file (type png)
 <use assets/reports/macro/nobow/MultinomialNB.png>
 Package pdftex.def Info: assets/reports/macro/nobow/MultinomialNB.png  used on 
-input line 907.
+input line 953.
 (pdftex.def)             Requested size: 284.52756pt x 207.30872pt.
 
-Overfull \hbox (75.40073pt too wide) in paragraph at lines 907--908
+Overfull \hbox (75.40073pt too wide) in paragraph at lines 953--954
  [][] 
  []
 
-<assets/reports/macro/nobow/BayesianNetworks.png, id=636, 1198.4775pt x 873.262
+<assets/reports/macro/nobow/BayesianNetworks.png, id=722, 1198.4775pt x 873.262
 5pt>
 File: assets/reports/macro/nobow/BayesianNetworks.png Graphic file (type png)
 <use assets/reports/macro/nobow/BayesianNetworks.png>
 Package pdftex.def Info: assets/reports/macro/nobow/BayesianNetworks.png  used 
-on input line 913.
+on input line 959.
 (pdftex.def)             Requested size: 284.52756pt x 207.30872pt.
 
-Overfull \hbox (81.89067pt too wide) in paragraph at lines 912--914
+Overfull \hbox (81.89067pt too wide) in paragraph at lines 958--960
  []|  [] 
  []
 
-<assets/reports/macro/nobow/DecisionTree.png, id=637, 1198.4775pt x 873.2625pt>
+<assets/reports/macro/nobow/DecisionTree.png, id=723, 1198.4775pt x 873.2625pt>
 
 File: assets/reports/macro/nobow/DecisionTree.png Graphic file (type png)
 <use assets/reports/macro/nobow/DecisionTree.png>
 Package pdftex.def Info: assets/reports/macro/nobow/DecisionTree.png  used on i
-nput line 921.
+nput line 967.
 (pdftex.def)             Requested size: 284.52756pt x 207.30872pt.
 
-Overfull \hbox (75.40073pt too wide) in paragraph at lines 921--922
+Overfull \hbox (75.40073pt too wide) in paragraph at lines 967--968
  [][] 
  []
 
-<assets/reports/macro/nobow/SVM - Linear.png, id=638, 1198.4775pt x 873.2625pt>
+<assets/reports/macro/nobow/SVM - Linear.png, id=724, 1198.4775pt x 873.2625pt>
 
 File: assets/reports/macro/nobow/SVM - Linear.png Graphic file (type png)
 <use assets/reports/macro/nobow/SVM - Linear.png>
 Package pdftex.def Info: assets/reports/macro/nobow/SVM - Linear.png  used on i
-nput line 927.
+nput line 973.
 (pdftex.def)             Requested size: 284.52756pt x 207.30872pt.
 
-Overfull \hbox (81.89067pt too wide) in paragraph at lines 926--928
+Overfull \hbox (81.89067pt too wide) in paragraph at lines 972--974
  []|  [] 
  []
 
-[30 <./assets/reports/macro/nobow/MultinomialNB.png> <./assets/reports/macro/no
+[31 <./assets/reports/macro/nobow/MultinomialNB.png> <./assets/reports/macro/no
 bow/BayesianNetworks.png> <./assets/reports/macro/nobow/DecisionTree.png> <./as
 sets/reports/macro/nobow/SVM - Linear.png>]
-<assets/reports/micro/nobow/MultinomialNB.png, id=650, 1143.27126pt x 1046.9112
+<assets/reports/micro/nobow/MultinomialNB.png, id=736, 1143.27126pt x 1046.9112
 5pt>
 File: assets/reports/micro/nobow/MultinomialNB.png Graphic file (type png)
 <use assets/reports/micro/nobow/MultinomialNB.png>
 Package pdftex.def Info: assets/reports/micro/nobow/MultinomialNB.png  used on 
-input line 936.
+input line 982.
 (pdftex.def)             Requested size: 284.52756pt x 260.54506pt.
 
-Overfull \hbox (75.40073pt too wide) in paragraph at lines 936--937
+Overfull \hbox (75.40073pt too wide) in paragraph at lines 982--983
  [][] 
  []
 
-<assets/reports/micro/nobow/BayesianNetworks.png, id=651, 1143.27126pt x 1046.9
+<assets/reports/micro/nobow/BayesianNetworks.png, id=737, 1143.27126pt x 1046.9
 1125pt>
 File: assets/reports/micro/nobow/BayesianNetworks.png Graphic file (type png)
 <use assets/reports/micro/nobow/BayesianNetworks.png>
 Package pdftex.def Info: assets/reports/micro/nobow/BayesianNetworks.png  used 
-on input line 942.
+on input line 988.
 (pdftex.def)             Requested size: 284.52756pt x 260.54506pt.
 
-Overfull \hbox (81.89067pt too wide) in paragraph at lines 940--943
+Overfull \hbox (81.89067pt too wide) in paragraph at lines 986--989
  []|  [] 
  []
 
-<assets/reports/micro/nobow/DecisionTree.png, id=652, 1143.27126pt x 1046.91125
+<assets/reports/micro/nobow/DecisionTree.png, id=738, 1143.27126pt x 1046.91125
 pt>
 File: assets/reports/micro/nobow/DecisionTree.png Graphic file (type png)
 <use assets/reports/micro/nobow/DecisionTree.png>
 Package pdftex.def Info: assets/reports/micro/nobow/DecisionTree.png  used on i
-nput line 950.
+nput line 996.
 (pdftex.def)             Requested size: 284.52756pt x 260.54506pt.
 
-Overfull \hbox (75.40073pt too wide) in paragraph at lines 950--951
+Overfull \hbox (75.40073pt too wide) in paragraph at lines 996--997
  [][] 
  []
 
-<assets/reports/micro/nobow/SVM - Linear.png, id=653, 1143.27126pt x 1046.91125
+<assets/reports/micro/nobow/SVM - Linear.png, id=739, 1143.27126pt x 1046.91125
 pt>
 File: assets/reports/micro/nobow/SVM - Linear.png Graphic file (type png)
 <use assets/reports/micro/nobow/SVM - Linear.png>
 Package pdftex.def Info: assets/reports/micro/nobow/SVM - Linear.png  used on i
-nput line 956.
+nput line 1002.
 (pdftex.def)             Requested size: 284.52756pt x 260.54506pt.
 
-Overfull \hbox (81.89067pt too wide) in paragraph at lines 955--957
+Overfull \hbox (81.89067pt too wide) in paragraph at lines 1001--1003
  []|  [] 
  []
 
-[31 <./assets/reports/micro/nobow/MultinomialNB.png> <./assets/reports/micro/no
+[32 <./assets/reports/micro/nobow/MultinomialNB.png> <./assets/reports/micro/no
 bow/BayesianNetworks.png> <./assets/reports/micro/nobow/DecisionTree.png> <./as
 sets/reports/micro/nobow/SVM - Linear.png>]
 *geometry* verbose mode - [ newgeometry ] result:
@@ -950,52 +948,52 @@ sets/reports/micro/nobow/SVM - Linear.png>]
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-<assets/reports/conf-matrix/nobow/emot.png, id=664, 1837.86626pt x 417.56pt>
+<assets/reports/conf-matrix/nobow/emot.png, id=750, 1837.86626pt x 417.56pt>
 File: assets/reports/conf-matrix/nobow/emot.png Graphic file (type png)
 <use assets/reports/conf-matrix/nobow/emot.png>
 Package pdftex.def Info: assets/reports/conf-matrix/nobow/emot.png  used on inp
-ut line 972.
+ut line 1018.
 (pdftex.def)             Requested size: 369.88582pt x 84.03297pt.
-<assets/reports/conf-matrix/nobow/pos.png, id=665, 1837.86626pt x 417.56pt>
+<assets/reports/conf-matrix/nobow/pos.png, id=751, 1837.86626pt x 417.56pt>
 File: assets/reports/conf-matrix/nobow/pos.png Graphic file (type png)
 <use assets/reports/conf-matrix/nobow/pos.png>
 Package pdftex.def Info: assets/reports/conf-matrix/nobow/pos.png  used on inpu
-t line 978.
+t line 1024.
 (pdftex.def)             Requested size: 369.88582pt x 84.03297pt.
-<assets/reports/conf-matrix/nobow/pp.png, id=666, 1837.86626pt x 417.56pt>
+<assets/reports/conf-matrix/nobow/pp.png, id=752, 1837.86626pt x 417.56pt>
 File: assets/reports/conf-matrix/nobow/pp.png Graphic file (type png)
 <use assets/reports/conf-matrix/nobow/pp.png>
 Package pdftex.def Info: assets/reports/conf-matrix/nobow/pp.png  used on input
- line 984.
+ line 1030.
 (pdftex.def)             Requested size: 369.88582pt x 84.03297pt.
-<assets/reports/conf-matrix/nobow/pp-emot.png, id=667, 1837.86626pt x 417.56pt>
+<assets/reports/conf-matrix/nobow/pp-emot.png, id=753, 1837.86626pt x 417.56pt>
 
 File: assets/reports/conf-matrix/nobow/pp-emot.png Graphic file (type png)
 <use assets/reports/conf-matrix/nobow/pp-emot.png>
 Package pdftex.def Info: assets/reports/conf-matrix/nobow/pp-emot.png  used on 
-input line 990.
+input line 1036.
 (pdftex.def)             Requested size: 369.88582pt x 84.03297pt.
-<assets/reports/conf-matrix/nobow/pos-emot.png, id=668, 1837.86626pt x 417.56pt
+<assets/reports/conf-matrix/nobow/pos-emot.png, id=754, 1837.86626pt x 417.56pt
 >
 File: assets/reports/conf-matrix/nobow/pos-emot.png Graphic file (type png)
 <use assets/reports/conf-matrix/nobow/pos-emot.png>
 Package pdftex.def Info: assets/reports/conf-matrix/nobow/pos-emot.png  used on
- input line 996.
+ input line 1042.
 (pdftex.def)             Requested size: 369.88582pt x 84.03297pt.
-<assets/reports/conf-matrix/nobow/pp-pos.png, id=669, 1837.86626pt x 417.56pt>
+<assets/reports/conf-matrix/nobow/pp-pos.png, id=755, 1837.86626pt x 417.56pt>
 File: assets/reports/conf-matrix/nobow/pp-pos.png Graphic file (type png)
 <use assets/reports/conf-matrix/nobow/pp-pos.png>
 Package pdftex.def Info: assets/reports/conf-matrix/nobow/pp-pos.png  used on i
-nput line 1002.
+nput line 1048.
 (pdftex.def)             Requested size: 369.88582pt x 84.03297pt.
-<assets/reports/conf-matrix/nobow/pp-pos-emot.png, id=670, 1837.86626pt x 417.5
+<assets/reports/conf-matrix/nobow/pp-pos-emot.png, id=756, 1837.86626pt x 417.5
 6pt>
 File: assets/reports/conf-matrix/nobow/pp-pos-emot.png Graphic file (type png)
 <use assets/reports/conf-matrix/nobow/pp-pos-emot.png>
 Package pdftex.def Info: assets/reports/conf-matrix/nobow/pp-pos-emot.png  used
- on input line 1008.
+ on input line 1054.
 (pdftex.def)             Requested size: 369.88582pt x 84.03297pt.
- [32
+ [33
 
 
  <./assets/reports/conf-matrix/nobow/emot.png> <./assets/reports/conf-matrix/no
@@ -1003,105 +1001,105 @@ bow/pos.png> <./assets/reports/conf-matrix/nobow/pp.png> <./assets/reports/conf
 -matrix/nobow/pp-emot.png> <./assets/reports/conf-matrix/nobow/pos-emot.png> <.
 /assets/reports/conf-matrix/nobow/pp-pos.png> <./assets/reports/conf-matrix/nob
 ow/pp-pos-emot.png>]
-<assets/reports/macro/bow/MultinomialNB.png, id=689, 1198.4775pt x 895.345pt>
+<assets/reports/macro/bow/MultinomialNB.png, id=775, 1198.4775pt x 895.345pt>
 File: assets/reports/macro/bow/MultinomialNB.png Graphic file (type png)
 <use assets/reports/macro/bow/MultinomialNB.png>
 Package pdftex.def Info: assets/reports/macro/bow/MultinomialNB.png  used on in
-put line 1023.
+put line 1069.
 (pdftex.def)             Requested size: 284.52756pt x 212.55101pt.
 
-Overfull \hbox (75.40073pt too wide) in paragraph at lines 1023--1024
+Overfull \hbox (75.40073pt too wide) in paragraph at lines 1069--1070
  [][] 
  []
 
-<assets/reports/macro/bow/BayesianNetworks.png, id=690, 1198.4775pt x 895.345pt
+<assets/reports/macro/bow/BayesianNetworks.png, id=776, 1198.4775pt x 895.345pt
 >
 File: assets/reports/macro/bow/BayesianNetworks.png Graphic file (type png)
 <use assets/reports/macro/bow/BayesianNetworks.png>
 Package pdftex.def Info: assets/reports/macro/bow/BayesianNetworks.png  used on
- input line 1029.
+ input line 1075.
 (pdftex.def)             Requested size: 284.52756pt x 212.55101pt.
 
-Overfull \hbox (81.89067pt too wide) in paragraph at lines 1028--1030
+Overfull \hbox (81.89067pt too wide) in paragraph at lines 1074--1076
  []|  [] 
  []
 
-<assets/reports/macro/bow/DecisionTree.png, id=691, 1198.4775pt x 895.345pt>
+<assets/reports/macro/bow/DecisionTree.png, id=777, 1198.4775pt x 895.345pt>
 File: assets/reports/macro/bow/DecisionTree.png Graphic file (type png)
 <use assets/reports/macro/bow/DecisionTree.png>
 Package pdftex.def Info: assets/reports/macro/bow/DecisionTree.png  used on inp
-ut line 1037.
+ut line 1083.
 (pdftex.def)             Requested size: 284.52756pt x 212.55101pt.
 
-Overfull \hbox (75.40073pt too wide) in paragraph at lines 1037--1038
+Overfull \hbox (75.40073pt too wide) in paragraph at lines 1083--1084
  [][] 
  []
 
-<assets/reports/macro/bow/SVM - Linear.png, id=692, 1198.4775pt x 895.345pt>
+<assets/reports/macro/bow/SVM - Linear.png, id=778, 1198.4775pt x 895.345pt>
 File: assets/reports/macro/bow/SVM - Linear.png Graphic file (type png)
 <use assets/reports/macro/bow/SVM - Linear.png>
 Package pdftex.def Info: assets/reports/macro/bow/SVM - Linear.png  used on inp
-ut line 1043.
+ut line 1089.
 (pdftex.def)             Requested size: 284.52756pt x 212.55101pt.
 
-Overfull \hbox (81.89067pt too wide) in paragraph at lines 1042--1044
+Overfull \hbox (81.89067pt too wide) in paragraph at lines 1088--1090
  []|  [] 
  []
 
-[33
+[34
 
  <./assets/reports/macro/bow/MultinomialNB.png> <./assets/reports/macro/bow/Bay
 esianNetworks.png> <./assets/reports/macro/bow/DecisionTree.png> <./assets/repo
 rts/macro/bow/SVM - Linear.png>]
-<assets/reports/micro/bow/MultinomialNB.png, id=703, 1143.27126pt x 1046.91125p
+<assets/reports/micro/bow/MultinomialNB.png, id=789, 1143.27126pt x 1046.91125p
 t>
 File: assets/reports/micro/bow/MultinomialNB.png Graphic file (type png)
 <use assets/reports/micro/bow/MultinomialNB.png>
 Package pdftex.def Info: assets/reports/micro/bow/MultinomialNB.png  used on in
-put line 1052.
+put line 1098.
 (pdftex.def)             Requested size: 284.52756pt x 260.54506pt.
 
-Overfull \hbox (75.40073pt too wide) in paragraph at lines 1052--1053
+Overfull \hbox (75.40073pt too wide) in paragraph at lines 1098--1099
  [][] 
  []
 
-<assets/reports/micro/bow/BayesianNetworks.png, id=704, 1143.27126pt x 1046.911
+<assets/reports/micro/bow/BayesianNetworks.png, id=790, 1143.27126pt x 1046.911
 25pt>
 File: assets/reports/micro/bow/BayesianNetworks.png Graphic file (type png)
 <use assets/reports/micro/bow/BayesianNetworks.png>
 Package pdftex.def Info: assets/reports/micro/bow/BayesianNetworks.png  used on
- input line 1058.
+ input line 1104.
 (pdftex.def)             Requested size: 284.52756pt x 260.54506pt.
 
-Overfull \hbox (81.89067pt too wide) in paragraph at lines 1056--1059
+Overfull \hbox (81.89067pt too wide) in paragraph at lines 1102--1105
  []|  [] 
  []
 
-<assets/reports/micro/bow/DecisionTree.png, id=705, 1143.27126pt x 1046.91125pt
+<assets/reports/micro/bow/DecisionTree.png, id=791, 1143.27126pt x 1046.91125pt
 >
 File: assets/reports/micro/bow/DecisionTree.png Graphic file (type png)
 <use assets/reports/micro/bow/DecisionTree.png>
 Package pdftex.def Info: assets/reports/micro/bow/DecisionTree.png  used on inp
-ut line 1066.
+ut line 1112.
 (pdftex.def)             Requested size: 284.52756pt x 260.54506pt.
 
-Overfull \hbox (75.40073pt too wide) in paragraph at lines 1066--1067
+Overfull \hbox (75.40073pt too wide) in paragraph at lines 1112--1113
  [][] 
  []
 
-<assets/reports/micro/bow/SVM - Linear.png, id=706, 1143.27126pt x 1046.91125pt
+<assets/reports/micro/bow/SVM - Linear.png, id=792, 1143.27126pt x 1046.91125pt
 >
 File: assets/reports/micro/bow/SVM - Linear.png Graphic file (type png)
 <use assets/reports/micro/bow/SVM - Linear.png>
 Package pdftex.def Info: assets/reports/micro/bow/SVM - Linear.png  used on inp
-ut line 1072.
+ut line 1118.
 (pdftex.def)             Requested size: 284.52756pt x 260.54506pt.
 
-Overfull \hbox (81.89067pt too wide) in paragraph at lines 1071--1073
+Overfull \hbox (81.89067pt too wide) in paragraph at lines 1117--1119
  []|  [] 
  []
 
-[34 <./assets/reports/micro/bow/MultinomialNB.png> <./assets/reports/micro/bow/
+[35 <./assets/reports/micro/bow/MultinomialNB.png> <./assets/reports/micro/bow/
 BayesianNetworks.png> <./assets/reports/micro/bow/DecisionTree.png> <./assets/r
 eports/micro/bow/SVM - Linear.png>]
 *geometry* verbose mode - [ newgeometry ] result:
@@ -1136,60 +1134,60 @@ eports/micro/bow/SVM - Linear.png>]
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-<assets/reports/conf-matrix/bow/bow.png, id=717, 1837.86626pt x 417.56pt>
+<assets/reports/conf-matrix/bow/bow.png, id=803, 1837.86626pt x 417.56pt>
 File: assets/reports/conf-matrix/bow/bow.png Graphic file (type png)
 <use assets/reports/conf-matrix/bow/bow.png>
 Package pdftex.def Info: assets/reports/conf-matrix/bow/bow.png  used on input 
-line 1088.
+line 1134.
 (pdftex.def)             Requested size: 369.88582pt x 84.03297pt.
-<assets/reports/conf-matrix/bow/bow-emot.png, id=718, 1837.86626pt x 417.56pt>
+<assets/reports/conf-matrix/bow/bow-emot.png, id=804, 1837.86626pt x 417.56pt>
 File: assets/reports/conf-matrix/bow/bow-emot.png Graphic file (type png)
 <use assets/reports/conf-matrix/bow/bow-emot.png>
 Package pdftex.def Info: assets/reports/conf-matrix/bow/bow-emot.png  used on i
-nput line 1094.
+nput line 1140.
 (pdftex.def)             Requested size: 369.88582pt x 84.03297pt.
-<assets/reports/conf-matrix/bow/bow-pos.png, id=719, 1837.86626pt x 417.56pt>
+<assets/reports/conf-matrix/bow/bow-pos.png, id=805, 1837.86626pt x 417.56pt>
 File: assets/reports/conf-matrix/bow/bow-pos.png Graphic file (type png)
 <use assets/reports/conf-matrix/bow/bow-pos.png>
 Package pdftex.def Info: assets/reports/conf-matrix/bow/bow-pos.png  used on in
-put line 1100.
+put line 1146.
 (pdftex.def)             Requested size: 369.88582pt x 84.03297pt.
-<assets/reports/conf-matrix/bow/bow-pp.png, id=720, 1837.86626pt x 417.56pt>
+<assets/reports/conf-matrix/bow/bow-pp.png, id=806, 1837.86626pt x 417.56pt>
 File: assets/reports/conf-matrix/bow/bow-pp.png Graphic file (type png)
 <use assets/reports/conf-matrix/bow/bow-pp.png>
 Package pdftex.def Info: assets/reports/conf-matrix/bow/bow-pp.png  used on inp
-ut line 1106.
+ut line 1152.
 (pdftex.def)             Requested size: 369.88582pt x 84.03297pt.
-<assets/reports/conf-matrix/bow/bow-pp-emot.png, id=721, 1837.86626pt x 417.56p
+<assets/reports/conf-matrix/bow/bow-pp-emot.png, id=807, 1837.86626pt x 417.56p
 t>
 File: assets/reports/conf-matrix/bow/bow-pp-emot.png Graphic file (type png)
 <use assets/reports/conf-matrix/bow/bow-pp-emot.png>
 Package pdftex.def Info: assets/reports/conf-matrix/bow/bow-pp-emot.png  used o
-n input line 1112.
+n input line 1158.
 (pdftex.def)             Requested size: 369.88582pt x 84.03297pt.
-<assets/reports/conf-matrix/bow/bow-pos-emot.png, id=722, 1837.86626pt x 417.56
+<assets/reports/conf-matrix/bow/bow-pos-emot.png, id=808, 1837.86626pt x 417.56
 pt>
 File: assets/reports/conf-matrix/bow/bow-pos-emot.png Graphic file (type png)
 <use assets/reports/conf-matrix/bow/bow-pos-emot.png>
 Package pdftex.def Info: assets/reports/conf-matrix/bow/bow-pos-emot.png  used 
-on input line 1118.
+on input line 1164.
 (pdftex.def)             Requested size: 369.88582pt x 84.03297pt.
-<assets/reports/conf-matrix/bow/bow-pp-pos.png, id=723, 1837.86626pt x 417.56pt
+<assets/reports/conf-matrix/bow/bow-pp-pos.png, id=809, 1837.86626pt x 417.56pt
 >
 File: assets/reports/conf-matrix/bow/bow-pp-pos.png Graphic file (type png)
 <use assets/reports/conf-matrix/bow/bow-pp-pos.png>
 Package pdftex.def Info: assets/reports/conf-matrix/bow/bow-pp-pos.png  used on
- input line 1124.
+ input line 1170.
 (pdftex.def)             Requested size: 369.88582pt x 84.03297pt.
-<assets/reports/conf-matrix/bow/bow-pp-pos-emot.png, id=724, 1837.86626pt x 417
+<assets/reports/conf-matrix/bow/bow-pp-pos-emot.png, id=810, 1837.86626pt x 417
 .56pt>
 File: assets/reports/conf-matrix/bow/bow-pp-pos-emot.png Graphic file (type png
 )
 <use assets/reports/conf-matrix/bow/bow-pp-pos-emot.png>
 Package pdftex.def Info: assets/reports/conf-matrix/bow/bow-pp-pos-emot.png  us
-ed on input line 1130.
+ed on input line 1176.
 (pdftex.def)             Requested size: 369.88582pt x 84.03297pt.
- [35
+ [36
 
 
  <./assets/reports/conf-matrix/bow/bow.png> <./assets/reports/conf-matrix/bow/b
@@ -1197,160 +1195,151 @@ ow-emot.png> <./assets/reports/conf-matrix/bow/bow-pos.png> <./assets/reports/c
 onf-matrix/bow/bow-pp.png> <./assets/reports/conf-matrix/bow/bow-pp-emot.png> <
 ./assets/reports/conf-matrix/bow/bow-pos-emot.png> <./assets/reports/conf-matri
 x/bow/bow-pp-pos.png> <./assets/reports/conf-matrix/bow/bow-pp-pos-emot.png>]
-<assets/reports/text/acc/DecisionTree.png, id=745, 1198.4775pt x 895.345pt>
+<assets/reports/text/acc/DecisionTree.png, id=832, 1198.4775pt x 895.345pt>
 File: assets/reports/text/acc/DecisionTree.png Graphic file (type png)
 <use assets/reports/text/acc/DecisionTree.png>
 Package pdftex.def Info: assets/reports/text/acc/DecisionTree.png  used on inpu
-t line 1144.
+t line 1190.
 (pdftex.def)             Requested size: 284.52756pt x 212.55101pt.
 
-Overfull \hbox (75.40073pt too wide) in paragraph at lines 1144--1145
+Overfull \hbox (75.40073pt too wide) in paragraph at lines 1190--1191
  [][] 
  []
 
-<assets/reports/text/acc/SVM - Linear.png, id=746, 1198.4775pt x 895.345pt>
+<assets/reports/text/acc/SVM - Linear.png, id=833, 1198.4775pt x 895.345pt>
 File: assets/reports/text/acc/SVM - Linear.png Graphic file (type png)
 <use assets/reports/text/acc/SVM - Linear.png>
 Package pdftex.def Info: assets/reports/text/acc/SVM - Linear.png  used on inpu
-t line 1150.
+t line 1196.
 (pdftex.def)             Requested size: 284.52756pt x 212.55101pt.
 
-Overfull \hbox (81.89067pt too wide) in paragraph at lines 1149--1151
+Overfull \hbox (81.89067pt too wide) in paragraph at lines 1195--1197
  []|  [] 
  []
 
-<assets/reports/text/f1/DecisionTree.png, id=747, 1198.4775pt x 895.345pt>
+<assets/reports/text/f1/DecisionTree.png, id=834, 1198.4775pt x 895.345pt>
 File: assets/reports/text/f1/DecisionTree.png Graphic file (type png)
 <use assets/reports/text/f1/DecisionTree.png>
 Package pdftex.def Info: assets/reports/text/f1/DecisionTree.png  used on input
- line 1159.
+ line 1205.
 (pdftex.def)             Requested size: 284.52756pt x 212.55101pt.
 
-Overfull \hbox (75.40073pt too wide) in paragraph at lines 1159--1160
+Overfull \hbox (75.40073pt too wide) in paragraph at lines 1205--1206
  [][] 
  []
 
-<assets/reports/text/f1/SVM - Linear.png, id=748, 1198.4775pt x 895.345pt>
+<assets/reports/text/f1/SVM - Linear.png, id=835, 1198.4775pt x 895.345pt>
 File: assets/reports/text/f1/SVM - Linear.png Graphic file (type png)
 <use assets/reports/text/f1/SVM - Linear.png>
 Package pdftex.def Info: assets/reports/text/f1/SVM - Linear.png  used on input
- line 1165.
+ line 1211.
 (pdftex.def)             Requested size: 284.52756pt x 212.55101pt.
 
-Overfull \hbox (81.89067pt too wide) in paragraph at lines 1164--1166
+Overfull \hbox (81.89067pt too wide) in paragraph at lines 1210--1212
  []|  [] 
  []
 
-[36
+[37
 
  <./assets/reports/text/acc/DecisionTree.png> <./assets/reports/text/acc/SVM - 
 Linear.png> <./assets/reports/text/f1/DecisionTree.png> <./assets/reports/text/
 f1/SVM - Linear.png>]
-<assets/pca/non_ironic/var.png, id=760, 856.19875pt x 499.8675pt>
+<assets/pca/non_ironic/var.png, id=846, 856.19875pt x 499.8675pt>
 File: assets/pca/non_ironic/var.png Graphic file (type png)
 <use assets/pca/non_ironic/var.png>
-Package pdftex.def Info: assets/pca/non_ironic/var.png  used on input line 1186
+Package pdftex.def Info: assets/pca/non_ironic/var.png  used on input line 1232
 .
 (pdftex.def)             Requested size: 206.28247pt x 120.42828pt.
-<assets/pca/ironic/var.png, id=761, 848.16875pt x 499.8675pt>
+<assets/pca/ironic/var.png, id=847, 848.16875pt x 499.8675pt>
 File: assets/pca/ironic/var.png Graphic file (type png)
 <use assets/pca/ironic/var.png>
-Package pdftex.def Info: assets/pca/ironic/var.png  used on input line 1192.
+Package pdftex.def Info: assets/pca/ironic/var.png  used on input line 1238.
 (pdftex.def)             Requested size: 206.28247pt x 121.57239pt.
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 1184--1195
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 1230--1241
 []$[]$  $[]$ 
  []
 
-<assets/pca/non_ironic/cum-var.png, id=762, 848.16875pt x 499.8675pt>
+<assets/pca/non_ironic/cum-var.png, id=848, 848.16875pt x 499.8675pt>
 File: assets/pca/non_ironic/cum-var.png Graphic file (type png)
 <use assets/pca/non_ironic/cum-var.png>
 Package pdftex.def Info: assets/pca/non_ironic/cum-var.png  used on input line 
-1201.
+1247.
 (pdftex.def)             Requested size: 206.28247pt x 121.57239pt.
-<assets/pca/ironic/cum-var.png, id=763, 848.16875pt x 499.8675pt>
+<assets/pca/ironic/cum-var.png, id=849, 848.16875pt x 499.8675pt>
 File: assets/pca/ironic/cum-var.png Graphic file (type png)
 <use assets/pca/ironic/cum-var.png>
-Package pdftex.def Info: assets/pca/ironic/cum-var.png  used on input line 1207
+Package pdftex.def Info: assets/pca/ironic/cum-var.png  used on input line 1253
 .
 (pdftex.def)             Requested size: 206.28247pt x 121.57239pt.
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 1199--1210
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 1245--1256
 []$[]$  $[]$ 
  []
 
-[37 <./assets/pca/non_ironic/var.png> <./assets/pca/ironic/var.png>]
-<assets/pca/non_ironic/contribution.png, id=771, 927.465pt x 649.42625pt>
+[38 <./assets/pca/non_ironic/var.png> <./assets/pca/ironic/var.png>]
+<assets/pca/non_ironic/contribution.png, id=858, 927.465pt x 649.42625pt>
 File: assets/pca/non_ironic/contribution.png Graphic file (type png)
 <use assets/pca/non_ironic/contribution.png>
 Package pdftex.def Info: assets/pca/non_ironic/contribution.png  used on input 
-line 1220.
+line 1266.
 (pdftex.def)             Requested size: 206.28247pt x 144.4399pt.
-<assets/pca/ironic/contribution.png, id=772, 919.435pt x 661.47125pt>
+<assets/pca/ironic/contribution.png, id=859, 919.435pt x 661.47125pt>
 File: assets/pca/ironic/contribution.png Graphic file (type png)
 <use assets/pca/ironic/contribution.png>
 Package pdftex.def Info: assets/pca/ironic/contribution.png  used on input line
- 1226.
+ 1272.
 (pdftex.def)             Requested size: 206.28247pt x 148.4007pt.
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 1218--1229
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 1264--1275
 []$[]$  $[]$ 
  []
 
-[38 <./assets/pca/non_ironic/cum-var.png> <./assets/pca/ironic/cum-var.png> <./
+[39 <./assets/pca/non_ironic/cum-var.png> <./assets/pca/ironic/cum-var.png> <./
 assets/pca/non_ironic/contribution.png> <./assets/pca/ironic/contribution.png>]
 Chapter 6.
-(./tesi.bbl [39
+(./tesi.bbl [40
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 8--10
+Underfull \hbox (badness 10000) in paragraph at lines 48--50
 []\OT1/cmr/m/n/10 J. Alam-mar, ``The il-lus-trated trans-former.'' []$\OT1/pcr/
 m/n/10 http : / / jalammar\OML/cmm/m/it/10 :\OT1/pcr/m/n/10 github\OML/cmm/m/it
 /10 :\OT1/pcr/m/n/10 io /
  []
 
-)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1254.
- [40
 
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1254.
+Underfull \hbox (badness 10000) in paragraph at lines 52--54
+[]\OT1/cmr/m/n/10 C. Mc-Cormick and N. Ryan, ``Bert word em-bed-dings tu-to-ria
+l.'' []$\OT1/pcr/m/n/10 http : / /
+ []
+
+[41
+
+])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1300.
+ [42]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1300.
  (./tesi.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1254.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1254.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1300.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1300.
 
 Package rerunfilecheck Info: File `tesi.out' has not changed.
-(rerunfilecheck)             Checksum: D263D733F9C705A95F4A31A1AE7C8DE3;4564.
-
-
-LaTeX Warning: There were undefined references.
+(rerunfilecheck)             Checksum: C1E59F73E9032D4CA03CF30151AAA7B9;5448.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 12232 strings out of 481239
- 198720 string characters out of 5920377
+ 12281 strings out of 481239
+ 199407 string characters out of 5920377
  595273 words of memory out of 5000000
- 27002 multiletter control sequences out of 15000+600000
+ 27027 multiletter control sequences out of 15000+600000
  545715 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,14n,100p,798b,1831s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{Hfootnote.19} has been referenced but does not ex
+ 62i,14n,100p,798b,1323s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{Hfootnote.15} has been referenced but does not ex
 ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{Hfootnote.18} has been referenced but does not exis
-t, replaced by a fixed one
-
-pdfTeX warning (dest): name{Hfootnote.17} has been referenced but does not exis
-t, replaced by a fixed one
-
-pdfTeX warning (dest): name{Hfootnote.16} has been referenced but does not exis
-t, replaced by a fixed one
-
-pdfTeX warning (dest): name{Hfootnote.15} has been referenced but does not exis
-t, replaced by a fixed one
 
 pdfTeX warning (dest): name{Hfootnote.14} has been referenced but does not exis
 t, replaced by a fixed one
@@ -1417,10 +1406,10 @@ are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/share/texmf/fonts/typ
 e1/public/cm-super/sfrm0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/s
 frm1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on tesi.pdf (41 pages, 3380928 bytes).
+Output written on tesi.pdf (43 pages, 3397175 bytes).
 PDF statistics:
- 920 PDF objects out of 1000 (max. 8388607)
- 724 compressed objects within 8 object streams
- 208 named destinations out of 1000 (max. 500000)
- 795 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1023 PDF objects out of 1200 (max. 8388607)
+ 824 compressed objects within 9 object streams
+ 232 named destinations out of 1000 (max. 500000)
+ 899 words of extra memory for PDF output out of 10000 (max. 10000000)
 
