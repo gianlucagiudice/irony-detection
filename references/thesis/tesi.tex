@@ -123,7 +123,7 @@ A questo scopo, la classificazione avviene mediante tecniche di machine learning
 
 Come già detto, twitter è una risorsa che fornisce moltissimi contenuti generati da utenti. Viene sfruttato questo aspetto collezionando i dati utilizzati dai modelli matematici, così da far apprendere la macchina con lo scopo di riconoscere l'ironia nel testo.
 
-Il codice scritto in python, utilizzato per l'estrazione delle features, il training dei modelli, la creazione della matrice su cui è stata fatta PCA, oltre ai notebooks utilizzati per l'analisi dei report e il risultato della PCA, è disponibile in questo repository\footnote{Irony detection repository: \url{www.github.com/gianlucagiudice/irony-detection}} su github.
+Il codice scritto in python, utilizzato per l'estrazione delle features, il training dei modelli, la creazione della matrice su cui è stata fatta PCA, oltre ai notebooks creati per l'analisi dei report e il risultato della PCA, è disponibile in questo repository\footnote{Irony detection repository: \url{www.github.com/gianlucagiudice/irony-detection}} su github.
 
 \section{Sintesi dei risultati}
 Il risultato degli esperimenti mostra come per il riconoscimento dell'ironia si ottengo i risultati migliori combinando tutte le features considerate. Inoltre le performance variano decisamente a seconda dell'algoritmo utilizzato per creare i classificatori. Nel caso preso in considerazione, l'algoritmo Support Vector Machine con un kernel lineare risulta essere il migliore tra quelli analizzati.
@@ -135,13 +135,13 @@ L'ironia è figura retorica molto importante, è uno strumento usato nella comun
 processing (NLP) e machine learning (ML) così da dinvetare un ambito di ricerca. 
 
 \section{Sarcasmo e sentiment analysis}
-Facendo riferimento a \cite{survey4}, un'analisi dal punto di vista della linguistica computazionale sull'ironia, può fornire approfondimenti data-driven, facendo luce riguardo i meccanismi nascosti nell'uso di questo fenomeno, potenzialmente migliorando la comprensione per quanto riguarda i processi mentali umani, la linguistica e la comunicazione. 
+Facendo riferimento a \cite{survey4}, un'analisi dal punto di vista della linguistica computazionale sull'ironia, può fornire approfondimenti data-driven facendo luce riguardo i meccanismi nascosti nell'uso di questo fenomeno, potenzialmente migliorando la comprensione per quanto riguarda i processi mentali umani, la linguistica e la comunicazione. 
 
-Tralasciando l'aspetto più filosofico, il riconoscimento dell'ironia ha implicazioni pratiche per quanto riguarda i sistemi di sentiment analysis, ed in effetti i modelli allo stato dell'arte in questo ambito, puntano proprio a portare benefici verso questi sistemi. Sentiment analysis vuol dire estrarre l'opinione di un individuo o della società riguardo un particolare evento o argomento. La presenza di ironia nei messaggi, è responsabile di molti errori di classificazione in cui cadono i metodi allo stato dell'arte per la creazione di questi sistemi. Ciò avviene in quanto usando l'ironia viene invertita la polarità dell'opinione espressa nella frase, ingannando i questo modo gli approcci che non tengono in considerazione del fenomeno.
+Tralasciando l'aspetto più filosofico, il riconoscimento dell'ironia ha implicazioni pratiche per quanto riguarda i sistemi di sentiment analysis, ed in effetti i modelli allo stato dell'arte in questo ambito, puntano proprio a portare benefici verso questi sistemi. Sentiment analysis vuol dire estrarre l'opinione di un individuo o della società riguardo un particolare evento o argomento. La presenza di ironia nei messaggi, è responsabile di errori nella classificazione in cui cadono i metodi allo stato dell'arte per la creazione di questi sistemi. Ciò avviene in quanto usando l'ironia viene invertita la polarità dell'opinione espressa nella frase, ingannando in questo modo gli approcci che non tengono in considerazione del fenomeno.
 
 In questi anni i social network, soprattutto Twitter e Facebbok, hanno acquisito molta importanza in questo ambito, dal momento che gli individui condividono i propri pensieri, emozioni e opinioni su queste piattaforme. Di fatto, dato l'enorme contenuto di messaggi generati, questo è un esempio di Big Data. In diverse aree c'è un grande interesse nell'estrarre l'informazione riguardo l'opinione contenuta in questi dati generati da utenti, così da conoscere, ad esempio, la reputazione relativa ad un prodotto piuttosto che l'opinione politica.
 
-Per dare un'idea di quanto possano essere utili sistemi di questo tipo, come fatto notare nel survey \cite{survey1}, nel 2014 D. K. Tayal e altri \cite{political} hanno introdotto un sistema per riconoscere il sarcasmo e identificare la polarità espressa nei tweets politici. Il loro lavoro include la collezione del data set, data pre-processing e la classificazione. Attraverso un approccio supervisionato hanno concluso che da questi dati, compresa la componente sarcastica, è stato possibile fare una previsione sul risultato delle elezioni in modo efficiente.
+Per dare un'idea di quanto possano essere utili sistemi di questo tipo, come fatto notare nel survey \cite{survey1}, nel 2014 D. K. Tayal e altri \cite{political} hanno introdotto un sistema per riconoscere il sarcasmo e identificare la polarità espressa nei tweets politici. Il loro lavoro include la collezione del data set, data pre-processing e la classificazione. Attraverso un approccio supervisionato hanno concluso che da questi dati, comprendendo la componente sarcastica, è stato possibile fare una previsione sul risultato delle elezioni in modo efficiente.
 
 \section{Difficoltà e problemi}
 
@@ -153,7 +153,7 @@ Bisogna anche tenere in considerazione che nel testo è più difficile cogliere 
 \subsection{Importanza del contesto}
 Un altro aspetto importante, analizzato da Joshi e altri \cite{survey5} è il ruolo fondamentale del contesto quando si tratta di riconoscere il sarcasmo. Pur essendo questo un fattore chiave, Wallance in \cite{survey4} fa notare come non venga tenuto conto del contesto nei modelli allo stato dell'arte.
 
-Per contesto si intende l'informazione che va oltre rispetto al contenuto del testo di per sè. Oltre ad una conoscenza o semantica in generale, esistono altre informazioni legate al contesto come dettagli sull'autore (ad esempio vine tenuto conto del sesso in \cite{audio-sarcasm}), a chi viene rivolto il messaggio e l'ambito in generale. In questo campo è stato condotto uno studio da Rajadesingan e altri \cite{scuba} che hanno sviluppato un modello SCUBA (sarcasm using behavioral modeling), dove per riconoscere il sarcasmo vengono analizzati anche i tweets passati di uno specifico utente.
+Per contesto si intende l'informazione che va oltre il contenuto del testo di per sè. Oltre ad una conoscenza o semantica in generale, esistono altre informazioni legate al contesto come dettagli sull'autore (ad esempio vine tenuto conto del sesso in \cite{audio-sarcasm}), a chi viene rivolto il messaggio e l'ambito in generale. In questo campo è stato condotto uno studio da Rajadesingan e altri \cite{scuba}, che hanno sviluppato un modello SCUBA (sarcasm using behavioral modeling), dove per riconoscere il sarcasmo vengono analizzati anche i tweets passati di uno specifico utente.
 
 \section{Linguistica del sarcasmo}
 \subsection{Definizione formale}
@@ -176,10 +176,10 @@ Si noti come da questa definizione formale, emerge chiaramente che il contesto �
 \subsection{Tipi di sarcasmo}
 Come fatto notare nel survey \cite{survey5}, esistono diversi tipi di sarcasmo. Camp nel suo lavoro \cite{tipi-sarcasmo} ne considera quattro diversi:
 \begin{enumerate}
-	\item \textbf{Propositional}: Una affermazione come "Il tuo piano sembra fantastico" può essere interpretata come sarcastica o meno, dipende dal contesto.
-	\item \textbf{Embedded}: Nella frase è presente una contraddizione intrinseca nella forma stessa delle parole utilizzate. Ad esempio nella frase "Dato che si è rivelato così un bravo amico, ho deciso di smettere completamente di vederlo", emerge una chiara contraddizione.
+	\item \textbf{Propositional}: Un'affermazione come "Il tuo piano sembra fantastico" può essere interpretata come sarcastica o meno, dipende dal contesto.
+	\item \textbf{Embedded}: Nella frase è presente una contraddizione intrinseca nella forma stessa delle parole utilizzate. Ad esempio considerando "Dato che si è rivelato così un bravo amico, ho deciso di smettere completamente di vederlo", emerge una chiara contraddizione.
 	\item \textbf{Like-prefixed}: In questo tipo di sarcasmo viene implicitamente negato ciò che si afferma. Ad esempio "Come se la polizia troverà davvero l'assassino".
-	\item \textbf{Illocutionary}: Sono casi in cui situazioni o azioni non relative al testo possono svelare il reale significato inteso dalla frase. Ad esempio "Grazie per avermi tenuto la porta." può considerarsi una frase sarcastica solo conoscendo le circostanze (la porta non è stata realmente tenuta aperta).
+	\item \textbf{Illocutionary}: Sono casi in cui situazioni o azioni non relative al testo possono svelare il reale significato inteso dalla frase. Ad esempio "Grazie per avermi tenuto la porta" può considerarsi una frase sarcastica solo conoscendo le circostanze (la porta non è stata realmente tenuta aperta).
 	
 \end{enumerate}
 
@@ -189,11 +189,11 @@ La qualità del dataset è un fattore cruciale per il riconoscimento dell'ironia
 
 Come riportato in \cite{survey5}, anche la dimensioni dei messaggi cambia nei vari studi affrontati, andando a considerati testi brevi (tweets, recensioni prodotti amazon) o più lunghi (sottotitoli di una serie TV o conversazioni di un call center). Volendo valutare le performance dei vari modelli, è necessario che il dataset sia etichettato.
 
-Nel caso dei tweets sono state adottate due strategie diverse. La prima (crowdsourcing) consiste nell'annotare manualmente ogni tweets, questo compito è incaricato ad alcune persone che in alcuni casi sono stati proprio esperti del linguaggio. La seconda tecnica invece (self-tagging), si basa sull'uso degli hashtag. Assumendo che se un utente utilizza l'hashtag \textit{\#scarcasm} o \textit{\#not}, allora ha l'intenzione di esprimere un messaggio ironico, questo semplifica nettamente la collezione del dataset. Con questa tecnica si ha il vantaggio di creare un dataset di grandi dimensioni con meno sforzo e in un tempo minore rispetto alla prima tecnica, inoltre l'utente stesso viene tratto come il miglior giudice per classificare un suo messaggio come ironico o meno. 
+Nel caso dei tweets sono state adottate due strategie diverse. La prima (crowdsourcing) consiste nell'annotare manualmente ogni tweets, questo compito è incaricato ad alcune persone che in alcuni casi sono stati proprio esperti del linguaggio. La seconda tecnica invece (self-tagging), si basa sull'uso degli hashtag. Assumendo che se un utente utilizza l'hashtag \textit{\#scarcasm} o \textit{\#not}, allora ha l'intenzione di esprimere un messaggio ironico, questo semplifica nettamente la collezione del dataset. Con questa tecnica si ha il vantaggio di creare un dataset di grandi dimensioni con meno sforzo e in un tempo minore rispetto alla prima tecnica, inoltre l'utente stesso viene tratto come il miglior giudice per annotare un suo messaggio come ironico o meno. 
 
-Inoltre per quanto riguarda la tecnica crowdsourcing, Aditya Joshi e altri \cite{survey5} hanno fatto notare l'influenza di differenti culture quando si tratta di etichettare i messaggi ironici. Infatti i loro risultato mostrano come dato un dataset americano da far annotare sia a persone americane che indiane, i secondi concordavano maggiormente rispetto agli americani, e gli indiani avevano difficoltà riguardo studi o entità a loro sconosciuti (trattandosi di un dataset americano).
+Inoltre per quanto riguarda la tecnica crowdsourcing, Joshi e altri \cite{survey5} hanno fatto notare l'influenza di differenti culture quando si tratta di etichettare i messaggi ironici. Infatti i loro risultati mostrano come dato un dataset americano da far annotare sia a persone americane che indiane, i secondi concordavano maggiormente rispetto agli americani, e gli indiani avevano difficoltà riguardo studi o entità a loro sconosciuti (trattandosi di un dataset americano).
 
-Si noti inoltre che l'ironia è un fenomeno non molto frequente quando si ha a che fare con il testo. Questo si riflette in un dataset non bilanciato.
+Si noti inoltre che l'ironia è un fenomeno non molto frequente quando si ha a che fare con il testo, questo si riflette in un dataset non bilanciato.
 
 
 \section{Approcci adottati}
@@ -203,35 +203,31 @@ Nello stato dell'arte il problema viene formulato come un task di classificazion
 Un approccio non supervisionato è stato proposto da Bharti e altri \cite{parsing-tree} in cui vengono usate due regole di classificazione. La prima consiste nel creare un parsing tree basato sul lessico a partire dalla frase, vengono quindi individuate le espressioni che trasportano del sentiment. Se una locuzione negativa è presente in una frase positiva, allora la frase è classificata come sarcastica. La seconda regola di decisione è costituita da un algoritmo che mira a catturare le espressioni iperboliche individuando interiezioni (come "wow") e intensificatori (come "assolutamente").
 
 \subsection{Semi supervisionati}
-Tra gli approcci semi supervisionati troviamo l'esempio di algoritmo introdotto da Davidov e altri \cite{davidov} per riconoscere il sarcasmo nei tweets e recensioni di prodotti Amazon. Prima si identificano dei pattern presenti nelle frasi. Dopodiché questi pattern vengono automaticamente estratti dal dataset e la feature principale consiste nel vettore in cui viene riportata la presenza (o assenza) del pattern all'interno del testo in input.
+Tra gli approcci semi supervisionati troviamo l'esempio di algoritmo introdotto da Davidov e altri \cite{davidov} per riconoscere il sarcasmo nei tweets e recensioni di prodotti Amazon. Prima si identificano dei pattern presenti nelle frasi, dopodiché questi pattern vengono automaticamente estratti dal dataset e la feature principale consiste nel vettore in cui viene riportata la presenza (o assenza) del pattern all'interno del testo in input.
 \subsection{Supervisionati}
-L'approccio generale consiste nel creare modelli supervisionati, dove partendo dal dataset dopo una fase di pre-processing, vengono estratte delle features. In letterature sono state utilizzate diverse caratteristiche per il riconoscimento del sarcasmo, un elecno esaustivo è presente in \cite{survey2}. Qualche esempio di features ricorrenti tra i modelli allo stato dell'arte sono: bag-of-words; n-gram; part of speech tags; punteggiature; interiezioni. Una volta estrarre le features vengono utilizzati i classici algoritmi di machine learning (SVM, Naive Bayes, Decision tree) per effettuare il training dei modelli, vengono poi testati con la tecnica cross-validation per valutare il più performante.
+L'approccio generale consiste nel creare modelli supervisionati, dove partendo dal dataset, dopo una fase di pre-processing, vengono estratte delle features. In letterature sono state utilizzate diverse caratteristiche per il riconoscimento del sarcasmo, un elecno esaustivo è presente in \cite{survey2}. Qualche esempio di features ricorrenti tra i modelli allo stato dell'arte sono: bag-of-words; n-gram; part of speech tags; punteggiature; interiezioni. Una volta estrarre le features vengono utilizzati i classici algoritmi di machine learning (SVM, Naive Bayes, Decision tree) per effettuare il training dei modelli, vengono poi testati con la tecnica cross-validation per valutare il più performante.
 
 Come esempio di modelli supervisionati possiamo trovare il lavoro svolto da Farías e altri \cite{farias} in cui vengono estratte alcune delle features elencate sopra, considerate altre ulteriori caratteristiche e creati classificatori con gli algoritmi DT e SVM.
 
-Ulteriori approcci supervisionati, come nel caso di Fersini e altri \cite{fersini}, sfruttano tecniche Ensemble, nello specifico Bayesian Model Averaging (BMA), in cui diversi classificatori vengono combinati, considerando ognuno di questi durante la classificazione per ottenere risultati più affidabili.
+Ulteriori approcci supervisionati, come nel caso di Fersini e altri \cite{fersini}, sfruttano tecniche Ensemble, nello specifico Bayesian Model Averaging (BMA), in cui diversi classificatori vengono combinati considerando ognuno di questi durante la classificazione per ottenere risultati più affidabili.
 
 \subsection{Deep Learning}
 Come fatto notare in \cite{survey5}, le tecniche basate su architetture deep learning hanno acquisto popolarità nel campo NLP, di conseguenza alcuni approcci si basano su questi modelli per riconoscere automaticamente l'ironia. Un esempio è il modello proposto da Joshi \cite{embeddings} in cui viene utilizzata la similarità tra embeddings delle parole come features per i modelli. Un ulteriore esempio è il modello proposto da Bharti e altri \cite{deep-learning} che consiste in una combinazioni di Convolutional Neural Network, Recurrent Neural Network e Deep Neural Network mostrando un miglioramento rispetto ad altri modelli allo stato dell'arte.
 
 \section{Conclusioni}
+Il riconoscimento dell'ironia è una delle sfide principali nell'ambito della sentiment analysis, e negli ultimi anni ha acquisito man mano più importanza. Si tratta di un campo nel data mining che richiede maggiori approfondimenti.
 
+Ad oggi i modelli allo stato dell'arte hanno performance peggiori nel riconoscere l'ironia rispetto agli umani. Come fatto notare da Wallace in \cite{survey4}, il problema principale degli esistenti modelli di machine learning, può essere una poca considerazione del contesto.
 
-
-
-Riconoscere il tipo di ironia e riconoscere il significato latente.
-
-Un ulteriore approccio è utilizzare metodi di transfer learning\footnote{Irony Detection via Sentiment-based Transfer Learning\\ \url{http://www.xiuzhenzhang.org/publications/ipm2018.zhang.irony.pdf}}, in cui reti neurale già addestrate vengono arricchite e ottimizzate per task di irony detection. In questo modo viene sfruttata la conoscenza di questi modelli pre-trained.
-
-
+Wallace fa notare come tutti i modelli allo stato dell'arte approcciano il task di riconoscimento dell'ironia/sarcasmo come un problema di classificazione. Non vi sono approcci che hanno lo scopo di determinare il tipo di sarcasmo o ricostruire il significato latente, ovvero ciò che si vuole far intendere, della frase.
 
 \chapter{Sistema realizzato}
 
 \section{Descrizione del sistema proposto}
-Per riconoscere l'ironia nel testo, vengono creati dei modelli supervisionati di machine learning.
-Partendo dai dati a disposizione si utilizzano delle tecniche di preprocessing che consistono nel pulire il testo di partenza e prepararlo per essere dato in input ai vari classificatori. Inoltre si estraggono delle features da ogni messaggio, le quali più sono discriminanti nel riconoscimento dell'ironia, meglio distinguono la classe di appartenenza.
+In questa tesi, per riconoscere l'ironia nel testo, vengono proposti dei modelli supervisionati di machine learning.
+Partendo dai dati a disposizione si utilizzano delle tecniche di preprocessing che consistono nel pulire il testo di partenza e prepararlo per essere dato in input ai diversi algoritmi per creare i classificatori. Inoltre si estraggono delle features da ogni messaggio, le quali più sono discriminanti nel riconoscimento dell'ironia, meglio distinguono la classe di appartenenza.
 
-Il dataset viene diviso in due parti: training set e test set. La prima ha dimensione decisamente maggiore e viene utilizzata per far apprendere uno specifico classificate, l'altra per testarlo. Questo è importante in quanto un determinato modello dovrà riconoscere l'ironia in un generico documento e non solo tra quelli a disposizione. Si noti che entrambe le porzioni sono composte sia dal testo già codificato e processato che le features estratte, hanno solo scopi diversi quando si tratta di creare il classificatore. 
+Il dataset viene diviso in due parti: training set e test set. La prima ha dimensione decisamente maggiore e viene utilizzata per far apprendere uno specifico classificatore, l'altra per testarlo. Questo è importante in quanto un determinato modello dovrà riconoscere l'ironia in un generico documento e non solo tra quelli a disposizione. Si noti che entrambe le porzioni di dati sono composte sia dal testo già codificato e processato che le features estratte, hanno solo scopi diversi quando si tratta di creare il classificatore. 
 
 Vengono quindi creati vari modelli fornendo in input il dataset di training, con lo scopo di far apprendere la macchina. Avendo costruito più classificatori che utilizzano diversi algoritmi per apprendere dai dati, è possibile confrontarne le performance per valutare il migliore tra tutti, ovvero quello che meglio distingue tra documenti ironici e non ironici.
 
@@ -245,7 +241,7 @@ Vengono quindi creati vari modelli fornendo in input il dataset di training, con
 \clearpage
 
 \section{Dati in input}
-Trattandosi di modelli supervisionati, per il riconoscimento dell'ironia è necessaria una collezione di testi (in questo caso tweet) con le relative etichette associate ad ogni documento. Il testo e le labels compongono il dataset, questo aspetto è cruciale in quanto una volta essere aver opportunamente processato i tweets, saranno proprio questi i dati forniti in input al classificatore. La fase di training ha lo scopo di far apprendere al classificatore, così facendo sarà poi in grado di riconoscere l'ironia in testi che non ha mai visto prima.
+Trattandosi di modelli supervisionati, per il training dei classificatori è necessaria una collezione di testi (in questo caso tweet) con le relative etichette associate ad ogni documento. Il testo e le labels compongono il dataset, questo aspetto è cruciale in quanto una volta aver opportunamente processato i tweets, saranno proprio questi i dati forniti in input al classificatore. La fase di training ha lo scopo di far apprendere al classificatore, così facendo sarà poi in grado di riconoscere l'ironia in testi che non ha mai visto prima.
 
 
 \begin{table}[h!]
@@ -308,17 +304,15 @@ Il risultato ottenuto è una lista di tokens validi contenuti in ogni tweet:
 	\caption{Esempio di tokens associati ad ogni tweet.}
 \end{table}
 \noindent
-Da qui si crea l'insieme di tokens univoci.
+Da qui si crea l'insieme di tokens univoci a partire dai tokens presenti in ogni tweet.
 
 \subsubsection{Filtering}
 \label{section:filtering}
 L'insieme di termini univoci ottenuto è filtrato in base ai seguenti criteri:
 \begin{itemize}
-	\item \textbf{Occorrenza minimia}
-		
+	\item \textbf{Occorrenza minimia}:
 		Viene fissato un valore di threshold (per gli esperimenti eseguiti è 10) e si scartano tutte quelle parole che compaiono tra tutti i documenti meno del valore scelto. 
-	\item \textbf{Stopwords + RT}
-	
+	\item \textbf{Stopwords + RT}:	
 		Vengono scartate tutte le parole più comuni che sono generalmente presenti in una frase. Queste sono un insieme predefinito contenente parole come gli articoli, proposizioni, pronomi e verbi ausiliari.
 		
 		Es: $\{a,\ the,\ of,\ is,\ into,\ it,\ ...\}$
@@ -326,8 +320,7 @@ L'insieme di termini univoci ottenuto è filtrato in base ai seguenti criteri:
 		Dato il dominio preso in considerazione, è possibile che un utente compia l'operazione di reTweet. Questo è codificato nei messaggi dall'abbreviazione \emph{"rt"}. Non ritenendolo un aspetto rilevante per il riconoscimento dell'ironia, viene anch'essa considerata una stopwords, e di conseguenza non trattato come token valido.
 	
 		
-	\item \textbf{Irony e Ironic}
-	
+	\item \textbf{Irony e Ironic}:
 	Essendo il dataset a disposizione etichettato mediante la tecnica self-tagging (\autoref{chap:self-taggin}), è presente l'hashtag \emph{\#irony} in tutti i tweet ironici. Pertanto nell'insieme dei tokens validi verranno escluse le parole \emph{irony} e \emph{ironic}, così da non avere un bias nei dati sotto questo aspetto. Nel caso contrario i dati usati per creare i modelli avrebbero a disposizione una componente che ben distingue i tweet ironici, ma che nella realtà non sarebbe presente, in quanto non è decisamente corretto assumere che ogni testo ironico contenga una delle due parole.
 	
 	
@@ -381,12 +374,11 @@ La rete neurale è composta da 12 hidden layers, ciascuno di questi fornisce in 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=11cm]{assets/pooling-strategy.png}
-	\caption[Caption for LOF]{Pooling strategy. \footnotemark}
+	\caption[Caption for LOF]{Pooling strategy. \cite{transformer}}
 \end{figure}
 
-\footnotetext{Fonte: \url{http://jalammar.github.io/illustrated-bert/}.}
 \noindent
-Nel caso in questione, si è scelto di concatenare gli ultimi 4 hidden layers e mediare tutti gli embeddings dei tokens presenti nel documento. In tutto si ottiene un vettore di 3072 elementi, il quale sarà utilizzato come features dei modelli in sostituzione della rappresentazione BOW \cite{berttutorial}.
+Nel caso in questione, si è scelto di concatenare gli ultimi 4 hidden layers e mediare tutti gli embeddings dei tokens presenti nel documento \cite{bibid}. In tutto si ottiene un vettore di 3072 elementi, il quale sarà utilizzato come features dei modelli in sostituzione della rappresentazione BOW \cite{berttutorial}.
 
 \subsubsection{Sentence-BERT}
 Sentence-BERT\cite{sentencebert} è una messa a punto della rete neurale BERT, permette di generare embeddings semanticamente validi relativi ad intere frasi.
@@ -402,15 +394,11 @@ Per catturare il senso non letterale racchiuso in ogni messaggio, vengono consid
 Le emoticons sono riproduzioni stilizzate di quelle principali espressioni facciali umane che esprimono un'emozione. In accordo con l'assunzione che esista una relazione tra il sentimento espresso e l'ironia, queste vengono distinte in due categorie:
 \begin{itemize}
 	\item
-	Positive
-	
-	E.g.: ':-)', ':-D'
+	\textbf{Positive: } Es. ':-)', ':-D'
 	\item
-	Negative
-	
-	E.g.: ':-(', ':=('
-Viene quindi considerata l'occorrenza di emoticons positive e negative presenti in un tweet.
+	\textbf{Negative: } Es. ':-(', ':=('
 \end{itemize}
+Viene quindi considerata l'occorrenza di emoticons positive e negative presenti in un tweet.
 
 \subsubsection{Acronimi}
 Gli acronimi sono un ulteriore strumento della comunicazione non verbale. Come le emoticons vengono presi in considerazione dal momento che possono esprire sentimenti positivi o negativi, infatti possiamo anch'essi dividerli in due categoire:
@@ -420,9 +408,8 @@ Gli acronimi sono un ulteriore strumento della comunicazione non verbale. Come l
 	\textbf{Positivi}: Es. 'ROLF' (Rolling On Floor Laughing), 'LHO' (Laughing Head Off)
 	\item
 	\textbf{Negativi}: Es. 'BM' (Bad Manner)
-	
-Anche in questo caso si considera l'occorrenza di acronimi positivi e negativi.
 \end{itemize}
+Anche in questo caso si considera l'occorrenza di acronimi positivi e negativi.
 
 \subsubsection{Espressioni onomatopeiche}
 L'uso di espressioni onomatopeiche come 'boom' o 'clap' possono essere utilizzate nell'esprimere un messaggio ironico. Tuttavia in questo caso viene presa in considerazione solo la frequenza di queste espressioni, al contrario di come visto in precedenza per le emoticons e gli acronimi, dove si valutava anche la polarità.
@@ -431,11 +418,11 @@ L'uso di espressioni onomatopeiche come 'boom' o 'clap' possono essere utilizzat
 La punteggiatura nei social media non segue le convenzioni ortografiche: Es.: 'Do you hear us now ?????'\\
 Per questa ragione viene contata la frequenza di:
 \begin{itemize}
-	\item Virgole
+	\item \textbf{Virgole}
 	
-	\item Punti di domanda
+	\item \textbf{Punti di domanda}
 	
-	\item Punti escalmativi
+	\item \textbf{ Punti escalmativi}
 \end{itemize}
 
 \subsubsection{Estrazione particelle pragmatiche}
@@ -454,7 +441,7 @@ Punct        >>> {',': 2, '!': 1, '?': 0}
 \subsection{POS (Part Of Speech)}
 La struttura delle frasi che costituiscono il tweet, può essere un indicatore per il riconoscimento dell'ironia. A questo scopo viene tenuta in considerazione la frequenza dei POS (part-of-speech) tag relativi ai tokens parole presenti in un messaggi.
 
-Per associare i POS tag ad ogni tweet viene utilizzato un POS tagger\footnote{ARK Twitter Part-of-Speech Tagger: \url{www.ark.cs.cmu.edu/TweetNLP/}} supervisionato specifico per il dominio considerato. Si procede con una tokenizzazione del tweet per poi associare ad ognuno di questi il corretto tag. Di seguito la lista di tags considerati:\\
+Per associare i POS tag ad ogni tweet viene utilizzato il POS tagger Noah's ARK \cite{ark} specifico per il dominio considerato. Si procede con una tokenizzazione del tweet per poi associare ad ognuno di questi il corretto tag. Di seguito la lista di tags considerati:\\
 
 
 \begin{varwidth}[t]{\textwidth}
@@ -602,7 +589,7 @@ Il machine learning è lo studio di algoritmi che migliorano automaticamente att
 	\label{fig:artificial-intelligence}
 \end{figure}
 
-\footnotetext{Fonte: \url{www.mc.ai/machine-learning-in-5-minutes/}.}
+\footnotetext{Fonte: \url{http://medium.com/@vashkelis/machine-learning-in-5-minutes-9a6cce23ce7e}.}
 
 Nello specifico i modelli supervisionati fanno parte di quell'insieme di algoritmi "classici" che per apprendere dai dati ed estrarre dei pattern da questi, oltre ai dati di training in input, hanno bisogno delle relative etichette. Questa informazione aggiuntiva viene usata nella fase di apprendimento e indica a priori la relativa classe di appartenenza delle istanze che compongono il dataset. Nel caso dell'ironia si fa riferimento ad algoritmi supervisionati di machine learning per risolvere un problema di classificazione, ovvero dato un tweet classificarlo come "ironico" o "non ironico".
 
@@ -625,7 +612,7 @@ Un albero di decisione è un modello predittivo con una struttura ad albero. Ogn
 \end{figure}
 
 
-\footnotetext{Fonte: \url{www.medium.com/datadriveninvestor/decision-tree-algorithm}.}
+\footnotetext{Fonte: \url{http://medium.com/datadriveninvestor/decision-tree-algorithm-with-hands-on-example-e6c2afb40d38}.}
 
 
 Gli alberi di decisione hanno il vantaggio della semplicità. Infatti è possibile seguire il percorso radice-foglia per analizzare come la macchina è giunta a una determinata decisione basandosi sui dati in input. Questo processo rappresenta di fatto la logica utilizzata dalla macchina per interpretare i dati.

@@ -37,7 +37,7 @@
 \contentsline {subsubsection}{\numberline {3.4.1.4}Punteggiatura}{16}{subsubsection.3.4.1.4}%
 \contentsline {subsubsection}{\numberline {3.4.1.5}Estrazione particelle pragmatiche}{16}{subsubsection.3.4.1.5}%
 \contentsline {subsection}{\numberline {3.4.2}POS (Part Of Speech)}{17}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}EMOT (Emotional Features)}{18}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.3}EMOT (Emotional Features)}{17}{subsection.3.4.3}%
 \contentsline {subsection}{\numberline {3.4.4}Sintesi features utilizzate}{18}{subsection.3.4.4}%
 \contentsline {chapter}{\numberline {4}Modelli supervisionati}{20}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Decision Tree}{21}{section.4.1}%
