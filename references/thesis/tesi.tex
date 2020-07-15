@@ -129,13 +129,15 @@ Il codice scritto in python, utilizzato per l'estrazione delle features, il trai
 Il risultato degli esperimenti mostra come per il riconoscimento dell'ironia si ottengo i risultati migliori combinando tutte le features considerate. Inoltre le performance variano decisamente a seconda dell'algoritmo utilizzato per creare i classificatori. Nel caso preso in considerazione, l'algoritmo Support Vector Machine con un kernel lineare risulta essere il migliore tra quelli analizzati.
 
 \chapter{Stato dell'arte}
+
+\section*{Abstract}
 L'ironia è figura retorica molto importante, è uno strumento usato nella comunicazione in cui un individuo esprime l'opposto di ciò che realmente intende. Il riconoscimento automatico dell'ironia ha attirato l'attenzione nell'ambito natural language
 processing (NLP) e machine learning (ML) così da dinvetare un ambito di ricerca. 
 
 \section{Sarcasmo e sentiment analysis}
 Facendo riferimento a \cite{survey4}, un'analisi dal punto di vista della linguistica computazionale sull'ironia, può fornire approfondimenti data-driven, facendo luce riguardo i meccanismi nascosti nell'uso di questo fenomeno, potenzialmente migliorando la comprensione per quanto riguarda i processi mentali umani, la linguistica e la comunicazione. 
 
-Tralasciando l'aspetto più filosofico, il riconoscimento dell'ironia ha implicazioni pratiche per quanto riguarda i sistemi di sentiment analysis, ed in effetti lo stato dell'arte in questo ambito, punta proprio a portare benefici verso questi sistemi. Sentiment analysis vuol dire estrarre l'opinione di un individuo o della società riguardo un particolare evento o argomento. La presenza di ironia nei messaggi, è responsabile di molti errori di classificazione in cui cadono i metodi usati nello stato dell'arte per la creazione di questi sistemi. Ciò avviene in quanto usando l'ironia viene invertita la polarità dell'opinione espressa nella frase, ingannando i questo modo gli approcci che non tengono in considerazione del fenomeno.
+Tralasciando l'aspetto più filosofico, il riconoscimento dell'ironia ha implicazioni pratiche per quanto riguarda i sistemi di sentiment analysis, ed in effetti i modelli allo stato dell'arte in questo ambito, puntano proprio a portare benefici verso questi sistemi. Sentiment analysis vuol dire estrarre l'opinione di un individuo o della società riguardo un particolare evento o argomento. La presenza di ironia nei messaggi, è responsabile di molti errori di classificazione in cui cadono i metodi allo stato dell'arte per la creazione di questi sistemi. Ciò avviene in quanto usando l'ironia viene invertita la polarità dell'opinione espressa nella frase, ingannando i questo modo gli approcci che non tengono in considerazione del fenomeno.
 
 In questi anni i social network, soprattutto Twitter e Facebbok, hanno acquisito molta importanza in questo ambito, dal momento che gli individui condividono i propri pensieri, emozioni e opinioni su queste piattaforme. Di fatto, dato l'enorme contenuto di messaggi generati, questo è un esempio di Big Data. In diverse aree c'è un grande interesse nell'estrarre l'informazione riguardo l'opinione contenuta in questi dati generati da utenti, così da conoscere, ad esempio, la reputazione relativa ad un prodotto piuttosto che l'opinione politica.
 
@@ -144,48 +146,84 @@ Per dare un'idea di quanto possano essere utili sistemi di questo tipo, come fat
 \section{Difficoltà e problemi}
 
 \subsection{Ironia nel testo}
-Come indicato nel survey \cite{survey3}, il riconoscimento dell'ironia è un compito complesso non solo per quanto riguarda le macchine, ma in alcuni casi anche per gli uomini. Questo è dovuto all'ambiguità intrinseca del sarcasmo. Altri aspetti come l'uso informale del linguaggio sui social network complica ulteriormente le cose, senza contare tutti quei casi in cui sono presenti errori grammaticali.
+Come indicato nel survey \cite{survey3}, il riconoscimento dell'ironia è un compito complesso non solo per quanto riguarda le macchine, ma in alcuni casi anche per gli uomini. Questo è dovuto all'ambiguità intrinseca del sarcasmo. Inoltre un approccio unicamente bag-of-words tipicamente utilizzato nell'ambito NLP, non ottiene grandi performance in quanto usando il sarcasmo si possono esprimere opinioni negative facendo uso di parole positive. Tuttavia anche considerare altre features oltre a bow può non risolvere completamente il problema, si pensi a messaggi molto corti in cui non è proprio possibile estrarre delle features.
 
 Bisogna anche tenere in considerazione che nel testo è più difficile cogliere l'ironia rispetto che nel parlato, in quanto non si hanno a disposizioni features come il tono della voce, il linguaggio del corpo e le espressioni del volto. In questo ambito sono stati condotti degli studi da Tepperman e altri \cite{audio-sarcasm}, in cui si vuole riconoscere l'ironia nel parlato estraendo dallo spettro del suono features come l'intonazione, le pause etc.
 
 \subsection{Importanza del contesto}
-Un altro aspetto importante, analizzato da Joshi e altri \cite{survey5} è il ruolo fondamentale del contesto quando si tratta di riconoscere il sarcasmo. Pur essendo questo un fattore chiave, Wallance in \cite{survey4} fa notare come non venga tenuto conto di ciò nei modelli nello stato dell'arte.
+Un altro aspetto importante, analizzato da Joshi e altri \cite{survey5} è il ruolo fondamentale del contesto quando si tratta di riconoscere il sarcasmo. Pur essendo questo un fattore chiave, Wallance in \cite{survey4} fa notare come non venga tenuto conto del contesto nei modelli allo stato dell'arte.
 
-Per contesto si intende l'informazione che va oltre e al di fuori rispetto al contenuto del testo di per sè. Oltre ad una conoscenza o semantica in generale, esistono altre informazioni legate al contesto come dettagli sull'autore (vine tenuto conto del sesso in \cite{audio-sarcasm}), a chi viene rivolto il messaggio e l'ambito in generale. In questo campo è stato condotto uno studio da Rajadesingan e altri \cite{scuba} che hanno sviluppato un modello SCUBA (sarcasm using behavioral modeling), dove per riconoscere il sarcasmo vengono analizzati anche i tweets passati di uno specifico utente.
-
-
+Per contesto si intende l'informazione che va oltre rispetto al contenuto del testo di per sè. Oltre ad una conoscenza o semantica in generale, esistono altre informazioni legate al contesto come dettagli sull'autore (ad esempio vine tenuto conto del sesso in \cite{audio-sarcasm}), a chi viene rivolto il messaggio e l'ambito in generale. In questo campo è stato condotto uno studio da Rajadesingan e altri \cite{scuba} che hanno sviluppato un modello SCUBA (sarcasm using behavioral modeling), dove per riconoscere il sarcasmo vengono analizzati anche i tweets passati di uno specifico utente.
 
 \section{Linguistica del sarcasmo}
 \subsection{Definizione formale}
+Con lo scopo di meglio riconoscere il sarcasmo, nel survey \cite{survey2} ne viene data una definizione formale:
+Una frase sarcastica può essere rappresentate da una sestupla $<S,\ H,\ C,\ u,\ P,\ P'>$ dove $S$ è chi parla, $H$ chi ascolta, $C$ il contesto, $u$ la frase, $P$ il senso letterale e $P'$ ciò che si vuole far intendere. Ad esempio, se il cliente di un hotel dice "You room service was fantastic!" e il direttore è consapevole del fatto che il servizio è stato peggiore rispetto al solito, utilizzando la rappresentazione 6-tupla si ha:
+
+
+$\textbf{S}:$ Cliente
+
+$\textbf{H}:$ Direttore
+
+$\textbf{u}:$ "You room service was fantastic!"
+
+$\textbf{P}:$ Il servizio è stato \textit{ottimo}
+
+$\textbf{P'}:$ Il servizio è stato \textit{pessimo}
+
+\noindent
+Si noti come da questa definizione formale, emerge chiaramente che il contesto è un fattore chiave per cogliere il sarcasmo della frase.
 \subsection{Tipi di sarcasmo}
+Come fatto notare nel survey \cite{survey5}, esistono diversi tipi di sarcasmo. Camp nel suo lavoro \cite{tipi-sarcasmo} ne considera quattro diversi:
+\begin{enumerate}
+	\item \textbf{Propositional}: Una affermazione come "Il tuo piano sembra fantastico" può essere interpretata come sarcastica o meno, dipende dal contesto.
+	\item \textbf{Embedded}: Nella frase è presente una contraddizione intrinseca nella forma stessa delle parole utilizzate. Ad esempio nella frase "Dato che si è rivelato così un bravo amico, ho deciso di smettere completamente di vederlo", emerge una chiara contraddizione.
+	\item \textbf{Like-prefixed}: In questo tipo di sarcasmo viene implicitamente negato ciò che si afferma. Ad esempio "Come se la polizia troverà davvero l'assassino".
+	\item \textbf{Illocutionary}: Sono casi in cui situazioni o azioni non relative al testo possono svelare il reale significato inteso dalla frase. Ad esempio "Grazie per avermi tenuto la porta." può considerarsi una frase sarcastica solo conoscendo le circostanze (la porta non è stata realmente tenuta aperta).
+	
+\end{enumerate}
+
 
 \section{Dataset utilizzati}
+La qualità del dataset è un fattore cruciale per il riconoscimento dell'ironia/sarcasmo. Il più delle volte vengono considerati dataset in lingua inglese, ma alcuni lavori sono stati fatti anche considerando lingue differenti, come l'italiano nel modello proposto da Barbieri e altri in \cite{sarcasm-ita}.
 
-Principalmente in inglese
+Come riportato in \cite{survey5}, anche la dimensioni dei messaggi cambia nei vari studi affrontati, andando a considerati testi brevi (tweets, recensioni prodotti amazon) o più lunghi (sottotitoli di una serie TV o conversazioni di un call center). Volendo valutare le performance dei vari modelli, è necessario che il dataset sia etichettato.
 
+Nel caso dei tweets sono state adottate due strategie diverse. La prima (crowdsourcing) consiste nell'annotare manualmente ogni tweets, questo compito è incaricato ad alcune persone che in alcuni casi sono stati proprio esperti del linguaggio. La seconda tecnica invece (self-tagging), si basa sull'uso degli hashtag. Assumendo che se un utente utilizza l'hashtag \textit{\#scarcasm} o \textit{\#not}, allora ha l'intenzione di esprimere un messaggio ironico, questo semplifica nettamente la collezione del dataset. Con questa tecnica si ha il vantaggio di creare un dataset di grandi dimensioni con meno sforzo e in un tempo minore rispetto alla prima tecnica, inoltre l'utente stesso viene tratto come il miglior giudice per classificare un suo messaggio come ironico o meno. 
 
+Inoltre per quanto riguarda la tecnica crowdsourcing, Aditya Joshi e altri \cite{survey5} hanno fatto notare l'influenza di differenti culture quando si tratta di etichettare i messaggi ironici. Infatti i loro risultato mostrano come dato un dataset americano da far annotare sia a persone americane che indiane, i secondi concordavano maggiormente rispetto agli americani, e gli indiani avevano difficoltà riguardo studi o entità a loro sconosciuti (trattandosi di un dataset americano).
 
-La qualità dei dati è cruciale
-\subsection{Etichettamento}
+Si noti inoltre che l'ironia è un fenomeno non molto frequente quando si ha a che fare con il testo. Questo si riflette in un dataset non bilanciato.
 
 
 \section{Approcci adottati}
+Nello stato dell'arte il problema viene formulato come un task di classificazione, quindi dato un tweet riconoscerlo come ironico o non ironico. Esistono  diversi approcci per questo tipo di problema, ma la maggior parte dello stato dell'arte utilizza modelli supervisionati.
+
 \subsection{Rule based}
-\subsection{Approcci generali}
+Un approccio non supervisionato è stato proposto da Bharti e altri \cite{parsing-tree} in cui vengono usate due regole di classificazione. La prima consiste nel creare un parsing tree basato sul lessico a partire dalla frase, vengono quindi individuate le espressioni che trasportano del sentiment. Se una locuzione negativa è presente in una frase positiva, allora la frase è classificata come sarcastica. La seconda regola di decisione è costituita da un algoritmo che mira a catturare le espressioni iperboliche individuando interiezioni (come "wow") e intensificatori (come "assolutamente").
+
 \subsection{Semi supervisionati}
+Tra gli approcci semi supervisionati troviamo l'esempio di algoritmo introdotto da Davidov e altri \cite{davidov} per riconoscere il sarcasmo nei tweets e recensioni di prodotti Amazon. Prima si identificano dei pattern presenti nelle frasi. Dopodiché questi pattern vengono automaticamente estratti dal dataset e la feature principale consiste nel vettore in cui viene riportata la presenza (o assenza) del pattern all'interno del testo in input.
 \subsection{Supervisionati}
+L'approccio generale consiste nel creare modelli supervisionati, dove partendo dal dataset dopo una fase di pre-processing, vengono estratte delle features. In letterature sono state utilizzate diverse caratteristiche per il riconoscimento del sarcasmo, un elecno esaustivo è presente in \cite{survey2}. Qualche esempio di features ricorrenti tra i modelli allo stato dell'arte sono: bag-of-words; n-gram; part of speech tags; punteggiature; interiezioni. Una volta estrarre le features vengono utilizzati i classici algoritmi di machine learning (SVM, Naive Bayes, Decision tree) per effettuare il training dei modelli, vengono poi testati con la tecnica cross-validation per valutare il più performante.
+
+Come esempio di modelli supervisionati possiamo trovare il lavoro svolto da Farías e altri \cite{farias} in cui vengono estratte alcune delle features elencate sopra, considerate altre ulteriori caratteristiche e creati classificatori con gli algoritmi DT e SVM.
+
+Ulteriori approcci supervisionati, come nel caso di Fersini e altri \cite{fersini}, sfruttano tecniche Ensemble, nello specifico Bayesian Model Averaging (BMA), in cui diversi classificatori vengono combinati, considerando ognuno di questi durante la classificazione per ottenere risultati più affidabili.
+
 \subsection{Deep Learning}
+Come fatto notare in \cite{survey5}, le tecniche basate su architetture deep learning hanno acquisto popolarità nel campo NLP, di conseguenza alcuni approcci si basano su questi modelli per riconoscere automaticamente l'ironia. Un esempio è il modello proposto da Joshi \cite{embeddings} in cui viene utilizzata la similarità tra embeddings delle parole come features per i modelli. Un ulteriore esempio è il modello proposto da Bharti e altri \cite{deep-learning} che consiste in una combinazioni di Convolutional Neural Network, Recurrent Neural Network e Deep Neural Network mostrando un miglioramento rispetto ad altri modelli allo stato dell'arte.
 
 \section{Conclusioni}
+
+
+
+
 Riconoscere il tipo di ironia e riconoscere il significato latente.
 
-
-Lo stato dell'arte per il riconoscimento dell'ironia, fa per lo più uso di tradizionali metodi supervisionati\footnote{Irony Detection in Twitter: The Role of Affective Content\\ \url{https://dl.acm.org/doi/10.1145/2930663}}
-come Support Vecotr machine (SVM) e Decision Tree. Il problema viene approcciato estraendo delle features linguistiche per poi creare diversi modelli e valutare il migliore.
-
-Alcuni metodi più avanzati utilizzano tecniche Ensemble in cui diversi classificatori vengono combinati, considerando ognuno di questi durante la classificazione per ottenere risultati più affidabili. Tra le tecniche di questo tipo possiamo trovare Majority Voting (MV) e Bayesian Model Averaging (BMA)\footnote{Detecting Irony and Sarcasm in Microblogs: The Role of Expressive Signals and Ensemble Classifiers\\ \url{https://ieeexplore.ieee.org/document/7344888}}.
-
 Un ulteriore approccio è utilizzare metodi di transfer learning\footnote{Irony Detection via Sentiment-based Transfer Learning\\ \url{http://www.xiuzhenzhang.org/publications/ipm2018.zhang.irony.pdf}}, in cui reti neurale già addestrate vengono arricchite e ottimizzate per task di irony detection. In questo modo viene sfruttata la conoscenza di questi modelli pre-trained.
+
+
 
 \chapter{Sistema realizzato}
 
@@ -379,13 +417,9 @@ Gli acronimi sono un ulteriore strumento della comunicazione non verbale. Come l
 
 \begin{itemize}
 	\item
-	Positivi
-	
-	E.g.: 'ROLF' (Rolling On Floor Laughing), 'LHO' (Laughing Head Off)
+	\textbf{Positivi}: Es. 'ROLF' (Rolling On Floor Laughing), 'LHO' (Laughing Head Off)
 	\item
-	Negativi
-	
-	E.g: 'BM' (Bad Manner)
+	\textbf{Negativi}: Es. 'BM' (Bad Manner)
 	
 Anche in questo caso si considera l'occorrenza di acronimi positivi e negativi.
 \end{itemize}
@@ -394,8 +428,7 @@ Anche in questo caso si considera l'occorrenza di acronimi positivi e negativi.
 L'uso di espressioni onomatopeiche come 'boom' o 'clap' possono essere utilizzate nell'esprimere un messaggio ironico. Tuttavia in questo caso viene presa in considerazione solo la frequenza di queste espressioni, al contrario di come visto in precedenza per le emoticons e gli acronimi, dove si valutava anche la polarità.
 
 \subsubsection{Punteggiatura}
-La punteggiatura nei social media non segue le convenzioni ortografiche:\\
-E.g.: 'Do you hear us now ?????'\\
+La punteggiatura nei social media non segue le convenzioni ortografiche: Es.: 'Do you hear us now ?????'\\
 Per questa ragione viene contata la frequenza di:
 \begin{itemize}
 	\item Virgole
@@ -452,7 +485,7 @@ Per associare i POS tag ad ogni tweet viene utilizzato un POS tagger\footnote{AR
 		\item \textbf{V}: Verbo
 		\item \textbf{A}: Aggettivo
 		\item \textbf{R}: Avverbio
-		\item \textbf{!}: Interjection
+		\item \textbf{!}: Interiezioni
 	\end{itemize}
 \end{varwidth}
 \hspace{11em}

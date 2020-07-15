@@ -9,68 +9,66 @@
 \contentsline {subsection}{\numberline {2.2.2}Importanza del contesto}{6}{subsection.2.2.2}%
 \contentsline {section}{\numberline {2.3}Linguistica del sarcasmo}{6}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Definizione formale}{6}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Tipi di sarcasmo}{6}{subsection.2.3.2}%
-\contentsline {section}{\numberline {2.4}Dataset utilizzati}{6}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Etichettamento}{7}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.3.2}Tipi di sarcasmo}{7}{subsection.2.3.2}%
+\contentsline {section}{\numberline {2.4}Dataset utilizzati}{7}{section.2.4}%
 \contentsline {section}{\numberline {2.5}Approcci adottati}{7}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1}Rule based}{7}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2}Approcci generali}{7}{subsection.2.5.2}%
-\contentsline {subsection}{\numberline {2.5.3}Semi supervisionati}{7}{subsection.2.5.3}%
-\contentsline {subsection}{\numberline {2.5.4}Supervisionati}{7}{subsection.2.5.4}%
-\contentsline {subsection}{\numberline {2.5.5}Deep Learning}{7}{subsection.2.5.5}%
-\contentsline {section}{\numberline {2.6}Conclusioni}{7}{section.2.6}%
-\contentsline {chapter}{\numberline {3}Sistema realizzato}{8}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Descrizione del sistema proposto}{8}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Dati in input}{10}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Rappresentazione del testo}{10}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Rappresentazione Bag-of-word}{10}{subsection.3.3.1}%
-\contentsline {subsubsection}{\numberline {3.3.1.1}Tokenization}{10}{subsubsection.3.3.1.1}%
-\contentsline {subsubsection}{\numberline {3.3.1.2}Filtering}{11}{subsubsection.3.3.1.2}%
-\contentsline {subsubsection}{\numberline {3.3.1.3}Stemming}{11}{subsubsection.3.3.1.3}%
-\contentsline {subsubsection}{\numberline {3.3.1.4}Vector encoding}{12}{subsubsection.3.3.1.4}%
-\contentsline {subsection}{\numberline {3.3.2}Rappresentazione mediante Transformer}{12}{subsection.3.3.2}%
-\contentsline {subsubsection}{\numberline {3.3.2.1}BERT}{12}{subsubsection.3.3.2.1}%
-\contentsline {subsubsection}{\numberline {3.3.2.2}Sentence-BERT}{13}{subsubsection.3.3.2.2}%
-\contentsline {section}{\numberline {3.4}Caratteristiche linguistiche}{13}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}PP (Pragmatic particles)}{13}{subsection.3.4.1}%
-\contentsline {subsubsection}{\numberline {3.4.1.1}Emoticons}{14}{subsubsection.3.4.1.1}%
-\contentsline {subsubsection}{\numberline {3.4.1.2}Acronimi}{14}{subsubsection.3.4.1.2}%
-\contentsline {subsubsection}{\numberline {3.4.1.3}Espressioni onomatopeiche}{14}{subsubsection.3.4.1.3}%
-\contentsline {subsubsection}{\numberline {3.4.1.4}Punteggiatura}{14}{subsubsection.3.4.1.4}%
-\contentsline {subsubsection}{\numberline {3.4.1.5}Estrazione particelle pragmatiche}{14}{subsubsection.3.4.1.5}%
-\contentsline {subsection}{\numberline {3.4.2}POS (Part Of Speech)}{15}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}EMOT (Emotional Features)}{16}{subsection.3.4.3}%
-\contentsline {subsection}{\numberline {3.4.4}Sintesi features utilizzate}{17}{subsection.3.4.4}%
-\contentsline {chapter}{\numberline {4}Modelli supervisionati}{18}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Decision Tree}{19}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Naive Bayes}{20}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Multinomial Naive Bayes}{21}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Bayesian Network}{21}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Support Vector Machine}{23}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Iperpiano}{23}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}Iperpiano ottimo}{23}{subsection.4.5.2}%
-\contentsline {subsection}{\numberline {4.5.3}Vettori di supporto}{24}{subsection.4.5.3}%
-\contentsline {subsection}{\numberline {4.5.4}SVM non lineare}{24}{subsection.4.5.4}%
-\contentsline {section}{\numberline {4.6}Strumenti utilizzati}{26}{section.4.6}%
-\contentsline {subsection}{\numberline {4.6.1}Scikit-learn}{26}{subsection.4.6.1}%
-\contentsline {subsection}{\numberline {4.6.2}Weka}{26}{subsection.4.6.2}%
-\contentsline {chapter}{\numberline {5}Campagna sperimentale}{27}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Dataset}{27}{section.5.1}%
-\contentsline {section}{\numberline {5.2}10-Folds Cross-Validation}{27}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Misure di performance}{28}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Esperimenti}{30}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}Caratteristiche linguistiche}{31}{subsection.5.4.1}%
-\contentsline {subsubsection}{\numberline {5.4.1.1}Weighted average}{31}{subsubsection.5.4.1.1}%
-\contentsline {subsubsection}{\numberline {5.4.1.2}Confusion matrix}{33}{subsubsection.5.4.1.2}%
-\contentsline {subsection}{\numberline {5.4.2}BOW + Caratteristiche linguistiche}{34}{subsection.5.4.2}%
-\contentsline {subsubsection}{\numberline {5.4.2.1}Weighted average}{34}{subsubsection.5.4.2.1}%
-\contentsline {subsubsection}{\numberline {5.4.2.2}Confusion matrix}{36}{subsubsection.5.4.2.2}%
-\contentsline {subsection}{\numberline {5.4.3}BOW vs BERT vs Sentence-BERT}{37}{subsection.5.4.3}%
-\contentsline {subsubsection}{\numberline {5.4.3.1}Weighted average - Accuracy}{37}{subsubsection.5.4.3.1}%
-\contentsline {subsubsection}{\numberline {5.4.3.2}Weighted average - F measure}{37}{subsubsection.5.4.3.2}%
-\contentsline {subsection}{\numberline {5.4.4}Analisi lessico con PCA}{38}{subsection.5.4.4}%
-\contentsline {subsubsection}{\numberline {5.4.4.1}Top k componenti principali}{38}{subsubsection.5.4.4.1}%
-\contentsline {subsubsection}{\numberline {5.4.4.2}Features con contributo maggiore}{39}{subsubsection.5.4.4.2}%
-\contentsline {subsubsection}{\numberline {5.4.4.3}Conlcusioni}{39}{subsubsection.5.4.4.3}%
-\contentsline {chapter}{\numberline {6}Conclusioni e sviluppi futuri}{40}{chapter.6}%
-\contentsline {chapter}{Bibliography}{40}{chapter.6}%
+\contentsline {subsection}{\numberline {2.5.1}Rule based}{8}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Semi supervisionati}{8}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}Supervisionati}{8}{subsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.5.4}Deep Learning}{8}{subsection.2.5.4}%
+\contentsline {section}{\numberline {2.6}Conclusioni}{8}{section.2.6}%
+\contentsline {chapter}{\numberline {3}Sistema realizzato}{10}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Descrizione del sistema proposto}{10}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Dati in input}{12}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Rappresentazione del testo}{12}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Rappresentazione Bag-of-word}{12}{subsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.1.1}Tokenization}{12}{subsubsection.3.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.3.1.2}Filtering}{13}{subsubsection.3.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.3.1.3}Stemming}{13}{subsubsection.3.3.1.3}%
+\contentsline {subsubsection}{\numberline {3.3.1.4}Vector encoding}{14}{subsubsection.3.3.1.4}%
+\contentsline {subsection}{\numberline {3.3.2}Rappresentazione mediante Transformer}{14}{subsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.2.1}BERT}{14}{subsubsection.3.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.3.2.2}Sentence-BERT}{15}{subsubsection.3.3.2.2}%
+\contentsline {section}{\numberline {3.4}Caratteristiche linguistiche}{15}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}PP (Pragmatic particles)}{15}{subsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.1.1}Emoticons}{16}{subsubsection.3.4.1.1}%
+\contentsline {subsubsection}{\numberline {3.4.1.2}Acronimi}{16}{subsubsection.3.4.1.2}%
+\contentsline {subsubsection}{\numberline {3.4.1.3}Espressioni onomatopeiche}{16}{subsubsection.3.4.1.3}%
+\contentsline {subsubsection}{\numberline {3.4.1.4}Punteggiatura}{16}{subsubsection.3.4.1.4}%
+\contentsline {subsubsection}{\numberline {3.4.1.5}Estrazione particelle pragmatiche}{16}{subsubsection.3.4.1.5}%
+\contentsline {subsection}{\numberline {3.4.2}POS (Part Of Speech)}{17}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}EMOT (Emotional Features)}{18}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}Sintesi features utilizzate}{18}{subsection.3.4.4}%
+\contentsline {chapter}{\numberline {4}Modelli supervisionati}{20}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Decision Tree}{21}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Naive Bayes}{22}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Multinomial Naive Bayes}{23}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Bayesian Network}{23}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Support Vector Machine}{25}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Iperpiano}{25}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Iperpiano ottimo}{25}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Vettori di supporto}{26}{subsection.4.5.3}%
+\contentsline {subsection}{\numberline {4.5.4}SVM non lineare}{26}{subsection.4.5.4}%
+\contentsline {section}{\numberline {4.6}Strumenti utilizzati}{28}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Scikit-learn}{28}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Weka}{28}{subsection.4.6.2}%
+\contentsline {chapter}{\numberline {5}Campagna sperimentale}{29}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Dataset}{29}{section.5.1}%
+\contentsline {section}{\numberline {5.2}10-Folds Cross-Validation}{29}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Misure di performance}{30}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Esperimenti}{32}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Caratteristiche linguistiche}{33}{subsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.1.1}Weighted average}{33}{subsubsection.5.4.1.1}%
+\contentsline {subsubsection}{\numberline {5.4.1.2}Confusion matrix}{35}{subsubsection.5.4.1.2}%
+\contentsline {subsection}{\numberline {5.4.2}BOW + Caratteristiche linguistiche}{36}{subsection.5.4.2}%
+\contentsline {subsubsection}{\numberline {5.4.2.1}Weighted average}{36}{subsubsection.5.4.2.1}%
+\contentsline {subsubsection}{\numberline {5.4.2.2}Confusion matrix}{38}{subsubsection.5.4.2.2}%
+\contentsline {subsection}{\numberline {5.4.3}BOW vs BERT vs Sentence-BERT}{39}{subsection.5.4.3}%
+\contentsline {subsubsection}{\numberline {5.4.3.1}Weighted average - Accuracy}{39}{subsubsection.5.4.3.1}%
+\contentsline {subsubsection}{\numberline {5.4.3.2}Weighted average - F measure}{39}{subsubsection.5.4.3.2}%
+\contentsline {subsection}{\numberline {5.4.4}Analisi lessico con PCA}{40}{subsection.5.4.4}%
+\contentsline {subsubsection}{\numberline {5.4.4.1}Top k componenti principali}{40}{subsubsection.5.4.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.4.2}Features con contributo maggiore}{41}{subsubsection.5.4.4.2}%
+\contentsline {subsubsection}{\numberline {5.4.4.3}Conlcusioni}{41}{subsubsection.5.4.4.3}%
+\contentsline {chapter}{\numberline {6}Conclusioni e sviluppi futuri}{42}{chapter.6}%
+\contentsline {chapter}{Bibliography}{42}{chapter.6}%

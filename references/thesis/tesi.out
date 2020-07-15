@@ -11,66 +11,64 @@
 \BOOKMARK [2][-]{subsection.2.3.1}{Definizione formale}{section.2.3}% 11
 \BOOKMARK [2][-]{subsection.2.3.2}{Tipi di sarcasmo}{section.2.3}% 12
 \BOOKMARK [1][-]{section.2.4}{Dataset utilizzati}{chapter.2}% 13
-\BOOKMARK [2][-]{subsection.2.4.1}{Etichettamento}{section.2.4}% 14
-\BOOKMARK [1][-]{section.2.5}{Approcci adottati}{chapter.2}% 15
-\BOOKMARK [2][-]{subsection.2.5.1}{Rule based}{section.2.5}% 16
-\BOOKMARK [2][-]{subsection.2.5.2}{Approcci generali}{section.2.5}% 17
-\BOOKMARK [2][-]{subsection.2.5.3}{Semi supervisionati}{section.2.5}% 18
-\BOOKMARK [2][-]{subsection.2.5.4}{Supervisionati}{section.2.5}% 19
-\BOOKMARK [2][-]{subsection.2.5.5}{Deep Learning}{section.2.5}% 20
-\BOOKMARK [1][-]{section.2.6}{Conclusioni}{chapter.2}% 21
-\BOOKMARK [0][-]{chapter.3}{Sistema realizzato}{}% 22
-\BOOKMARK [1][-]{section.3.1}{Descrizione del sistema proposto}{chapter.3}% 23
-\BOOKMARK [1][-]{section.3.2}{Dati in input}{chapter.3}% 24
-\BOOKMARK [1][-]{section.3.3}{Rappresentazione del testo}{chapter.3}% 25
-\BOOKMARK [2][-]{subsection.3.3.1}{Rappresentazione Bag-of-word}{section.3.3}% 26
-\BOOKMARK [3][-]{subsubsection.3.3.1.1}{Tokenization}{subsection.3.3.1}% 27
-\BOOKMARK [3][-]{subsubsection.3.3.1.2}{Filtering}{subsection.3.3.1}% 28
-\BOOKMARK [3][-]{subsubsection.3.3.1.3}{Stemming}{subsection.3.3.1}% 29
-\BOOKMARK [3][-]{subsubsection.3.3.1.4}{Vector encoding}{subsection.3.3.1}% 30
-\BOOKMARK [2][-]{subsection.3.3.2}{Rappresentazione mediante Transformer}{section.3.3}% 31
-\BOOKMARK [3][-]{subsubsection.3.3.2.1}{BERT}{subsection.3.3.2}% 32
-\BOOKMARK [3][-]{subsubsection.3.3.2.2}{Sentence-BERT}{subsection.3.3.2}% 33
-\BOOKMARK [1][-]{section.3.4}{Caratteristiche linguistiche}{chapter.3}% 34
-\BOOKMARK [2][-]{subsection.3.4.1}{PP \(Pragmatic particles\)}{section.3.4}% 35
-\BOOKMARK [3][-]{subsubsection.3.4.1.1}{Emoticons}{subsection.3.4.1}% 36
-\BOOKMARK [3][-]{subsubsection.3.4.1.2}{Acronimi}{subsection.3.4.1}% 37
-\BOOKMARK [3][-]{subsubsection.3.4.1.3}{Espressioni onomatopeiche}{subsection.3.4.1}% 38
-\BOOKMARK [3][-]{subsubsection.3.4.1.4}{Punteggiatura}{subsection.3.4.1}% 39
-\BOOKMARK [3][-]{subsubsection.3.4.1.5}{Estrazione particelle pragmatiche}{subsection.3.4.1}% 40
-\BOOKMARK [2][-]{subsection.3.4.2}{POS \(Part Of Speech\)}{section.3.4}% 41
-\BOOKMARK [2][-]{subsection.3.4.3}{EMOT \(Emotional Features\)}{section.3.4}% 42
-\BOOKMARK [2][-]{subsection.3.4.4}{Sintesi features utilizzate}{section.3.4}% 43
-\BOOKMARK [0][-]{chapter.4}{Modelli supervisionati}{}% 44
-\BOOKMARK [1][-]{section.4.1}{Decision Tree}{chapter.4}% 45
-\BOOKMARK [1][-]{section.4.2}{Naive Bayes}{chapter.4}% 46
-\BOOKMARK [1][-]{section.4.3}{Multinomial Naive Bayes}{chapter.4}% 47
-\BOOKMARK [1][-]{section.4.4}{Bayesian Network}{chapter.4}% 48
-\BOOKMARK [1][-]{section.4.5}{Support Vector Machine}{chapter.4}% 49
-\BOOKMARK [2][-]{subsection.4.5.1}{Iperpiano}{section.4.5}% 50
-\BOOKMARK [2][-]{subsection.4.5.2}{Iperpiano ottimo}{section.4.5}% 51
-\BOOKMARK [2][-]{subsection.4.5.3}{Vettori di supporto}{section.4.5}% 52
-\BOOKMARK [2][-]{subsection.4.5.4}{SVM non lineare}{section.4.5}% 53
-\BOOKMARK [1][-]{section.4.6}{Strumenti utilizzati}{chapter.4}% 54
-\BOOKMARK [2][-]{subsection.4.6.1}{Scikit-learn}{section.4.6}% 55
-\BOOKMARK [2][-]{subsection.4.6.2}{Weka}{section.4.6}% 56
-\BOOKMARK [0][-]{chapter.5}{Campagna sperimentale}{}% 57
-\BOOKMARK [1][-]{section.5.1}{Dataset}{chapter.5}% 58
-\BOOKMARK [1][-]{section.5.2}{10-Folds Cross-Validation}{chapter.5}% 59
-\BOOKMARK [1][-]{section.5.3}{Misure di performance}{chapter.5}% 60
-\BOOKMARK [1][-]{section.5.4}{Esperimenti}{chapter.5}% 61
-\BOOKMARK [2][-]{subsection.5.4.1}{Caratteristiche linguistiche}{section.5.4}% 62
-\BOOKMARK [3][-]{subsubsection.5.4.1.1}{Weighted average}{subsection.5.4.1}% 63
-\BOOKMARK [3][-]{subsubsection.5.4.1.2}{Confusion matrix}{subsection.5.4.1}% 64
-\BOOKMARK [2][-]{subsection.5.4.2}{BOW + Caratteristiche linguistiche}{section.5.4}% 65
-\BOOKMARK [3][-]{subsubsection.5.4.2.1}{Weighted average}{subsection.5.4.2}% 66
-\BOOKMARK [3][-]{subsubsection.5.4.2.2}{Confusion matrix}{subsection.5.4.2}% 67
-\BOOKMARK [2][-]{subsection.5.4.3}{BOW vs BERT vs Sentence-BERT}{section.5.4}% 68
-\BOOKMARK [3][-]{subsubsection.5.4.3.1}{Weighted average - Accuracy}{subsection.5.4.3}% 69
-\BOOKMARK [3][-]{subsubsection.5.4.3.2}{Weighted average - F measure}{subsection.5.4.3}% 70
-\BOOKMARK [2][-]{subsection.5.4.4}{Analisi lessico con PCA}{section.5.4}% 71
-\BOOKMARK [3][-]{subsubsection.5.4.4.1}{Top k componenti principali}{subsection.5.4.4}% 72
-\BOOKMARK [3][-]{subsubsection.5.4.4.2}{Features con contributo maggiore}{subsection.5.4.4}% 73
-\BOOKMARK [3][-]{subsubsection.5.4.4.3}{Conlcusioni}{subsection.5.4.4}% 74
-\BOOKMARK [0][-]{chapter.6}{Conclusioni e sviluppi futuri}{}% 75
-\BOOKMARK [0][-]{chapter.6}{Bibliography}{}% 76
+\BOOKMARK [1][-]{section.2.5}{Approcci adottati}{chapter.2}% 14
+\BOOKMARK [2][-]{subsection.2.5.1}{Rule based}{section.2.5}% 15
+\BOOKMARK [2][-]{subsection.2.5.2}{Semi supervisionati}{section.2.5}% 16
+\BOOKMARK [2][-]{subsection.2.5.3}{Supervisionati}{section.2.5}% 17
+\BOOKMARK [2][-]{subsection.2.5.4}{Deep Learning}{section.2.5}% 18
+\BOOKMARK [1][-]{section.2.6}{Conclusioni}{chapter.2}% 19
+\BOOKMARK [0][-]{chapter.3}{Sistema realizzato}{}% 20
+\BOOKMARK [1][-]{section.3.1}{Descrizione del sistema proposto}{chapter.3}% 21
+\BOOKMARK [1][-]{section.3.2}{Dati in input}{chapter.3}% 22
+\BOOKMARK [1][-]{section.3.3}{Rappresentazione del testo}{chapter.3}% 23
+\BOOKMARK [2][-]{subsection.3.3.1}{Rappresentazione Bag-of-word}{section.3.3}% 24
+\BOOKMARK [3][-]{subsubsection.3.3.1.1}{Tokenization}{subsection.3.3.1}% 25
+\BOOKMARK [3][-]{subsubsection.3.3.1.2}{Filtering}{subsection.3.3.1}% 26
+\BOOKMARK [3][-]{subsubsection.3.3.1.3}{Stemming}{subsection.3.3.1}% 27
+\BOOKMARK [3][-]{subsubsection.3.3.1.4}{Vector encoding}{subsection.3.3.1}% 28
+\BOOKMARK [2][-]{subsection.3.3.2}{Rappresentazione mediante Transformer}{section.3.3}% 29
+\BOOKMARK [3][-]{subsubsection.3.3.2.1}{BERT}{subsection.3.3.2}% 30
+\BOOKMARK [3][-]{subsubsection.3.3.2.2}{Sentence-BERT}{subsection.3.3.2}% 31
+\BOOKMARK [1][-]{section.3.4}{Caratteristiche linguistiche}{chapter.3}% 32
+\BOOKMARK [2][-]{subsection.3.4.1}{PP \(Pragmatic particles\)}{section.3.4}% 33
+\BOOKMARK [3][-]{subsubsection.3.4.1.1}{Emoticons}{subsection.3.4.1}% 34
+\BOOKMARK [3][-]{subsubsection.3.4.1.2}{Acronimi}{subsection.3.4.1}% 35
+\BOOKMARK [3][-]{subsubsection.3.4.1.3}{Espressioni onomatopeiche}{subsection.3.4.1}% 36
+\BOOKMARK [3][-]{subsubsection.3.4.1.4}{Punteggiatura}{subsection.3.4.1}% 37
+\BOOKMARK [3][-]{subsubsection.3.4.1.5}{Estrazione particelle pragmatiche}{subsection.3.4.1}% 38
+\BOOKMARK [2][-]{subsection.3.4.2}{POS \(Part Of Speech\)}{section.3.4}% 39
+\BOOKMARK [2][-]{subsection.3.4.3}{EMOT \(Emotional Features\)}{section.3.4}% 40
+\BOOKMARK [2][-]{subsection.3.4.4}{Sintesi features utilizzate}{section.3.4}% 41
+\BOOKMARK [0][-]{chapter.4}{Modelli supervisionati}{}% 42
+\BOOKMARK [1][-]{section.4.1}{Decision Tree}{chapter.4}% 43
+\BOOKMARK [1][-]{section.4.2}{Naive Bayes}{chapter.4}% 44
+\BOOKMARK [1][-]{section.4.3}{Multinomial Naive Bayes}{chapter.4}% 45
+\BOOKMARK [1][-]{section.4.4}{Bayesian Network}{chapter.4}% 46
+\BOOKMARK [1][-]{section.4.5}{Support Vector Machine}{chapter.4}% 47
+\BOOKMARK [2][-]{subsection.4.5.1}{Iperpiano}{section.4.5}% 48
+\BOOKMARK [2][-]{subsection.4.5.2}{Iperpiano ottimo}{section.4.5}% 49
+\BOOKMARK [2][-]{subsection.4.5.3}{Vettori di supporto}{section.4.5}% 50
+\BOOKMARK [2][-]{subsection.4.5.4}{SVM non lineare}{section.4.5}% 51
+\BOOKMARK [1][-]{section.4.6}{Strumenti utilizzati}{chapter.4}% 52
+\BOOKMARK [2][-]{subsection.4.6.1}{Scikit-learn}{section.4.6}% 53
+\BOOKMARK [2][-]{subsection.4.6.2}{Weka}{section.4.6}% 54
+\BOOKMARK [0][-]{chapter.5}{Campagna sperimentale}{}% 55
+\BOOKMARK [1][-]{section.5.1}{Dataset}{chapter.5}% 56
+\BOOKMARK [1][-]{section.5.2}{10-Folds Cross-Validation}{chapter.5}% 57
+\BOOKMARK [1][-]{section.5.3}{Misure di performance}{chapter.5}% 58
+\BOOKMARK [1][-]{section.5.4}{Esperimenti}{chapter.5}% 59
+\BOOKMARK [2][-]{subsection.5.4.1}{Caratteristiche linguistiche}{section.5.4}% 60
+\BOOKMARK [3][-]{subsubsection.5.4.1.1}{Weighted average}{subsection.5.4.1}% 61
+\BOOKMARK [3][-]{subsubsection.5.4.1.2}{Confusion matrix}{subsection.5.4.1}% 62
+\BOOKMARK [2][-]{subsection.5.4.2}{BOW + Caratteristiche linguistiche}{section.5.4}% 63
+\BOOKMARK [3][-]{subsubsection.5.4.2.1}{Weighted average}{subsection.5.4.2}% 64
+\BOOKMARK [3][-]{subsubsection.5.4.2.2}{Confusion matrix}{subsection.5.4.2}% 65
+\BOOKMARK [2][-]{subsection.5.4.3}{BOW vs BERT vs Sentence-BERT}{section.5.4}% 66
+\BOOKMARK [3][-]{subsubsection.5.4.3.1}{Weighted average - Accuracy}{subsection.5.4.3}% 67
+\BOOKMARK [3][-]{subsubsection.5.4.3.2}{Weighted average - F measure}{subsection.5.4.3}% 68
+\BOOKMARK [2][-]{subsection.5.4.4}{Analisi lessico con PCA}{section.5.4}% 69
+\BOOKMARK [3][-]{subsubsection.5.4.4.1}{Top k componenti principali}{subsection.5.4.4}% 70
+\BOOKMARK [3][-]{subsubsection.5.4.4.2}{Features con contributo maggiore}{subsection.5.4.4}% 71
+\BOOKMARK [3][-]{subsubsection.5.4.4.3}{Conlcusioni}{subsection.5.4.4}% 72
+\BOOKMARK [0][-]{chapter.6}{Conclusioni e sviluppi futuri}{}% 73
+\BOOKMARK [0][-]{chapter.6}{Bibliography}{}% 74
