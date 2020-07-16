@@ -111,7 +111,7 @@ La sentiment analysis è un campo dell'elaborazione del linguaggio naturale (NLP
 Il riconoscimento automatico dell'ironia nei contenuti generati da utenti, è uno dei compiti più complessi per quanto riguarda l'elaborazione del linguaggio naturale. Tuttavia è di fondamentale importanza per tutti i sistemi di sentiment analysis, in quanto facendo uso dell'ironia è possibile invertire completamente la polarità di una propria opinione, facendola passare da positiva a negativa e viceversa.
 Diventa pertanto cruciale sviluppare dei sistemi che siano consapevoli del fenomeno e in grado di riconoscerlo.
 
-L'ironia è un tema studiato in diverse discipline, come la linguistica, filosofia e psicologia, ma è difficile da definire formalmente, soprattutto per questo motivo ne è difficile il riconoscimento. Nonostante ciò ci sono basi teoriche che suggeriscono il ruolo importante della sfera emotiva nell'uso dell'ironia, quindi un fattore chiave per riconoscerlo. Con questo si intende anche un uso indiretto e non esplicito del carico emotivo in ciò che si vuole comunicare.
+L'ironia è un tema studiato in diverse discipline come la linguistica, filosofia e psicologia, ma è difficile da definire formalmente, soprattutto per questo motivo ne è difficile il riconoscimento. Nonostante ciò ci sono basi teoriche che suggeriscono il ruolo importante della sfera emotiva nell'uso dell'ironia, quindi un fattore chiave per riconoscerlo. Con questo si intende anche un uso indiretto e non esplicito del carico emotivo in ciò che si vuole comunicare.
 
 I social netowork in generale, e twitter nello specifico, sono ampiamente utilizzati come fonte di informazione per comprendere la web reputation di un brand, perciò si prestano bene per la sperimentazione di modelli computazionali per il riconoscimento dell'ironia, essendo di fatti una grande risorsa per quanto riguarda i dati testuali generati da utenti.
 
@@ -121,7 +121,7 @@ Si può considerare il riconoscimento dell'ironia come un problema di classifica
 
 A questo scopo, la classificazione avviene mediante tecniche di machine learning (una branca dell'intelligenza artificiale). Nello specifico vengono creati dei modelli supervisionati tramite l'utilizzo di algoritmi, i quali fanno uso di una grande quantità di dati per estrarre dei pattern presenti in quest'ultimi.
 
-Come già detto, twitter è una risorsa che fornisce moltissimi contenuti generati da utenti. Viene sfruttato questo aspetto collezionando i dati utilizzati dai modelli matematici, così da far apprendere la macchina con lo scopo di riconoscere l'ironia nel testo.
+Come già detto, twitter è una risorsa che fornisce moltissimi contenuti generati da utenti. Viene sfruttato questo aspetto collezionando i dati che verranno utilizzati dai modelli matematici, così da far apprendere la macchina con lo scopo di riconoscere l'ironia nel testo.
 
 Il codice scritto in python, utilizzato per l'estrazione delle features, il training dei modelli, la creazione della matrice su cui è stata fatta PCA, oltre ai notebooks creati per l'analisi dei report e il risultato della PCA, è disponibile in questo repository\footnote{Irony detection repository: \url{www.github.com/gianlucagiudice/irony-detection}} su github.
 
@@ -146,10 +146,10 @@ Per dare un'idea di quanto possano essere utili sistemi di questo tipo, come fat
 \section{Difficoltà e problemi}
 Come indicato nel survey \cite{survey3}, il riconoscimento dell'ironia è un compito complesso non solo per quanto riguarda le macchine, ma in alcuni casi anche per gli uomini. Questo è dovuto all'ambiguità intrinseca del sarcasmo.
 
-In questi studi, il dataset è una componente fondamentale, dal momento che è necessario avere un dataset etichettato, la natura ambigua del sarcasmo viene risolta utilizzando la presenza di hashatg inseriti dagli utenti all'interno dei messaggi, ma senza questa informazione le frasi ironiche sono complicate da riconoscere.
+In questi studi, il dataset è una componente fondamentale. Dal momento che è necessario avere un dataset etichettato, la natura ambigua del sarcasmo viene risolta utilizzando la presenza di hashatg inseriti dagli utenti all'interno dei messaggi, ma senza questa informazione le frasi ironiche sono complicate da riconoscere.
 
 \subsection{Ironia nel testo}
-Per lavorare con il testo, è necessaria una rappresentazione numerica da dare in input ai vari algoritmi di classificazione. Un approccio unicamente bag-of-words tipicamente utilizzato nell'ambito NLP, non ottiene grandi performance in quanto usando il sarcasmo si possono esprimere opinioni negative facendo uso di parole positive. Tuttavia anche considerare altre features oltre a BOW può non risolvere completamente il problema, si pensi a quei messaggi molto corti in cui non è proprio possibile estrarre delle features.
+Per lavorare con il testo è necessaria una rappresentazione numerica da dare in input ai vari algoritmi di classificazione. Un approccio unicamente bag-of-words tipicamente utilizzato nell'ambito NLP, non ottiene grandi performance in quanto usando il sarcasmo si possono esprimere opinioni negative facendo uso di parole positive. Tuttavia anche considerare altre features oltre a BOW può non risolvere completamente il problema, si pensi a quei messaggi molto corti in cui non è proprio possibile estrarre delle features.
 
 Bisogna anche tenere in considerazione che nel testo è più difficile cogliere l'ironia rispetto che nel parlato, in quanto non si hanno a disposizioni features come il tono della voce, il linguaggio del corpo e le espressioni del volto. In questo ambito sono stati condotti degli studi da Tepperman e altri \cite{audio-sarcasm}, in cui si vuole riconoscere l'ironia nel parlato estraendo dallo spettro del suono features come l'intonazione, le pause ecc.
 
@@ -166,9 +166,9 @@ In questo campo è stato condotto uno studio da Rajadesingan e altri \cite{scuba
 \subsection{Definizione formale}
 Con lo scopo di meglio riconoscere il sarcasmo, nel survey \cite{survey2} ne viene data una definizione formale:
 Una frase sarcastica può essere rappresentate da una sestupla $<S,\ H,\ C,\ u,\ P,\ P'>$ dove $S$ è chi parla, $H$ chi ascolta, $C$ il contesto, $u$ la frase, $P$ il senso letterale e $P'$ ciò che si vuole far intendere. 
-Si noti come da questa definizione formale, emerge chiaramente che il contesto è un fattore chiave per cogliere il sarcasmo della frase.
+Si noti come da questa definizione formale emerge chiaramente che il contesto è un fattore chiave per cogliere il sarcasmo della frase.
 
-Prendiamo come esempio, il cliente di un hotel che dice "Your room service was fantastic!" e il direttore è consapevole del fatto che il servizio sia stato peggiore rispetto al solito, utilizzando la rappresentazione 6-tupla si ha:
+Prendendo come esempio il cliente di un hotel che dice "Your room service was fantastic!" e il direttore è consapevole del fatto che il servizio sia stato peggiore rispetto al solito, utilizzando la rappresentazione mediante 6-tupla si ha:
 
 
 $\textbf{S}:$ Cliente
@@ -220,7 +220,7 @@ Si noti inoltre che l'ironia è un fenomeno non molto frequente nel linguaggio, 
 
 
 \section{Approcci adottati}
-Nello stato dell'arte il riconoscimento dell'ironia viene formulato come un task di classificazione, quindi dato un tweet riconoscerlo come ironico o non ironico. Esistono  diversi approcci per questo tipo di problema, anche se la maggior parte dello stato dell'arte utilizza modelli supervisionati. Come primo passo è necessaria una fase di pre-processing. I dati generati da utenti presentano infatti del rumore, e questa fase è un passo preliminare fondamentale per riconoscere l'ironia. Il pre-processing consiste sostanzialmente nell'effettuare la tokenizzazione, rimuovere le stop-words, stemmatizzare e lemmatizzare. Si può inoltre adottare una tecnica di POS tagging per associare ad ogni parola l'informazione riguardo la parte del linguaggio a cui essa appartiene, come ad esempio il nome, aggettivo, nome ecc.
+Nello stato dell'arte il riconoscimento dell'ironia viene formulato come un task di classificazione, quindi dato un tweet riconoscerlo come ironico o non ironico. Esistono  diversi approcci per questo tipo di problema, anche se la maggior parte dello stato dell'arte utilizza modelli supervisionati. Come primo passo è necessaria una fase di pre-processing. I dati generati da utenti presentano infatti del rumore, questo passo preliminare è una fase fondamentale per riconoscere l'ironia. Il pre-processing consiste sostanzialmente nell'effettuare la tokenizzazione, rimuovere le stop-words, stemmatizzare e lemmatizzare. Si può inoltre adottare una tecnica di POS tagging per associare ad ogni parola l'informazione riguardo la parte del linguaggio a cui essa appartiene, come ad esempio il nome, aggettivo, nome ecc.
 
 \subsection{Approcci rule based}
 Tra gli approcci rule-based troviamo il modello proposto da Maynard e altri in \cite{hashtag}, dove il sentiment dell'hashtag utilizzato in un messaggio, viene considerato come un fattore chiave per riconoscere il sarcasmo. Pertanto un tweet viene classificato come sarcastico nel caso in cui il sentiment dell'hashtag non è coerente con il resto del tweet.
