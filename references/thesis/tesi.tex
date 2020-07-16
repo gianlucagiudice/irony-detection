@@ -226,10 +226,12 @@ Nello stato dell'arte il riconoscimento dell'ironia viene formulato come un task
 Tra gli approcci rule-based troviamo il modello proposto da Maynard e altri in \cite{hashtag}, dove il sentiment dell'hashtag utilizzato in un messaggio, viene considerato come un fattore chiave per riconoscere il sarcasmo. Pertanto un tweet viene classificato come sarcastico nel caso in cui il sentiment dell'hashtag non è coerente con il resto del tweet.
 
 Un ulteriore approccio non supervisionato è stato proposto da Bharti e altri \cite{parsing-tree} in cui vengono usate due regole di classificazione:
-La prima consiste nel creare un parsing tree basato sul lessico a partire dalla frase, vengono quindi individuate le espressioni che trasportano del sentiment. Se una locuzione negativa è presente in una frase positiva, allora la frase è classificata come sarcastica. La seconda regola di decisione è costituita da un algoritmo che mira a catturare le espressioni iperboliche individuando interiezioni (come "wow") e intensificatori (come "assolutamente").
+La prima consiste nel creare un parsing tree basato sul lessico a partire dalla frase, considerando inoltre il sentiment. La seconda regola di decisione è costituita da un algoritmo che mira a catturare le espressioni iperboliche individuando interiezioni (come "wow") e intensificatori (come "assolutamente").
 
 Riloff e altri \cite{rilof}, presentano un approccio rule-based in cui, tramite l'utilizzo di un algoritmo, viene considerata la struttura sintattica del tweet. Vengono quindi cercati all'interno della frase i verbi con sentiment positivo e espressioni negative. La regola di decisione consiste nel classificare un tweet come sarcastico nel caso in cui sia presente questa contraddizione tra sentiment.
 
+\subsection{Approcci semi supervisionati}
+Tra gli approcci semi supervisionati troviamo l'esempio dell'algoritmo introdotto da Davidov e altri \cite{davidov}, con lo scopo di  riconoscere il sarcasmo nei tweets e recensioni di prodotti Amazon. Tale approccio consiste nell'identificare dei pattern presenti nelle frasi, dopodiché questi pattern vengono automaticamente estratti dal dataset e la feature principale consiste nel vettore in cui viene riportata la presenza (o assenza) del pattern all'interno del testo in input.
 
 \subsection{Insieme delle features}
 La scelta delle features è un altro compito importante per riconoscere correttamente l'ironia.
@@ -243,11 +245,10 @@ Barbieri e altri \cite{sarcasm-ita} sfruttano dei lessici per utilizzare come fe
 
 L'utilizzo di nuove features, come riportato da \cite{survey1}, può migliorare le performance dei classificatori, ma  è necessario uno studio più approfondito riguardo features come la semantica, espressioni iperboliche, punteggiatura ecc. 
 
-\subsection{Approcci semi supervisionati}
-Tra gli approcci semi supervisionati troviamo l'esempio dell'algoritmo introdotto da Davidov e altri \cite{davidov}, con lo scopo di  riconoscere il sarcasmo nei tweets e recensioni di prodotti Amazon. Tale approccio consiste nell'identificare dei pattern presenti nelle frasi, dopodiché questi pattern vengono automaticamente estratti dal dataset e la feature principale consiste nel vettore in cui viene riportata la presenza (o assenza) del pattern all'interno del testo in input.
+
 
 \subsection{Approcci supervisionati}
-L'approccio generale consiste nel creare modelli supervisionati, dove partendo dal dataset, si passa per una fase di pre-processing. Dopodiché vengono estratte delle features dal testo. Si usano quindi i classici algoritmi di machine learning (SVM, Naive Bayes, Decision tree) per effettuare il training dei modelli, vengono poi testati con la tecnica cross-validation per valutare il più performante.
+L'approccio generale consiste nel creare modelli supervisionati, dove partendo dal dataset, si passa per una fase di pre-processing. Dopodiché vengono estratte delle features dal testo. Si usano quindi i classici algoritmi di machine learning (SVM, Naive Bayes, Decision tree) per effettuare il training dei modelli, vengono poi testati con la tecnica cross-validation per valutare il più performante basandosi su diverse metriche.
 
 Come esempio di modelli supervisionati possiamo trovare il lavoro svolto da Farías e altri \cite{farias} in cui vengono estratte alcune delle features elencate sopra, considerate altre ulteriori caratteristiche e creati classificatori con gli algoritmi Decision Tree e Support Vector Machine. Reyes e altri \cite{reyes} utilizzano gli algoritmi Naive Bayes e Decision Tree, mentre Barbieri e altri \cite{sarcasm-ita} usano binary Logistic Regression.
 Ulteriori approcci supervisionati, come nel caso di Fersini e altri \cite{fersini}, sfruttano tecniche ensemble, nello specifico Bayesian Model Averaging (BMA), in cui diversi classificatori vengono combinati considerando ognuno di questi durante la classificazione, in questo modo si è in grado di ottenere una classificazione più affidabile.
@@ -262,11 +263,11 @@ Un esempio è il modello proposto da Joshi \cite{embeddings} in cui viene utiliz
 \section{Conclusioni}
 Il riconoscimento dell'ironia è una delle sfide principali nell'ambito della sentiment analysis, e negli ultimi anni ha acquisito man mano più importanza. Si tratta di un campo nel data mining che richiede maggiori approfondimenti.
 
-Per etichettare il dataset vengono utilizzate tecniche manuali o l'uso di hashtag. Il problema viene approcciato come un task di classificazione e si usano approcci rule-based, semi-supervisionati e supervisionati, sono state inoltre adottate tecniche di deep learning, le quali sembrano essere la strada giusta per lavori futuri.
+Per etichettare il dataset vengono utilizzate tecniche manuali o l'uso di hashtag. Il problema viene approcciato come un task di classificazione e si usano approcci rule-based, semi-supervisionati e supervisionati, sono state inoltre adottate tecniche di deep learning, le quali sembrano essere la strada giusta per sviluppi futuri.
 
 Un ruolo chiave nel riconoscimento dell'ironia è svolto dal contesto. Tali informazioni fanno parte di ciò che non viene scritto direttamente all'interno della frase. Alcuni studi sono stati svolti a riguardo, tenendo in considerazione tweets passati di un determinato utente, piuttosto che mediante tecniche di transferred learning che incorporano informazioni acquisite riguardo al sentiment nei modelli pre-trained.
 
-Ad oggi i modelli allo stato dell'arte hanno performance peggiori nel riconoscere l'ironia rispetto agli umani. Come fatto notare da Wallace in \cite{survey4}, il problema principale degli esistenti modelli di machine learning, può essere una poca considerazione del contesto.
+Ad oggi i modelli allo stato dell'arte hanno performance peggiori nel riconoscere l'ironia rispetto agli umani. Come fatto notare da Wallace in \cite{survey4}, il problema principale degli esistenti modelli di machine learning può essere una poca considerazione del contesto.
 
 Wallace fa notare come tutti i modelli allo stato dell'arte approcciano il task di riconoscimento dell'ironia/sarcasmo come un problema di classificazione. Non vi sono approcci che hanno lo scopo di determinare il tipo di sarcasmo, piuttosto che ricostruire il significato latente della frase.
 

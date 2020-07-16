@@ -13,8 +13,8 @@
 \contentsline {section}{\numberline {2.4}Dataset utilizzati}{7}{section.2.4}%
 \contentsline {section}{\numberline {2.5}Approcci adottati}{8}{section.2.5}%
 \contentsline {subsection}{\numberline {2.5.1}Approcci rule based}{8}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2}Insieme delle features}{9}{subsection.2.5.2}%
-\contentsline {subsection}{\numberline {2.5.3}Approcci semi supervisionati}{9}{subsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.5.2}Approcci semi supervisionati}{9}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}Insieme delle features}{9}{subsection.2.5.3}%
 \contentsline {subsection}{\numberline {2.5.4}Approcci supervisionati}{9}{subsection.2.5.4}%
 \contentsline {subsection}{\numberline {2.5.5}Deep Learning}{10}{subsection.2.5.5}%
 \contentsline {section}{\numberline {2.6}Conclusioni}{10}{section.2.6}%
