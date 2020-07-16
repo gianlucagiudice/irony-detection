@@ -69,9 +69,10 @@
 \BOOKMARK [2][-]{subsection.5.4.3}{BOW vs BERT vs Sentence-BERT}{section.5.4}% 69
 \BOOKMARK [3][-]{subsubsection.5.4.3.1}{Weighted average - Accuracy}{subsection.5.4.3}% 70
 \BOOKMARK [3][-]{subsubsection.5.4.3.2}{Weighted average - F measure}{subsection.5.4.3}% 71
-\BOOKMARK [2][-]{subsection.5.4.4}{Analisi lessico con PCA}{section.5.4}% 72
-\BOOKMARK [3][-]{subsubsection.5.4.4.1}{Top k componenti principali}{subsection.5.4.4}% 73
-\BOOKMARK [3][-]{subsubsection.5.4.4.2}{Features con contributo maggiore}{subsection.5.4.4}% 74
-\BOOKMARK [3][-]{subsubsection.5.4.4.3}{Conlcusioni}{subsection.5.4.4}% 75
-\BOOKMARK [0][-]{chapter.6}{Conclusioni e sviluppi futuri}{}% 76
-\BOOKMARK [0][-]{chapter.6}{Bibliography}{}% 77
+\BOOKMARK [3][-]{subsubsection.5.4.3.3}{Osservazioni}{subsection.5.4.3}% 72
+\BOOKMARK [2][-]{subsection.5.4.4}{Analisi lessico con PCA}{section.5.4}% 73
+\BOOKMARK [3][-]{subsubsection.5.4.4.1}{Top k componenti principali}{subsection.5.4.4}% 74
+\BOOKMARK [3][-]{subsubsection.5.4.4.2}{Features con contributo maggiore}{subsection.5.4.4}% 75
+\BOOKMARK [3][-]{subsubsection.5.4.4.3}{Osservazioni}{subsection.5.4.4}% 76
+\BOOKMARK [0][-]{chapter.6}{Conclusioni e sviluppi futuri}{}% 77
+\BOOKMARK [0][-]{chapter.6}{Bibliografia}{}% 78

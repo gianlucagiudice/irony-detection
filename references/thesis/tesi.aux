@@ -49,8 +49,11 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3.2}Tipi di sarcasmo}{7}{subsection.2.3.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2.4}Dataset utilizzati}{7}{section.2.4}\protected@file@percent }
 \citation{survey5}
+\citation{imbalance}
 \citation{hashtag}
 \citation{parsing-tree}
+\@writefile{toc}{\contentsline {section}{\numberline {2.5}Approcci adottati}{8}{section.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.1}Approcci rule based}{8}{subsection.2.5.1}\protected@file@percent }
 \citation{rilof}
 \citation{survey5}
 \citation{gonzalez}
@@ -58,23 +61,21 @@
 \citation{reyes}
 \citation{gram}
 \citation{sarcasm-ita}
-\@writefile{toc}{\contentsline {section}{\numberline {2.5}Approcci adottati}{8}{section.2.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.1}Approcci rule based}{8}{subsection.2.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.2}Insieme delle features}{8}{subsection.2.5.2}\protected@file@percent }
 \citation{survey1}
 \citation{davidov}
 \citation{farias}
 \citation{reyes}
 \citation{sarcasm-ita}
 \citation{fersini}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.2}Insieme delle features}{9}{subsection.2.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.3}Approcci semi supervisionati}{9}{subsection.2.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.4}Approcci supervisionati}{9}{subsection.2.5.4}\protected@file@percent }
 \citation{survey5}
 \citation{embeddings}
 \citation{deep-learning}
 \citation{zang}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.3}Approcci semi supervisionati}{9}{subsection.2.5.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.4}Approcci supervisionati}{9}{subsection.2.5.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.5}Deep Learning}{9}{subsection.2.5.5}\protected@file@percent }
 \citation{survey4}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.5}Deep Learning}{10}{subsection.2.5.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2.6}Conclusioni}{10}{section.2.6}\protected@file@percent }
 \@writefile{toc}{\contentsline {chapter}{\numberline {3}Sistema realizzato}{11}{chapter.3}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
@@ -95,8 +96,8 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1.2}Filtering}{14}{subsubsection.3.3.1.2}\protected@file@percent }
 \newlabel{section:filtering}{{3.3.1.2}{14}{Filtering}{subsubsection.3.3.1.2}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1.3}Stemming}{14}{subsubsection.3.3.1.3}\protected@file@percent }
-\citation{bert}
 \citation{transformer}
+\citation{bert}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Caption for LOF}}{15}{figure.caption.7}\protected@file@percent }
 \newlabel{fig:stemming}{{3.3}{15}{Caption for LOF}{figure.caption.7}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1.4}Vector encoding}{15}{subsubsection.3.3.1.4}\protected@file@percent }
@@ -104,7 +105,6 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2.1}BERT}{15}{subsubsection.3.3.2.1}\protected@file@percent }
 \citation{transformer}
 \citation{transformer}
-\citation{bibid}
 \citation{berttutorial}
 \citation{sentencebert}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Caption for LOF}}{16}{figure.caption.8}\protected@file@percent }
@@ -119,7 +119,7 @@
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {3.1}Esempio di tweet processato per estrarre le particelle pragmatiche.}{17}{lstlisting.3.1}\protected@file@percent }
 \citation{ark}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}POS (Part Of Speech)}{18}{subsection.3.4.2}\protected@file@percent }
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {3.2}Esempio di tweet con POS tag associte.}{18}{lstlisting.3.2}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {3.2}Esempio di tweet con POS tags associati.}{18}{lstlisting.3.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4.3}EMOT (Emotional Features)}{18}{subsection.3.4.3}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {3.3}{\ignorespaces Emozioni primarie dei lessici.\relax }}{19}{table.caption.9}\protected@file@percent }
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {3.3}Esempio di estrazione delle emozioni da un tweet.}{19}{lstlisting.3.3}\protected@file@percent }
@@ -190,19 +190,20 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.4.3}BOW vs BERT vs Sentence-BERT}{42}{subsection.5.4.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.3.1}Weighted average - Accuracy}{42}{subsubsection.5.4.3.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.3.2}Weighted average - F measure}{42}{subsubsection.5.4.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.4}Analisi lessico con PCA}{43}{subsection.5.4.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.4.1}Top k componenti principali}{43}{subsubsection.5.4.4.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.13}{\ignorespaces Varianza spiegata\relax }}{43}{figure.caption.46}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.3.3}Osservazioni}{43}{subsubsection.5.4.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.4}Analisi lessico con PCA}{44}{subsection.5.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.4.1}Top k componenti principali}{44}{subsubsection.5.4.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.13}{\ignorespaces Varianza spiegata\relax }}{44}{figure.caption.46}\protected@file@percent }
 \citation{pcaeigenvectors}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces Varianza spiegata cumulata\relax }}{44}{figure.caption.47}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.4.2}Features con contributo maggiore}{44}{subsubsection.5.4.4.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.15}{\ignorespaces Contributo dell features\relax }}{44}{figure.caption.48}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.4.3}Conlcusioni}{44}{subsubsection.5.4.4.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces Varianza spiegata cumulata\relax }}{45}{figure.caption.47}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.4.2}Features con contributo maggiore}{45}{subsubsection.5.4.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.15}{\ignorespaces Contributo dell features\relax }}{45}{figure.caption.48}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.4.3}Osservazioni}{45}{subsubsection.5.4.4.3}\protected@file@percent }
 \bibdata{bibliography}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Conclusioni e sviluppi futuri}{45}{chapter.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Conclusioni e sviluppi futuri}{46}{chapter.6}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {chapter}{Bibliography}{45}{chapter.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{Bibliografia}{46}{chapter.6}\protected@file@percent }
 \bibcite{survey4}{1}
 \bibcite{survey1}{2}
 \bibcite{political}{3}
@@ -214,25 +215,26 @@
 \bibcite{tipi-sarcasmo}{9}
 \bibcite{sarcasm-ita}{10}
 \bibcite{crowd}{11}
-\bibcite{hashtag}{12}
-\bibcite{parsing-tree}{13}
-\bibcite{rilof}{14}
-\bibcite{gonzalez}{15}
-\bibcite{farias}{16}
-\bibcite{reyes}{17}
-\bibcite{gram}{18}
-\bibcite{davidov}{19}
-\bibcite{fersini}{20}
-\bibcite{embeddings}{21}
-\bibcite{deep-learning}{22}
-\bibcite{zang}{23}
-\bibcite{nltk}{24}
-\bibcite{bert}{25}
-\bibcite{transformer}{26}
-\bibcite{berttutorial}{27}
-\bibcite{sentencebert}{28}
-\bibcite{ark}{29}
-\bibcite{scikit-learn}{30}
-\bibcite{weka}{31}
-\bibcite{pcaeigenvectors}{32}
+\bibcite{imbalance}{12}
+\bibcite{hashtag}{13}
+\bibcite{parsing-tree}{14}
+\bibcite{rilof}{15}
+\bibcite{gonzalez}{16}
+\bibcite{farias}{17}
+\bibcite{reyes}{18}
+\bibcite{gram}{19}
+\bibcite{davidov}{20}
+\bibcite{fersini}{21}
+\bibcite{embeddings}{22}
+\bibcite{deep-learning}{23}
+\bibcite{zang}{24}
+\bibcite{nltk}{25}
+\bibcite{bert}{26}
+\bibcite{transformer}{27}
+\bibcite{berttutorial}{28}
+\bibcite{sentencebert}{29}
+\bibcite{ark}{30}
+\bibcite{scikit-learn}{31}
+\bibcite{weka}{32}
+\bibcite{pcaeigenvectors}{33}
 \bibstyle{ieeetr}

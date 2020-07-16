@@ -13,10 +13,10 @@
 \contentsline {section}{\numberline {2.4}Dataset utilizzati}{7}{section.2.4}%
 \contentsline {section}{\numberline {2.5}Approcci adottati}{8}{section.2.5}%
 \contentsline {subsection}{\numberline {2.5.1}Approcci rule based}{8}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2}Insieme delle features}{8}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.2}Insieme delle features}{9}{subsection.2.5.2}%
 \contentsline {subsection}{\numberline {2.5.3}Approcci semi supervisionati}{9}{subsection.2.5.3}%
 \contentsline {subsection}{\numberline {2.5.4}Approcci supervisionati}{9}{subsection.2.5.4}%
-\contentsline {subsection}{\numberline {2.5.5}Deep Learning}{9}{subsection.2.5.5}%
+\contentsline {subsection}{\numberline {2.5.5}Deep Learning}{10}{subsection.2.5.5}%
 \contentsline {section}{\numberline {2.6}Conclusioni}{10}{section.2.6}%
 \contentsline {chapter}{\numberline {3}Sistema realizzato}{11}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Descrizione del sistema proposto}{11}{section.3.1}%
@@ -69,9 +69,10 @@
 \contentsline {subsection}{\numberline {5.4.3}BOW vs BERT vs Sentence-BERT}{42}{subsection.5.4.3}%
 \contentsline {subsubsection}{\numberline {5.4.3.1}Weighted average - Accuracy}{42}{subsubsection.5.4.3.1}%
 \contentsline {subsubsection}{\numberline {5.4.3.2}Weighted average - F measure}{42}{subsubsection.5.4.3.2}%
-\contentsline {subsection}{\numberline {5.4.4}Analisi lessico con PCA}{43}{subsection.5.4.4}%
-\contentsline {subsubsection}{\numberline {5.4.4.1}Top k componenti principali}{43}{subsubsection.5.4.4.1}%
-\contentsline {subsubsection}{\numberline {5.4.4.2}Features con contributo maggiore}{44}{subsubsection.5.4.4.2}%
-\contentsline {subsubsection}{\numberline {5.4.4.3}Conlcusioni}{44}{subsubsection.5.4.4.3}%
-\contentsline {chapter}{\numberline {6}Conclusioni e sviluppi futuri}{45}{chapter.6}%
-\contentsline {chapter}{Bibliography}{45}{chapter.6}%
+\contentsline {subsubsection}{\numberline {5.4.3.3}Osservazioni}{43}{subsubsection.5.4.3.3}%
+\contentsline {subsection}{\numberline {5.4.4}Analisi lessico con PCA}{44}{subsection.5.4.4}%
+\contentsline {subsubsection}{\numberline {5.4.4.1}Top k componenti principali}{44}{subsubsection.5.4.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.4.2}Features con contributo maggiore}{45}{subsubsection.5.4.4.2}%
+\contentsline {subsubsection}{\numberline {5.4.4.3}Osservazioni}{45}{subsubsection.5.4.4.3}%
+\contentsline {chapter}{\numberline {6}Conclusioni e sviluppi futuri}{46}{chapter.6}%
+\contentsline {chapter}{Bibliografia}{46}{chapter.6}%
