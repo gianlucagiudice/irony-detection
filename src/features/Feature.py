@@ -5,12 +5,12 @@ import numpy as np
 
 class Feature:
 
-    def __init__(self):
-        self.matrix = None
+	def __init__(self):
+		self.matrix = None
 
-    def build_matrix(self, r, c):
-        self.matrix = np.zeros((r, c), dtype=int)
+	def build_matrix(self, r, c):
+		self.matrix = np.zeros((r, c), dtype=int)
 
-    @abstractmethod
-    def fill_matrix(self, *args):
-        return
+	@abstractmethod
+	def fill_matrix(self, *args):
+		return

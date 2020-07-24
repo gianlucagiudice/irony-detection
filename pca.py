@@ -1,9 +1,13 @@
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 import torch
+import os
 from pytorch_pretrained_bert import BertTokenizer
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
+
 
 from src.dataset.Dataset import Dataset
 from src.features.text.Bert import Bert
@@ -19,9 +23,17 @@ def dataset_type_name(dataset_type):
     return '+'.join([key for key, value in dataset_type.items() if value])
 
 
+def create_out_folder():
+    pca_out_path = REPORTS_PATH + TARGET_DATASET + '.pca'
+    if not os.path.exists(pca_out_path):
+        Path(pca_out_path).mkdir(parents=True)
+
+
 class Pca:
 
     def __init__(self, tweets=None, labels=None):
+        # Create out folder
+        create_out_folder()
         # Tweets
         self.tweet_list = tweets
         self.labels = labels

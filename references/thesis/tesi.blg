@@ -1,0 +1,68 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: tesi.aux
+The style file: ieeetr.bst
+Database file #1: bibliography.bib
+I was expecting a `,' or a `}'---line 11 of file bibliography.bib
+ :  
+ :  year = {2019},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 20 of file bibliography.bib
+ :  
+ :  year = {2020},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "bibid"
+Warning--empty publisher in survey2
+Warning--empty booktitle in sarcasm-ita
+Warning--empty journal in crowd
+Warning--empty booktitle in imbalance
+Warning--empty booktitle in gonzalez
+Warning--empty booktitle in gram
+Warning--empty booktitle in fersini
+Warning--empty booktitle in deep-learning
+Warning--empty journal in bert
+Warning--empty booktitle in sentencebert
+You've used 33 entries,
+            1876 wiz_defined-function locations,
+            653 strings with 9195 characters,
+and the built_in function-call counts, 9227 in all, are:
+= -- 832
+> -- 412
+< -- 0
++ -- 150
+- -- 117
+* -- 660
+:= -- 1269
+add.period$ -- 35
+call.type$ -- 33
+change.case$ -- 31
+chr.to.int$ -- 0
+cite$ -- 43
+duplicate$ -- 504
+empty$ -- 896
+format.name$ -- 117
+if$ -- 2260
+int.to.chr$ -- 0
+int.to.str$ -- 33
+missing$ -- 32
+newline$ -- 104
+num.names$ -- 33
+pop$ -- 168
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 352
+stack$ -- 0
+substring$ -- 542
+swap$ -- 195
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 10
+while$ -- 70
+width$ -- 35
+write$ -- 293
+(There were 2 error messages)

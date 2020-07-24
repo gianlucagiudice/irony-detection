@@ -1,0 +1,164 @@
+\begin{thebibliography}{10}
+
+\bibitem{survey4}
+B.~Wallace, ``Computational irony: A survey and new perspectives,'' {\em
+  Artificial Intelligence Review}, vol.~43, 04 2013.
+
+\bibitem{survey1}
+J.~{aboobaker} and E.~{Ilavarasan}, ``A survey on sarcasm detection and
+  challenges,'' in {\em 2020 6th International Conference on Advanced Computing
+  and Communication Systems (ICACCS)}, pp.~1234--1240, 2020.
+
+\bibitem{political}
+D.~K. {Tayal}, S.~{Yadav}, K.~{Gupta}, B.~{Rajput}, and K.~{Kumari}, ``Polarity
+  detection of sarcastic political tweets,'' in {\em 2014 International
+  Conference on Computing for Sustainable Global Development (INDIACom)},
+  pp.~625--628, 2014.
+
+\bibitem{survey3}
+P.~{Chaudhari} and C.~{Chandankhede}, ``Literature survey of sarcasm
+  detection,'' in {\em 2017 International Conference on Wireless
+  Communications, Signal Processing and Networking (WiSPNET)}, pp.~2041--2046,
+  2017.
+
+\bibitem{audio-sarcasm}
+J.~Tepperman, D.~R. Traum, and S.~S. Narayanan, ``"yeah right": Sarcasm
+  recognition for spoken dialogue systems,'' in {\em INTERSPEECH}, 2006.
+
+\bibitem{survey5}
+A.~Joshi, P.~Bhattacharyya, and M.~J. Carman, ``Automatic sarcasm detection: A
+  survey,'' {\em ACM Comput. Surv.}, vol.~50, Sept. 2017.
+
+\bibitem{scuba}
+A.~Rajadesingan, R.~Zafarani, and H.~Liu, ``Sarcasm detection on twitter: A
+  behavioral modeling approach,'' in {\em Proceedings of the Eighth ACM
+  International Conference on Web Search and Data Mining}, WSDM ’15, (New
+  York, NY, USA), p.~97–106, Association for Computing Machinery, 2015.
+
+\bibitem{survey2}
+R.~Bagate and S.~Ramadass, {\em Different Approaches in Sarcasm Detection: A
+  Survey}, pp.~425--433.
+\newblock 01 2020.
+
+\bibitem{tipi-sarcasmo}
+E.~Camp, ``Sarcasm, pretense, and the semantics/pragmatics distinction*,'' {\em
+  Noûs}, vol.~46, 09 2011.
+
+\bibitem{sarcasm-ita}
+F.~Barbieri, F.~Ronzano, and H.~Saggion, ``Italian irony detection in twitter:
+  a first approach,'' 12 2014.
+
+\bibitem{crowd}
+E.~Filatova, ``Irony and sarcasm: Corpus generation and analysis using
+  crowdsourcing,'' 01 2012.
+
+\bibitem{imbalance}
+P.~Liu, W.~Chen, G.~Ou, T.~Wang, D.~Yang, and K.~Lei, ``Sarcasm detection in
+  social media based on imbalanced classification,'' pp.~459--471, 06 2014.
+
+\bibitem{hashtag}
+D.~Maynard and M.~Greenwood, ``Who cares about sarcastic tweets? investigating
+  the impact of sarcasm on sentiment analysis.,'' in {\em Proceedings of the
+  Ninth International Conference on Language Resources and Evaluation
+  ({LREC}'14)}, (Reykjavik, Iceland), pp.~4238--4243, European Language
+  Resources Association (ELRA), May 2014.
+
+\bibitem{parsing-tree}
+S.~K. {Bharti}, K.~S. {Babu}, and S.~K. {Jena}, ``Parsing-based sarcasm
+  sentiment recognition in twitter data,'' in {\em 2015 IEEE/ACM International
+  Conference on Advances in Social Networks Analysis and Mining (ASONAM)},
+  pp.~1373--1380, 2015.
+
+\bibitem{rilof}
+E.~Riloff, A.~Qadir, P.~Surve, L.~Silva, N.~Gilbert, and R.~Huang, ``Sarcasm as
+  contrast between a positive sentiment and negative situation,'' {\em
+  Proceedings of EMNLP}, pp.~704--714, 01 2013.
+
+\bibitem{gonzalez}
+R.~González-Ibáñez, S.~Muresan, and N.~Wacholder, ``Identifying sarcasm in
+  twitter: A closer look.,'' pp.~581--586, 01 2011.
+
+\bibitem{farias}
+D.~I.~H. Far\'{\i}as, V.~Patti, and P.~Rosso, ``Irony detection in twitter: The
+  role of affective content,'' {\em ACM Trans. Internet Technol.}, vol.~16,
+  July 2016.
+
+\bibitem{reyes}
+A.~Reyes and P.~Rosso, ``On the difficulty of automatically detecting irony:
+  Beyond a simple case of negation,'' {\em Knowledge and Information Systems},
+  vol.~40, 09 2013.
+
+\bibitem{gram}
+C.~Liebrecht, F.~Kunneman, and A.~Van~den Bosch, ``{The perfect solution for
+  detecting sarcasm in tweets \#not},'' pp.~29--37, 06 2013.
+
+\bibitem{davidov}
+D.~Davidov, O.~Tsur, and A.~Rappoport, ``Semi-supervised recognition of
+  sarcastic sentences in twitter and amazon,'' in {\em Proceedings of the
+  Fourteenth Conference on Computational Natural Language Learning}, CoNLL
+  ’10, (USA), p.~107–116, Association for Computational Linguistics, 2010.
+
+\bibitem{fersini}
+E.~Fersini, V.~Messina, and F.~Pozzi, ``Detecting irony and sarcasm in
+  microblogs: The role of expressive signals and ensemble classifiers,'' 10
+  2015.
+
+\bibitem{embeddings}
+A.~Joshi, V.~Tripathi, K.~Patel, P.~Bhattacharyya, and M.~Carman, ``Are word
+  embedding-based features useful for sarcasm detection?,'' in {\em Proceedings
+  of the 2016 Conference on Empirical Methods in Natural Language Processing},
+  (Austin, Texas), pp.~1006--1011, Association for Computational Linguistics,
+  Nov. 2016.
+
+\bibitem{deep-learning}
+D.~Bharti, K.~Babu, and S.~Jena, ``Parsing-based sarcasm sentiment recognition
+  in twitter data,'' 08 2015.
+
+\bibitem{zang}
+S.~Zhang, X.~Zhang, J.~Chan, and P.~Rosso, ``Irony detection via
+  sentiment-based transfer learning,'' {\em Information Processing \&
+  Management}, vol.~56, pp.~1633--1644, 09 2019.
+
+\bibitem{nltk}
+S.~Bird, E.~Klein, and E.~Loper, {\em {Natural Language Processing with
+  Python}}.
+\newblock O'Reilly Media, 2009.
+
+\bibitem{bert}
+A.~Vaswani, N.~Shazeer, N.~Parmar, J.~Uszkoreit, L.~Jones, A.~Gomez, L.~Kaiser,
+  and I.~Polosukhin, ``Attention is all you need,'' 06 2017.
+
+\bibitem{transformer}
+J.~Alammar, ``The illustrated transformer.''
+  \url{http://jalammar.github.io/illustrated-transformer}.
+
+\bibitem{berttutorial}
+C.~McCormick and N.~Ryan, ``Bert word embeddings tutorial.''
+  \url{http://www.mccormickml.com}.
+
+\bibitem{sentencebert}
+N.~Reimers and I.~Gurevych, ``Sentence-bert: Sentence embeddings using siamese
+  bert-networks,'' pp.~3973--3983, 01 2019.
+
+\bibitem{ark}
+O.~Owoputi, B.~O'Connor, C.~Dyer, K.~Gimpel, N.~Schneider, and N.~Smith,
+  ``Improved part-of-speech tagging for online conversational text with word
+  clusters,'' {\em Proceedings of NAACL-HLT}, vol.~2013, pp.~380--390, 01 2013.
+
+\bibitem{scikit-learn}
+F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
+  M.~Blondel, P.~Prettenhofer, R.~Weiss, V.~Dubourg, J.~Vanderplas, A.~Passos,
+  D.~Cournapeau, M.~Brucher, M.~Perrot, and E.~Duchesnay, ``Scikit-learn:
+  Machine learning in {P}ython,'' {\em Journal of Machine Learning Research},
+  vol.~12, pp.~2825--2830, 2011.
+
+\bibitem{weka}
+M.~Hall, E.~Frank, G.~Holmes, B.~Pfahringer, P.~Reutemann, and I.~H. Witten,
+  ``The {WEKA} data mining software: an update,'' {\em SIGKDD Explorations},
+  vol.~11, no.~1, pp.~10--18, 2009.
+
+\bibitem{pcaeigenvectors}
+S.~Loukas, ``Pca clearly explained - when, why, how to use it and feature
+  importance: A guide in python.'' \url{http://towardsdatascience.com/}.
+
+\end{thebibliography}
