@@ -1,36 +1,75 @@
 # Irony Detection
-
-#### Input
-Insert dataset file with the associated `_lables.json` into
+### Requirements
+- python3.7
+- Java 6 or above
+- Libraries listed in `requirements.txt`
+    
+    Run `pip3 install -r requirements.txt` to install all python libraries
+    
+### Input
+Put the dataset into:
 ```
 data/raw/DATASET_NAME/
 ```
-
-#### Output
+Also put the associated labels in the `_lables.json` file within the same folder.
+### Output
 ```
 data/processed/DATASET_NAME/
 ```
+### How to execute the program
 
-#### Entry point
-- Preprocessing
+#### Single script
+Run `run.sh`. This involves:
+1. Feature extraction using three different strategy for text representation:
+    1. BOW
+    2. BERT
+    3. Sentence-BERT
+2. Training of the models
+3. Perform PCA
+#### Manual version
+- Feature extraction
     ```
-    /main.py 
+    /main.py TARGET_DATASET TEXT_REPRESENTATION
     ```
+  Parameters:
+     - TARGET_DATASET = The name of the dataset
+     
+     - TEXT_REPRESENTATION = Strategy used for text representation.
+        Valid values are:
+        - bow
+        - bert
+        - sbert
 - Training
     ```
-    /training.py 
+    /training.py TARGET_DATASET
     ```
+ - Weka experiment converter
+ 
+    ```
+    /notebooks/weka_experiment_converter.ipynb 
+    ```
+ 
+    This notebook is used to convert `.csv` format of the weka experiments to the `.json` format which is 
+    consistent with the output produced by the scikit-learn reports output.
+    
+    In order to convert the reports just place `.csv` weka output into the folder
+    `reports/TARGET_DATASET/weka_experiment.csv`.
+    
+    Be aware that the name must be `weka_experiment.csv`
+
 - PCA
     ```
     /pca.py 
     ```
-- Analysis
-    - Models report
-        ```
-        /notebooks/report_analysis_unbiased.ipynb
-        ```
-     - PCA
-        ```
-        /notebooks/pca*.ipynb
-        ```
+  
+#### Analysis
+In order to analyze the reports and PCA output, several notebooks have been created.
+- Models report - Performance comparison
+    ```
+    /notebooks/report_analysis.ipynb
+    ```
+- PCA
+    ```
+    /notebooks/pca*.ipynb
+    ```
  
