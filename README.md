@@ -1,4 +1,7 @@
 # Irony Detection
+More info about the project can be founded here:
+[Thesis](https://github.com/gianlucagiudice/irony-detection/blob/master/references/thesis/tesi.pdf)
+
 ### Requirements
 - python3.7
 - Java 6 or above
