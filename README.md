@@ -14,7 +14,7 @@ Put the dataset into:
 ```
 data/raw/DATASET_NAME/
 ```
-Also put the associated labels in the `_lables.json` file within the same folder.
+Also write the associated labels in the `_lables.json` file within the same folder.
 ### Output
 ```
 data/processed/DATASET_NAME/
