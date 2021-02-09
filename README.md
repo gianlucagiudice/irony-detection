@@ -1,5 +1,5 @@
 # Irony Detection
-More info about the project can be founded here:
+More info about the project can be found here:
 [Thesis](https://github.com/gianlucagiudice/irony-detection/blob/master/references/thesis/tesi.pdf)
 
 ### Requirements
