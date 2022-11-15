@@ -8,7 +8,7 @@ filelock==3.0.12
 future==0.18.2
 idna==2.10
 jmespath==0.10.0
-joblib==0.16.0
+joblib==1.2.0
 nltk==3.6.6
 numpy==1.22.0
 packaging==20.4
